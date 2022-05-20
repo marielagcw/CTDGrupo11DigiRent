@@ -5,8 +5,17 @@
   --quaternary:#FFFBE2;
 }
 
-.bg-primary{
+.bg-primary, .btn-primary{
   background-color: var(--primary) !important;
+  border-color: var(--primary);
+}
+
+.btn-primary:hover{
+  background-color:var(--primary) 0.1
+}
+
+.btn{
+  vertical-align: none !important;
 }
 
 body {
@@ -16,6 +25,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input{
+  width: 422px;
+  height: 40px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border:none;
 }
 
 code {
@@ -29,4 +46,6 @@ code {
   font-size: 16px;
   font-weight: 700;
 }
+
+
 

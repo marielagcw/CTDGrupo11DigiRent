@@ -1,0 +1,36 @@
+.myNavbar{
+    background-color: var(--secondary);
+    color: white;
+}
+
+input{
+    padding-left: 2rem;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.iconInput{
+    position: relative;
+}
+  
+.icon{
+    position: absolute;
+    font-size: x-large;
+    display: block;
+    bottom: 0.2rem;
+    color: var(--tertiary);
+    user-select: none;
+    cursor: pointer;
+}
+
+.iconCalender{
+    left: 1rem;
+}
+
+.iconLocation{
+    left: 0.5rem;
+}

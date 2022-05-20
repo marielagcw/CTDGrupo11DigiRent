@@ -11,7 +11,7 @@ const Header = () => {
           <div className="container-fluid">
 
             <div className='d-flex align-items-center'>
-                <div className="image-container">
+                <div className="image-container d-flex align-items-center">
                   <img src={logo} className="img-fluid" alt="logo" />
                 </div>
                 <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-primary fw-bold text-light ps-1 pe-1'>Rent</span></p>
