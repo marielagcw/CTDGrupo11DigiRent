@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+.card{
+    width: 23%;
+    height: 35%;
+    border: gray 1px solid;
+    border-radius: 15px;
+}
+.card-img-top{
+    width: 100%;
+    border-radius:15px 15px 0 0 ;
+}
+.card-body{
+    height: 180px;
+}
