@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendar } from "@fortawesome/free-solid-svg-icons";
 
-import './Navbar.css'
+import '../styles/Navbar.css'
 
 const Navbar = () => {
   return (

@@ -1,0 +1,22 @@
+.footer{
+    background-color: var(--primary);
+    width: 100%;
+    /* position:fixed; */
+    margin-top: 20px;
+    left:0px;
+    bottom:0px;
+    color: white;
+}
+
+footer{
+    padding-top: 15px;
+}
+
+.icons{
+    font-size:larger;
+    height: 100%;
+}
+
+.iconFooter{
+    cursor: pointer;
+}

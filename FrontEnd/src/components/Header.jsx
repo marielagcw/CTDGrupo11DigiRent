@@ -1,7 +1,7 @@
 import React from 'react'
 import RegistreForm from './RegistreForm';
 import logo from '../img/Logo.png'
-import './Header.css'
+import '../styles/Header.css'
 
 
 const Header = () => {
