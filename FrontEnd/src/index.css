@@ -3,11 +3,16 @@
   --secondary:#263238;
   --tertiary:#607D8B;
   --quaternary:#FFFBE2;
+  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .bg-primary, .btn-primary{
   background-color: var(--primary) !important;
   border-color: var(--primary);
+}
+
+.bg-tertiary{
+  background-color: var(--tertiary);
 }
 
 .btn-primary:hover{
@@ -27,8 +32,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input{
+.input-search{
   width: 422px;
+}
+
+input{
   height: 40px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;

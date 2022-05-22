@@ -13,3 +13,8 @@
     height: 60px;
     padding-left: 11px;
 }
+
+.collapse{
+    display: flex;
+    height: 100vh;
+}

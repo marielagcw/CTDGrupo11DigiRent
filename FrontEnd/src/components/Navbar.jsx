@@ -11,13 +11,13 @@ const Navbar = () => {
         <div className="searchContainer">
             <form action="POST" className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
-                    <input className='input' type="text"  placeholder='¿A donde vamos?' />
+                    <input className='input-search' type="text"  placeholder='¿A donde vamos?' />
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot}/>
                     </span>
                 </div>
                 <div className="iconInput">
-                    <input type="text" className='ms-2' name="date" id="" placeholder='ingrese la fecha' />
+                    <input type="text" className='ms-2 input-search' name="date" id="" placeholder='ingrese la fecha' />
                     <span className='icon iconCalender'>
                         <FontAwesomeIcon icon={faCalendar}/>
                     </span>

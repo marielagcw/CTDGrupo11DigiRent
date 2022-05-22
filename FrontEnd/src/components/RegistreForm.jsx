@@ -1,36 +1,39 @@
 import React from 'react'
+import '../styles/Form.css'
 
 const RegistreForm = () => {
   return (
-    <div className='container d-flex flex-column aling-items-center'>
-        <h1>Crear cuenta</h1>
-        <form action="POST">
-            <div className="d-flex">
+    <div className="collapse flex" id='registreForm'>
+        <div className='form-container'>
+            <h1 className='create-acount'>Crear cuenta</h1>
+            <form action="POST" className='d-flex flex-column'>
+                <div className="d-flex">
+                    <div className="d-flex flex-column">
+                        <label htmlFor="Nombre">Nombre</label>
+                        <input type="text" />
+                    </div>
+                    <div className="d-flex flex-column ms-2">
+                        <label htmlFor="Apellido">Apellido</label>
+                        <input type="text" />
+                    </div>
+                </div>
                 <div className="d-flex flex-column">
-                    <label htmlFor="Nombre">Nombre</label>
+                    <label htmlFor="email">Correo electrónico</label>
                     <input type="text" />
                 </div>
                 <div className="d-flex flex-column">
-                    <label htmlFor="Apellido">Apellido</label>
-                    <input type="text" />
+                    <label htmlFor="Password">Contraseña</label>
+                    <input type="password" />
                 </div>
+                <div className="d-flex flex-column">
+                    <label htmlFor="ConfirmPassword">Confirmar contraseña</label>
+                    <input type="password" />
+                </div>
+            </form>
+            <div className='mt-3'>
+                <button className='btn btn-primary btn-lg'>Crear Cuenta</button>
+                {/* <p>Ya tienes una cuenta?</p><link href="">Iniciar Sesion</link> */}
             </div>
-            <div className="d-flex flex-column">
-                <label htmlFor="Apellido">Apellido</label>
-                <input type="text" />
-            </div>
-            <div className="d-flex flex-column">
-                <label htmlFor="Apellido">Apellido</label>
-                <input type="text" />
-            </div>
-            <div className="d-flex flex-column">
-                <label htmlFor="Apellido">Apellido</label>
-                <input type="text" />
-            </div>
-        </form>
-        <button className='btn btn-primary'>Crear Cuenta</button>
-        <div>
-            {/* <p>Ya tienes una cuenta?</p><link href="">Iniciar Sesion</link> */}
         </div>
     </div>
   )

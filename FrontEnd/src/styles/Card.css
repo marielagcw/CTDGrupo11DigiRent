@@ -4,13 +4,18 @@
 .card{
     width: 23%;
     height: 35%;
-    border: gray 1px solid;
+    border: #F3F1ED 1px solid;
     border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    
 }
 .card-img-top{
     width: 100%;
     border-radius:15px 15px 0 0 ;
 }
-.card-body{
-    height: 180px;
+                
+
+.card-body h2{
+    font-size: 20px;
+    line-height: 23px;
 }
