@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class CategoriaDTO {
-    private Integer id;
+    private Integer id_categorias;
     private String titulo;
     private String descripcion;
-    private String urlImangen;
+    private String url_imagen;
 
 
 
@@ -23,7 +23,7 @@ public class CategoriaDTO {
         this.descripcion = descripcion;
     }
 
-    public void setUrlImangen(String urlImangen) {
-        this.urlImangen = urlImangen;
+    public void setUrl_imagen(String url_imagen) {
+        this.url_imagen = url_imagen;
     }
 }

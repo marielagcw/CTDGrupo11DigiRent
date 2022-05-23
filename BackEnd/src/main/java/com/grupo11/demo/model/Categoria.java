@@ -13,19 +13,19 @@ import javax.persistence.*;
 @Table(name = "Categorias")
 public class Categoria {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id_categorias;
     @Column
     private String titulo;
     @Column
     private String descripcion;
     @Column
-    private String urlImangen;
+    private String url_imagen;
 
-    public Categoria(String titulo, String descripcion, String urlImangen) {
+    public Categoria(String titulo, String descripcion, String url_imagen) {
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.urlImangen = urlImangen;
+        this.url_imagen = url_imagen;
     }
 
 }
