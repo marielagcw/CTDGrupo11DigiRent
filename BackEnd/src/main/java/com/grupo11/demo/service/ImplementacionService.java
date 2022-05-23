@@ -2,13 +2,17 @@ package com.grupo11.demo.service;
 
 import java.util.List;
 
-public interface ImplementacionService <T>{
-    public T agregar(T t);
-    public List<T> listarTodas();
+public interface ImplementacionService<T> {
+    T agregar(T t);
+
+    List<T> listarTodas();
+
+    T buscarPorId(Integer id);
 
     //opcionales
-    public T editar(T t);
-    public void eliminar(Integer id);
+    T editar(T t);
+
+    void eliminar(Integer id);
 
 
 }
