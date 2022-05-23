@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class CategoriaService implements ImplementacionService<CategoriaDTO> {
@@ -40,12 +42,17 @@ public class CategoriaService implements ImplementacionService<CategoriaDTO> {
     }
 
     @Override
-    public CategoriaDTO editar(Integer id) {
-        return null;
+    public CategoriaDTO editar(CategoriaDTO categoriaDTO) {
+        Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
+        return mapper.convertValue(repository.save(categoria), CategoriaDTO.class);
     }
 
     @Override
     public void eliminar(Integer id) {
-
+        Optional<Categoria> Categoria = repository.findById(id);
+        if (Categoria.isPresent())
+            repository.deleteById(id);
+        else
+            throw new NoSuchElementException();
     }
 }

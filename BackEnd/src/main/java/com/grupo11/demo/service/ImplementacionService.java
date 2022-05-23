@@ -7,7 +7,7 @@ public interface ImplementacionService <T>{
     public List<T> listarTodas();
 
     //opcionales
-    public T editar(Integer id);
+    public T editar(T t);
     public void eliminar(Integer id);
 
 
