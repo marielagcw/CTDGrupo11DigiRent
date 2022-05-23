@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "f71753cf-49cf-48e8-931a-6fb2bafdda18",
+		"name": "TrabajoIntegrador CTD",
+		"description": "API REST\n\n.../categorias:\n\nmethod's post, get and put",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18027131"
+	},
+	"item": [
+		{
+			"name": "Get categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get categoria by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post categorias (categoria on body)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT actualizar categoria (categoria con id en body)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\":7,\r\n        \"titulo\": \"Hotel lujoso\",\r\n        \"descripcion\": \"edificio con habitaciones disponibles para más de 50 personas\",\r\n        \"url_imagen\": null\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar categoria ( id en url)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id_categorias\": 7,\r\n        \"titulo\": \"Hotel lujoso\",\r\n        \"descripcion\": \"edificio con habitaciones disponibles para más de 50 personas\",\r\n        \"url_imagen\": null\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/categorias/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
