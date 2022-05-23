@@ -36,8 +36,17 @@ div.d-flex label{
     line-height: 14px;
 }
 
-.input-login{
-    width: 448px;
+.input{
     padding-left: 14px;
 
+}
+
+.input-login{
+    width: 448px;
+
+}
+
+#link{
+    color: blue;
+    cursor: pointer;
 }

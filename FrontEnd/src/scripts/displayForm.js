@@ -1,6 +1,7 @@
 // React.
 
 export const displayForm = (e) => {
+
     e.target.classList.add('collapse')
     let formRegistre = document.querySelector('#registreForm');
     let formLogIng = document.querySelector('#logInForm');
@@ -13,11 +14,13 @@ export const displayForm = (e) => {
         formRegistre.classList.remove('collapse')
 
     }else if(e.target.id === 'logIn'){
-        if(e.target.previousElementSibling.classList.contains("collapse")){
+        if(e.target.previousElementSibling.classList.contains("collapse") || e.target.id === 'link'){
             e.target.previousElementSibling.classList.remove('collapse')
             formRegistre.classList.add('collapse')
         }
         formLogIng.classList.remove('collapse')
     }
+
+    
     document.body.style.overflow = 'hidden';
 }
