@@ -18,9 +18,9 @@ class CategoriaServiceTest {
     void agregarCategoriaABD(){
         //having o teniendo
         CategoriaDTO categoria1 = new CategoriaDTO();
-        categoria1.setTitulo("Cabania");
-        categoria1.setDescripcion("ejemplo");
-        categoria1.setUrl_imagen("url");
+        categoria1.setTitulo("Cabaña");
+        categoria1.setDescripcion("Casa de madera");
+        categoria1.setUrl_imagen("url nueva");
 
         //when o cuando
         sujetoDePrueba.agregar(categoria1);
