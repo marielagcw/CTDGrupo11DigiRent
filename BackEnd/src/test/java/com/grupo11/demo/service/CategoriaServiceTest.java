@@ -1,24 +1,21 @@
 package com.grupo11.demo.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.dtos.CategoriaDTO;
-import org.junit.Test;
+import com.grupo11.demo.service.implementation.CategoriaService;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class CategoriaServiceTest {
+class CategoriaServiceTest {
 
     @Autowired
     private CategoriaService sujetoDePrueba;
 
-    @Autowired
-    private ObjectMapper mapper;
-
-
     @Test
-    public void agregarCategoriaABD(){
+    void agregarCategoriaABD(){
         //having o teniendo
         CategoriaDTO categoria1 = new CategoriaDTO();
         categoria1.setTitulo("Cabania");
@@ -36,6 +33,8 @@ public class CategoriaServiceTest {
 
         //then o entonces
         assertEquals(categoria1.getTitulo(),categoria2.getTitulo());
+        assertEquals(categoria1.getDescripcion(),categoria2.getDescripcion());
+        assertEquals(categoria1.getUrlImangen(),categoria2.getUrlImangen());
 
 
 

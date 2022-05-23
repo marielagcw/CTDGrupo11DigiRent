@@ -1,9 +1,10 @@
-package com.grupo11.demo.service;
+package com.grupo11.demo.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.Categoria;
 import com.grupo11.demo.model.dtos.CategoriaDTO;
 import com.grupo11.demo.repository.CategoriaRepository;
+import com.grupo11.demo.service.ImplementacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,22 +18,15 @@ public class CategoriaService implements ImplementacionService<CategoriaDTO> {
     private CategoriaRepository repository;
 
     @Autowired
-    public void setMapper(ObjectMapper mapper) {
+    public CategoriaService(ObjectMapper mapper, CategoriaRepository repository) {
         this.mapper = mapper;
-    }
-    @Autowired
-    public void setRepository(CategoriaRepository repository) {
         this.repository = repository;
     }
 
-
-
-
-
     @Override
-    public CategoriaDTO agregar(CategoriaDTO categoria) {
-        Categoria categoria1 = mapper.convertValue(categoria, Categoria.class);
-        return mapper.convertValue(repository.save(categoria1), CategoriaDTO.class);
+    public CategoriaDTO agregar(CategoriaDTO categoriaDTO) {
+        Categoria categoriaEntity = mapper.convertValue(categoriaDTO, Categoria.class);
+        return mapper.convertValue(repository.save(categoriaEntity), CategoriaDTO.class);
 
     }
 
@@ -44,17 +38,6 @@ public class CategoriaService implements ImplementacionService<CategoriaDTO> {
         }
         return categoriaDTOList;
     }
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public CategoriaDTO editar(Integer id) {

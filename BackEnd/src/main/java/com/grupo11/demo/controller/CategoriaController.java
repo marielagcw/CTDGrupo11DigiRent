@@ -1,10 +1,8 @@
 package com.grupo11.demo.controller;
 
-import com.grupo11.demo.model.Categoria;
 import com.grupo11.demo.model.dtos.CategoriaDTO;
-import com.grupo11.demo.service.CategoriaService;
+import com.grupo11.demo.service.implementation.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
