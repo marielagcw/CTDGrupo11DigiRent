@@ -33,6 +33,17 @@ public class CategoriaService implements ImplementacionService<CategoriaDTO> {
     }
 
     @Override
+    public CategoriaDTO buscarPorId(Integer id) {
+        Optional<Categoria> categoria = repository.findById(id);
+        CategoriaDTO categoriaDTO = null;
+
+        if (categoria.isPresent()) {
+            categoriaDTO = mapper.convertValue(categoria, CategoriaDTO.class);
+        }
+        return categoriaDTO;
+    }
+
+    @Override
     public List<CategoriaDTO> listarTodas() {
         List<CategoriaDTO> categoriaDTOList = new ArrayList<>();
         for (Categoria categoria : repository.findAll()) {
