@@ -31,7 +31,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 110vh;
+  height: 800px;
 }
 
 .input-search {
@@ -58,8 +58,18 @@ code {
   font-weight: 700;
 }
 
+.navbar-toggler {
+  display: none;
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
+  body {
+    height: 1200px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+
   div.form-container {
     height: fit-content;
     justify-content: center;
@@ -77,11 +87,52 @@ code {
   }
 
   div.d-flex div.card {
-    width: 49%;
+    width: 45vw;
+    height: 40vh;
     margin: 10px 0;
   }
+}
 
-  div.footer {
-    /* margin-bottom: 50px; */
+
+@media screen and (max-width: 588px) {
+
+  form {
+    flex-direction: column;
   }
+
+  .searchContainer {
+    width: 100%;
+  }
+
+  form.d-flex {
+    width: 100%;
+  }
+
+  form.d-flex div,
+  form.d-flex button {
+    margin: 5px 0 !important;
+    width: 85%;
+  }
+
+  form.d-flex div>input {
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  form .iconCalender {
+    left: 5px;
+  }
+}
+
+@media screen and (max-width: 452px) {
+
+  .session-manager {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+    height: 15%;
+  }
+
 }
