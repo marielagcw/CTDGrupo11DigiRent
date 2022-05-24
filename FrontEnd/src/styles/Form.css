@@ -1,0 +1,77 @@
+.input-form {
+    width: 218px;
+    padding-left: 14px;
+}
+
+.ms-2 {
+    margin-left: 12px !important;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+    background-color: var(--quaternary);
+}
+
+.form-container {
+    width: 448px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-acount {
+    font-size: 24px;
+    line-height: 28px;
+    color: var(--primary);
+}
+
+div.d-flex label {
+    color: var(--secondary);
+    margin: 12px 0px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.input {
+    padding-left: 14px;
+
+}
+
+.input-login {
+    width: 448px;
+
+}
+
+#link {
+    color: blue;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 588px) {
+    #registreForm {
+        padding: 30px;
+    }
+
+    #registreForm form div.d-flex {
+        flex-direction: column;
+        width: 100%;
+    }
+    #registreForm input.input{
+        width: 100%;
+    }
+
+    #logInForm .form-container{
+        width: 85%;
+    }
+
+    #logInForm .d-flex{
+        width: 100%;
+    }
+    #logInForm .mt-5 button{
+        margin-left: 6%
+    }
+}

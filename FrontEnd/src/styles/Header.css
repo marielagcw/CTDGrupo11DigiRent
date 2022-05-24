@@ -1,0 +1,20 @@
+.btn-border-primary{
+    border:1px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-border-primary:hover{
+    background-color: var(--primary);
+    color: white;
+}
+  
+.image-container{
+    width: 60px;
+    height: 60px;
+    padding-left: 11px;
+}
+
+.collapse{
+    display: flex;
+    height: 100vh;
+}
