@@ -3,7 +3,7 @@ import Header from './Header'
 import Navbar from './Navbar';
 import CardList from './CardList';
 import Footer from './Footer';
-
+// import NewCalendar from './NewCalendar'
 
 const Home = () => {
   return (
@@ -12,7 +12,9 @@ const Home = () => {
       <Navbar />
       <CardList/>
       <Footer />
+      {/* <NewCalendar /> */}
     </>
+
   )
 }
 

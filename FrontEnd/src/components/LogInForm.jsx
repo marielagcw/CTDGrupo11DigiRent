@@ -34,7 +34,7 @@ const LogInForm = () => {
   return (
     <div className="collapse flex" id='logInForm'>
           <div className='form-container'>
-            <h1 className='create-acount'>Iniciar Sesión</h1>
+            <h1 className='tittle-form'>Iniciar Sesión</h1>
             <form action="POST" className='d-flex flex-column'>
                 <div className="d-flex flex-column">
                     <label htmlFor="email">Correo electrónico</label>
@@ -42,7 +42,7 @@ const LogInForm = () => {
                 </div>
                 <div className="d-flex flex-column iconInput">
                     <label htmlFor="Password">Contraseña</label>
-                    <input className='input input-login input-login-password' type={passwordType} />
+                    <input className='input input-login-password' type={passwordType} />
                     <span className='icon icon-display-password' onClick={handleDisplayPassword}>
                         <FontAwesomeIcon icon={faEyeSlash}/>
                     </span>
@@ -50,7 +50,7 @@ const LogInForm = () => {
             </form>
             <div className='mt-5'>
                 <button className='btn btn-primary btn-lg'>Ingresar</button>
-                <p>¿No tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Registrate</span></p>
+                <p className='parrafoCreateLogIn'>¿No tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Registrate</span></p>
             </div>
         </div>
     </div>

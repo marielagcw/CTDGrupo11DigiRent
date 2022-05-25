@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 import '../styles/Form.css'
 import '../styles/iconForms.css'
+import { displayForm } from '../scripts/displayForm'
 
 const RegistreForm = () => {
 
@@ -19,10 +20,16 @@ const RegistreForm = () => {
     }
 
 
+    const handleCreateAccountLogIn = (e) => {
+        displayForm(e)
+        
+    }
+
+
   return (
     <div className="collapse flex" id='registreForm'>
         <div className='form-container'>
-            <h1 className='create-acount'>Crear cuenta</h1>
+            <h1 className='tittle-form'>Crear cuenta</h1>
             <form action="POST" className='d-flex flex-column'>
                 <div className="d-flex">
                     <div className="d-flex flex-column">
@@ -52,7 +59,7 @@ const RegistreForm = () => {
             </form>
             <div className='mt-3'>
                 <button className='btn btn-primary btn-lg'>Crear Cuenta</button>
-                {/* <p>Ya tienes una cuenta?</p><link href="">Iniciar Sesion</link> */}
+                <p className='parrafoCreateLogIn'>Ya tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Iniciar sesión</span></p>
             </div>
         </div>
     </div>

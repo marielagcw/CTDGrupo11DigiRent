@@ -6,7 +6,7 @@ import '../styles/Footer.css'
 
 const Footer = () => {
   return (
-    <div className='footer'>x
+    <div className='footer'>
         <footer className='d-flex justify-content-between aling-items-center container'>
             <p>© 2022 DigiRent, Inc.</p>
             <div className="icons">

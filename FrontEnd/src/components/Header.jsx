@@ -2,10 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import RegistreForm from './RegistreForm';
 import logo from '../img/Logo.png'
-import '../styles/Header.css'
-import { displayForm } from '../scripts/displayForm';
 import LogInForm from './LogInForm';
 
+import { displayForm } from '../scripts/displayForm';
+import { displayHome } from '../scripts/displayhome';
+
+import '../styles/Header.css'
 
 const Header = () => {
   //controla tamaño ventana
@@ -13,7 +15,7 @@ const Header = () => {
 
   useEffect(() => {
 
-    const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width)};
+    const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
     console.log(widthWindow);
 
     window.addEventListener("resize", (e) => detectarWidth())
@@ -32,18 +34,27 @@ const Header = () => {
     document.querySelector('.session-manager').classList.toggle('display-none');
   }
 
+  const handleGoHome = () => {
+    displayHome()
+  }
+
 
   return (
     <>
       <nav className='navbar navbar-light'>
         <div className="container-fluid">
-          <div className='d-flex align-items-center'>
+          <div className='d-flex align-items-center logo' onClick={handleGoHome}>
             <div className="image-container d-flex align-items-center">
               <img src={logo} className="img-fluid" alt="logo" />
             </div>
             <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
           </div>
-          <div className={widthWindow>452?'session-manager':'session-manager display-none'}>
+          <div>
+            <button className='btn btn-lg btn-border-primary' id='createAcount' onClick={handleCreateAccountLogIn}>Crear cuenta</button>
+            <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' onClick={handleCreateAccountLogIn}>Iniciar sesión</button>
+          </div>
+          <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
+          <div className={widthWindow > 452 ? 'session-manager' : 'session-manager display-none'}>
             <button className='btn btn-lg btn-border-primary' id='createAcount' onClick={handleCreateAccountLogIn}>Crear cuenta</button>
             <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' onClick={handleCreateAccountLogIn}>Iniciar sesión</button>
           </div>
