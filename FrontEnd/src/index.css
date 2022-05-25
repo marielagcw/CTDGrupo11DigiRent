@@ -91,16 +91,23 @@ code {
     flex-wrap: wrap;
   }
 
-  div.d-flex div.card {
+  div.d-flex div.categorias {
     width: 45vw;
     height: 40vh;
     margin: 10px 0;
   }
 }
+@media screen and (max-width: 631px) {
+  body {
+    height: 590vh;
+  }
+}
 
 
 @media screen and (max-width: 588px) {
-
+  body {
+    height: 610vh;
+  }
   form {
     flex-direction: column;
   }
