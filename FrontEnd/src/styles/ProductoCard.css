@@ -5,9 +5,9 @@
 div.producto {
     display: flex;
     flex-direction: row;
-    margin: 15px;
-    width: 45%;
-    height: 200px;
+    margin: 10px;
+    width: 630px;
+    height: 250px;
     border: #F3F1ED 1px solid;
     border-radius: 15px;
     box-shadow: var(--box-shadow);
@@ -20,8 +20,10 @@ div.producto {
 }
 
 .producto .card-body {
+    padding: 15px 20px;
     width: 50%;
-    height: 100%;
+    height: 250px;
+
 }
 
 .producto .title {
@@ -38,4 +40,26 @@ div.producto {
 
 .producto .description {
     font-size: xx-small;
+    text-align: justify;
+}
+
+div.producto div.card-body .btn-primary {
+    height: 16%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+@media screen and (max-width: 1331px) {
+    div.producto {
+        margin: .1vw;
+        width: 47.2vw;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    div.producto {
+        margin: 3vh auto ;
+        height: auto;
+        width: 90%;
+    }
 }
