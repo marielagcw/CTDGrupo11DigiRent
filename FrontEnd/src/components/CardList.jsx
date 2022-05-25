@@ -1,10 +1,8 @@
 import React from 'react';
 import Card from './Card';
-import categorias from '../categorias.json';
 import '../styles/CardList.css';
 import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
-let lista = categorias.categorias;
 
 const CardList = () => {
 
