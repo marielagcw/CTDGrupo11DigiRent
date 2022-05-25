@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from './Card';
-import '../styles/CardList.css';
+import CategoryCard from './CategoryCard';
+import '../styles/CategoryList.css';
 import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
 
-const CardList = () => {
+const CategoryList = () => {
 
     let url = "http://localhost:8080/categorias";
     let { data, isPending, error } = useFetch(url);
@@ -14,10 +14,12 @@ const CardList = () => {
     return (
         <>
             <div className="category-container m-3">
-                <h2 className='category'>Categorias</h2>
+                <h2 className='list-title category'>Categorias</h2>
                 <div className='d-flex justify-content-between align-item-center'>
                     {!data ? <Spinner /> : data.map((categoria, i) => {
-                        return (<Card info={categoria} key={"cat" + i} />)
+                        return (
+                            <CategoryCard datos={categoria} key={"cat" + i} />
+                        )
                     })}
                 </div>
             </div>
@@ -25,4 +27,4 @@ const CardList = () => {
     )
 }
 
-export default CardList;
+export default CategoryList;
