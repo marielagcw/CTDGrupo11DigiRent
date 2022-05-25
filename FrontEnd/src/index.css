@@ -5,7 +5,9 @@
   --quaternary: #FFFBE2;
   --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.list-title{
+  margin-left: 1.5vw;
+}
 .display-none{
   display: none;
 }

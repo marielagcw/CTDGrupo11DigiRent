@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+div.producto {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    width: 45%;
+    height: 200px;
+    border: #F3F1ED 1px solid;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+
+}
+
+.producto img.card-img-top {
+    border-radius: 15px 0 0 15px;
+    width: 50%;
+}
+
+.producto .card-body {
+    width: 50%;
+    height: 100%;
+}
+
+.producto .title {
+    font-size: large;
+}
+
+.producto .category {
+    font-size: medium;
+}
+
+.producto .location {
+    font-size: small;
+}
+
+.producto .description {
+    font-size: xx-small;
+}

@@ -1,23 +1,23 @@
-.myNavbar{
+.myNavbar {
     background-color: var(--tertiary);
     color: white;
 }
 
-input{
+input {
     padding-left: 2rem;
 }
 
-h1{
+h1 {
     font-weight: 700;
     font-size: 36px;
     line-height: 42px;
 }
 
-.iconInput{
+.iconInput {
     position: relative;
 }
-  
-.icon{
+
+.icon {
     position: absolute;
     font-size: x-large;
     display: block;
@@ -27,10 +27,10 @@ h1{
     cursor: pointer;
 }
 
-.iconCalender{
+.iconCalender {
     left: 1rem;
 }
 
-.iconLocation{
+.iconLocation {
     left: 0.5rem;
 }
