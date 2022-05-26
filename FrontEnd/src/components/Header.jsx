@@ -14,11 +14,8 @@ const Header = () => {
   const [widthWindow, setWidthWindow] = useState(0);
 
   useEffect(() => {
-
-    const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
-    console.log(widthWindow);
-
-    window.addEventListener("resize", (e) => detectarWidth())
+    const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width)};
+    window.addEventListener('resize', (e) => detectarWidth())
     return () => {
       window.removeEventListener('resize', detectarWidth())
     }
@@ -29,37 +26,37 @@ const Header = () => {
     displayForm(e)
 
   }
-  const toggleVisibility = () => {
 
+  const toggleVisibility = () => {
     document.querySelector('.session-manager').classList.toggle('display-none');
   }
-
-  const handleGoHome = () => {
-    displayHome()
+  const returnHome = () =>{
+    window.location.reload();
   }
-
 
   return (
     <>
       <nav className='navbar navbar-light'>
-        <div className="container-fluid">
-          <div className='d-flex align-items-center logo' onClick={handleGoHome}>
-            <div className="image-container d-flex align-items-center">
-              <img src={logo} className="img-fluid" alt="logo" />
+        <div className='container-fluid'>
+          <div className={widthWindow > 662 ? 'container-fluid d-flex justify-content-between' : 'display-none'}>
+            <div className='logo d-flex align-items-center' onClick={returnHome}>
+              <div className='image-container d-flex align-items-center'>
+                <img src={logo} className='img-fluid' alt='logo' />
+              </div>
+              <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
             </div>
-            <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
-          </div>
-          <div>
-            <button className='btn btn-lg btn-border-primary' id='createAcount' onClick={handleCreateAccountLogIn}>Crear cuenta</button>
-            <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' onClick={handleCreateAccountLogIn}>Iniciar sesión</button>
+            <div>
+              <button className='btn btn-lg btn-border-primary' id='createAcount' onClick={handleCreateAccountLogIn}>Crear cuenta</button>
+              <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' onClick={handleCreateAccountLogIn}>Iniciar sesión</button>
+            </div>
           </div>
           <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
-          <div className={widthWindow > 452 ? 'session-manager' : 'session-manager display-none'}>
+          <div className={widthWindow < 662 ? 'session-manager display-none' : 'session-manager'}>
             <button className='btn btn-lg btn-border-primary' id='createAcount' onClick={handleCreateAccountLogIn}>Crear cuenta</button>
             <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' onClick={handleCreateAccountLogIn}>Iniciar sesión</button>
           </div>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
-            aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation" onClick={toggleVisibility}><span className="navbar-toggler-icon" ></span></button>
+          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent15'
+            aria-controls='navbarSupportedContent15' aria-expanded='false' aria-label='Toggle navigation' onClick={toggleVisibility}><span className='navbar-toggler-icon' ></span></button>
         </div>
       </nav>
       <RegistreForm />

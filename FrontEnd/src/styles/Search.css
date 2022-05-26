@@ -1,0 +1,81 @@
+.calandary-container{
+    width: max-content;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    border-radius: 0px 0px 5px 5px;
+    z-index: 1;
+    top: 102%;
+    left: 4%;   
+    position: relative;
+}
+
+.btn-calendary{
+    margin: 15px 15px;
+}
+
+.react-calendar{
+    border: none !important;
+}
+
+.form-flex{
+    display:flex;
+    flex-direction:column; 
+    align-items:end
+}
+
+.form-absolute{
+    position: absolute;
+}
+
+.react-calendar__tile--active{
+    background-color: var(--primary);
+}
+
+.react-calendar__tile--active:enabled:focus{
+    background-color: var(--tertiary);
+}
+
+
+.react-calendar__tile--active:enabled:hover{
+    background-color: var(--tertiary);
+
+}
+
+@media (770px <= width <= 1200px ){
+    .calandary-container{
+        left: calc(100% - 482px);
+    }
+}
+
+@media (width < 770px){
+    .calandary-container{
+        left: -98%;
+        width: 505px;
+        margin: 0px;
+    }
+
+    .form-flex{
+        align-items: center;
+    }
+
+    .btn-calendary{
+        margin: 15px 0px;
+        width: 95%;
+    }
+
+
+}
+
+@media (width < 590px){
+    .calandary-container{
+        left: 0%;
+        width: 100% !important;
+
+    }
+    .calandary-container div{
+        width: 100% !important;
+
+    }
+}
+
+

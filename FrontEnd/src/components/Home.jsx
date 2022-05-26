@@ -1,18 +1,21 @@
 import React from 'react'
 import Header from './Header'
 import Navbar from './Navbar';
-import CardList from './CardList';
 import Footer from './Footer';
-// import NewCalendar from './NewCalendar'
+import ProductoList from './ProductoList';
+import CategoryList from './CategoryList';
+
 
 const Home = () => {
   return (
     <>
       <Header />
       <Navbar />
-      <CardList/>
+      <CategoryList/>
+      <ProductoList/>
       <Footer />
       {/* <NewCalendar /> */}
+      
     </>
 
   )
