@@ -102,3 +102,20 @@ div.producto div.card-body .btn-primary {
         align-items: center;
     }
 }
+
+@media screen and (max-width: 550px) {
+    /* div.producto {
+        height: 38vh;
+    } */
+    div.producto .card-body{
+        /* justify-content: space-around; */
+        width: 30%;
+        /* padding: 3px 5px; */
+    }
+    div.producto .category,div.producto .location{
+        text-align: center;
+    }
+    div.producto img.card-img-top{
+        width: 70%;
+    }
+}

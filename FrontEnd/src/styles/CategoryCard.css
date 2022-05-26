@@ -5,7 +5,7 @@
     margin: 30vh 10vw;
 } */
 div.categoria{
-    margin: 15px;
+    margin: 15px 7.5px;
     width: 50vw;
     height: vh;
     border: #F3F1ED 1px solid;
@@ -48,10 +48,20 @@ div.categoria{
 }
 @media screen and (max-width: 770px) {
     div.categoria{
-        height: 45vh;
+        height: 50vh;
+        /* width: 40%; */
     }
 }
 
 @media screen and (max-width: 480px) {
-    
+    div.categoria {
+        height: 35vh;
+    }
+
+    .categoria .card-body h2{
+        text-align: center;
+    }
+    .categoria .card-body .card-text{
+        display: none;
+    }
 }

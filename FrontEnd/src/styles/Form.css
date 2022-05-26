@@ -10,7 +10,7 @@
 .flex {
     display: flex;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 3%;
     background-color: var(--quaternary);
 }
 
