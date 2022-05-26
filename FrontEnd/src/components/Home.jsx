@@ -14,7 +14,6 @@ const Home = () => {
       <CategoryList/>
       <ProductoList/>
       <Footer />
-      {/* <NewCalendar /> */}
       
     </>
 

@@ -22,3 +22,33 @@
 .logo{
     cursor: pointer;
 }
+
+.container-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.session-manager{
+    display: none;
+}
+
+.in-phone{
+    display: none;
+}
+
+@media (width < 662px){
+    .container-buttons{
+        display: none;
+    }
+
+    .session-manager{
+        display: inline;
+    }
+
+    .in-phone{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}
