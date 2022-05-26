@@ -5,7 +5,7 @@ import '../styles/Form.css'
 import '../styles/iconForms.css'
 import { displayForm } from '../scripts/displayForm'
 
-const RegistreForm = (props) => {
+const RegistreForm = () => {
 
     const [passwordType, setPasswordType] = useState('password')
 
