@@ -1,3 +1,7 @@
+body{
+    height: 150vh;
+}
+
 .input-form {
     width: 218px;
     padding-left: 14px;
@@ -49,6 +53,12 @@ div.d-flex label {
 #link {
     color: blue;
     cursor: pointer;
+}
+
+div#root > button.btn-close{
+    position:fixed;
+    top: 100px;
+    left: 20px;
 }
 
 @media screen and (max-width: 588px) {
