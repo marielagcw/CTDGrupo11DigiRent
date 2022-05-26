@@ -12,17 +12,15 @@ const Header = () => {
   const [widthWindow, setWidthWindow] = useState(0);
 
   useEffect(() => {
-    const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width)};
-    window.addEventListener('resize', (e) => detectarWidth())
+    const detectarWidth = () => { setWidthWindow(window.visualViewport.width)};
+    window.addEventListener('resize', () => detectarWidth())
     return () => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
 
-
   const handleCreateAccountLogIn = (e) => {
     displayForm(e)
-
   }
 
   const toggleVisibility = () => {

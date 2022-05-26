@@ -51,6 +51,12 @@ div.d-flex label {
     cursor: pointer;
 }
 
+div#root > button.btn-close{
+    position:fixed;
+    top: 100px;
+    left: 20px;
+}
+
 @media screen and (max-width: 588px) {
     #registreForm {
         padding: 30px;

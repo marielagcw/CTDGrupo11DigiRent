@@ -1,11 +1,11 @@
 // React.
 
 export const displayForm = (e) => {
-
     e.target.classList.add('collapse')
     let formRegistre = document.querySelector('#registreForm');
     let formLogIng = document.querySelector('#logInForm');
-
+    let closeBtn = document.querySelector('.btn-close');
+    closeBtn.classList.remove('collapse');
     if(e.target.id === 'createAcount'){
         if(e.target.nextElementSibling.classList.contains("collapse")){
             e.target.nextElementSibling.classList.remove('collapse')
