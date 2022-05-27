@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import '../styles/Navbar.css'
@@ -13,18 +13,18 @@ const Search = () => {
     const [widthWindow, setWidthWindow] = useState(0);
 
     useEffect(() => {
-      const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width)};
-      window.addEventListener('resize', (e) => detectarWidth())
-      return () => {
-        window.removeEventListener('resize', detectarWidth())
-      }
+        const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
+        window.addEventListener('resize', (e) => detectarWidth())
+        return () => {
+            window.removeEventListener('resize', detectarWidth())
+        }
     }, [widthWindow])
 
     const [value, onChange] = useState(new Date([]));
-    
-    const sendCalendar = (e) =>{
+
+    const sendCalendar = (e) => {
         e.preventDefault()
-        if(value.length > 1){
+        if (value.length > 1) {
             let container = document.querySelector('.calandary-container')
             container.classList.add('d-none')
             container.classList.remove('form-flex')
@@ -38,22 +38,22 @@ const Search = () => {
     }
 
 
-  return (<>
-    <div className="searchContainer">
+    return (<>
+        <div className="searchContainer">
             <form action="POST" className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
-                    <input className='input-search' type="text"  placeholder='¿A donde vamos?' />
+                    <input className='input-search' type="text" placeholder='¿A donde vamos?' />
                     <span className='icon iconLocation'>
-                        <FontAwesomeIcon icon={faLocationDot}/>
+                        <FontAwesomeIcon icon={faLocationDot} />
                     </span>
                 </div>
                 <div className="iconInput">
-                    <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={value[0] ? `${value[0].getDate()}/${value[0].getMonth() + 1} - ${value[1].getDate()}/${value[1].getMonth() + 1}`: ''}/>
+                    <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={value[0] ? `${value[0].getDate()}/${value[0].getMonth() + 1} - ${value[1].getDate()}/${value[1].getMonth() + 1}` : ''} />
                     <span onClick={showCalendar} className='icon iconCalender'>
-                        <FontAwesomeIcon icon={faCalendar}/>
+                        <FontAwesomeIcon icon={faCalendar} />
                     </span>
                     <div className='calandary-container d-none form-absolute'>
-                        <Calendar showDoubleView={widthWindow > 414 ? true : false} selectRange={true} onChange={onChange} defaultValue={Date([]) | Date()} />
+                        <Calendar showDoubleView={widthWindow > 414} selectRange={true} onChange={onChange} />
                         <button onClick={sendCalendar} className='btn btn-primary btn-lg btn-calendary'>Aplicar</button>
                     </div>
                 </div>
@@ -63,11 +63,11 @@ const Search = () => {
         </div>
 
 
-    
-  </>
+
+    </>
 
 
-  )
+    )
 }
 
 export default Search

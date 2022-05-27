@@ -11,6 +11,7 @@ const ProductoCard = (props) => {
                 <h4 className='category'>{info.category}</h4>
                 <h5 className='location'>{info.location}</h5>
                 <p className="card-text description">{info.description}</p>
+                <button type="button" className="btn btn-primary">Ver detalle</button>
             </div>
         </div>
     )
