@@ -64,7 +64,7 @@ const RegistreForm = () => {
                         <button className='btn btn-primary btn-lg'>Crear Cuenta</button>
                         <p>¿Tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Iniciar Sesion</span></p>
                     </div>
-                </div>
+                </div>    
             </div>
         </>
     )

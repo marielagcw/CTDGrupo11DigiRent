@@ -14,7 +14,9 @@ const Home = () => {
       <CategoryList/>
       <ProductoList/>
       <Footer />
+      
     </>
+
   )
 }
 

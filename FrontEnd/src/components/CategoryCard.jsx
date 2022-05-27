@@ -9,6 +9,7 @@ const CategoryCard = (props) => {
             <div className="card-body">
                 <h2>{data.titulo}</h2>
                 <p className="card-text">{data.descripcion}</p>
+                <span>{data.titulo+": 800.102"}</span>
             </div>
         </div>
     )
