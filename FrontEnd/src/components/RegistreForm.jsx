@@ -29,7 +29,7 @@ const RegistreForm = () => {
 
     return (
         <>
-            <button type="button" className="btn-close btn-close-black collapse" aria-label="Close" onClick={handleClick}></button>
+            {/*<button type="button" className="btn-close btn-close-black collapse" aria-label="Close" onClick={handleClick}></button>*/}
             <div className="collapse flex" id='registreForm'>
                 <div className='form-container'>
                     <h1 className='create-acount'>Crear cuenta</h1>
@@ -60,9 +60,11 @@ const RegistreForm = () => {
                             <input type="password" className='input' />
                         </div>
                     </form>
-                    <div className='mt-3'>
+                    <div className='mt-3 row justify-content-center'>
                         <button className='btn btn-primary btn-lg'>Crear Cuenta</button>
-                        <p>¿Tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Iniciar Sesion</span></p>
+                        <div className='div-loginForm-2 d-flex flex-row justify-content-center'>
+                            <p>¿Tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Iniciar Sesion</span></p>
+                        </div>
                     </div>
                 </div>
             </div>

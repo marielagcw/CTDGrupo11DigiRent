@@ -37,7 +37,7 @@ const LogInForm = () => {
 
   return (
     <>
-      <button type="button" className="btn-close btn-close-black collapse" aria-label="Close" onClick={handleClick}></button>
+      {/*<button type="button" className="btn-close btn-close-black collapse" aria-label="Close" onClick={handleClick}></button>*/}
       <div className="collapse flex" id='logInForm'>
         <div className='form-container'>
           <h1 className='create-acount'>Iniciar Sesión</h1>
@@ -54,9 +54,11 @@ const LogInForm = () => {
               </span>
             </div>
           </form>
-          <div className='mt-5'>
+          <div className='mt-5 row justify-content-center' >
             <button className='btn btn-primary btn-lg'>Ingresar</button>
-            <p>¿No tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Registrate</span></p>
+            <div className='div-loginForm-1 d-flex flex-row justify-content-center'>
+              <p>¿Aún no tenés cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Registrate</span></p>
+            </div>
           </div>
         </div>
       </div>
