@@ -20,10 +20,6 @@ const Header = ({ btn }) => {
     }
   }, [widthWindow])
 
-  const toggleVisibility = () => {
-    document.querySelector('.session-manager').classList.toggle('display-none');
-  }
-
   return (
     <>
       <nav className='navbar navbar-light'>
