@@ -5,6 +5,9 @@
   --quaternary: #FFFBE2;
   --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+body{
+  height: fit-content;
+}
 .list-title{
   margin-left: 1.5vw;
 }
@@ -29,7 +32,7 @@
   vertical-align: none !important;
 }
 
-body {
+div#home {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -68,7 +71,7 @@ code {
 }
 
 @media screen and (max-width: 900px) {
-  body {
+  div#home {
     height: 500vh;
   }
 }
@@ -98,14 +101,14 @@ code {
   }
 }
 @media screen and (max-width: 631px) {
-  body {
+  div#home {
     height: 590vh;
   }
 }
 
 
 @media screen and (max-width: 588px) {
-  body {
+  div#home {
     height: 610vh;
   }
   form {

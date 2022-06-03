@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import '../styles/Form.css'
 import '../styles/iconForms.css'
-import { displayForm } from '../scripts/displayForm'
+import Header from './Header';
+import Footer from './Footer';
 
 const RegistreForm = () => {
+    const navigate = useNavigate();
 
     const [passwordType, setPasswordType] = useState('password')
 
@@ -18,19 +21,13 @@ const RegistreForm = () => {
             e.target.classList.add('display-password')
         }
     }
-    const handleClick = (e) => {
-        e.target.classList.add('collapse');
-        window.location.reload();
-    }
-    const handleCreateAccountLogIn = (e) => {
-        displayForm(e)
-    }
 
 
     return (
         <>
-            <button type="button" className="btn-close btn-close-black collapse" aria-label="Close" onClick={handleClick}></button>
-            <div className="collapse flex" id='registreForm'>
+            <Header btn="login"/>
+            <button type="button" className="btn-close btn-close-black" aria-label="Close" onClick={() => navigate('/')}></button>
+            <div className="flex" id='registreForm'>
                 <div className='form-container'>
                     <h1 className='create-acount'>Crear cuenta</h1>
                     <form action="POST" className='d-flex flex-column'>
@@ -62,10 +59,11 @@ const RegistreForm = () => {
                     </form>
                     <div className='mt-3'>
                         <button className='btn btn-primary btn-lg'>Crear Cuenta</button>
-                        <p>¿Tienes una cuenta? <span id="link" onClick={handleCreateAccountLogIn}>Iniciar Sesion</span></p>
+                        <p>¿Tienes una cuenta? <span id="link" onClick={() => navigate('/login')}>Iniciar Sesion</span></p>
                     </div>
-                </div>    
+                </div>
             </div>
+            <Footer />
         </>
     )
 }

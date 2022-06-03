@@ -8,15 +8,13 @@ import CategoryList from './CategoryList';
 
 const Home = () => {
   return (
-    <>
+    <div id="home">
       <Header />
       <Navbar />
-      <CategoryList/>
-      <ProductoList/>
+      <CategoryList />
+      <ProductoList />
       <Footer />
-      
-    </>
-
+    </div>
   )
 }
 
