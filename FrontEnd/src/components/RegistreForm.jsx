@@ -25,7 +25,7 @@ const RegistreForm = () => {
 
     return (
         <>
-            <Header />
+            <Header btn="login"/>
             <button type="button" className="btn-close btn-close-black" aria-label="Close" onClick={() => navigate('/')}></button>
             <div className="flex" id='registreForm'>
                 <div className='form-container'>

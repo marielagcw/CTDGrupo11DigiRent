@@ -11,7 +11,7 @@ import Footer from './Footer'
 
 
 
-const LogInForm = () => {
+const LogInForm = ({btn}) => {
   const navigate = useNavigate()
   const [passwordType, setPasswordType] = useState('password')
 
@@ -31,7 +31,7 @@ const LogInForm = () => {
 
   return (
     <>
-      <Header />
+      <Header btn="register" />
       <button type="button" className="btn-close btn-close-black " aria-label="Close" onClick={() => navigate('/')}></button>
       <div className="flex" id='logInForm'>
         <div className='form-container'>
