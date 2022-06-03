@@ -25,23 +25,10 @@
 }
 
 
-div.d-flex {
-    margin: 7.5px 0px 7.5px;
-}
 
 div.d-flex label {
     color: var(--secondary);
-    margin: 0px 0px 12px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-}
-
-div.mt-3.mt-5 {
-    margin-top: 3rem;
-}
-
-div.div-form {
+    margin: 12px 0px;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
@@ -50,9 +37,6 @@ div.div-form {
 .ms-2 {
     margin-left: 12px !important;
 }
-.input {
-    padding-left: 14px;
-    font-size: 12px;
 
 .flex {
     display: flex;

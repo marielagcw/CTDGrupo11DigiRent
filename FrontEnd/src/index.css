@@ -29,7 +29,7 @@
   vertical-align: none !important;
 }
 
-div#home {
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -68,7 +68,7 @@ code {
 }
 
 @media screen and (max-width: 900px) {
-  div#home {
+  body {
     height: 500vh;
   }
 }
@@ -98,14 +98,14 @@ code {
   }
 }
 @media screen and (max-width: 631px) {
-  div#home {
+  body {
     height: 590vh;
   }
 }
 
 
 @media screen and (max-width: 588px) {
-  div#home {
+  body {
     height: 610vh;
   }
   form {
