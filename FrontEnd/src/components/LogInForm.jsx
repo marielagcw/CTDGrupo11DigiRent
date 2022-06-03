@@ -39,7 +39,7 @@ const LogInForm = ({btn}) => {
           <form action="POST" className='d-flex flex-column'>
             <div className="d-flex flex-column">
               <label htmlFor="email">Correo electrónico</label>
-              <input className='input input-login' type="text" />
+              <input className='input input-login' type="text" placeholder="ricardo@correo.com" />
             </div>
             <div className="d-flex flex-column iconInput">
               <label htmlFor="Password">Contraseña</label>

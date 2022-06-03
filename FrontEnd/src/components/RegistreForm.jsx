@@ -7,6 +7,7 @@ import '../styles/iconForms.css'
 import Header from './Header';
 import Footer from './Footer';
 
+
 const RegistreForm = () => {
     const navigate = useNavigate();
 
