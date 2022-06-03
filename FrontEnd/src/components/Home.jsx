@@ -11,10 +11,9 @@ const Home = () => {
     <>
       <Header />
       <Navbar />
-      <CategoryList/>
-      <ProductoList/>
+      <CategoryList />
+      <ProductoList />
       <Footer />
-      
     </>
 
   )

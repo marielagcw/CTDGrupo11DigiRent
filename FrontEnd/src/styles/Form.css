@@ -1,3 +1,6 @@
+body#login{
+    height: max-content;
+}
 .flex {
     display: flex;
     justify-content: center;
