@@ -1,3 +1,7 @@
+#logInForm,#registreForm{
+    height: 90vh;
+}
+
 .flex {
     display: flex;
     justify-content: center;

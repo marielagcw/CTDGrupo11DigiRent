@@ -39,7 +39,7 @@ const LogInForm = ({btn}) => {
           <form action="POST" className='d-flex flex-column'>
             <div className="d-flex flex-column">
               <label htmlFor="email">Correo electrónico</label>
-              <input className='input input-login' type="text" placeholder="ricardo@correo.com" />
+              <input className='input input-login' type="text" />
             </div>
             <div className="d-flex flex-column iconInput">
               <label htmlFor="Password">Contraseña</label>
@@ -49,7 +49,7 @@ const LogInForm = ({btn}) => {
               </span>
             </div>
           </form>
-          <div className='mt-5 row justify-content-center' >
+          <div className='mt-5'>
             <button className='btn btn-primary btn-lg'>Ingresar</button>
             <p>¿No tienes una cuenta? <span id="link" onClick={() => navigate('/register')}>Registrate</span></p>
           </div>

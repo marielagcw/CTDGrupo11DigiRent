@@ -7,7 +7,6 @@ import '../styles/iconForms.css'
 import Header from './Header';
 import Footer from './Footer';
 
-
 const RegistreForm = () => {
     const navigate = useNavigate();
 
@@ -58,7 +57,7 @@ const RegistreForm = () => {
                             <input type="password" className='input' />
                         </div>
                     </form>
-                    <div className='mt-3 row justify-content-center'>
+                    <div className='mt-3'>
                         <button className='btn btn-primary btn-lg'>Crear Cuenta</button>
                         <p>¿Tienes una cuenta? <span id="link" onClick={() => navigate('/login')}>Iniciar Sesion</span></p>
                     </div>
