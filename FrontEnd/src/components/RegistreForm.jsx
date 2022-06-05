@@ -50,7 +50,7 @@ const validationForm = form => {
     return errors;
 };
 
-const RegistreForm = ({ setSession }) => {
+const RegistreForm = (  ) => {
     const navigate = useNavigate();
     const [logged, setLogged] = useState({ logged: false, info: {} })
 

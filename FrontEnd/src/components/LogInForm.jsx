@@ -35,7 +35,7 @@ const validationForm = form => {
   return errors;
 };
 
-const LogInForm = ({ setSession }) => {
+const LogInForm = () => {
   const {
     form,
     errors,
@@ -76,7 +76,8 @@ const LogInForm = ({ setSession }) => {
       <div className="flex" id='logInForm'>
         <div className='form-container'>
           <h1 className='create-acount'>Iniciar Sesión</h1>
-          <form onSubmit={(e) => setSession({ logged: handleSubmit(e) })} className='d-flex flex-column login'>
+          <form onSubmit={(e) => setLogged({ logged: handleSubmit(e) })} className='d-flex flex-column login'>
+            {errors.badCredentials && <p className='error'>{errors.badCredentials}</p>}
             <div className="d-flex flex-column">
               <label htmlFor="email">Correo electrónico</label>
               <input className='input input-login'
