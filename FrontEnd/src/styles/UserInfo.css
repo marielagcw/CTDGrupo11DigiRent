@@ -1,0 +1,42 @@
+div.user-info{
+    width: 13vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto 20px;
+    
+}
+div.user-info span{
+    font-weight: bold;
+    color: var(--tertiary);
+}
+
+div.user-info div.user-logo{
+    /* border-color: var(--primary); */
+    background-color: var(--secondary);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.user-info div.user-logo span{
+    color: var(--quaternary);
+    font-weight: bolder;
+    font-size: larger;
+}
+
+div.user-info span.user-name{
+    color: var(--primary);
+    font-weight: bolder;
+    font-size: large;
+    text-transform: capitalize;
+}
+
+#cierre-session{
+    position:absolute;
+    top: 10%;
+    right: 1%;
+}

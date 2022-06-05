@@ -16,24 +16,26 @@ const initialForm = {
   password: ""
 };
 
-const validationForm = form => { 
+const validationForm = form => {
   let errors = {};
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
 
   if (!form.email.trim()) {
-      errors.email = "El campo 'Email' es requerido"
+    errors.email = "El campo 'Email' es requerido"
+  } else if (!regexEmail.test(form.email.trim())) {
+    errors.email = "El email ingresado es invalido"
   }
   if (!form.password.trim()) {
-      errors.password = "El campo 'Contraseña' es requerido"
+    errors.password = "El campo 'Contraseña' es requerido"
   }
-  if(form.password.length<6){
+  if (form.password.length < 6) {
     errors.password = "La contraseña debe tener 6 caracteres o más"
   }
 
   return errors;
 };
 
-const LogInForm = () => {
+const LogInForm = ({ setSession }) => {
   const {
     form,
     errors,
@@ -45,8 +47,13 @@ const LogInForm = () => {
 
   const navigate = useNavigate()
   const [passwordType, setPasswordType] = useState('password');
-  const [formInfo, setFormInfo] = useState({});
+  const [logged, setLogged] = useState({ logged: false, info: {} })
 
+  useEffect(() => {
+    if (logged.logged) {
+      navigate('/');
+    }
+  }, [logged])
 
 
   const handleDisplayPassword = (e) => {
@@ -69,7 +76,7 @@ const LogInForm = () => {
       <div className="flex" id='logInForm'>
         <div className='form-container'>
           <h1 className='create-acount'>Iniciar Sesión</h1>
-          <form onSubmit={handleSubmit} className='d-flex flex-column'>
+          <form onSubmit={(e) => setSession({ logged: handleSubmit(e) })} className='d-flex flex-column login'>
             <div className="d-flex flex-column">
               <label htmlFor="email">Correo electrónico</label>
               <input className='input input-login'
@@ -94,7 +101,7 @@ const LogInForm = () => {
                 <FontAwesomeIcon icon={faEyeSlash} />
               </span>
             </div>
-              {errors.password && <p className='error'>{errors.password}</p>}
+            {errors.password && <p className='error'>{errors.password}</p>}
             <div className='mt-5 row justify-content-center'>
               <button className='btn btn-primary btn-lg'
                 disabled={Object.entries(errors).length > 0}

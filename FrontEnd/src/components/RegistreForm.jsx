@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
@@ -50,8 +50,9 @@ const validationForm = form => {
     return errors;
 };
 
-const RegistreForm = () => {
+const RegistreForm = ({ setSession }) => {
     const navigate = useNavigate();
+    const [logged, setLogged] = useState({ logged: false, info: {} })
 
     const {
         form,
@@ -73,7 +74,11 @@ const RegistreForm = () => {
             e.target.classList.add('display-password')
         }
     }
-
+    useEffect(() => {
+        if (logged.logged) {
+            navigate('/');
+        }
+    }, [logged])
 
     return (
         <>
@@ -82,7 +87,8 @@ const RegistreForm = () => {
             <div className="flex" id='registreForm'>
                 <div className='form-container'>
                     <h1 className='create-acount'>Crear cuenta</h1>
-                    <form onSubmit={handleSubmit} className='d-flex flex-column'>
+                    <form onSubmit={(e) => setLogged(handleSubmit(e))}
+                        className='d-flex flex-column register'>
                         <div className="d-flex">
                             <div className="d-flex flex-column">
                                 <label htmlFor="name">Nombre</label>
@@ -146,7 +152,7 @@ const RegistreForm = () => {
                             {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
                         </div>
                         <div className='mt-3 row justify-content-center'>
-                            <button className='btn btn-primary btn-lg'
+                            <button type='submit' className='btn btn-primary btn-lg'
                                 disabled={Object.entries(errors).length > 0}
                             >Crear Cuenta</button></div>
                     </form>
