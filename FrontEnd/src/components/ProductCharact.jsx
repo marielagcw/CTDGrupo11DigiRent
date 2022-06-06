@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/ProductCharact.css'
-import { BsChevronLeft,BsSnow3,BsWifi } from 'react-icons/bs';
+import { BsSnow3,BsWifi } from 'react-icons/bs';
 import { TbToolsKitchen } from 'react-icons/tb';
 import { FaCar } from 'react-icons/fa';
 import { CgScreen } from 'react-icons/cg';
