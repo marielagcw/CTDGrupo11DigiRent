@@ -2,9 +2,6 @@
     margin: 3vh auto;
     width: 93vw;
     height: 70vh;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 #open-galery{
     /* border: solid red 1px; */
@@ -22,9 +19,6 @@
 .left-side {
     height: 100%;
     width: 50%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     padding: 3.5vh 0;
 }
 .left-side img{
@@ -46,4 +40,8 @@
     margin: auto;
     height: 45%;
     width: 45%;
+}
+.icono{
+    font-size: x-large;
+    cursor: pointer;
 }

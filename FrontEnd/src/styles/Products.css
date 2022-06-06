@@ -1,30 +1,30 @@
 div#product{
     height: 200vh;
 }
-.bi-chevron-left{
+.my-navbar div.back  {
     cursor: pointer;
-
+    font-size: 3.5em;
 }
-.myNavbar{
+.my-navbar{
     height: 16vh;
     padding: 0 3vw; 
 }
-.myNavbar h3{
+.my-navbar h3{
     margin: 0;
     font-size: larger;
 }
-.myNavbar h1{
+.my-navbar h1{
     margin: 0;
     font-size: xx-large;
 }
 
 
-.location{
+.location-prod{
     padding: 1.5vh 3vw;
     height: 10vh;
     background-color: var(--quaternary);
 }
-.location h2{
+.location-prod h2{
     margin: 0;
 }
 
@@ -43,5 +43,6 @@ div#product{
 }
 
 hr.char-hr{
-    border-top: 5px double var(--secondary);
+    color: transparent;
+    border-top: 5px double var(--primary);
 }
