@@ -23,7 +23,7 @@ class CategoriaServiceTest {
         CategoriaDTO categoria1 = new CategoriaDTO();
         categoria1.setTitulo("Hotel");
         categoria1.setDescripcion("Casa de madera!");
-        categoria1.setUrl_imagen("url nueva3");
+        categoria1.setUrl("url nueva3");
         //when o cuando
         sujetoDePrueba.agregar(categoria1);
         CategoriaDTO categoria2 = mapper.convertValue(sujetoDePrueba.buscarPorId(6), CategoriaDTO.class);
@@ -32,7 +32,7 @@ class CategoriaServiceTest {
         //then o entonces
         assertEquals(categoria1.getTitulo(),categoria2.getTitulo());
         assertEquals(categoria1.getDescripcion(),categoria2.getDescripcion());
-        assertEquals(categoria1.getUrl_imagen(),categoria2.getUrl_imagen());
+        assertEquals(categoria1.getUrl(),categoria2.getUrl());
     }
     @Test
     void editarCategoriaEnDB(){
@@ -52,7 +52,7 @@ class CategoriaServiceTest {
         }
         //Then
         assertEquals(categoriaDTOEditada.getDescripcion(),"Nueva descripción editada");
-        assertEquals(categoriaDTOEditada.getUrl_imagen(),categoriaDTOOriginal.getUrl_imagen());
+        assertEquals(categoriaDTOEditada.getUrl(),categoriaDTOOriginal.getUrl());
     }
 
     @Test
@@ -64,12 +64,12 @@ class CategoriaServiceTest {
         }
 
         //When
-        sujetoDePrueba.eliminar(categoriaDTOAEliminar.getId_categorias());
+        sujetoDePrueba.eliminar(categoriaDTOAEliminar.getId_categoria());
         CategoriaDTO categoriaDTOdistinto = new CategoriaDTO();
         for (CategoriaDTO categoria : sujetoDePrueba.listarTodas()) {
             categoriaDTOdistinto = mapper.convertValue(categoria,CategoriaDTO.class);
         }
         //Then
-        assertNotEquals(categoriaDTOAEliminar.getId_categorias(),categoriaDTOdistinto.getId_categorias());
+        assertNotEquals(categoriaDTOAEliminar.getId_categoria(),categoriaDTOdistinto.getId_categoria());
     }
 }

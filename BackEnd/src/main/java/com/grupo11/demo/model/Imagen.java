@@ -5,25 +5,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "imagenes")
+public class Imagen {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_categoria;
-    @Column(name = "titulo")
+    private Integer id_imagen;
+    @Column(name = "tiulo")
     private String titulo;
-    @Column(name = "descripcion")
-    private String descripcion;
     @Column(name = "url")
     private String url;
-    @OneToMany(mappedBy = "categorias")
-    private Set<Producto> productos;
-
+    @ManyToOne
+    @JoinColumn(name = "id_producto", referencedColumnName = "id", nullable = false)
+    private Producto productos;
 
 }

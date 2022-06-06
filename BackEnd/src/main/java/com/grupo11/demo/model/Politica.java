@@ -11,19 +11,18 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "politicas")
+public class Politica {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_categoria;
+    private Integer id_tipo_politica;
     @Column(name = "titulo")
     private String titulo;
-    @Column(name = "descripcion")
+    @Column
     private String descripcion;
-    @Column(name = "url")
-    private String url;
-    @OneToMany(mappedBy = "categorias")
-    private Set<Producto> productos;
-
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_politica", referencedColumnName = "id", nullable = false)
+    private Set<TipoDePoliticas> tipoDePoliticas;
 
 }

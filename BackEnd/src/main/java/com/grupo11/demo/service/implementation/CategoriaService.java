@@ -3,8 +3,8 @@ package com.grupo11.demo.service.implementation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.Categoria;
 import com.grupo11.demo.model.dtos.CategoriaDTO;
-import com.grupo11.demo.repository.CategoriaRepository;
-import com.grupo11.demo.service.ImplementacionService;
+import com.grupo11.demo.repository.ICategoriaRepository;
+import com.grupo11.demo.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,13 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-public class CategoriaService implements ImplementacionService<CategoriaDTO> {
+public class CategoriaService implements ICategoriaService<CategoriaDTO> {
 
     private ObjectMapper mapper;
-    private CategoriaRepository repository;
+    private ICategoriaRepository repository;
 
     @Autowired
-    public CategoriaService(ObjectMapper mapper, CategoriaRepository repository) {
+    public CategoriaService(ObjectMapper mapper, ICategoriaRepository repository) {
         this.mapper = mapper;
         this.repository = repository;
     }

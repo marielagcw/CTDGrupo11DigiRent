@@ -1,18 +1,19 @@
 package com.grupo11.demo.model.dtos;
 
+import com.grupo11.demo.model.Producto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
 
-//No utilizo setter para que el setter de id no se genere
 @Getter
 @NoArgsConstructor
 public class CategoriaDTO {
-    private Integer id_categorias;
+    private Integer id_categoria;
     private String titulo;
     private String descripcion;
-    private String url_imagen;
-
+    private String url;
+    private Set<Producto> productos;
 
 
     public void setTitulo(String titulo) {
@@ -23,7 +24,5 @@ public class CategoriaDTO {
         this.descripcion = descripcion;
     }
 
-    public void setUrl_imagen(String url_imagen) {
-        this.url_imagen = url_imagen;
-    }
+
 }

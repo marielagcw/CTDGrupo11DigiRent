@@ -16,21 +16,21 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @PostMapping
+    @PostMapping("/agregar")
     public CategoriaDTO guardar(@RequestBody CategoriaDTO categoria) {
         return categoriaService.agregar(categoria);
     }
 
-    @GetMapping
+    @GetMapping("/listarTodos")
     public List<CategoriaDTO> listarTodos() {
         return categoriaService.listarTodas();
     }
 
-    @PutMapping
+    @PutMapping("/actualizar")
     public ResponseEntity<CategoriaDTO> editarCategoria(@RequestBody CategoriaDTO categoriaDTO) {
         ResponseEntity<CategoriaDTO> response;
 
-        if (categoriaDTO.getId_categorias() != null && categoriaService.buscarPorId(categoriaDTO.getId_categorias()) != null)
+        if (categoriaDTO.getId_categoria() != null && categoriaService.buscarPorId(categoriaDTO.getId_categoria()) != null)
             response = ResponseEntity.ok(categoriaService.editar(categoriaDTO));
         else
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -44,7 +44,7 @@ public class CategoriaController {
         return ResponseEntity.ok(odontologoDTO);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Integer id) {
         ResponseEntity<String> response;
 
