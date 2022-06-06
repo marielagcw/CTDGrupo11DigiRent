@@ -1,48 +1,51 @@
-div#product{
-    height: 200vh;
+div#product {
+    height: 250vh;
 }
-.my-navbar div.back  {
+
+.my-navbar div.back {
     cursor: pointer;
     font-size: 3.5em;
 }
-.my-navbar{
+
+.my-navbar {
     height: 16vh;
-    padding: 0 3vw; 
+    padding: 0 3vw;
 }
-.my-navbar h3{
+
+.my-navbar h3 {
     margin: 0;
     font-size: larger;
 }
-.my-navbar h1{
+
+.my-navbar h1 {
     margin: 0;
     font-size: xx-large;
 }
 
 
-.location-prod{
+.location-prod {
     padding: 1.5vh 3vw;
     height: 10vh;
     background-color: var(--quaternary);
 }
-.location-prod h2{
+
+.location-prod h2 {
     margin: 0;
 }
 
-#description{
-    padding: 0 3vw; 
+#description,
+#charact,
+#politics {
+    padding: 0 3vw;
     width: 100%;
 }
-.description-text{
+
+.description-text {
     text-align: justify;
     /* padding: 0 1vw; */
 }
 
-#charact{
-    padding: 0 3vw; 
-    width: 100%;
-}
-
-hr.char-hr{
+hr {
     color: transparent;
     border-top: 5px double var(--primary);
 }
