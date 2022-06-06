@@ -15,7 +15,7 @@ export default function ProductCharact({ caract }) {
             <div className='char-grid'>
                 {caractetisticas.map((char,i)=>{
                     return(
-                        <div className="grid-item">
+                        <div key={"char_item_"+i} className="grid-item">
                             <div className="icono">{char.icon}</div><span>{char.nombre}</span>
                         </div>
                     )
