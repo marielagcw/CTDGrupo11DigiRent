@@ -1,0 +1,29 @@
+div#product{
+    height: 150vh;
+}
+.bi-chevron-left{
+    cursor: pointer;
+
+}
+.myNavbar{
+    height: 16vh;
+    padding: 0 3vw; 
+}
+.myNavbar h3{
+    margin: 0;
+    font-size: larger;
+}
+.myNavbar h1{
+    margin: 0;
+    font-size: xx-large;
+}
+
+
+.location{
+    padding: 1.5vh 3vw;
+    height: 10vh;
+    background-color: var(--quaternary);
+}
+.location h2{
+    margin: 0;
+}
