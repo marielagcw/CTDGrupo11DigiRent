@@ -1,5 +1,5 @@
 div#product{
-    height: 150vh;
+    height: 200vh;
 }
 .bi-chevron-left{
     cursor: pointer;
@@ -26,4 +26,22 @@ div#product{
 }
 .location h2{
     margin: 0;
+}
+
+#description{
+    padding: 0 3vw; 
+    width: 100%;
+}
+.description-text{
+    text-align: justify;
+    /* padding: 0 1vw; */
+}
+
+#charact{
+    padding: 0 3vw; 
+    width: 100%;
+}
+
+hr.char-hr{
+    border-top: 5px double var(--secondary);
 }
