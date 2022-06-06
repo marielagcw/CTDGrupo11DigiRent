@@ -9,6 +9,7 @@ import ProductGalery from './ProductGalery';
 import { useNavigate } from 'react-router-dom';
 import ProductCharact from './ProductCharact';
 import { BsChevronLeft } from 'react-icons/bs';
+import ProductPolitics from './ProductPolitics';
 
 export default function Products() {
     let ciudades = productosEstaticos.ciudades;
@@ -36,6 +37,7 @@ export default function Products() {
                     Optio, saepe mollitia inventore possimus debitis, porro molestias, suscipit quis deleniti voluptates dolorem quas facere amet esse repudiandae vitae officia nulla minus dolore assumenda cupiditate labore? Nemo repellendus repellat soluta.</p>
             </div>
             <ProductCharact caract={productos} />
+            <ProductPolitics politics={productos}/>
             <Footer />
         </div>
     )

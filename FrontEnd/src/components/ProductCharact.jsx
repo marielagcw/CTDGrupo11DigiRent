@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/ProductCharact.css'
-import { BsChevronLeft,BsSnow3,BsWifi } from 'react-icons/bs';
+import { BsSnow3,BsWifi } from 'react-icons/bs';
 import { TbToolsKitchen } from 'react-icons/tb';
 import { FaCar } from 'react-icons/fa';
 import { CgScreen } from 'react-icons/cg';
@@ -15,7 +15,7 @@ export default function ProductCharact({ caract }) {
             <div className='char-grid'>
                 {caractetisticas.map((char,i)=>{
                     return(
-                        <div className="grid-item">
+                        <div key={"char_item_"+i} className="grid-item">
                             <div className="icono">{char.icon}</div><span>{char.nombre}</span>
                         </div>
                     )
