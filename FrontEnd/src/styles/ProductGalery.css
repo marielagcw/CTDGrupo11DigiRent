@@ -9,8 +9,10 @@ div#galery {
     height: 5%;
     cursor: pointer;
     position:absolute;
-    bottom: -95px;
-    right: 80px;
+    bottom: 30px;
+    right: 20px;
+    bottom: 5vh;
+    right: 1.5vw;
 }
 #open-galery span{
     color: var(--quaternary);
@@ -29,6 +31,7 @@ div#galery {
 
 .rigth-side {
     width: 50%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
