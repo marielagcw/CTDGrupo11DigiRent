@@ -17,7 +17,7 @@ export default function ProductGalery({ galery }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div id='galery' className='container'>
+        <div id='galery'>
             <div className='d-flex justify-content-start align-items-center share-and-fav'>
                 <div className='p-2 share icono'>
                     <BsShare />
@@ -26,6 +26,7 @@ export default function ProductGalery({ galery }) {
                     <BsHeart />
                 </div>
             </div>
+            <div className='container'>
             <div className="row gx-1">
                 <div className='left-side col-md-6'>
                     <img src={galery[0].img} alt={galery[0].title} />
@@ -47,6 +48,7 @@ export default function ProductGalery({ galery }) {
                 photos={PHOTOS}
                 onClose={() => setIsOpen(false)}
             />
+            </div>
         </div>
 
     )
