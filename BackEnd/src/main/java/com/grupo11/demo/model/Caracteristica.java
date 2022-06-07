@@ -1,10 +1,13 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -34,4 +37,7 @@ public class Caracteristica {
     private Boolean desayuno;
     @Column(name = "lavanderia")
     private Boolean lavanderia;
+    @ManyToMany
+    @JsonIgnore
+    Set<Producto> productos = new HashSet<>();
 }

@@ -8,22 +8,16 @@ import com.grupo11.demo.service.ICaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CaracteristicaService implements ICaracteristicaService {
 
-    private ObjectMapper mapper;
-    private ICaracteristicaRepository repository;
+    @Autowired
+    ObjectMapper mapper;
 
     @Autowired
-    public CaracteristicaService(ObjectMapper mapper, ICaracteristicaRepository repository) {
-        this.mapper = mapper;
-        this.repository = repository;
-    }
+    ICaracteristicaRepository repository;
 
     @Override
     public CaracteristicaDTO agregar(CaracteristicaDTO caracteristicaDTO) {
@@ -44,16 +38,17 @@ public class CaracteristicaService implements ICaracteristicaService {
     }
 
     @Override
-    public List<CaracteristicaDTO> listarTodas() {
-        List<CaracteristicaDTO> CaracteristicaDTOList = new ArrayList<>();
-        for (Caracteristica caracteristica : repository.findAll()) {
+    public Set<CaracteristicaDTO> listarTodas() {
+        List<Caracteristica> caracteristicas = repository.findAll();
+        Set<CaracteristicaDTO> CaracteristicaDTOList = new HashSet<>();
+        for (Caracteristica caracteristica : caracteristicas) {
             CaracteristicaDTOList.add(mapper.convertValue(caracteristica, CaracteristicaDTO.class));
         }
         return CaracteristicaDTOList;
     }
 
     @Override
-    public CaracteristicaDTO editar(CaracteristicaDTO caracteristicaDTO) {
+    public CaracteristicaDTO actualizar(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
         return mapper.convertValue(repository.save(caracteristica), CaracteristicaDTO.class);
     }

@@ -3,10 +3,11 @@ package com.grupo11.demo.service;
 import com.grupo11.demo.model.dtos.CaracteristicaDTO;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ICategoriaService<T> {
 
-    List<T> listarTodas();
+    Set<T> listarTodas();
 
     T agregar(T t);
 

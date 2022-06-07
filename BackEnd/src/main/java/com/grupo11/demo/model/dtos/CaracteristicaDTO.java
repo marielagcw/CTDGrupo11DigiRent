@@ -1,9 +1,13 @@
 package com.grupo11.demo.model.dtos;
 
+import com.grupo11.demo.model.Producto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @NoArgsConstructor
 public class CaracteristicaDTO {
@@ -17,6 +21,7 @@ public class CaracteristicaDTO {
     private Boolean estacionamiento;
     private Boolean desayuno;
     private Boolean lavanderia;
+    private Set<Producto> productos = new HashSet<>();
 
     public void setAireAcondicionado(Boolean aireAcondicionado) {
         this.aireAcondicionado = aireAcondicionado;
@@ -52,5 +57,9 @@ public class CaracteristicaDTO {
 
     public void setLavanderia(Boolean lavanderia) {
         this.lavanderia = lavanderia;
+    }
+
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
     }
 }
