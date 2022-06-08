@@ -1,6 +1,8 @@
 import Home from './components/Home';
 import LogInForm from './components/LogInForm';
 import RegistreForm from './components/RegistreForm';
+import Products from './components/Products';
+import ProductDetails from './components/ProductDetails';
 import Test from './components/Test';
 import {
   BrowserRouter,
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<LogInForm />} />
         <Route path='/register' element={<RegistreForm />} />
+        <Route path="/products/:id/*" element={<ProductDetails />} />
+        <Route path="/products" element={<Products />} />
         <Route path='/test' element={<Test />} />
       </Routes>
     </BrowserRouter>
