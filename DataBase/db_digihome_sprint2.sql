@@ -59,7 +59,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `db_prod`.`productos` (
   `id_producto` INT NOT NULL,
   `titulo` VARCHAR(45) NULL,
-  `descripicion` TINYTEXT NULL,
+  `descripcion` TINYTEXT NULL,
   `categorias_id_categoria` INT NOT NULL,
   `ciudades_id_ciudad` INT NOT NULL,
   PRIMARY KEY (`id_producto`, `categorias_id_categoria`, `ciudades_id_ciudad`),

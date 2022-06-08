@@ -8,28 +8,35 @@ import com.grupo11.demo.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
-public class CategoriaService implements ICategoriaService<CategoriaDTO> {
-
-    private ObjectMapper mapper;
-    private ICategoriaRepository repository;
+public class CategoriaService implements ICategoriaService {
 
     @Autowired
-    public CategoriaService(ObjectMapper mapper, ICategoriaRepository repository) {
-        this.mapper = mapper;
-        this.repository = repository;
+    private ObjectMapper mapper;
+
+    @Autowired
+    private ICategoriaRepository repository;
+
+    private void guardarCategoria(CategoriaDTO categoriaDTO){
+        Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
+        repository.save(categoria);
     }
 
     @Override
-    public CategoriaDTO agregar(CategoriaDTO categoriaDTO) {
-        Categoria categoriaEntity = mapper.convertValue(categoriaDTO, Categoria.class);
-        return mapper.convertValue(repository.save(categoriaEntity), CategoriaDTO.class);
+    public Set<CategoriaDTO> listarTodas() {
+        List<Categoria> categorias = repository.findAll();
+        Set<CategoriaDTO> categoriaDTOList = new HashSet<>();
+        for (Categoria categoria : categorias) {
+            categoriaDTOList.add(mapper.convertValue(categoria, CategoriaDTO.class));
+        }
+        return categoriaDTOList;
+    }
 
+    @Override
+    public void agregar(CategoriaDTO categoriaDTO) {
+        guardarCategoria(categoriaDTO);
     }
 
     @Override
@@ -44,26 +51,13 @@ public class CategoriaService implements ICategoriaService<CategoriaDTO> {
     }
 
     @Override
-    public List<CategoriaDTO> listarTodas() {
-        List<CategoriaDTO> categoriaDTOList = new ArrayList<>();
-        for (Categoria categoria : repository.findAll()) {
-            categoriaDTOList.add(mapper.convertValue(categoria, CategoriaDTO.class));
-        }
-        return categoriaDTOList;
-    }
-
-    @Override
-    public CategoriaDTO editar(CategoriaDTO categoriaDTO) {
+    public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) {
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         return mapper.convertValue(repository.save(categoria), CategoriaDTO.class);
     }
 
     @Override
     public void eliminar(Integer id) {
-        Optional<Categoria> Categoria = repository.findById(id);
-        if (Categoria.isPresent())
-            repository.deleteById(id);
-        else
-            throw new NoSuchElementException();
+        repository.deleteById(id);
     }
 }

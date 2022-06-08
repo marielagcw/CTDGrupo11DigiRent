@@ -1,5 +1,6 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,24 +17,26 @@ import java.util.Set;
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "secuencia_categorias", sequenceName = "secuencia_categorias", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_categorias")
     private Integer id_producto;
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany
-    private Set<Politica> politicas = new HashSet<>();
+//    @OneToMany
+//    private Set<Politica> politicas = new HashSet<>();
+    @JsonIgnore
     @OneToMany(mappedBy = "productos")
     private Set<Imagen> imagenes;
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id", nullable = false)
-    private Set<Categoria> categorias;
+    private Categoria categorias;
     @ManyToOne
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id", nullable = false)
     private Ciudad ciudad;
-    @ManyToMany
-    @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
-    private Caracteristica caracteristicas;
+//    @ManyToMany
+//    @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
+//    private Caracteristica caracteristicas;
 
 }

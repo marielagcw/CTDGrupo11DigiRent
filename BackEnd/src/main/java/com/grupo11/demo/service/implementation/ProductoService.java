@@ -8,15 +8,15 @@ import com.grupo11.demo.service.IProductoSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ProductoService implements IProductoSevice {
 
+    @Autowired
     private ObjectMapper mapper;
+
+    @Autowired
     private IProductoRepository repository;
 
     @Autowired
@@ -25,10 +25,24 @@ public class ProductoService implements IProductoSevice {
         this.repository = repository;
     }
 
+    private void guardarProducto(ProductoDTO productoDTO){
+        Producto producto = mapper.convertValue(productoDTO, Producto.class);
+        repository.save(producto);
+    }
+
     @Override
-    public ProductoDTO agregar(ProductoDTO productoDTO) {
-        Producto productoEntity = mapper.convertValue(productoDTO, Producto.class);
-        return mapper.convertValue(repository.save(productoEntity), ProductoDTO.class);
+    public Set<ProductoDTO> listarTodas() {
+        List<Producto> productos = repository.findAll();
+        Set<ProductoDTO> productoDTOList = new HashSet<>();
+        for (Producto producto : productos) {
+            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+        return productoDTOList;
+    }
+
+    @Override
+    public void agregar(ProductoDTO productoDTO) {
+        guardarProducto(productoDTO);
 
     }
 
@@ -44,27 +58,14 @@ public class ProductoService implements IProductoSevice {
     }
 
     @Override
-    public List<ProductoDTO> listarTodas() {
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
-        for (Producto producto : repository.findAll()) {
-            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
-        }
-        return productoDTOList;
-    }
-
-    @Override
-    public ProductoDTO editar(ProductoDTO productoDTO) {
+    public ProductoDTO actualizar(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         return mapper.convertValue(repository.save(producto), ProductoDTO.class);
     }
 
     @Override
     public void eliminar(Integer id) {
-        Optional<Producto> Producto = repository.findById(id);
-        if (Producto.isPresent())
-            repository.deleteById(id);
-        else
-            throw new NoSuchElementException();
+        repository.deleteById(id);
     }
 
 }

@@ -7,53 +7,45 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.SecondaryTable;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/categorias")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class CategoriaController {
+
     @Autowired
     private CategoriaService categoriaService;
 
-    @PostMapping("/agregar")
-    public CategoriaDTO guardar(@RequestBody CategoriaDTO categoria) {
-        return categoriaService.agregar(categoria);
-    }
-
     @GetMapping("/listarTodos")
-    public List<CategoriaDTO> listarTodos() {
+    public Set<CategoriaDTO> listarTodos() {
         return categoriaService.listarTodas();
     }
 
+    @PostMapping("/agregar")
+    public ResponseEntity<?> guardar(@RequestBody CategoriaDTO categoria) {
+        categoriaService.agregar(categoria);
+        return ResponseEntity.ok(categoria);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        categoriaService.eliminar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
     @PutMapping("/actualizar")
-    public ResponseEntity<CategoriaDTO> editarCategoria(@RequestBody CategoriaDTO categoriaDTO) {
-        ResponseEntity<CategoriaDTO> response;
-
-        if (categoriaDTO.getId_categoria() != null && categoriaService.buscarPorId(categoriaDTO.getId_categoria()) != null)
-            response = ResponseEntity.ok(categoriaService.editar(categoriaDTO));
-        else
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
-        return response;
+    public ResponseEntity<?> editarCategoria(@RequestBody CategoriaDTO categoriaDTO) {
+        categoriaService.actualizar(categoriaDTO);
+        return ResponseEntity.ok(categoriaDTO);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaDTO> buscar(@PathVariable Integer id){
-        CategoriaDTO odontologoDTO = categoriaService.buscarPorId(id);
-        return ResponseEntity.ok(odontologoDTO);
+        CategoriaDTO categoriaDTO = categoriaService.buscarPorId(id);
+        return ResponseEntity.ok(categoriaDTO);
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
-        ResponseEntity<String> response;
-
-        if (categoriaService.buscarPorId(id) != null) {
-            categoriaService.eliminar(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
-    }
 }

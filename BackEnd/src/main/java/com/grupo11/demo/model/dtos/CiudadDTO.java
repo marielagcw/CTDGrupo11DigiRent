@@ -1,6 +1,6 @@
 package com.grupo11.demo.model.dtos;
 
-import com.grupo11.demo.model.Producto;
+//import com.grupo11.demo.model.Producto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +15,7 @@ public class CiudadDTO {
     private String nombre;
     private String provincia;
     private String pais;
-    private Set<Producto> productos = new HashSet<>();
+//    private Set<Producto> productos = new HashSet<>();
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -29,7 +29,7 @@ public class CiudadDTO {
         this.pais = pais;
     }
 
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
-    }
+//    public void setProductos(Set<Producto> productos) {
+//        this.productos = productos;
+//    }
 }

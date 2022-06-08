@@ -8,53 +8,42 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
-@RequestMapping("/imagen") //ver producto imagen
+@RequestMapping("/imagenes")
 public class ImagenController {
 
     @Autowired
     private ImagenService imagenService;
 
-    @PostMapping("/agregar")
-    public ImagenDTO guardar(@RequestBody ImagenDTO imagen) {
-        return imagenService.agregar(imagen);
-    }
-
     @GetMapping("/listarTodos")
-    public List<ImagenDTO> listarTodos() {
+    public Set<ImagenDTO> listarTodos() {
         return imagenService.listarTodas();
     }
 
+    @PostMapping("/agregar")
+    public ResponseEntity<?> guardar(@RequestBody ImagenDTO imagen) {
+        imagenService.agregar(imagen);
+        return ResponseEntity.ok(imagen);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        imagenService.eliminar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
     @PutMapping("/actualizar")
-    public ResponseEntity<ImagenDTO> editarImagen(@RequestBody ImagenDTO imagenDTO) {
-        ResponseEntity<ImagenDTO> response;
-
-        if (imagenDTO.getId_imagen() != null && imagenService.buscarPorId(imagenDTO.getId_imagen()) != null)
-            response = ResponseEntity.ok(imagenService.editar(imagenDTO));
-        else
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
-        return response;
+    public ResponseEntity<?> editarImagen(@RequestBody ImagenDTO imagenDTO) {
+        imagenService.actualizar(imagenDTO);
+        return ResponseEntity.ok(imagenDTO);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ImagenDTO> buscar(@PathVariable Integer id){
         ImagenDTO imagenDTO = imagenService.buscarPorId(id);
         return ResponseEntity.ok(imagenDTO);
-    }
-
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
-        ResponseEntity<String> response;
-
-        if (imagenService.buscarPorId(id) != null) {
-            imagenService.eliminar(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
     }
 
 }

@@ -3,16 +3,17 @@ package com.grupo11.demo.service;
 import com.grupo11.demo.model.dtos.ImagenDTO;
 
 import java.util.List;
+import java.util.Set;
 
-public interface IImagenService<T> {
+public interface IImagenService {
 
-    ImagenDTO agregar(ImagenDTO imagenDTO);
+    Set<ImagenDTO> listarTodas();
 
-    List<ImagenDTO> listarTodas();
+    void agregar(ImagenDTO imagenDTO);
 
     ImagenDTO buscarPorId(Integer id);
 
-    ImagenDTO editar(ImagenDTO imagenDTO);
+    ImagenDTO actualizar(ImagenDTO imagenDTO);
 
     void eliminar(Integer id);
 

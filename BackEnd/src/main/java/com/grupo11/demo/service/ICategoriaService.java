@@ -1,21 +1,20 @@
 package com.grupo11.demo.service;
 
-import com.grupo11.demo.model.dtos.CaracteristicaDTO;
+import com.grupo11.demo.model.dtos.CategoriaDTO;
 
 import java.util.List;
 import java.util.Set;
 
-public interface ICategoriaService<T> {
+public interface ICategoriaService {
 
-    Set<T> listarTodas();
+    Set<CategoriaDTO> listarTodas();
 
-    T agregar(T t);
+    void agregar(CategoriaDTO categoriaDTO);
 
-    T buscarPorId(Integer id);
+    CategoriaDTO buscarPorId(Integer id);
 
-    T editar(T t);
+    CategoriaDTO actualizar(CategoriaDTO categoriaDTO);
 
     void eliminar(Integer id);
-
 
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
@@ -16,26 +17,27 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @PostMapping("/agregar")
-    public ProductoDTO guardar(@RequestBody ProductoDTO producto) {
-        return productoService.agregar(producto);
-    }
-
     @GetMapping("/listarTodos")
-    public List<ProductoDTO> listarTodos() {
+    public Set<ProductoDTO> listarTodos() {
         return productoService.listarTodas();
     }
 
+    @PostMapping("/agregar")
+    public ResponseEntity<?> guardar(@RequestBody ProductoDTO producto) {
+        productoService.agregar(producto);
+        return ResponseEntity.ok(producto);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        productoService.eliminar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
     @PutMapping("/actualizar")
-    public ResponseEntity<ProductoDTO> editarProducto(@RequestBody ProductoDTO productoDTO) {
-        ResponseEntity<ProductoDTO> response;
-
-        if (productoDTO.getId_producto() != null && productoService.buscarPorId(productoDTO.getId_producto()) != null)
-            response = ResponseEntity.ok(productoService.editar(productoDTO));
-        else
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
-        return response;
+    public ResponseEntity<?> editarProducto(@RequestBody ProductoDTO productoDTO) {
+        productoService.actualizar(productoDTO);
+        return ResponseEntity.ok(productoDTO);
     }
 
     @GetMapping("/{id}")
@@ -44,17 +46,5 @@ public class ProductoController {
         return ResponseEntity.ok(productoDTO);
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
-        ResponseEntity<String> response;
-
-        if (productoService.buscarPorId(id) != null) {
-            productoService.eliminar(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
-    }
 
 }

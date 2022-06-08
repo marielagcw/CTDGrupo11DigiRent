@@ -1,5 +1,6 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,15 +17,17 @@ import java.util.Set;
 public class Ciudad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "secuencia_ciudades", sequenceName = "secuencia_ciudades", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_ciudades")
     private Integer id_ciudad;
-    @Column
+    @Column(name = "nombre")
     private String nombre;
-    @Column
+    @Column(name = "provincia")
     private String provincia;
-    @Column
+    @Column(name =  "pais")
     private String pais;
-    @OneToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "ciudad")
     private Set<Producto> productos = new HashSet<>();
 
 

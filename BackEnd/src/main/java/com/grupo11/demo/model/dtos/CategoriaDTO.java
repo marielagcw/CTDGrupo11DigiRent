@@ -1,5 +1,6 @@
 package com.grupo11.demo.model.dtos;
 
+//import com.grupo11.demo.model.Producto;
 import com.grupo11.demo.model.Producto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,11 @@ public class CategoriaDTO {
         this.descripcion = descripcion;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
+    }
 }

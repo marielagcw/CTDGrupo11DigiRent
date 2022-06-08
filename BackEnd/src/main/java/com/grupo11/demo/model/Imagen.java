@@ -14,9 +14,10 @@ import javax.persistence.*;
 public class Imagen {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "secuencia_imagenes", sequenceName = "secuencia_imagenes", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_imagenes")
     private Integer id_imagen;
-    @Column(name = "tiulo")
+    @Column(name = "titulo")
     private String titulo;
     @Column(name = "url")
     private String url;

@@ -8,28 +8,35 @@ import com.grupo11.demo.service.ICiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CiudadService implements ICiudadService {
 
+    @Autowired
     private ObjectMapper mapper;
-    private ICiudadRepository repository;
 
     @Autowired
-    public CiudadService(ObjectMapper mapper, ICiudadRepository repository) {
-        this.mapper = mapper;
-        this.repository = repository;
+    private ICiudadRepository repository;
+
+    public void guardarCiudad(CiudadDTO ciudadDTO){
+        Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
+        repository.save(ciudad);
     }
 
     @Override
-    public CiudadDTO agregar(CiudadDTO ciudadDTO) {
-        Ciudad ciudadEntity = mapper.convertValue(ciudadDTO, Ciudad.class);
-        return mapper.convertValue(repository.save(ciudadEntity), CiudadDTO.class);
+    public Set<CiudadDTO> listarTodas() {
+        List<Ciudad> ciudades = repository.findAll();
+        Set<CiudadDTO> CiudadDTOList = new HashSet<>();
+        for (Ciudad ciudad : repository.findAll()) {
+            CiudadDTOList.add(mapper.convertValue(ciudad, CiudadDTO.class));
+        }
+        return CiudadDTOList;
+    }
 
+    @Override
+    public void agregar(CiudadDTO ciudadDTO) {
+        guardarCiudad(ciudadDTO);
     }
 
     @Override
@@ -44,27 +51,14 @@ public class CiudadService implements ICiudadService {
     }
 
     @Override
-    public List<CiudadDTO> listarTodas() {
-        List<CiudadDTO> CiudadDTOList = new ArrayList<>();
-        for (Ciudad ciudad : repository.findAll()) {
-            CiudadDTOList.add(mapper.convertValue(ciudad, CiudadDTO.class));
-        }
-        return CiudadDTOList;
-    }
-
-    @Override
-    public CiudadDTO editar(CiudadDTO ciudadDTO) {
+    public CiudadDTO actualizar(CiudadDTO ciudadDTO) {
         Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
         return mapper.convertValue(repository.save(ciudad), CiudadDTO.class);
     }
 
     @Override
     public void eliminar(Integer id) {
-        Optional<Ciudad> ciudad = repository.findById(id);
-        if (ciudad.isPresent())
-            repository.deleteById(id);
-        else
-            throw new NoSuchElementException();
+        repository.deleteById(id);
     }
 
 }

@@ -8,28 +8,35 @@ import com.grupo11.demo.service.IImagenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ImagenService implements IImagenService {
 
+    @Autowired
     private ObjectMapper mapper;
-    private IImagenRepository repository;
 
     @Autowired
-    public ImagenService(ObjectMapper mapper, IImagenRepository repository) {
-        this.mapper = mapper;
-        this.repository = repository;
+    private IImagenRepository repository;
+
+    private void guardarImagen(ImagenDTO imagenDTO){
+        Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
+        repository.save(imagen);
     }
 
     @Override
-    public ImagenDTO agregar(ImagenDTO imagenDTO) {
-        Imagen imagenEntity = mapper.convertValue(imagenDTO, Imagen.class);
-        return mapper.convertValue(repository.save(imagenEntity), ImagenDTO.class);
+    public Set<ImagenDTO> listarTodas() {
+        List<Imagen> imagenes = repository.findAll();
+        Set<ImagenDTO> imagenDTOList = new HashSet<>();
+        for (Imagen imagen : imagenes) {
+            imagenDTOList.add(mapper.convertValue(imagen, ImagenDTO.class));
+        }
+        return imagenDTOList;
+    }
 
+    @Override
+    public void agregar(ImagenDTO imagenDTO) {
+        guardarImagen(imagenDTO);
     }
 
     @Override
@@ -43,28 +50,16 @@ public class ImagenService implements IImagenService {
         return imagenDTO;
     }
 
-    @Override
-    public List<ImagenDTO> listarTodas() {
-        List<ImagenDTO> imagenDTOList = new ArrayList<>();
-        for (Imagen imagen : repository.findAll()) {
-            imagenDTOList.add(mapper.convertValue(imagen, ImagenDTO.class));
-        }
-        return imagenDTOList;
-    }
 
     @Override
-    public ImagenDTO editar(ImagenDTO imagenDTO) {
+    public ImagenDTO actualizar(ImagenDTO imagenDTO) {
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
         return mapper.convertValue(repository.save(imagen), ImagenDTO.class);
     }
 
     @Override
     public void eliminar(Integer id) {
-        Optional<Imagen> Imagen = repository.findById(id);
-        if (Imagen.isPresent())
-            repository.deleteById(id);
-        else
-            throw new NoSuchElementException();
+        repository.deleteById(id);
     }
 
 }

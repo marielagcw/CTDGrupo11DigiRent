@@ -1,5 +1,6 @@
 package com.grupo11.demo.controller;
 
+//import com.grupo11.demo.model.dtos.CaracteristicaDTO;
 import com.grupo11.demo.model.dtos.CiudadDTO;
 import com.grupo11.demo.service.implementation.CiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,34 +9,36 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
-@RequestMapping("/producto/ciudad") //ver proucto ciudad
+@RequestMapping("/ciudades")
 public class CiudadController {
 
     @Autowired
     private CiudadService ciudadService;
 
-    @PostMapping("/agregar")
-    public CiudadDTO guardar(@RequestBody CiudadDTO ciudad) {
-        return ciudadService.agregar(ciudad);
-    }
-
     @GetMapping("/listarTodos")
-    public List<CiudadDTO> listarTodos() {
+    public Set<CiudadDTO> listarTodos() {
         return ciudadService.listarTodas();
     }
 
+    @PostMapping("/agregar")
+    public ResponseEntity<?> guardar(@RequestBody CiudadDTO ciudad) {
+        ciudadService.agregar(ciudad);
+        return ResponseEntity.ok(ciudad);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        ciudadService.eliminar(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
     @PutMapping("/actualizar")
-    public ResponseEntity<CiudadDTO> editarCiudad(@RequestBody CiudadDTO ciudadDTO) {
-        ResponseEntity<CiudadDTO> response;
-
-        if (ciudadDTO.getId_ciudad() != null && ciudadService.buscarPorId(ciudadDTO.getId_ciudad()) != null)
-            response = ResponseEntity.ok(ciudadService.editar(ciudadDTO));
-        else
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
-        return response;
+    public ResponseEntity<?> editarCiudad(@RequestBody CiudadDTO ciudadDTO) {
+        ciudadService.actualizar(ciudadDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -43,19 +46,5 @@ public class CiudadController {
         CiudadDTO ciudadDTO = ciudadService.buscarPorId(id);
         return ResponseEntity.ok(ciudadDTO);
     }
-
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
-        ResponseEntity<String> response;
-
-        if (ciudadService.buscarPorId(id) != null) {
-            ciudadService.eliminar(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
-    }
-
 
 }

@@ -3,16 +3,17 @@ package com.grupo11.demo.service;
 import com.grupo11.demo.model.dtos.ProductoDTO;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IProductoSevice<T> {
 
-    ProductoDTO agregar(ProductoDTO productoDTO);
+    Set<ProductoDTO> listarTodas();
 
-    List<ProductoDTO> listarTodas();
+    void agregar(ProductoDTO productoDTO);
 
     ProductoDTO buscarPorId(Integer id);
 
-    ProductoDTO editar(ProductoDTO productoDTO);
+    ProductoDTO actualizar(ProductoDTO productoDTO);
 
     void eliminar(Integer id);
 
