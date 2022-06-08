@@ -12,8 +12,8 @@ div.user-info span{
 }
 
 div.user-info div.user-logo{
-    /* border-color: var(--primary); */
-    background-color: var(--secondary);
+    border: solid 3px var(--secondary);
+    /* background-color: var(--secondary); */
     border-radius: 50%;
     width: 45px;
     height: 45px;
@@ -23,13 +23,13 @@ div.user-info div.user-logo{
 }
 
 div.user-info div.user-logo span{
-    color: var(--quaternary);
+    color: var(--secondary);
     font-weight: bolder;
     font-size: larger;
 }
 
 div.user-info span.user-name{
-    color: var(--primary);
+    color: var(--secondary);
     font-weight: bolder;
     font-size: large;
     text-transform: capitalize;
