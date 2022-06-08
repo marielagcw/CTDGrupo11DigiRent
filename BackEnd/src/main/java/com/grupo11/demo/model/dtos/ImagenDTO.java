@@ -21,4 +21,8 @@ public class ImagenDTO {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

@@ -24,7 +24,7 @@ public class Caracteristica {
     private String nombre;
     @Column(name = "estaDisponible")
     private Boolean estaDisponible;
-    @ManyToMany
-    @JsonIgnore
-    Set<Producto> productos = new HashSet<>();
+//    @ManyToMany(mappedBy = "caracteristicas")
+//    @JsonIgnore
+//    private Set<Producto> productos = new HashSet<>();
 }

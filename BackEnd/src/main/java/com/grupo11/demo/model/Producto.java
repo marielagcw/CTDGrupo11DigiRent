@@ -24,19 +24,20 @@ public class Producto {
     private String nombre;
     @Column(name = "descripcion")
     private String descripcion;
-//    @OneToMany
-//    private Set<Politica> politicas = new HashSet<>();
     @JsonIgnore
     @OneToMany(mappedBy = "productos")
     private Set<Imagen> imagenes;
     @ManyToOne
-    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria", nullable = false)
+    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     private Categoria categorias;
     @ManyToOne
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad", nullable = false)
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
     private Ciudad ciudad;
 //    @ManyToMany
 //    @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
 //    private Caracteristica caracteristicas;
+//    @ManyToMany
+//    @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
+//    private Politica politicas;
 
 }
