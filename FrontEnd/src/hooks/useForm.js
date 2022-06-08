@@ -31,7 +31,7 @@ export const useForm = (initialForm, validateForm) => {
                     const element = form[key];
                     if (element!==user[key]) {
                         band=false;
-                        errors.badCredentials = "Error en las credenciales ingresadas"
+                        errors.badCredentials = "Por favor vuelva a intentarlo, sus credenciales son inválidas"
                     }
                 }
             }

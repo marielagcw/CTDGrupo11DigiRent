@@ -87,10 +87,7 @@ const Search = () => {
                     </span>
                     <div className='calandary-container d-none form-absolute'>
                         <Calendar showDoubleView={widthWindow > 414} selectRange={true} onChange={setfecha} />
-                        <div className='d-flex flex-row justify-content-around'>
-                            <button onClick={showCalendar} className='btn btn-secondary btn-lg btn-calendary'>Cerrar</button>
-                            <button onClick={sendCalendar} className='btn btn-primary btn-lg btn-calendary'>Aplicar</button>
-                        </div>
+                        <button onClick={sendCalendar} className='btn btn-primary btn-lg btn-calendary'>Aplicar</button>
                     </div>
                 </div>
                 <button type='submit' className='btn btn-lg btn-primary ms-2'>Aceptar</button>

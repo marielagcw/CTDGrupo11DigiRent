@@ -1,10 +1,8 @@
 import React from 'react';
-import {Navigate, useNavigate} from 'react-router-dom';
 import '../styles/ProductoCard.css'
 
 const ProductoCard = (props) => {
     let info = props.info;
-    const navigate = useNavigate();
     return (
         <div className="card producto" >
             <img src={info.img} className="card-img-top" alt={info.description} />
@@ -13,7 +11,7 @@ const ProductoCard = (props) => {
                 <h4 className='category'>{info.category}</h4>
                 <h5 className='location'>{info.location}</h5>
                 <p className="card-text description">{info.description}</p>
-                <button type="button" className="btn btn-primary" onClick={()=>navigate('/products')}>Ver detalle</button>
+                <button type="button" className="btn btn-primary">Ver detalle</button>
             </div>
         </div>
     )

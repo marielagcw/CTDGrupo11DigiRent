@@ -9,11 +9,6 @@
     background-color: var(--quaternary);
 }
 
-p.error{
-    font-size: small;
-    font-weight: bold;
-    color: red;
-}
 
 
 /* Estilos exclusivos los formulario de login */
@@ -81,7 +76,7 @@ div.d-flex label {
 }
 
 div#root>button.btn-close {
-    position: absolute;
+    position: fixed;
     top: 100px;
     left: 20px;
 }

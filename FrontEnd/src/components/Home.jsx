@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div id="home">
       <Header />
-      <Navbar titulo={"Busca ofertas en hoteles, casas y mucho más"} busqueda={true}/>
+      <Navbar />
       <CategoryList />
       <ProductoList />
       <Footer />
