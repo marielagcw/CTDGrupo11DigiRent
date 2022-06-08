@@ -22,7 +22,7 @@ public class Imagen {
     @Column(name = "url")
     private String url;
     @ManyToOne
-    @JoinColumn(name = "id_producto", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false)
     private Producto productos;
 
 }
