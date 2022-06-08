@@ -1,15 +1,18 @@
-#galery {
-    margin: 3vh auto;
-    width: 93vw;
-    height: 70vh;
+div#galery {
+    margin: 0 0 0 3.5vw;
+    padding: 0;
+    width: 92.3vw;
+    /* height: 80vh; */
 }
 #open-galery{
     /* border: solid red 1px; */
     height: 5%;
     cursor: pointer;
     position:absolute;
-    bottom: -65px;
-    right: 140px;
+    bottom: 30px;
+    right: 20px;
+    bottom: 5vh;
+    right: 1.5vw;
 }
 #open-galery span{
     color: var(--quaternary);
@@ -28,6 +31,7 @@
 
 .rigth-side {
     width: 50%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
