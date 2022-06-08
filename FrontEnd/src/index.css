@@ -1,9 +1,9 @@
 :root {
   /* ------------------------------ opcionPrevia ------------------------------ */
-  --primary: #FBC02D;
+  /* --primary: #FBC02D;
     --secondary: #263238;
     --tertiary: #607D8B;
-    --quaternary: #FFFBE2;
+    --quaternary: #FFFBE2; */
   /* ------------------------------- alternativa ------------------------------ */
   /* --primary: #368B85;
   --secondary: #464660;
@@ -34,6 +34,23 @@
   --secondary: #1b2c38;
   --tertiary: #515E63;
   --quaternary: #e6f6fc; */
+  /* ------------------------------- alternativa 7------------------------------ */
+  /* --primary: #FEC397;
+  --secondary: #6D8C8E;
+  --tertiary: #6F5F5E;
+  --quaternary: #AEC8CA;
+  --extra: #D28A7C; */
+  /* --primary: #6D8C8E;
+  --secondary: #6F5F5E;
+  --tertiary: #AEC8CA;
+  --quaternary: #AEC8CA;
+  --extra: #D28A7C; */
+  /* ------------------------------- alternativa 8------------------------------ */
+  --primary: #D36A3F;
+  --secondary: #2E0401;
+  --tertiary: #3B4D57;
+  --quaternary: #6F9B9A;
+  --extra: #5C6E78;
   --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 body{
