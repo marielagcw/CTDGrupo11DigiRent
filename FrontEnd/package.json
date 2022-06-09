@@ -40,7 +40,9 @@
       "!./src/components/Test.js",
       "!./src/components/UserInfo.jsx",
       "!./src/hooks/useForm.js",
-      "!./src/scripts/displayForm.js"
+      "!./src/scripts/displayForm.js",
+      "!./src/components/RegistreForm.jsx",
+      "!./src/components/Products.jsx"
     ]
   },
   "scripts": {
