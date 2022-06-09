@@ -9,27 +9,22 @@ import java.util.Set;
 
 @Getter
 @NoArgsConstructor
-public class CategoriaDTO {
-    private Integer id_categoria;
-    private String titulo;
-    private String descripcion;
-    private String url;
-    private Set<Producto> productos;
+public class ImagenDTO {
 
+    private Integer id_imagen;
+    private String titulo;
+    private String url;
+    private Set<Producto> producto;
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public void setUrl(String url) {
         this.url = url;
     }
 
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
+    public void setProducto(Set<Producto> producto) {
+        this.producto = producto;
     }
 }

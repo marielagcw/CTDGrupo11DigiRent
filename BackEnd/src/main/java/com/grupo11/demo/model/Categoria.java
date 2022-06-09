@@ -1,31 +1,36 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Categorias")
+@Table(name = "categorias")
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_categorias;
-    @Column
-    private String titulo;
-    @Column
-    private String descripcion;
-    @Column
-    private String url_imagen;
+    @SequenceGenerator(name = "secuencia_categorias", sequenceName = "secuencia_categorias", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_categorias")
+    private Integer id_categoria;
 
-    public Categoria(String titulo, String descripcion, String url_imagen) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.url_imagen = url_imagen;
-    }
+    @Column(name = "titulo")
+    private String titulo;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
+    @Column(name = "url")
+    private String url;
+
+    @OneToMany(mappedBy = "categorias")
+    @JsonIgnore
+    private Set<Producto> productos;
+
 
 }
