@@ -17,15 +17,18 @@ import java.util.Set;
 public class Politica {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "secuencia_politicas", sequenceName = "secuencia_politicas", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_politicas")
     private Integer id_politica;
+
     @Column(name = "titulo")
     private String titulo;
+
     @ManyToMany(mappedBy = "politicas")
-    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
 //    @OneToMany(mappedBy = "politica")
+    //@JsonIgnore
 //    private ElementoPolitica elementos;
 
 

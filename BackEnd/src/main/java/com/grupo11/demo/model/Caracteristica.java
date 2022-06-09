@@ -20,11 +20,13 @@ public class Caracteristica {
     @SequenceGenerator(name = "secuencia_caracteristicas", sequenceName = "secuencia_caracteristicas", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_caracteristicas")
     private Integer id_caracteristica;
+
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "esta_disponible")
     private Boolean estaDisponible;
-//    @ManyToMany(mappedBy = "caracteristicas")
-//    @JsonIgnore
-//    private Set<Producto> productos = new HashSet<>();
+
+    @ManyToMany(mappedBy = "caracteristicas")
+    private Set<Producto> productos = new HashSet<>();
 }

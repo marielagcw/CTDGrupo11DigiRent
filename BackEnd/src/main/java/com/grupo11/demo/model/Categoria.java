@@ -1,5 +1,6 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,13 +18,18 @@ public class Categoria {
     @SequenceGenerator(name = "secuencia_categorias", sequenceName = "secuencia_categorias", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_categorias")
     private Integer id_categoria;
+
     @Column(name = "titulo")
     private String titulo;
+
     @Column(name = "descripcion")
     private String descripcion;
+
     @Column(name = "url")
     private String url;
+
     @OneToMany(mappedBy = "categorias")
+    @JsonIgnore
     private Set<Producto> productos;
 
 

@@ -17,10 +17,10 @@ public class ProductoDTO {
     private Integer id_producto;
     private String titulo;
     private String descripcion;
-    private Categoria categorias;
-    private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Imagen> imagenes = new HashSet<>();
+    private Categoria categorias;
     private Ciudad ciudades;
+    private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
 
     public void setTitulo(String titulo) {

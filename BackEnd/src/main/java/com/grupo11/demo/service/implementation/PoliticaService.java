@@ -6,9 +6,11 @@ import com.grupo11.demo.model.dtos.PoliticaDTO;
 import com.grupo11.demo.repository.IPoliticaRepository;
 import com.grupo11.demo.service.IPoliticaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class PoliticaService implements IPoliticaService {
 
     @Autowired

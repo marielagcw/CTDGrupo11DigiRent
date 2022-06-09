@@ -20,23 +20,33 @@ public class Producto {
     @SequenceGenerator(name = "secuencia_categorias", sequenceName = "secuencia_categorias", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_categorias")
     private Integer id_producto;
+
     @Column(name = "titulo")
     private String nombre;
+
     @Column(name = "descripcion")
     private String descripcion;
+
     @OneToMany(mappedBy = "productos")
+    @JsonIgnore
     private Set<Imagen> imagenes;
+
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     private Categoria categorias;
+
     @ManyToOne
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    private Ciudad ciudad;
-//    @ManyToMany
-//    @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
-//    private Caracteristica caracteristicas;
+    private Ciudad ciudades;
+
     @ManyToMany
+    @JsonIgnore
+    @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
+    private Set<Caracteristica> caracteristicas;
+
+    @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
-    private Politica politicas;
+    private Set<Politica> politicas;
 
 }

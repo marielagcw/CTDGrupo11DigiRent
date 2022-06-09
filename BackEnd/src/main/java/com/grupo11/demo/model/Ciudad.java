@@ -20,14 +20,18 @@ public class Ciudad {
     @SequenceGenerator(name = "secuencia_ciudades", sequenceName = "secuencia_ciudades", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_ciudades")
     private Integer id_ciudad;
+
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "provincia")
     private String provincia;
+
     @Column(name =  "pais")
     private String pais;
+
+    @OneToMany(mappedBy = "ciudades")
     @JsonIgnore
-    @OneToMany(mappedBy = "ciudad")
     private Set<Producto> productos = new HashSet<>();
 
 
