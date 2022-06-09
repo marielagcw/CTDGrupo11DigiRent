@@ -21,8 +21,11 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_categorias")
     private Integer id_producto;
 
-    @Column(name = "titulo")
-    private String nombre;
+    @Column(name = "nombre_producto")
+    private String nombre_producto;
+
+    @Column(name = "titulo_descripcion")
+    private String titulo_descripcion;
 
     @Column(name = "descripcion")
     private String descripcion;

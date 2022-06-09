@@ -15,7 +15,8 @@ import java.util.Set;
 public class ProductoDTO {
 
     private Integer id_producto;
-    private String titulo;
+    private String nombre_producto;
+    private String titulo_descripcion;
     private String descripcion;
     private Set<Imagen> imagenes = new HashSet<>();
     private Categoria categorias;
@@ -23,8 +24,12 @@ public class ProductoDTO {
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
+
+    public void setTitulo_descripcion(String titulo_descripcion) {
+        this.titulo_descripcion = titulo_descripcion;
     }
 
     public void setDescripcion(String descripcion) {

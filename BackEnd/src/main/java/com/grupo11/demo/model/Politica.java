@@ -27,9 +27,9 @@ public class Politica {
     @ManyToMany(mappedBy = "politicas")
     private Set<Producto> productos = new HashSet<>();
 
-//    @OneToMany(mappedBy = "politica")
-    //@JsonIgnore
-//    private ElementoPolitica elementos;
+    @OneToMany(mappedBy = "politicas")
+    @JsonIgnore
+    private Set<ElementoPolitica> elementos = new HashSet<>();
 
 
 }

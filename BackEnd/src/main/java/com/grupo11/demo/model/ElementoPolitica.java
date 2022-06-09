@@ -22,8 +22,8 @@ public class ElementoPolitica {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "id_politica", referencedColumnName = "id_producto")
-    private Producto productos;
+    @JoinColumn(name = "id_politica", referencedColumnName = "id_politica")
+    private Politica politicas;
 
 
 }
