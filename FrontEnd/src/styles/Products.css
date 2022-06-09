@@ -72,3 +72,17 @@ hr {
 .btn-max-width{
     width: 100%;
 }
+
+@media screen and (max-width: 1100px) {
+    .button-container{
+        box-shadow: none;
+        background-color: var(--quaternary);
+        flex-direction: row;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .btn-max-width{
+        width: 50%;
+    }
+}
