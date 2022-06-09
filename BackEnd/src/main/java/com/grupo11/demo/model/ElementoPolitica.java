@@ -25,5 +25,8 @@ public class ElementoPolitica {
     @JoinColumn(name = "id_politica", referencedColumnName = "id_politica")
     private Politica politicas;
 
-
+    public ElementoPolitica(String nombre, Politica politicas) {
+        this.nombre = nombre;
+        this.politicas = politicas;
+    }
 }

@@ -31,5 +31,10 @@ public class Politica {
     @JsonIgnore
     private Set<ElementoPolitica> elementos = new HashSet<>();
 
+    public Politica(String titulo, Set<Producto> productos, Set<ElementoPolitica> elementos) {
+        this.titulo = titulo;
+        this.productos = productos;
+        this.elementos = elementos;
+    }
 
 }

@@ -52,4 +52,14 @@ public class Producto {
     @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
     private Set<Politica> politicas;
 
+    public Producto(String nombre_producto, String titulo_descripcion, String descripcion, Set<Imagen> imagenes, Categoria categorias, Ciudad ciudades, Set<Caracteristica> caracteristicas, Set<Politica> politicas) {
+        this.nombre_producto = nombre_producto;
+        this.titulo_descripcion = titulo_descripcion;
+        this.descripcion = descripcion;
+        this.imagenes = imagenes;
+        this.categorias = categorias;
+        this.ciudades = ciudades;
+        this.caracteristicas = caracteristicas;
+        this.politicas = politicas;
+    }
 }

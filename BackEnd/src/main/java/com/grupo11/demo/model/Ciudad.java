@@ -34,5 +34,10 @@ public class Ciudad {
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
-
+    public Ciudad(String nombre, String provincia, String pais, Set<Producto> productos) {
+        this.nombre = nombre;
+        this.provincia = provincia;
+        this.pais = pais;
+        this.productos = productos;
+    }
 }
