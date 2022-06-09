@@ -19,12 +19,6 @@ public class ProductoService implements IProductoSevice {
     @Autowired
     private IProductoRepository repository;
 
-    @Autowired
-    public ProductoService(ObjectMapper mapper, IProductoRepository repository) {
-        this.mapper = mapper;
-        this.repository = repository;
-    }
-
     private void guardarProducto(ProductoDTO productoDTO){
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         repository.save(producto);

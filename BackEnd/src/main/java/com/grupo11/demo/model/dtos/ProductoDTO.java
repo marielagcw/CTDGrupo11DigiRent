@@ -1,9 +1,6 @@
 package com.grupo11.demo.model.dtos;
 
-import com.grupo11.demo.model.Caracteristica;
-import com.grupo11.demo.model.Categoria;
-import com.grupo11.demo.model.Ciudad;
-import com.grupo11.demo.model.Imagen;
+import com.grupo11.demo.model.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,15 +15,16 @@ import java.util.Set;
 public class ProductoDTO {
 
     private Integer id_producto;
-    private String nombre;
+    private String titulo;
     private String descripcion;
     private Categoria categorias;
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Imagen> imagenes = new HashSet<>();
     private Ciudad ciudades;
+    private Set<Politica> politicas = new HashSet<>();
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public void setDescripcion(String descripcion) {
@@ -47,5 +45,9 @@ public class ProductoDTO {
 
     public void setCiudades(Ciudad ciudades) {
         this.ciudades = ciudades;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 }

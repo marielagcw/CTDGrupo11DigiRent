@@ -24,7 +24,6 @@ public class Producto {
     private String nombre;
     @Column(name = "descripcion")
     private String descripcion;
-    @JsonIgnore
     @OneToMany(mappedBy = "productos")
     private Set<Imagen> imagenes;
     @ManyToOne
@@ -36,8 +35,8 @@ public class Producto {
 //    @ManyToMany
 //    @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
 //    private Caracteristica caracteristicas;
-//    @ManyToMany
-//    @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
-//    private Politica politicas;
+    @ManyToMany
+    @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
+    private Politica politicas;
 
 }

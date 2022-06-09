@@ -14,10 +14,10 @@ import java.util.*;
 public class CaracteristicaService implements ICaracteristicaService {
 
     @Autowired
-    ObjectMapper mapper;
+    private ObjectMapper mapper;
 
     @Autowired
-    ICaracteristicaRepository repository;
+    private ICaracteristicaRepository repository;
 
     private void guardarCaracteristica(CaracteristicaDTO caracteristicaDTO){
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);

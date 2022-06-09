@@ -23,7 +23,7 @@ public class CaracteristicaController {
         return caracteristicaService.listarTodas();
     }
 
-    @PostMapping("/agregarCaracteristica")
+    @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody CaracteristicaDTO caracteristica) {
         caracteristicaService.agregar(caracteristica);
         return ResponseEntity.ok(caracteristica);
