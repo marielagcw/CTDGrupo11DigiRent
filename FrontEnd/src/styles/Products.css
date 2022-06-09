@@ -35,7 +35,8 @@ div#product {
 
 #description,
 #charact,
-#politics {
+#politics,
+#calendar {
     padding: 5vh 4vw;
     width: 100%;
 }
@@ -48,4 +49,26 @@ div#product {
 hr {
     color: transparent;
     border-top: 5px double var(--primary);
+}
+
+#calendar{
+    background-color: var(--quaternary)
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    height: 120px;
+    background-color: white;
+}
+
+.calendar-container, .button-container{
+    box-shadow: 0px 14px 8px 0px rgb(0 0 0 / 25%)
+}
+
+
+.btn-max-width{
+    width: 100%;
 }

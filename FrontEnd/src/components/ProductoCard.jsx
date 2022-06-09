@@ -6,7 +6,7 @@ const ProductoCard = (props) => {
     let info = props.info;
     const navigate = useNavigate();
     return (
-        <div className="card producto" >
+        <div className="card producto mb-3" >
             <img src={info.img} className="card-img-top" alt={info.description} />
             <div className="card-body ">
                 <h3 className='title'>{info.title}</h3>

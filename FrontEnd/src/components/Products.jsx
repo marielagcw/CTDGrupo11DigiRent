@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import '../styles/Navbar.css'
@@ -10,11 +10,16 @@ import { useNavigate } from 'react-router-dom';
 import ProductCharact from './ProductCharact';
 import { BsChevronLeft } from 'react-icons/bs';
 import ProductPolitics from './ProductPolitics';
+import Calendar from 'react-calendar';
 
 export default function Products() {
     let ciudades = productosEstaticos.ciudades;
     let productos = productosEstaticos.productos;
+    const [fecha, setfecha] = useState(new Date([]));
     const navigate = useNavigate();
+
+    
+
     return (
         <div id='product'>
             <Header />
@@ -37,6 +42,18 @@ export default function Products() {
                     Optio, saepe mollitia inventore possimus debitis, porro molestias, suscipit quis deleniti voluptates dolorem quas facere amet esse repudiandae vitae officia nulla minus dolore assumenda cupiditate labore? Nemo repellendus repellat soluta.</p>
             </div>
             <ProductCharact caract={productos} />
+            <div id='calendar'>
+                <h2>Fechas disponibles</h2>
+                <div className='d-flex flex-row justify-content-around align-items-center'>
+                    <div className="calendar-container">
+                        <Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} />
+                    </div>
+                    <div className="button-container">
+                        <p>Agregá tus fechas de viajes para obtener precios exactos</p>
+                        <button className='btn btn-primary btn-lg btn-max-width'>Iniciar reserva</button>
+                    </div>
+                </div>
+            </div>
             <ProductPolitics politics={productos}/>
             <Footer />
         </div>
