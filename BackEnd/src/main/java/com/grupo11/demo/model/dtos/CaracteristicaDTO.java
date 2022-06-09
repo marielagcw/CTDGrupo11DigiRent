@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 public class CaracteristicaDTO {
-    private Integer id_caracterisica;
+    private Integer id_caracteristica;
     private String nombre;
     private Boolean estaDiponible;
     private Set<Producto> productos = new HashSet<>();

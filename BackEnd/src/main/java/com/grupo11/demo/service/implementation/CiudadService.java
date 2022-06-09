@@ -19,7 +19,7 @@ public class CiudadService implements ICiudadService {
     @Autowired
     private ICiudadRepository repository;
 
-    public void guardarCiudad(CiudadDTO ciudadDTO){
+    private void guardarCiudad(CiudadDTO ciudadDTO){
         Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
         repository.save(ciudad);
     }
@@ -28,7 +28,7 @@ public class CiudadService implements ICiudadService {
     public Set<CiudadDTO> listarTodas() {
         List<Ciudad> ciudades = repository.findAll();
         Set<CiudadDTO> CiudadDTOList = new HashSet<>();
-        for (Ciudad ciudad : repository.findAll()) {
+        for (Ciudad ciudad : ciudades) {
             CiudadDTOList.add(mapper.convertValue(ciudad, CiudadDTO.class));
         }
         return CiudadDTOList;
