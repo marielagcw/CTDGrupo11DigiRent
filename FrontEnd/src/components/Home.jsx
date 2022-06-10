@@ -8,13 +8,13 @@ import CategoryList from './CategoryList';
 
 const Home = () => {
   return (
-    <>
+    <div id="home">
       <Header />
-      <Navbar />
-      <CategoryList/>
-      <ProductoList/>
+      <Navbar titulo={"Busca ofertas en hoteles, casas y mucho más"} busqueda={true}/>
+      <CategoryList />
+      <ProductoList />
       <Footer />
-    </>
+    </div>
   )
 }
 

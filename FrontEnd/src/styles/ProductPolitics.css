@@ -1,0 +1,27 @@
+.pol-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: auto;
+}
+
+.pol-grid .grid-item {
+    margin: 2vh 1vw;
+    width: 20vw;
+}
+.grid-item .icono{
+    display: inline-block;
+    margin-right: 4px;
+    color: var(--primary);
+}
+
+.pol-ul{
+    padding: 0 0 0 1.2vw;
+    height: 95%;
+    width:inherit;
+}
+
+.pol-item{
+    /* list-style: none; */
+    padding-left: .5vw;
+    word-wrap: normal;
+}

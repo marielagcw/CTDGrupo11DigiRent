@@ -1,6 +1,46 @@
-.input-form {
-    width: 218px;
-    padding-left: 14px;
+#logInForm,#registreForm{
+    height: 90vh;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+    background-color: var(--quaternary);
+}
+
+p.error{
+    font-size: small;
+    font-weight: bold;
+    color: red;
+}
+
+
+/* Estilos exclusivos los formulario de login */
+
+.input-login {
+    width: 448px;
+}
+
+
+
+
+/* Estilos compartidos entre formularios */
+
+.tittle-form {
+    font-size: 24px;
+    line-height: 28px;
+    color: var(--primary);
+}
+
+
+
+div.d-flex label {
+    color: var(--secondary);
+    margin: 12px 0px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 .ms-2 {
@@ -10,7 +50,7 @@
 .flex {
     display: flex;
     justify-content: center;
-    padding-top: 3%;
+    padding-top: 70px;
     background-color: var(--quaternary);
 }
 
@@ -22,28 +62,13 @@
     align-items: center;
 }
 
-.create-acount {
-    font-size: 24px;
-    line-height: 28px;
-    color: var(--primary);
-}
 
-div.d-flex label {
-    color: var(--secondary);
-    margin: 12px 0px;
+.parrafoCreateLogIn {
+    text-align: center;
     font-weight: 500;
+    margin-top: 18px;
     font-size: 12px;
     line-height: 14px;
-}
-
-.input {
-    padding-left: 14px;
-
-}
-
-.input-login {
-    width: 448px;
-
 }
 
 #link {
@@ -51,8 +76,12 @@ div.d-flex label {
     cursor: pointer;
 }
 
-div#root > button.btn-close{
-    position:fixed;
+.input {
+    padding-left: 14px;
+}
+
+div#root>button.btn-close {
+    position: absolute;
     top: 100px;
     left: 20px;
 }
@@ -66,18 +95,20 @@ div#root > button.btn-close{
         flex-direction: column;
         width: 100%;
     }
-    #registreForm input.input{
+
+    #registreForm input.input {
         width: 100%;
     }
 
-    #logInForm .form-container{
+    #logInForm .form-container {
         width: 85%;
     }
 
-    #logInForm .d-flex{
+    #logInForm .d-flex {
         width: 100%;
     }
-    #logInForm .mt-5 button{
+
+    #logInForm .mt-5 button {
         margin-left: 6%
     }
 }

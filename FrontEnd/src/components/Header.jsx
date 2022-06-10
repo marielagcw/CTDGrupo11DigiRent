@@ -1,55 +1,87 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import RegistreForm from './RegistreForm';
+import { slide as Menu } from 'react-burger-menu'
 import logo from '../img/Logo.png'
 import '../styles/Header.css'
-import { displayForm } from '../scripts/displayForm';
-import LogInForm from './LogInForm';
+import { Link, useNavigate } from 'react-router-dom';
+import UserInfo from './UserInfo';
+import UserInfoMobile from './UserInfoMobile';
+import Footer from './Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
+const frase = "Elegí donde querés vivir";
 
-const Header = () => {
+const Header = ({ user, btn }) => {
+  const navigate = useNavigate();
+  const storage = window.localStorage;
+  const userSession = storage.getItem('user');
+
   //controla tamaño ventana
   const [widthWindow, setWidthWindow] = useState(0);
 
   useEffect(() => {
-    const detectarWidth = () => { setWidthWindow(window.visualViewport.width)};
+    const detectarWidth = () => { setWidthWindow(window.visualViewport.width) };
     window.addEventListener('resize', () => detectarWidth())
     return () => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
 
-  const handleCreateAccountLogIn = (e) => {
-    displayForm(e)
-  }
-
-  const toggleVisibility = () => {
-    document.querySelector('.session-manager').classList.toggle('display-none');
-  }
-  const returnHome = () =>{
-    window.location.reload();
-  }
-
   return (
     <>
       <nav className='navbar navbar-light'>
         <div className='container-fluid'>
-          <div className='logo d-flex align-items-center' onClick={returnHome}>
+          <div className='logo d-flex align-items-center' onClick={() => navigate('/')}>
             <div className='image-container d-flex align-items-center'>
               <img src={logo} className='img-fluid' alt='logo' />
             </div>
             <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
-          </div>
-          <div className={widthWindow>452?'session-manager':'session-manager display-none'}>
-            <button className='btn btn-lg btn-border-primary' id='createAcount' onClick={handleCreateAccountLogIn}>Crear cuenta</button>
-            <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' onClick={handleCreateAccountLogIn}>Iniciar sesión</button>
-          </div>
-          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent15'
-            aria-controls='navbarSupportedContent15' aria-expanded='false' aria-label='Toggle navigation' onClick={toggleVisibility}><span className='navbar-toggler-icon' ></span></button>
+            <p className='ps-2 fw-bold mb-0'>{frase}</p>
+          </div>{userSession ? widthWindow > 452 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
+            <div className={widthWindow > 452 ? 'session-manager' : 'session-manager display-none'}>
+              {btn !== "login" && <Link to='/register'>
+                <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
+              </Link>}
+              {btn !== "register" && <Link to='/login'>
+                <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' >Iniciar sesión</button>
+              </Link>}
+            </div>}
+          {widthWindow <= 452 && <Menu right width={'60%'} styles={{ height: '20%' }}>
+          
+          { userSession ? 
+                <>
+                  <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
+                    <UserInfoMobile userInfo={JSON.parse(userSession)} />
+                  </div>
+                  <div style={{height:'67%', display:'flex', justifyContent:'end', alignItems:'end'}}>
+                    <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.removeItem('user'); navigate('/') }}>Cerrar Sesion</span>?</p>
+                  </div>
+                  <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
+                </>
+              :
+              <>
+              <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
+                <a id="home" className="menu-item" href="/">Menú</a> 
+              </div>
+              <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
+                <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>
+                <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
+                <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
+              </div>
+              </>
+              }
+            <div style={{width:'100%', height:'40px', display:'flex', justifyContent:'end', padding:'5px 10px 3px 0px'}}>
+              <div className='footer-icons'>
+                <FontAwesomeIcon className='iconFooter' icon={faFacebook} />
+                <FontAwesomeIcon className='ms-3 iconFooter' icon={faLinkedin} />
+                <FontAwesomeIcon className='ms-3 iconFooter' icon={faTwitter} />
+                <FontAwesomeIcon className='ms-3 iconFooter' icon={faInstagram} />
+              </div>
+            </div> 
+          </Menu>}
         </div>
       </nav>
-      <RegistreForm />
-      <LogInForm />
     </>
   )
 }
