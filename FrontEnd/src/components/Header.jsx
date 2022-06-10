@@ -5,6 +5,10 @@ import logo from '../img/Logo.png'
 import '../styles/Header.css'
 import { Link, useNavigate } from 'react-router-dom';
 import UserInfo from './UserInfo';
+import UserInfoMobile from './UserInfoMobile';
+import Footer from './Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const frase = "Elegí donde querés vivir";
 
@@ -43,15 +47,38 @@ const Header = ({ user, btn }) => {
                 <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' >Iniciar sesión</button>
               </Link>}
             </div>}
-          {widthWindow <= 452 && <Menu right width={'200px'} styles={{ height: '20%' }}>
-
-            <a id="home" className="menu-item" href="/">Home</a>
-            {userSession ? <span onClick={() => { storage.removeItem('user'); navigate('/') }}>Cerrar Sesion</span> :
+          {widthWindow <= 452 && <Menu right width={'60%'} styles={{ height: '20%' }}>
+          
+          { userSession ? 
+                <>
+                  <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
+                    <UserInfoMobile userInfo={JSON.parse(userSession)} />
+                  </div>
+                  <div style={{height:'67%', display:'flex', justifyContent:'end', alignItems:'end'}}>
+                    <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.removeItem('user'); navigate('/') }}>Cerrar Sesion</span>?</p>
+                  </div>
+                  <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
+                </>
+              :
               <>
-                <a id="about" className="menu-item" href="/login">Log In</a>
-                <br/>
-                <a id="contact" className="menu-item" href="/register">Register</a>
-              </>}
+              <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
+                <a id="home" className="menu-item" href="/">Menú</a> 
+              </div>
+              <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
+                <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>
+                <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
+                <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
+              </div>
+              </>
+              }
+            <div style={{width:'100%', height:'40px', display:'flex', justifyContent:'end', padding:'5px 10px 3px 0px'}}>
+              <div className='footer-icons'>
+                <FontAwesomeIcon className='iconFooter' icon={faFacebook} />
+                <FontAwesomeIcon className='ms-3 iconFooter' icon={faLinkedin} />
+                <FontAwesomeIcon className='ms-3 iconFooter' icon={faTwitter} />
+                <FontAwesomeIcon className='ms-3 iconFooter' icon={faInstagram} />
+              </div>
+            </div> 
           </Menu>}
         </div>
       </nav>

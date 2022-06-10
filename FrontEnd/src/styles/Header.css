@@ -51,11 +51,15 @@
 .bm-cross-button {
     height: 24px;
     width: 24px;
+    right: 230px;
 }
+
+/*Estilo de la cruz*/
+
 
 /* Color/shape of close button cross */
 .bm-cross {
-    background: #bdc3c7;
+    background: white;
 }
 
 /*
@@ -65,16 +69,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-menu-wrap {
     position: fixed;
     height: 100%;
-    height: 100% !important;
     top: 0;
-    opacity: 96%;
 
 }
 
 /* General sidebar styles */
 .bm-menu {
-    background: var(--secondary);
-    padding: 2.5em 1.5em 0;
+    background: white;
+    padding: 0;
     font-size: 1.15em;
     
 }
@@ -87,7 +89,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
     color: #b8b7ad;
-    padding: 0.8em;
+    padding: 0;
 }
 
 /* Individual item */
@@ -102,4 +104,43 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
+}
+
+.menu-home-burguer{
+    
+    background-color: var(--primary);
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.a-iniciar-crear{
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--secondary);
+}
+
+.a-iniciar-crear:hover{
+    color: var(--secondary);
+}
+
+a:hover{
+    color: white;
+}
+
+.text-link{
+    color: var(--secondary);
+    font-size: 12px;
+    line-height: 14px;
+    margin: 2px;
+}
+
+.link{
+    color: var(--primary);
+    cursor: pointer;
 }
