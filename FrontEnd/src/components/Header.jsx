@@ -6,6 +6,7 @@ import '../styles/Header.css'
 import { Link, useNavigate } from 'react-router-dom';
 import UserInfo from './UserInfo';
 
+const frase = "Elegí donde querés vivir";
 
 const Header = ({ user, btn }) => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const Header = ({ user, btn }) => {
               <img src={logo} className='img-fluid' alt='logo' />
             </div>
             <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
+            <p className='ps-2 fw-bold mb-0'>{frase}</p>
           </div>{userSession ? widthWindow > 452 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
             <div className={widthWindow > 452 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>

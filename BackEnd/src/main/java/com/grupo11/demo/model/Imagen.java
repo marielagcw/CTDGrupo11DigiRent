@@ -28,4 +28,9 @@ public class Imagen {
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
     private Producto productos;
 
+    public Imagen(String titulo, String url, Producto productos) {
+        this.titulo = titulo;
+        this.url = url;
+        this.productos = productos;
+    }
 }

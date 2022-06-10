@@ -29,4 +29,10 @@ public class Caracteristica {
 
     @ManyToMany(mappedBy = "caracteristicas")
     private Set<Producto> productos = new HashSet<>();
+
+    public Caracteristica(String nombre, Boolean estaDisponible, Set<Producto> productos) {
+        this.nombre = nombre;
+        this.estaDisponible = estaDisponible;
+        this.productos = productos;
+    }
 }

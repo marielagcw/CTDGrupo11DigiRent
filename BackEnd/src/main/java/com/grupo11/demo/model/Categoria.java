@@ -32,5 +32,10 @@ public class Categoria {
     @JsonIgnore
     private Set<Producto> productos;
 
-
+    public Categoria(String titulo, String descripcion, String url, Set<Producto> productos) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.url = url;
+        this.productos = productos;
+    }
 }
