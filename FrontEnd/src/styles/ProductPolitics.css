@@ -15,7 +15,6 @@
 }
 
 .pol-ul{
-    border: 1px dashed var(--primary);/* optional */
     padding: 0 0 0 1.2vw;
     height: 95%;
     width:inherit;
