@@ -37,9 +37,9 @@ const Header = ({ user, btn }) => {
               <img src={logo} className='img-fluid' alt='logo' />
             </div>
             <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
-            <p className='ps-2 fw-bold mb-0'>{frase}</p>
-          </div>{userSession ? widthWindow > 452 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
-            <div className={widthWindow > 452 ? 'session-manager' : 'session-manager display-none'}>
+            <p className='ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
+          </div>{userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
+            <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
               </Link>}
@@ -47,7 +47,7 @@ const Header = ({ user, btn }) => {
                 <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' >Iniciar sesión</button>
               </Link>}
             </div>}
-          {widthWindow <= 452 && <Menu right width={'60%'} styles={{ height: '20%' }}>
+          {widthWindow <= 600 && <Menu right width={'60%'} styles={{ height: '20%' }}>
           
           { userSession ? 
                 <>
