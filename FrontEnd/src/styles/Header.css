@@ -23,6 +23,10 @@
     cursor: pointer;
 }
 
+.mobile-style{
+    display: flex;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                   Burger                                   */
 /* -------------------------------------------------------------------------- */
@@ -141,4 +145,8 @@ a:hover{
 .link{
     color: var(--primary);
     cursor: pointer;
+}
+
+@media screen and (max-width:818px) {
+    .mobile-style{display: none;}
 }
