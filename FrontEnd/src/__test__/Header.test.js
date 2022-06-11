@@ -73,3 +73,4 @@ test("Al hacer click en Iniciar Sesión redirecciona al formulario", () => {
   userEvent.click(botonIniciarSesion);
   expect(screen.getByText("Registrate")).toBeInTheDocument();
 });
+
