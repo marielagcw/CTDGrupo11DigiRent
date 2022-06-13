@@ -66,11 +66,19 @@ div.categoria {
 
 @media screen and (max-width: 480px) {
     div.categoria {
-        height: 35vh;
+        height: 25vh;
+    }
+    .categoria .card-img-top {
+        height:max-content;
+        /* width:100%; */
+    }
+    div.categoria div.card-body{
+        padding: 3%;
     }
 
     .categoria .card-body h2 {
         text-align: center;
+        word-wrap: normal;
     }
 
     .categoria .card-body .card-text {
