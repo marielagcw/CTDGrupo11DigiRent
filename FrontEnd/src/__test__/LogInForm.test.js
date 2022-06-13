@@ -62,3 +62,18 @@ test("Cuando el email ingresado es incorrecto muestra mensaje de error", ()=>{
   expect(screen.getByText("El email ingresado es invalido")).toBeInTheDocument();
   expect(screen.getByText("La contraseña debe tener 6 caracteres o más")).toBeInTheDocument();
 })
+
+/* -------------------------  CP_DR_Login_010 ------------------------ */
+// Al hacer click en el enlace "registrate" redirecciona al formulario de registro
+test("Enlace de registro existe y redirecciona a su formulario", () => {
+  utils();
+  let enlaceRegistro = screen.getByText("Registrate");
+  expect(enlaceRegistro).toBeInTheDocument();
+  userEvent.click(enlaceRegistro);
+  //screen.debug();
+  expect(
+    screen.getByRole("button", {
+      name: /iniciar sesión/i,
+    })
+  ).toBeInTheDocument();
+});
