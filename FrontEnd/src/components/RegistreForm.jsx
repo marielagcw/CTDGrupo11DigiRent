@@ -89,7 +89,7 @@ const RegistreForm = (  ) => {
                     <h1 className='create-acount'>Crear cuenta</h1>
                     <form onSubmit={(e) => setLogged(handleSubmit(e))}
                         className='d-flex flex-column register'>
-                        <div className="d-flex flex-nowrap">
+                        <div className="d-flex">
                             <div className="d-flex flex-column">
                                 <label htmlFor="name">Nombre</label>
                                 <input

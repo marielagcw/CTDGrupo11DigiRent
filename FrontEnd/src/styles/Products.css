@@ -1,0 +1,88 @@
+div#product {
+    height: 280vh;
+}
+
+.my-navbar div.back {
+    cursor: pointer;
+    font-size: 3.5em;
+}
+
+.my-navbar {
+    height: 16vh;
+    padding: 0 4vw;
+}
+
+.my-navbar h3 {
+    margin: 0;
+    font-size: larger;
+}
+
+.my-navbar h1 {
+    margin: 0;
+    font-size: xx-large;
+}
+
+
+.location-prod {
+    padding: 1.5vh 4vw;
+    height: 10vh;
+    background-color: var(--quaternary);
+}
+
+.location-prod h2 {
+    margin: 0;
+}
+
+#description,
+#charact,
+#politics,
+#calendar {
+    padding: 5vh 4vw;
+    width: 100%;
+}
+
+.description-text {
+    text-align: justify;
+    padding: 2.5vh .8vw 2vh .5vw ;
+}
+
+hr {
+    color: transparent;
+    border-top: 5px double var(--primary);
+}
+
+#calendar{
+    background-color: var(--quaternary)
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    height: 120px;
+    background-color: white;
+}
+
+.calendar-container, .button-container{
+    box-shadow: 0px 14px 8px 0px rgb(0 0 0 / 25%)
+}
+
+
+.btn-max-width{
+    width: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+    .button-container{
+        box-shadow: none;
+        background-color: var(--quaternary);
+        flex-direction: row;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .btn-max-width{
+        width: 50%;
+    }
+}

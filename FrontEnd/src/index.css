@@ -1,56 +1,19 @@
 :root {
   /* ------------------------------ opcionPrevia ------------------------------ */
-  /* --primary: #FBC02D;
+  /*--primary: #FBC02D;
     --secondary: #263238;
     --tertiary: #607D8B;
-    --quaternary: #FFFBE2; */
-  /* ------------------------------- alternativa ------------------------------ */
+    --quaternary: #FFFBE2;*/
+  /* ------------------------------- alternativa 1------------------------------ */
   --primary: #5e9387;
   --secondary: #0a493d;
   --tertiary: #8fc79a;
   --quaternary: #cee9b6;
   /* ------------------------------- alternativa 2------------------------------ */
-  /* --primary: #48afa8;
-  --secondary: #5b6046f8;
-  --tertiary: #515E63;
-  --quaternary: #f90d0d; */
-  /* ------------------------------- alternativa 3------------------------------ */
-  /* --primary: #1dccc1;
-  --secondary: #5b6046f8;
-  --tertiary: #2477bf;
-  --quaternary: #f90d0d; */
-  /* ------------------------------- alternativa 4------------------------------ */
-  /* --primary: #1dccc1;
-  --secondary: #1b2c38;
-  --tertiary: #274152;
-  --quaternary: #f90d0d; */
-  /* ------------------------------- alternativa 5------------------------------ */
-  /* --primary: #1dccc1;
-  --secondary: #1b2c38;
-  --tertiary: #00518f;
-  --quaternary: #f90d0d; */
-  /* ------------------------------- alternativa 6------------------------------ */
-  /* --primary: #1dccc1;
+  /*--primary: #1dccc1;
   --secondary: #1b2c38;
   --tertiary: #515E63;
-  --quaternary: #e6f6fc; */
-  /* ------------------------------- alternativa 7------------------------------ */
-  /* --primary: #FEC397;
-  --secondary: #6D8C8E;
-  --tertiary: #6F5F5E;
-  --quaternary: #AEC8CA;
-  --extra: #D28A7C;
-  --primary: #fb5d1f;
-  --secondary: #6D8C8E;
-  --tertiary: #3B4D57;
-  --quaternary: #AEC8CA;
-  --extra: #D28A7C; */
-  /* ------------------------------- alternativa 8------------------------------ */
-  /* --primary: #D36A3F;
-  --secondary: #2E0401;
-  --tertiary: #3B4D57;
-  --quaternary: #6F9B9A;
-  --extra: #5C6E78; */
+  --quaternary: #e6f6fc;*/
   --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 body{

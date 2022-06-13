@@ -6,7 +6,7 @@ import Spinner from './Spinner';
 
 const CategoryList = () => {
 
-    let url = "http://localhost:8080/categorias";
+    let url = "http://localhost:8080/categorias/listarTodos";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
@@ -14,7 +14,7 @@ const CategoryList = () => {
     return (
         <>
             <div className="category-container m-3">
-                <h2 className='list-title category'>Categorias</h2>
+                <h2 className='list-title category'>Buscar por tipo de alquiler</h2>
                 <div className='d-flex justify-content-between align-item-center'>
                     {!data ? <Spinner /> : data.map((categoria, i) => {
                         return (

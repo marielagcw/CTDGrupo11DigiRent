@@ -6,14 +6,21 @@ div.user-info{
     margin: auto 20px;
     
 }
-div.user-info span{
+
+
+
+div.user-info span, .user-info-mobile span{
     font-weight: bold;
     color: var(--tertiary);
 }
 
-div.user-info div.user-logo{
-    /* border-color: var(--primary); */
-    background-color: var(--secondary);
+.user-info-mobile span{
+    color: white;
+}
+
+div.user-info div.user-logo, div.user-info-mobile div.user-logo{
+    border: solid 3px var(--secondary);
+    /* background-color: var(--secondary); */
     border-radius: 50%;
     width: 45px;
     height: 45px;
@@ -22,14 +29,16 @@ div.user-info div.user-logo{
     align-items: center;
 }
 
-div.user-info div.user-logo span{
-    color: var(--quaternary);
+
+
+div.user-info div.user-logo span, div.user-info-mobile div.user-logo span{
+    color: var(--secondary);
     font-weight: bolder;
     font-size: larger;
 }
 
-div.user-info span.user-name{
-    color: var(--primary);
+div.user-info span.user-name, div.user-info-mobile span.user-name{
+    color: var(--secondary);
     font-weight: bolder;
     font-size: large;
     text-transform: capitalize;
@@ -39,4 +48,15 @@ div.user-info span.user-name{
     position:absolute;
     top: 10%;
     right: 1%;
+}
+
+/*Estilos Mobiles*/
+
+div.user-info-mobile div.user-logo{
+    border: solid 3px white;
+    background-color: white; 
+}
+
+div.user-info-mobile{
+    text-align: end;
 }
