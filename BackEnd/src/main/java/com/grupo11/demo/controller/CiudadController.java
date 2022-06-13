@@ -13,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/ciudades")
+@CrossOrigin
 public class CiudadController {
 
     @Autowired
