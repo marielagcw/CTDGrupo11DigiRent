@@ -1,8 +1,6 @@
 package com.grupo11.demo.controller;
 
-import com.grupo11.demo.model.dtos.CategoriaDTO;
 import com.grupo11.demo.model.dtos.ElementoPoliticaDTO;
-import com.grupo11.demo.service.implementation.CategoriaService;
 import com.grupo11.demo.service.implementation.ElementoPoliticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

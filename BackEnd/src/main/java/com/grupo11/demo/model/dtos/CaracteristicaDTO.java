@@ -4,7 +4,6 @@ import com.grupo11.demo.model.Producto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +14,11 @@ public class CaracteristicaDTO {
     private String nombre;
     private Boolean estaDiponible;
     private Set<Producto> productos = new HashSet<>();
+
+    // TODO agregado setId para poder devolver un body con id en el front
+    public void setId_caracteristica(Integer id_caracteristica) {
+        this.id_caracteristica = id_caracteristica;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

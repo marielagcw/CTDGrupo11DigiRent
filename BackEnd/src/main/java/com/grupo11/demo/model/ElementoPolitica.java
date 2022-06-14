@@ -1,5 +1,6 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,14 +15,14 @@ import javax.persistence.*;
 public class ElementoPolitica {
 
     @Id
-    @SequenceGenerator(name = "secuencia_e_politicas", sequenceName = "secuencia_e_politicas", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_e_politicas")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_elementosPolitica;
 
     @Column(name = "nombre")
     private String nombre;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_politica", referencedColumnName = "id_politica")
     private Politica politicas;
 

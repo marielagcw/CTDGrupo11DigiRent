@@ -14,6 +14,10 @@ public class ElementoPoliticaDTO {
     private String nombre;
     private Set<Politica> politicas;
 
+    public void setId_elementosPolitica(Integer id_elementosPolitica) {
+        this.id_elementosPolitica = id_elementosPolitica;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
