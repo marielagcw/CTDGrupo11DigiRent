@@ -9,7 +9,7 @@ public interface ICaracteristicaService {
 
     Set<CaracteristicaDTO> listarTodas();
 
-    void agregar(CaracteristicaDTO caracteristicaDTO);
+    CaracteristicaDTO agregar(CaracteristicaDTO caracteristicaDTO);
 
     CaracteristicaDTO buscarPorId(Integer id);
 

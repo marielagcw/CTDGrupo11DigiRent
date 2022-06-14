@@ -19,9 +19,11 @@ public class CaracteristicaService implements ICaracteristicaService {
     @Autowired
     private ICaracteristicaRepository repository;
 
-    private void guardarCaracteristica(CaracteristicaDTO caracteristicaDTO){
+    private CaracteristicaDTO guardarCaracteristica(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
         repository.save(caracteristica);
+        caracteristicaDTO.setId_caracteristica(caracteristica.getId_caracteristica());
+        return caracteristicaDTO;
     }
 
     @Override
@@ -35,8 +37,8 @@ public class CaracteristicaService implements ICaracteristicaService {
     }
 
     @Override
-    public void agregar(CaracteristicaDTO caracteristicaDTO) {
-        guardarCaracteristica(caracteristicaDTO);
+    public CaracteristicaDTO agregar(CaracteristicaDTO caracteristicaDTO) {
+        return guardarCaracteristica(caracteristicaDTO);
     }
 
     @Override
@@ -53,6 +55,9 @@ public class CaracteristicaService implements ICaracteristicaService {
     @Override
     public CaracteristicaDTO actualizar(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
+        repository.findById(caracteristica.getId_caracteristica()).orElseThrow(() -> {
+            return new NoSuchElementException(); //TODO agregado buscar ID para verificar si existe o no, si no existe arroja excepción
+        });
         return mapper.convertValue(repository.save(caracteristica), CaracteristicaDTO.class);
     }
 

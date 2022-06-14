@@ -17,8 +17,8 @@ import java.util.Set;
 public class Producto {
 
     @Id
-    @SequenceGenerator(name = "secuencia_categorias", sequenceName = "secuencia_categorias", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_categorias")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id_producto;
 
     @Column(name = "nombre_producto")
@@ -30,7 +30,7 @@ public class Producto {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToMany(mappedBy = "productos")
+    @OneToMany(mappedBy = "producto")
     @JsonIgnore
     private Set<Imagen> imagenes;
 
@@ -43,12 +43,10 @@ public class Producto {
     private Ciudad ciudades;
 
     @ManyToMany
-    @JsonIgnore
     @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_caracteristica"))
     private Set<Caracteristica> caracteristicas;
 
     @ManyToMany
-    @JsonIgnore
     @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
     private Set<Politica> politicas;
 

@@ -9,7 +9,7 @@ public interface ICategoriaService {
 
     Set<CategoriaDTO> listarTodas();
 
-    void agregar(CategoriaDTO categoriaDTO);
+    CategoriaDTO agregar(CategoriaDTO categoriaDTO);
 
     CategoriaDTO buscarPorId(Integer id);
 

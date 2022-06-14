@@ -9,7 +9,7 @@ public interface IProductoSevice<T> {
 
     Set<ProductoDTO> listarTodas();
 
-    void agregar(ProductoDTO productoDTO);
+    ProductoDTO agregar(ProductoDTO productoDTO);
 
     ProductoDTO buscarPorId(Integer id);
 

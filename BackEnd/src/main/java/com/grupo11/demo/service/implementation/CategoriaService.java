@@ -19,9 +19,11 @@ public class CategoriaService implements ICategoriaService {
     @Autowired
     private ICategoriaRepository repository;
 
-    private void guardarCategoria(CategoriaDTO categoriaDTO){
+    private CategoriaDTO guardarCategoria(CategoriaDTO categoriaDTO){
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         repository.save(categoria);
+        categoriaDTO.setId_categoria(categoria.getId_categoria());
+        return categoriaDTO;
     }
 
     @Override
@@ -35,8 +37,8 @@ public class CategoriaService implements ICategoriaService {
     }
 
     @Override
-    public void agregar(CategoriaDTO categoriaDTO) {
-        guardarCategoria(categoriaDTO);
+    public CategoriaDTO agregar(CategoriaDTO categoriaDTO) {
+        return guardarCategoria(categoriaDTO);
     }
 
     @Override
@@ -53,6 +55,9 @@ public class CategoriaService implements ICategoriaService {
     @Override
     public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) {
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
+        repository.findById(categoria.getId_categoria()).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
         return mapper.convertValue(repository.save(categoria), CategoriaDTO.class);
     }
 

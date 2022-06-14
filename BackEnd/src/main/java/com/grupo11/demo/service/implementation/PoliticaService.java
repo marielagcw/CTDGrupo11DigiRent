@@ -19,9 +19,11 @@ public class PoliticaService implements IPoliticaService {
     @Autowired
     private IPoliticaRepository repository;
 
-    private void guardarPolitica(PoliticaDTO politicaDTO){
+    private PoliticaDTO guardarPolitica(PoliticaDTO politicaDTO){
         Politica politica = mapper.convertValue(politicaDTO, Politica.class);
         repository.save(politica);
+        politicaDTO.setId_politica(politica.getId_politica());
+        return politicaDTO;
     }
 
     @Override
@@ -35,8 +37,8 @@ public class PoliticaService implements IPoliticaService {
     }
 
     @Override
-    public void agregar(PoliticaDTO politicaDTO) {
-        guardarPolitica(politicaDTO);
+    public PoliticaDTO agregar(PoliticaDTO politicaDTO) {
+        return guardarPolitica(politicaDTO);
     }
 
     @Override
@@ -53,6 +55,9 @@ public class PoliticaService implements IPoliticaService {
     @Override
     public PoliticaDTO actualizar(PoliticaDTO politicaDTO) {
         Politica politica = mapper.convertValue(politicaDTO, Politica.class);
+        repository.findById(politica.getId_politica()).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
         return mapper.convertValue(repository.save(politica), PoliticaDTO.class);
     }
 

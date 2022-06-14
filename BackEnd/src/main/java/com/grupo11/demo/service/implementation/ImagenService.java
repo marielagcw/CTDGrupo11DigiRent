@@ -19,9 +19,11 @@ public class ImagenService implements IImagenService {
     @Autowired
     private IImagenRepository repository;
 
-    private void guardarImagen(ImagenDTO imagenDTO){
+    private ImagenDTO guardarImagen(ImagenDTO imagenDTO){
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
         repository.save(imagen);
+        imagenDTO.setId_imagen(imagen.getId_imagen());
+        return imagenDTO;
     }
 
     @Override
@@ -35,8 +37,8 @@ public class ImagenService implements IImagenService {
     }
 
     @Override
-    public void agregar(ImagenDTO imagenDTO) {
-        guardarImagen(imagenDTO);
+    public ImagenDTO agregar(ImagenDTO imagenDTO) {
+        return guardarImagen(imagenDTO);
     }
 
     @Override
@@ -54,6 +56,9 @@ public class ImagenService implements IImagenService {
     @Override
     public ImagenDTO actualizar(ImagenDTO imagenDTO) {
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
+        repository.findById(imagen.getId_imagen()).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
         return mapper.convertValue(repository.save(imagen), ImagenDTO.class);
     }
 

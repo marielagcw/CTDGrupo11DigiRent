@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -41,7 +40,7 @@ public class ProductoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id){
+    public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
         ProductoDTO productoDTO = productoService.buscarPorId(id);
         return ResponseEntity.ok(productoDTO);
     }

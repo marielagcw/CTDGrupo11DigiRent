@@ -14,8 +14,7 @@ import javax.persistence.*;
 public class Imagen {
 
     @Id
-    @SequenceGenerator(name = "secuencia_imagenes", sequenceName = "secuencia_imagenes", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_imagenes")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_imagen;
 
     @Column(name = "titulo")
@@ -26,11 +25,11 @@ public class Imagen {
 
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
-    private Producto productos;
+    private Producto producto;
 
-    public Imagen(String titulo, String url, Producto productos) {
+    public Imagen(String titulo, String url, Producto producto) {
         this.titulo = titulo;
         this.url = url;
-        this.productos = productos;
+        this.producto = producto;
     }
 }

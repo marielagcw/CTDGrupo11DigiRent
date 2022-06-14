@@ -1,5 +1,6 @@
 package com.grupo11.demo.service;
 
+import com.grupo11.demo.model.Ciudad;
 import com.grupo11.demo.model.dtos.CiudadDTO;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface ICiudadService {
 
     Set<CiudadDTO> listarTodas();
 
-    void agregar(CiudadDTO ciudadDTO);
+    CiudadDTO agregar(CiudadDTO ciudadDTO);
 
     CiudadDTO buscarPorId(Integer id);
 

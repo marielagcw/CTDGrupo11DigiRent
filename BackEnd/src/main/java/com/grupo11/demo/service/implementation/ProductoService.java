@@ -19,9 +19,11 @@ public class ProductoService implements IProductoSevice {
     @Autowired
     private IProductoRepository repository;
 
-    private void guardarProducto(ProductoDTO productoDTO){
+    private ProductoDTO guardarProducto(ProductoDTO productoDTO){
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         repository.save(producto);
+        productoDTO.setId_producto(producto.getId_producto());
+        return productoDTO;
     }
 
     @Override
@@ -35,9 +37,8 @@ public class ProductoService implements IProductoSevice {
     }
 
     @Override
-    public void agregar(ProductoDTO productoDTO) {
-        guardarProducto(productoDTO);
-
+    public ProductoDTO agregar(ProductoDTO productoDTO) {
+       return guardarProducto(productoDTO);
     }
 
     @Override
@@ -54,6 +55,9 @@ public class ProductoService implements IProductoSevice {
     @Override
     public ProductoDTO actualizar(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
+        repository.findById(producto.getId_producto()).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
         return mapper.convertValue(repository.save(producto), ProductoDTO.class);
     }
 

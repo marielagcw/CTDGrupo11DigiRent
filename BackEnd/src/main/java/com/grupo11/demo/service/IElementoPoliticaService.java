@@ -9,7 +9,7 @@ public interface IElementoPoliticaService {
 
     Set<ElementoPoliticaDTO> listarTodas();
 
-    void agregar(ElementoPoliticaDTO elementoPoliticaDTO);
+    ElementoPoliticaDTO agregar(ElementoPoliticaDTO elementoPoliticaDTO);
 
     ElementoPoliticaDTO buscarPorId(Integer id);
 

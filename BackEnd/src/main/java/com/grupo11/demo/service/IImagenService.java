@@ -9,7 +9,7 @@ public interface IImagenService {
 
     Set<ImagenDTO> listarTodas();
 
-    void agregar(ImagenDTO imagenDTO);
+    ImagenDTO agregar(ImagenDTO imagenDTO);
 
     ImagenDTO buscarPorId(Integer id);
 

@@ -17,14 +17,17 @@ import java.util.Set;
 public class Politica {
 
     @Id
-    @SequenceGenerator(name = "secuencia_politicas", sequenceName = "secuencia_politicas", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_politicas")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_politica;
 
     @Column(name = "titulo")
     private String titulo;
 
+    @Column(name = "descripcion")
+    private String descripcion; // TODO agregada columna descripción, que estaba en el DTO pero no en el mapeo a la base de datos
+
     @ManyToMany(mappedBy = "politicas")
+    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
     @OneToMany(mappedBy = "politicas")

@@ -4,9 +4,6 @@ import com.grupo11.demo.model.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +20,10 @@ public class ProductoDTO {
     private Ciudad ciudades;
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
+
+    public void setId_producto(Integer id_producto) {
+        this.id_producto = id_producto;
+    }
 
     public void setNombre_producto(String nombre_producto) {
         this.nombre_producto = nombre_producto;

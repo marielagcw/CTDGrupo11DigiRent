@@ -11,7 +11,7 @@ public interface IPoliticaService {
 
     Set<PoliticaDTO> listarTodas();
 
-    void agregar(PoliticaDTO politicaDTO);
+    PoliticaDTO agregar(PoliticaDTO politicaDTO);
 
     PoliticaDTO buscarPorId(Integer id);
 

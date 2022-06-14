@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -41,7 +40,7 @@ public class ImagenController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ImagenDTO> buscar(@PathVariable Integer id){
+    public ResponseEntity<ImagenDTO> buscar(@PathVariable Integer id) {
         ImagenDTO imagenDTO = imagenService.buscarPorId(id);
         return ResponseEntity.ok(imagenDTO);
     }

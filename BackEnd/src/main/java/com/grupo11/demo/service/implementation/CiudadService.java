@@ -19,9 +19,11 @@ public class CiudadService implements ICiudadService {
     @Autowired
     private ICiudadRepository repository;
 
-    private void guardarCiudad(CiudadDTO ciudadDTO){
+    private CiudadDTO guardarCiudad(CiudadDTO ciudadDTO){
         Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
         repository.save(ciudad);
+        ciudadDTO.setId_ciudad(ciudad.getId_ciudad());
+        return ciudadDTO;
     }
 
     @Override
@@ -35,8 +37,8 @@ public class CiudadService implements ICiudadService {
     }
 
     @Override
-    public void agregar(CiudadDTO ciudadDTO) {
-        guardarCiudad(ciudadDTO);
+    public CiudadDTO agregar(CiudadDTO ciudadDTO) {
+        return guardarCiudad(ciudadDTO);
     }
 
     @Override
@@ -53,6 +55,9 @@ public class CiudadService implements ICiudadService {
     @Override
     public CiudadDTO actualizar(CiudadDTO ciudadDTO) {
         Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
+        repository.findById(ciudad.getId_ciudad()).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
         return mapper.convertValue(repository.save(ciudad), CiudadDTO.class);
     }
 

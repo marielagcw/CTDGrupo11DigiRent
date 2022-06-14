@@ -8,10 +8,7 @@ import com.grupo11.demo.service.IElementoPoliticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ElementoPoliticaService implements IElementoPoliticaService {
@@ -22,9 +19,11 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         @Autowired
         private IElementoPoliticaRepository repository;
 
-        private void guardarCategoria(ElementoPoliticaDTO elementoPoliticaDTO){
+        private ElementoPoliticaDTO guardarCategoria(ElementoPoliticaDTO elementoPoliticaDTO){
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
             repository.save(elementoPolitica);
+            elementoPoliticaDTO.setId_elementosPolitica(elementoPolitica.getId_elementosPolitica());
+            return elementoPoliticaDTO;
         }
 
         @Override
@@ -38,8 +37,8 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         }
 
         @Override
-        public void agregar(ElementoPoliticaDTO elementoPoliticaDTO) {
-            guardarCategoria(elementoPoliticaDTO);
+        public ElementoPoliticaDTO agregar(ElementoPoliticaDTO elementoPoliticaDTO) {
+            return guardarCategoria(elementoPoliticaDTO);
         }
 
         @Override
@@ -56,6 +55,9 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         @Override
         public ElementoPoliticaDTO actualizar(ElementoPoliticaDTO elementoPoliticaDTO) {
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
+            repository.findById(elementoPolitica.getId_elementosPolitica()).orElseThrow(() -> {
+                return new NoSuchElementException();
+            });
             return mapper.convertValue(repository.save(elementoPolitica), ElementoPoliticaDTO.class);
         }
 
