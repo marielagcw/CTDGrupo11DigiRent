@@ -66,7 +66,9 @@ const Header = ({ user, btn }) => {
               <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
                 {location.pathname != '/login' && <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
-                {location.pathname != '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>}
+                {location.pathname != '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
+                }
+                <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
               </div>
               </>
               }
