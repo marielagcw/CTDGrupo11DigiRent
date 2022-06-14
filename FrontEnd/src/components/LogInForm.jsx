@@ -110,7 +110,7 @@ const LogInForm = () => {
             </div>
           </form>
           <div className='mt-5'>
-            <p>¿No tienes una cuenta? <span id="link" onClick={() => navigate('/register')}>Registrate</span></p>
+            <p>¿Aún no tienes cuenta? <span id="link" onClick={() => navigate('/register')}>Registrate</span></p>
           </div>
         </div>
       </div>
