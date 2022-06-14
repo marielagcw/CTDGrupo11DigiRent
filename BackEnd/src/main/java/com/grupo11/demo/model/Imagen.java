@@ -25,11 +25,11 @@ public class Imagen {
 
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
-    private Producto producto;
+    private Producto productos;
 
     public Imagen(String titulo, String url, Producto producto) {
         this.titulo = titulo;
         this.url = url;
-        this.producto = producto;
+        this.productos = producto;
     }
 }

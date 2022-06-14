@@ -30,7 +30,7 @@ public class Producto {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "productos")
     @JsonIgnore
     private Set<Imagen> imagenes;
 
@@ -49,6 +49,10 @@ public class Producto {
     @ManyToMany
     @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
     private Set<Politica> politicas;
+
+    @OneToMany
+    @JsonIgnore
+    private Set<Reserva> reservas;
 
     public Producto(String nombre_producto, String titulo_descripcion, String descripcion, Set<Imagen> imagenes, Categoria categorias, Ciudad ciudades, Set<Caracteristica> caracteristicas, Set<Politica> politicas) {
         this.nombre_producto = nombre_producto;
