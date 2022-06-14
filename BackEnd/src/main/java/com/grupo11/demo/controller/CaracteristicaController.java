@@ -45,5 +45,4 @@ public class CaracteristicaController {
         return ResponseEntity.ok(caracteristicaDTO);
     }
 
-
 }

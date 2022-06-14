@@ -27,7 +27,7 @@ public class Caracteristica {
     private Boolean estaDisponible; // TODO → Hay un problema, sea true o false se guarda siempre como null en la base de datos =(
 
     @ManyToMany(mappedBy = "caracteristicas")
-    //@JsonIgnore
+    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
     public Caracteristica(String nombre, Boolean estaDisponible, Set<Producto> productos) {

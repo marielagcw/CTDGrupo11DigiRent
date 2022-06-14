@@ -1,5 +1,6 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public class Imagen {
     private String url;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
     private Producto productos;
 
