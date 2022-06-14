@@ -120,7 +120,7 @@ code {
 
 @media screen and (max-width: 588px) {
   div#home {
-    height: 610vh;
+    height: 500vh;
   }
   form {
     flex-direction: column;
