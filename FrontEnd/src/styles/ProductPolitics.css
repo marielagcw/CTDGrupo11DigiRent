@@ -25,3 +25,17 @@
     padding-left: .5vw;
     word-wrap: normal;
 }
+
+/* @media screen and (max-width: 810px) {
+    .pol-grid {
+        grid-template-columns: auto auto ;
+    }
+    .grid-item{
+        margin: 2vh auto;
+    }
+}
+@media screen and (max-width: 428px) {
+    .char-grid {
+        grid-template-columns: auto auto ;
+    }
+} */
