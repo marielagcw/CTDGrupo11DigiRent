@@ -1,8 +1,6 @@
 package com.grupo11.demo.service;
 
 import com.grupo11.demo.model.dtos.ProductoDTO;
-
-import java.util.List;
 import java.util.Set;
 
 public interface IProductoSevice<T> {
@@ -18,4 +16,6 @@ public interface IProductoSevice<T> {
     void eliminar(Integer id);
 
     Set<ProductoDTO> buscarProductosPorCiudad(Integer id);
+
+    Set<ProductoDTO> buscarProductosPorCategoria(Integer id);
 }

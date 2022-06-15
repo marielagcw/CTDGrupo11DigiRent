@@ -78,7 +78,12 @@ public class ProductoService implements IProductoSevice {
 
     }
 
-//    public Set<ProductoDTO> buscarProductoPorCategoria(Integer id) {
-//        return repository.findByCategoriasId_categoria(id);
-//    }
+    public Set<ProductoDTO> buscarProductosPorCategoria(Integer id) {
+        List<Producto> productos = repository.findAllByCategorias(id);
+        Set<ProductoDTO> productoDTOList = new HashSet<>();
+        for (Producto producto : productos) {
+            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+        return productoDTOList;
+    }
 }

@@ -50,8 +50,8 @@ public class ProductoController {
         return productoService.buscarProductosPorCiudad(id);
     }
 
-//    @GetMapping("/{id}/productosCategoria")
-//    public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id) {
-//        return productoService.buscarProductoPorCategoria(id);
-//    }
+    @GetMapping("/{id}/productosCategoria")
+    public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id) {
+        return productoService.buscarProductosPorCategoria(id);
+    }
 }

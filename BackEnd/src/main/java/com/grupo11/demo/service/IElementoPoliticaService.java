@@ -1,6 +1,5 @@
 package com.grupo11.demo.service;
 
-import com.grupo11.demo.model.dtos.CategoriaDTO;
 import com.grupo11.demo.model.dtos.ElementoPoliticaDTO;
 
 import java.util.Set;
