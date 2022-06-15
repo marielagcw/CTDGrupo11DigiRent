@@ -18,7 +18,9 @@ div#galery {
     color: var(--quaternary);
     text-decoration: underline;
 }
-
+#mobile-carrusel{
+    display: none;
+}
 .left-side {
     height: 100%;
     width: 50%;
@@ -48,4 +50,19 @@ div#galery {
 .icono{
     font-size: x-large;
     cursor: pointer;
+}
+
+@media screen and (max-width: 810px) {
+    div#galery{
+        display: none;
+    }
+    #mobile-carrusel{
+        display: block;
+        margin: 1vh 0;
+        width: 100;
+        height: fit-content;
+    }
+    #mobile-carrusel img{
+        border-radius: 2%;
+    }
 }
