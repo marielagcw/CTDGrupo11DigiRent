@@ -45,5 +45,13 @@ public class ProductoController {
         return ResponseEntity.ok(productoDTO);
     }
 
+    @GetMapping("/{id}/productosCiudad")
+    public Set<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id) {
+        return productoService.findByCiudades(id);
+    }
 
+//    @GetMapping("/{id}/productosCategoria")
+//    public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id) {
+//        return productoService.buscarProductoPorCategoria(id);
+//    }
 }

@@ -19,7 +19,7 @@ public class ProductoService implements IProductoSevice {
     @Autowired
     private IProductoRepository repository;
 
-    private ProductoDTO guardarProducto(ProductoDTO productoDTO){
+    private ProductoDTO guardarProducto(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         repository.save(producto);
         productoDTO.setId_producto(producto.getId_producto());
@@ -38,7 +38,7 @@ public class ProductoService implements IProductoSevice {
 
     @Override
     public ProductoDTO agregar(ProductoDTO productoDTO) {
-       return guardarProducto(productoDTO);
+        return guardarProducto(productoDTO);
     }
 
     @Override
@@ -66,4 +66,12 @@ public class ProductoService implements IProductoSevice {
         repository.deleteById(id);
     }
 
+    @Override
+    public Set<ProductoDTO> findByCiudades(Integer id) {
+        return repository.findByCiudades(id);
+    }
+
+//    public Set<ProductoDTO> buscarProductoPorCategoria(Integer id) {
+//        return repository.findByCategoriasId_categoria(id);
+//    }
 }
