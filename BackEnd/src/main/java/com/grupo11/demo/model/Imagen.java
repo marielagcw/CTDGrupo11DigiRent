@@ -26,7 +26,7 @@ public class Imagen {
 
     @ManyToOne
     //@JsonIgnore
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false)
     private Producto productos;
 
     public Imagen(String titulo, String url, Producto producto) {

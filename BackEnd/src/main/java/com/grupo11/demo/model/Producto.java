@@ -32,7 +32,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "productos")
     @JsonIgnore
-    private Set<Imagen> imagenes;
+    private Set<Imagen> imagenes = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")

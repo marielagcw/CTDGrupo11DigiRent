@@ -13,7 +13,7 @@ public class ImagenDTO {
     private Integer id_imagen;
     private String titulo;
     private String url;
-    private Producto producto; // TODO Modificado, antes había un set, pero la relación imagen producto es muchas a una, por lo tanto cada imagen tiene un solo producto.
+    private Producto productos; // TODO Modificado, antes había un set, pero la relación imagen producto es muchas a una, por lo tanto cada imagen tiene un solo producto.
 
     public void setId_imagen(Integer id_imagen) {
         this.id_imagen = id_imagen;
@@ -28,6 +28,6 @@ public class ImagenDTO {
     }
 
     public void setProductos(Producto producto) {
-        this.producto = producto;
+        this.productos = producto;
     }
 }
