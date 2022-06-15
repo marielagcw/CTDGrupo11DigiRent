@@ -28,6 +28,7 @@ public class Politica {
     private Set<Producto> productos = new HashSet<>();
 
     @OneToMany(mappedBy = "politicas")
+    @JsonIgnore
     private Set<ElementoPolitica> elementos = new HashSet<>();
 
     public Politica(String titulo, Set<Producto> productos, Set<ElementoPolitica> elementos) {

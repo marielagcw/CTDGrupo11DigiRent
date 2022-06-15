@@ -22,8 +22,8 @@ public class ElementoPolitica {
     private String nombre;
 
     @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "id_politica", referencedColumnName = "id_politica")
+    //@JsonIgnore
+    @JoinColumn(name = "id_politica", referencedColumnName = "id_politica", nullable = false)
     private Politica politicas;
 
     public ElementoPolitica(String nombre, Politica politicas) {
