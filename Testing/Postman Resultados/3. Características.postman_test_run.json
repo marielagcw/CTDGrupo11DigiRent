@@ -1,0 +1,425 @@
+{
+	"id": "75098ff6-1c75-4600-9cf2-6372f7ee947d",
+	"name": "3. Características",
+	"timestamp": "2022-06-14T23:49:12.083Z",
+	"collection_id": "18027182-f69bfdb9-3ea3-44db-be93-930ef6d00f2e",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 22,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b66f2cd6-4f7e-4c42-bc1d-e57e7b745ecf",
+			"name": "Post (requiere body) 1",
+			"url": "http://localhost:8080/caracteristicas/agregar",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar caracteristicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar caracteristicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Agregar caracteristicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "0883a587-605e-4c9a-a042-8c87de2bb5b3",
+			"name": "Post (requiere body) 2",
+			"url": "http://localhost:8080/caracteristicas/agregar",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar caracteristicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar caracteristicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Agregar caracteristicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "4cf29e12-31ec-4f75-a11f-8f7ca668e73e",
+			"name": "Post (requiere body) 3",
+			"url": "http://localhost:8080/caracteristicas/agregar",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar caracteristicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar caracteristicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Agregar caracteristicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "de8ddb1b-b1a7-4f88-bebb-9b492d792666",
+			"name": "Get All",
+			"url": "http://localhost:8080/caracteristicas/listarTodos",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "e03e36aa-b5ac-4f2a-ad02-37fcf9b9da5c",
+			"name": "Get by id",
+			"url": "http://localhost:8080/caracteristicas/1",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"El objeto corresponde al id consultado": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El objeto corresponde al id consultado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"El objeto corresponde al id consultado": true
+				}
+			]
+		},
+		{
+			"id": "fe241df2-6d9c-457a-8ef1-872b23bfef94",
+			"name": "Put actualizar (requiere  id en body)",
+			"url": "http://localhost:8080/caracteristicas/actualizar",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar caracteristicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar caracteristicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Agregar caracteristicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "596e55a9-8d8b-41c7-ae6f-ce04b1a58259",
+			"name": "Put actualizar (requiere id en body) id inexistente",
+			"url": "http://localhost:8080/caracteristicas/actualizar",
+			"time": 6,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Internal Server Error: no se puede modificar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede modificar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede modificar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "c0669af2-9460-404f-9b3b-6047d767bce2",
+			"name": "Get después del Update",
+			"url": "http://localhost:8080/caracteristicas/listarTodos",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "f7441e65-ec83-46ef-8679-23bc93aa979c",
+			"name": "Delete ( id en url)",
+			"url": "http://localhost:8080/caracteristicas/eliminar/2",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"Content-Type está presente en el header": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type está presente en el header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"Content-Type está presente en el header": true
+				}
+			]
+		},
+		{
+			"id": "15fe8e96-3121-4680-99d3-d0d258966dac",
+			"name": "Delete ( id en url) id inexistente",
+			"url": "http://localhost:8080/caracteristicas/eliminar/200",
+			"time": 11,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Internal Server Error: no se puede eliminar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede eliminar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede eliminar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "da856804-0fae-4fe1-aa8d-e1476a99f854",
+			"name": "Get All después del Delete",
+			"url": "http://localhost:8080/caracteristicas/listarTodos",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta tiene todas las propiedades": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta tiene todas las propiedades": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta tiene todas las propiedades": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 97,
+	"collection": {
+		"requests": [
+			{
+				"id": "b66f2cd6-4f7e-4c42-bc1d-e57e7b745ecf",
+				"method": "POST"
+			},
+			{
+				"id": "0883a587-605e-4c9a-a042-8c87de2bb5b3",
+				"method": "POST"
+			},
+			{
+				"id": "4cf29e12-31ec-4f75-a11f-8f7ca668e73e",
+				"method": "POST"
+			},
+			{
+				"id": "de8ddb1b-b1a7-4f88-bebb-9b492d792666",
+				"method": "GET"
+			},
+			{
+				"id": "e03e36aa-b5ac-4f2a-ad02-37fcf9b9da5c",
+				"method": "GET"
+			},
+			{
+				"id": "fe241df2-6d9c-457a-8ef1-872b23bfef94",
+				"method": "PUT"
+			},
+			{
+				"id": "596e55a9-8d8b-41c7-ae6f-ce04b1a58259",
+				"method": "PUT"
+			},
+			{
+				"id": "c0669af2-9460-404f-9b3b-6047d767bce2",
+				"method": "GET"
+			},
+			{
+				"id": "f7441e65-ec83-46ef-8679-23bc93aa979c",
+				"method": "DELETE"
+			},
+			{
+				"id": "15fe8e96-3121-4680-99d3-d0d258966dac",
+				"method": "DELETE"
+			},
+			{
+				"id": "da856804-0fae-4fe1-aa8d-e1476a99f854",
+				"method": "GET"
+			}
+		]
+	}
+}

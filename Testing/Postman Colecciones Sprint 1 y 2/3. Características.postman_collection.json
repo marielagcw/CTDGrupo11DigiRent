@@ -1,0 +1,536 @@
+{
+	"info": {
+		"_postman_id": "f69bfdb9-3ea3-44db-be93-930ef6d00f2e",
+		"name": "3. Características",
+		"description": "API REST\n\n.../categorias:\n\nmethod's post, get and put",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18027182"
+	},
+	"item": [
+		{
+			"name": "Post (requiere body) 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar caracteristicas\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.estaDiponible).to.be.false;\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id_caracteristica).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"caracteristica1\",\r\n    \"estaDiponible\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post (requiere body) 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar caracteristicas\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.estaDiponible).to.be.true;\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id_caracteristica).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"caracteristica2\",\r\n    \"estaDiponible\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post (requiere body) 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar caracteristicas\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.estaDiponible).to.be.true;\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id_caracteristica).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"caracteristica3\",\r\n    \"estaDiponible\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id_caracteristica).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de la respuesta recibida\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.id_caracteristica).to.eql(1);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/1",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put actualizar (requiere  id en body)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar caracteristicas\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.estaDiponible).to.be.false;});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id_caracteristica).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_caracteristica\":1,\r\n    \"nombre\": \"caracteristica1\",\r\n    \"estaDiponible\": false\r\n}"
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put actualizar (requiere id en body) id inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Internal Server Error: no se puede modificar id inexistente\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([500]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\":100,\r\n        \"titulo\": \"nuevo\",\r\n        \"descripcion\": \"nuevo\",\r\n        \"url\": \"nuevo\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get después del Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id_caracteristica).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ( id en url)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Test para verificar que haya un encabezado de respuesta\r",
+							"pm.test(\"Content-Type está presente en el header\", () => {\r",
+							"  pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/2",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ( id en url) id inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Internal Server Error: no se puede eliminar id inexistente\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([500]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id_categorias\": 7,\r\n        \"titulo\": \"Hotel lujoso\",\r\n        \"descripcion\": \"edificio con habitaciones disponibles para más de 50 personas\",\r\n        \"url_imagen\": null\r\n    }"
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/200",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All después del Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"La respuesta tiene todas las propiedades\", () => {\r",
+							"    const responseJson = pm.response.json()[0];\r",
+							"     pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "servidor",
+			"value": "localhost:8080/",
+			"type": "string"
+		},
+		{
+			"key": "urlbase",
+			"value": "localhost:8080/categorias",
+			"type": "string"
+		}
+	]
+}
