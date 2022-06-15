@@ -47,7 +47,7 @@ public class ProductoController {
 
     @GetMapping("/{id}/productosCiudad")
     public Set<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id) {
-        return productoService.findByCiudades(id);
+        return productoService.buscarProductosPorCiudad(id);
     }
 
 //    @GetMapping("/{id}/productosCategoria")

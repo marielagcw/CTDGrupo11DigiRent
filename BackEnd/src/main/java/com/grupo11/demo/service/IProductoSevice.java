@@ -17,5 +17,5 @@ public interface IProductoSevice<T> {
 
     void eliminar(Integer id);
 
-    Set<ProductoDTO> findByCiudades(Integer id);
+    Set<ProductoDTO> buscarProductosPorCiudad(Integer id);
 }

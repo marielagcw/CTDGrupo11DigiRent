@@ -67,8 +67,15 @@ public class ProductoService implements IProductoSevice {
     }
 
     @Override
-    public Set<ProductoDTO> findByCiudades(Integer id) {
-        return repository.findByCiudades(id);
+    public Set<ProductoDTO> buscarProductosPorCiudad(Integer id) {
+        List<Producto> productos = repository.findAllByCiudades(id);
+        Set<ProductoDTO> productoDTOList = new HashSet<>();
+        for (Producto producto : productos) {
+            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+        return productoDTOList;
+
+
     }
 
 //    public Set<ProductoDTO> buscarProductoPorCategoria(Integer id) {
