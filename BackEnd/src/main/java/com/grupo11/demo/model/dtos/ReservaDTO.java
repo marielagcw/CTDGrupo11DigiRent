@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class ReservaDTO {
     private Integer id_reserva;
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime horaInicio;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;

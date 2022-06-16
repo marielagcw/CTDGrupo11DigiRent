@@ -39,6 +39,7 @@ public class ProductoService implements IProductoSevice {
     }
 
     // FIND ALL RANDOM
+    // TODO Habría que refactorizar la query para no traer todo desde la base de datos, a consultar con BD si MySQL tiene alguna query que traiga datos random para optimizar la consulta
     public List<ProductoDTO> listarRandom(Pageable pageable) {
         List<Producto> productos = repository.findAll(pageable).getContent();
         List<ProductoDTO> productoDTOS = productos.stream()
@@ -87,11 +88,9 @@ public class ProductoService implements IProductoSevice {
     @Override
     public List<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
         List<Producto> productos = repository.findAllByCiudades(id, pageable);
-       return productos.stream()
+        return productos.stream()
                 .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
                 .collect(Collectors.toList());
-
-
     }
 
     // FIND BY ID CATEGORIA
@@ -101,4 +100,5 @@ public class ProductoService implements IProductoSevice {
                 .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
                 .collect(Collectors.toList());
     }
+
 }
