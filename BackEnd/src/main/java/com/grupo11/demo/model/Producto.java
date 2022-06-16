@@ -50,7 +50,7 @@ public class Producto {
     @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_politica"))
     private Set<Politica> politicas;
 
-    @OneToMany
+    @OneToMany(mappedBy = "productos")
     @JsonIgnore
     private Set<Reserva> reservas;
 

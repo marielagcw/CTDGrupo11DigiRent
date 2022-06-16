@@ -1,6 +1,5 @@
 package com.grupo11.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,10 +18,13 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_reserva;
+
     @Column (name = "hora_inicio")
     private LocalTime horaInicio;
+
     @Column(name = "fecha_inicial")
     private LocalDate fechaInicial;
+
     @Column(name = "fecha_final")
     private LocalDate fechaFinal;
 
