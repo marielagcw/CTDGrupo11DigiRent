@@ -12,13 +12,14 @@ import { BsChevronLeft } from 'react-icons/bs';
 import ProductPolitics from './ProductPolitics';
 import Calendar from 'react-calendar';
 
+
 export default function Products() {
     let ciudades = productosEstaticos.ciudades;
     let productos = productosEstaticos.productos;
     const [fecha, setfecha] = useState(new Date([]));
     const navigate = useNavigate();
 
-    
+
 
     return (
         <div id='product'>
@@ -29,7 +30,7 @@ export default function Products() {
                     <h3>{productos[0].category}</h3>
                     <h1>{productos[0].title}</h1>
                 </div>
-                <div className='back d-flex justify-content-center allign-items-center' onClick={()=>navigate('/')}>
+                <div className='back d-flex justify-content-center allign-items-center' onClick={() => navigate('/')}>
                     <BsChevronLeft />
                 </div>
             </div>
@@ -54,7 +55,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-            <ProductPolitics politics={productos}/>
+            <ProductPolitics politics={productos} />
             <Footer />
         </div>
     )
