@@ -1,5 +1,6 @@
 package com.grupo11.demo.model.dtos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grupo11.demo.model.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

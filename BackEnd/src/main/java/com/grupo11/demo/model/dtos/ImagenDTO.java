@@ -2,6 +2,7 @@ package com.grupo11.demo.model.dtos;
 
 //import com.grupo11.demo.model.Producto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.grupo11.demo.model.Producto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
