@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 import { slide as Menu } from 'react-burger-menu'
 import logo from '../img/Logo.png'
 import '../styles/Header.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import UserInfo from './UserInfo';
 import UserInfoMobile from './UserInfoMobile';
-import Footer from './Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -16,6 +15,7 @@ const Header = ({ user, btn }) => {
   const navigate = useNavigate();
   const storage = window.localStorage;
   const userSession = storage.getItem('user');
+  const location = useLocation();
 
   //controla tamaño ventana
   const [widthWindow, setWidthWindow] = useState(0);
@@ -27,7 +27,6 @@ const Header = ({ user, btn }) => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
-
   return (
     <>
       <nav className='navbar navbar-light'>
@@ -65,9 +64,11 @@ const Header = ({ user, btn }) => {
                 <a id="home" className="menu-item" href="/">Menú</a> 
               </div>
               <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
-                <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>
+                {location.pathname != '/login' && <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
-                <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
+                {location.pathname != '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
+                }
+                <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
               </div>
               </>
               }

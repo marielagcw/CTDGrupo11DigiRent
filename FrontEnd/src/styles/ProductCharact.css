@@ -6,8 +6,20 @@
 .grid-item {
     margin: 2vh 1vw;
 }
-.grid-item .icono{
+
+.grid-item .icono {
     display: inline-block;
     margin-right: 4px;
     color: var(--primary);
+}
+
+@media screen and (max-width: 810px) {
+    .char-grid {
+        grid-template-columns: auto auto auto;
+    }
+}
+@media screen and (max-width: 428px) {
+    .char-grid {
+        grid-template-columns: auto auto ;
+    }
 }

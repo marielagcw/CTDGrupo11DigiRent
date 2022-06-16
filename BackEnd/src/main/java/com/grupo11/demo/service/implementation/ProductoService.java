@@ -6,9 +6,11 @@ import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.repository.IProductoRepository;
 import com.grupo11.demo.service.IProductoSevice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductoService implements IProductoSevice {
@@ -19,6 +21,7 @@ public class ProductoService implements IProductoSevice {
     @Autowired
     private IProductoRepository repository;
 
+    // SAVE
     private ProductoDTO guardarProducto(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         repository.save(producto);
@@ -26,21 +29,33 @@ public class ProductoService implements IProductoSevice {
         return productoDTO;
     }
 
+    // FIND ALL
     @Override
-    public Set<ProductoDTO> listarTodas() {
-        List<Producto> productos = repository.findAll();
-        Set<ProductoDTO> productoDTOList = new HashSet<>();
-        for (Producto producto : productos) {
-            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
-        }
-        return productoDTOList;
+    public List<ProductoDTO> listarTodas(Pageable pageable) {
+        List<Producto> productos = repository.findAll(pageable).getContent();
+        return productos.stream()
+                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
+                .collect(Collectors.toList());
     }
 
+    // FIND ALL RANDOM
+    public List<ProductoDTO> listarRandom(Pageable pageable) {
+        List<Producto> productos = repository.findAll(pageable).getContent();
+        List<ProductoDTO> productoDTOS = productos.stream()
+                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
+                .collect(Collectors.toList());
+        Collections.shuffle(productoDTOS);
+        int randomSeriesLength = 4;
+        return productoDTOS.subList(0, randomSeriesLength);
+    }
+
+    // SAVE
     @Override
     public ProductoDTO agregar(ProductoDTO productoDTO) {
         return guardarProducto(productoDTO);
     }
 
+    // FIND BY ID
     @Override
     public ProductoDTO buscarPorId(Integer id) {
         Optional<Producto> producto = repository.findById(id);
@@ -52,6 +67,7 @@ public class ProductoService implements IProductoSevice {
         return productoDTO;
     }
 
+    // UPDATE
     @Override
     public ProductoDTO actualizar(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
@@ -61,29 +77,28 @@ public class ProductoService implements IProductoSevice {
         return mapper.convertValue(repository.save(producto), ProductoDTO.class);
     }
 
+    //DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);
     }
 
+    // FIND BY ID CIUDAD
     @Override
-    public Set<ProductoDTO> buscarProductosPorCiudad(Integer id) {
-        List<Producto> productos = repository.findAllByCiudades(id);
-        Set<ProductoDTO> productoDTOList = new HashSet<>();
-        for (Producto producto : productos) {
-            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
-        }
-        return productoDTOList;
+    public List<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCiudades(id, pageable);
+       return productos.stream()
+                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
+                .collect(Collectors.toList());
 
 
     }
 
-    public Set<ProductoDTO> buscarProductosPorCategoria(Integer id) {
-        List<Producto> productos = repository.findAllByCategorias(id);
-        Set<ProductoDTO> productoDTOList = new HashSet<>();
-        for (Producto producto : productos) {
-            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
-        }
-        return productoDTOList;
+    // FIND BY ID CATEGORIA
+    public List<ProductoDTO> buscarProductosPorCategoria(Integer id, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCategorias(id, pageable);
+        return productos.stream()
+                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
+                .collect(Collectors.toList());
     }
 }

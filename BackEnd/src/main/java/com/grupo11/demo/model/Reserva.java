@@ -28,7 +28,7 @@ public class Reserva {
     private LocalDate fechaFinal;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto",  nullable = false)
     private Producto productos;
 
     public Reserva(Integer id_reserva, LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto productos) {

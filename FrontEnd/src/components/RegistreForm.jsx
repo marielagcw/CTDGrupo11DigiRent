@@ -157,7 +157,7 @@ const RegistreForm = (  ) => {
                             >Crear Cuenta</button></div>
                     </form>
                     <div className='mt-3 row justify-content-center'>
-                        <p>¿Tienes una cuenta? <span id="link" onClick={() => navigate('/login')}>Iniciar Sesion</span></p>
+                        <p>¿Ya tienes una cuenta? <span id="link" onClick={() => navigate('/login')}>Iniciar Sesión</span></p>
                     </div>
                 </div>
             </div>
