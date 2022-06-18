@@ -13,20 +13,12 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_roles;
+
     @Column(name="nombre_roles")
     private String nombre;
-
     @OneToMany(mappedBy = "roles")
     @JsonManagedReference
     private Set<Usuario> usuarios = new HashSet<>();
-
-    public Integer getRoles_id_roles() {
-        return id_roles;
-    }
-
-    public void setRoles_id_roles(Integer id_roles) {
-        this.id_roles = id_roles;
-    }
 
     public String getNombre() {
         return nombre;
@@ -34,5 +26,13 @@ public class Rol {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Integer getId_roles() {
+        return id_roles;
+    }
+
+    public void setId_roles(Integer id_roles) {
+        this.id_roles = id_roles;
     }
 }

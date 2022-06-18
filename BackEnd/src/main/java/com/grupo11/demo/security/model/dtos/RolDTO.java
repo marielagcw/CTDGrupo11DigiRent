@@ -1,18 +1,22 @@
 package com.grupo11.demo.security.model.dtos;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class RolDTO {
 
-    private String id_roles;
+    private Integer id_roles;
     private String nombre;
+    private Set<UsuarioDTO> usuarios = new HashSet<>();
 
     public RolDTO() {
     }
 
-    public String getId_roles() {
+    public Integer getId_roles() {
         return id_roles;
     }
 
-    public void setId_roles(String id_roles) {
+    public void setId_roles(Integer id_roles) {
         this.id_roles = id_roles;
     }
 

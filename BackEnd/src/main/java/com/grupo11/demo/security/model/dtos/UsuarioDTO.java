@@ -10,7 +10,7 @@ public class UsuarioDTO {
     private String email;
     private String password;
     private String ciudad;
-    private Rol roles;
+    private RolDTO roles;
 
     public Integer getId_usuarios() {
         return id_usuarios;
@@ -60,11 +60,11 @@ public class UsuarioDTO {
         this.ciudad = ciudad;
     }
 
-    public Rol getRol() {
+    public RolDTO getRoles() {
         return roles;
     }
 
-    public void setRol(Rol roles) {
+    public void setRoles(RolDTO roles) {
         this.roles = roles;
     }
 

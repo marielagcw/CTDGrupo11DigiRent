@@ -1,6 +1,7 @@
 package com.grupo11.demo.security.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -21,9 +22,9 @@ public class Usuario {
     @Column(name="ciudad_usuario")
     private String ciudad;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "roles_id_roles", referencedColumnName="id_roles", nullable = false)
+    @ManyToOne
     @JsonBackReference
+    @JoinColumn(name = "roles_id_roles", referencedColumnName="id_roles", nullable = false)
     private Rol roles;
 
     public Integer getId_usuarios() {
@@ -74,11 +75,11 @@ public class Usuario {
         this.ciudad = ciudad;
     }
 
-    public Rol getRol() {
+    public Rol getRoles() {
         return roles;
     }
 
-    public void setRol(Rol roles) {
+    public void setRoles(Rol roles) {
         this.roles = roles;
     }
 }

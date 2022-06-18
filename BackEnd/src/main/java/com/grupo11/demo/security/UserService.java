@@ -82,7 +82,7 @@ public class UserService implements UserDetailsService {
         // Le asignamos los roles al usuario (en este caso cada usuario tiene un solo rol)
         Set<GrantedAuthority> autorizaciones = new HashSet<>();
         GrantedAuthority autorizacion = null;
-        autorizacion = new SimpleGrantedAuthority("ROLE_" + user.getRol().getNombre());
+        autorizacion = new SimpleGrantedAuthority("ROLE_" + user.getRoles().getNombre());
         autorizaciones.add(autorizacion);
 
         // Generamos un usuario de la librería de SpringSecurity donde indicamos username, password y rol que es lo que necesita spring para hacer las validaciones
