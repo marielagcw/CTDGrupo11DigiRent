@@ -2,6 +2,7 @@ package com.grupo11.demo.model.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.grupo11.demo.model.Producto;
+import com.grupo11.demo.security.model.Usuario;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,6 +14,7 @@ public class ReservaDTO {
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private Producto productos;
+    private Usuario usuarios;
 
     public ReservaDTO() {
     }
@@ -55,5 +57,13 @@ public class ReservaDTO {
 
     public void setProductos(Producto productos) {
         this.productos = productos;
+    }
+
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
     }
 }

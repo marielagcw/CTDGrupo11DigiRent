@@ -1,5 +1,9 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.grupo11.demo.security.model.Usuario;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,18 +23,24 @@ public class Reserva {
     private LocalDate fechaFinal;
 
     @ManyToOne
-    @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto")
+    @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
     private Producto productos;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuarios", nullable = false)
+    private Usuario usuarios;
 
     public Reserva() {
     }
 
-    public Reserva(Integer id_reserva, LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto productos) {
+    public Reserva(Integer id_reserva, LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto productos, Usuario usuarios) {
         this.id_reserva = id_reserva;
         this.horaInicio = horaInicio;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.productos = productos;
+        this.usuarios = usuarios;
     }
 
     public Integer getId_reserva() {
@@ -71,5 +81,13 @@ public class Reserva {
 
     public void setProductos(Producto productos) {
         this.productos = productos;
+    }
+
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
     }
 }

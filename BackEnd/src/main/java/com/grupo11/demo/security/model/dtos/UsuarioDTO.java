@@ -1,6 +1,11 @@
 package com.grupo11.demo.security.model.dtos;
 
+import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.security.model.Rol;
+
+import java.beans.JavaBean;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UsuarioDTO {
 
@@ -11,6 +16,7 @@ public class UsuarioDTO {
     private String password;
     private String ciudad;
     private RolDTO roles;
+    private Set<ReservaDTO> reservas = new HashSet<>();
 
     public Integer getId_usuarios() {
         return id_usuarios;
@@ -68,4 +74,11 @@ public class UsuarioDTO {
         this.roles = roles;
     }
 
+    public Set<ReservaDTO> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<ReservaDTO> reservas) {
+        this.reservas = reservas;
+    }
 }

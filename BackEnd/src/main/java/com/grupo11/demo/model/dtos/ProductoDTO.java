@@ -16,6 +16,7 @@ public class ProductoDTO {
     private Ciudad ciudades;
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
+    private Set<Reserva> reservas = new HashSet<>();
 
     public ProductoDTO() {
     }

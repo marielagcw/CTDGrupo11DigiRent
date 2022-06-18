@@ -2,8 +2,11 @@ package com.grupo11.demo.security.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.grupo11.demo.model.Reserva;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
@@ -26,6 +29,10 @@ public class Usuario {
     @JsonBackReference
     @JoinColumn(name = "roles_id_roles", referencedColumnName="id_roles", nullable = false)
     private Rol roles;
+
+    @OneToMany(mappedBy = "usuarios")
+    @JsonManagedReference
+    private Set<Reserva> reservas;
 
     public Integer getId_usuarios() {
         return id_usuarios;
@@ -81,5 +88,13 @@ public class Usuario {
 
     public void setRoles(Rol roles) {
         this.roles = roles;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }
