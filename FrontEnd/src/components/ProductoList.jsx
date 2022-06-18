@@ -1,17 +1,18 @@
 import React from 'react';
 import ProductoCard from './ProductoCard';
 // import '../styles/ProductoList.css';
-// import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
 import productos from '../productos.json';
 
 const ProductoList = () => {
     let prod = productos.productos
-    // let url = "http://localhost:8080/categorias";
-    // let { data, isPending, error } = useFetch(url);
-    // if (isPending) {
-    //     console.log(error);
-    // }
+    let url = "http://localhost:8080/caracteristicas/listarTodos";
+    let { data, isPending, error } = useFetch(url);
+    if (isPending) {
+        console.log(error);
+    }
+    console.log(data);
     return (
         <>
             <div className="category-container m-3">

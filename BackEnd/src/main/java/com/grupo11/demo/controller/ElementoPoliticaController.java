@@ -11,6 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/elementospolitica")
+@CrossOrigin(origins = "*")
 public class ElementoPoliticaController {
 
     @Autowired
