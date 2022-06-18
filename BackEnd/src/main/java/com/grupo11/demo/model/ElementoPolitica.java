@@ -6,27 +6,30 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "elementosPoliticas")
+@Table(name = "elementos_politicas")
 public class ElementoPolitica {
 
     @Id
-    @SequenceGenerator(name = "secuencia_e_politicas", sequenceName = "secuencia_e_politicas", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_e_politicas")
-    private Integer id_elementosPolitica;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_elementos_politica;
 
     @Column(name = "nombre")
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "id_politica", referencedColumnName = "id_politica")
+    @JoinColumn(name = "politicas_id_politica", referencedColumnName = "id_politica", nullable = false)
     private Politica politicas;
 
     public ElementoPolitica(String nombre, Politica politicas) {
         this.nombre = nombre;
         this.politicas = politicas;
+    }
+
+    public Integer getId_elementos_politica() {
+        return id_elementos_politica;
     }
 }

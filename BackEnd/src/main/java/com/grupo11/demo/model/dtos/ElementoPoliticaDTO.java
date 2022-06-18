@@ -4,21 +4,20 @@ import com.grupo11.demo.model.Politica;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
 
-@Getter
+//@Getter
 @NoArgsConstructor
 public class ElementoPoliticaDTO {
 
-    private Integer id_elementosPolitica;
+    private Integer id_elementos_politica;
     private String nombre;
-    private Set<Politica> politicas;
+    private Politica politicas;
+
+    public void setId_elementos_politica(Integer id_elementos_politica) {
+        this.id_elementos_politica = id_elementos_politica;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setPoliticas(Set<Politica> politicas) {
-        this.politicas = politicas;
     }
 }

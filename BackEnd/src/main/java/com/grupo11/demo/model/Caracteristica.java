@@ -9,30 +9,34 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "caracteristicas")
 public class Caracteristica {
 
     @Id
-    @SequenceGenerator(name = "secuencia_caracteristicas", sequenceName = "secuencia_caracteristicas", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_caracteristicas")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_caracteristica;
 
     @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "esta_disponible")
-    private Boolean estaDisponible;
+    private Boolean estaDisponible; // TODO → Hay un problema, sea true o false se guarda siempre como null en la base de datos =(
 
     @ManyToMany(mappedBy = "caracteristicas")
+    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
     public Caracteristica(String nombre, Boolean estaDisponible, Set<Producto> productos) {
         this.nombre = nombre;
         this.estaDisponible = estaDisponible;
         this.productos = productos;
+    }
+
+    public Integer getId_caracteristica() {
+        return id_caracteristica;
     }
 }

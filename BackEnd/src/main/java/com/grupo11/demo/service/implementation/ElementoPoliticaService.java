@@ -8,10 +8,7 @@ import com.grupo11.demo.service.IElementoPoliticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ElementoPoliticaService implements IElementoPoliticaService {
@@ -22,11 +19,15 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         @Autowired
         private IElementoPoliticaRepository repository;
 
-        private void guardarCategoria(ElementoPoliticaDTO elementoPoliticaDTO){
+        // SAVE
+        private ElementoPoliticaDTO guardarCategoria(ElementoPoliticaDTO elementoPoliticaDTO){
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
             repository.save(elementoPolitica);
+            elementoPoliticaDTO.setId_elementos_politica(elementoPolitica.getId_elementos_politica());
+            return elementoPoliticaDTO;
         }
 
+        // FIND ALL
         @Override
         public Set<ElementoPoliticaDTO> listarTodas() {
             List<ElementoPolitica> elementoPoliticas = repository.findAll();
@@ -37,11 +38,13 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
             return elementoPoliticaDTOList;
         }
 
+        // SAVE
         @Override
-        public void agregar(ElementoPoliticaDTO elementoPoliticaDTO) {
-            guardarCategoria(elementoPoliticaDTO);
+        public ElementoPoliticaDTO agregar(ElementoPoliticaDTO elementoPoliticaDTO) {
+            return guardarCategoria(elementoPoliticaDTO);
         }
 
+        // FIND BY ID
         @Override
         public ElementoPoliticaDTO buscarPorId(Integer id) {
             Optional<ElementoPolitica> elementoPolitica = repository.findById(id);
@@ -53,12 +56,17 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
             return elementoPoliticaDTO;
         }
 
+        // UPDATE
         @Override
         public ElementoPoliticaDTO actualizar(ElementoPoliticaDTO elementoPoliticaDTO) {
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
+            repository.findById(elementoPolitica.getId_elementos_politica()).orElseThrow(() -> {
+                return new NoSuchElementException();
+            });
             return mapper.convertValue(repository.save(elementoPolitica), ElementoPoliticaDTO.class);
         }
 
+        // DELETE
         @Override
         public void eliminar(Integer id) {
             repository.deleteById(id);

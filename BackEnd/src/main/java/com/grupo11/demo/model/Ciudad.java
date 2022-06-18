@@ -9,16 +9,15 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "ciudades")
 public class Ciudad {
 
     @Id
-    @SequenceGenerator(name = "secuencia_ciudades", sequenceName = "secuencia_ciudades", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_ciudades")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_ciudad;
 
     @Column(name = "nombre")
@@ -39,5 +38,9 @@ public class Ciudad {
         this.provincia = provincia;
         this.pais = pais;
         this.productos = productos;
+    }
+
+    public Integer getId_ciudad() {
+        return id_ciudad;
     }
 }

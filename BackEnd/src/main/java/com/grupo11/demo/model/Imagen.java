@@ -1,21 +1,21 @@
 package com.grupo11.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "imagenes")
 public class Imagen {
 
     @Id
-    @SequenceGenerator(name = "secuencia_imagenes", sequenceName = "secuencia_imagenes", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_imagenes")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_imagen;
 
     @Column(name = "titulo")
@@ -25,12 +25,17 @@ public class Imagen {
     private String url;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @JsonBackReference
+    @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
     private Producto productos;
 
-    public Imagen(String titulo, String url, Producto productos) {
+    public Imagen(String titulo, String url, Producto producto) {
         this.titulo = titulo;
         this.url = url;
-        this.productos = productos;
+        this.productos = producto;
+    }
+
+    public Integer getId_imagen() {
+        return id_imagen;
     }
 }

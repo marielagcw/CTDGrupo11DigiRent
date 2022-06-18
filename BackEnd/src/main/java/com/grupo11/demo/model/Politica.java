@@ -9,22 +9,22 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "politicas")
 public class Politica {
 
     @Id
-    @SequenceGenerator(name = "secuencia_politicas", sequenceName = "secuencia_politicas", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_politicas")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_politica;
 
     @Column(name = "titulo")
     private String titulo;
 
     @ManyToMany(mappedBy = "politicas")
+    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
     @OneToMany(mappedBy = "politicas")
@@ -37,4 +37,7 @@ public class Politica {
         this.elementos = elementos;
     }
 
+    public Integer getId_politica() {
+        return id_politica;
+    }
 }

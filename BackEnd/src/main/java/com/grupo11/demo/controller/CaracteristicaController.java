@@ -3,12 +3,10 @@ package com.grupo11.demo.controller;
 import com.grupo11.demo.model.dtos.CaracteristicaDTO;
 import com.grupo11.demo.service.implementation.CaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -42,10 +40,9 @@ public class CaracteristicaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CaracteristicaDTO> buscar(@PathVariable Integer id){
+    public ResponseEntity<CaracteristicaDTO> buscar(@PathVariable Integer id) {
         CaracteristicaDTO caracteristicaDTO = caracteristicaService.buscarPorId(id);
         return ResponseEntity.ok(caracteristicaDTO);
     }
-
 
 }

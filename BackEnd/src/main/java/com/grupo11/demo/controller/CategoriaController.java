@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.SecondaryTable;
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -43,7 +41,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoriaDTO> buscar(@PathVariable Integer id){
+    public ResponseEntity<CategoriaDTO> buscar(@PathVariable Integer id) {
         CategoriaDTO categoriaDTO = categoriaService.buscarPorId(id);
         return ResponseEntity.ok(categoriaDTO);
     }

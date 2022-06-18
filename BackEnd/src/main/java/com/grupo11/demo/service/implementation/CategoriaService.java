@@ -19,11 +19,15 @@ public class CategoriaService implements ICategoriaService {
     @Autowired
     private ICategoriaRepository repository;
 
-    private void guardarCategoria(CategoriaDTO categoriaDTO){
+    // SAVE
+    private CategoriaDTO guardarCategoria(CategoriaDTO categoriaDTO){
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         repository.save(categoria);
+        categoriaDTO.setId_categoria(categoria.getId_categoria());
+        return categoriaDTO;
     }
 
+    // FIND ALL
     @Override
     public Set<CategoriaDTO> listarTodas() {
         List<Categoria> categorias = repository.findAll();
@@ -34,11 +38,13 @@ public class CategoriaService implements ICategoriaService {
         return categoriaDTOList;
     }
 
+    // SAVE
     @Override
-    public void agregar(CategoriaDTO categoriaDTO) {
-        guardarCategoria(categoriaDTO);
+    public CategoriaDTO agregar(CategoriaDTO categoriaDTO) {
+        return guardarCategoria(categoriaDTO);
     }
 
+    // FIND BY ID
     @Override
     public CategoriaDTO buscarPorId(Integer id) {
         Optional<Categoria> categoria = repository.findById(id);
@@ -50,12 +56,17 @@ public class CategoriaService implements ICategoriaService {
         return categoriaDTO;
     }
 
+    // UPDATE
     @Override
     public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) {
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
+        repository.findById(categoria.getId_categoria()).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
         return mapper.convertValue(repository.save(categoria), CategoriaDTO.class);
     }
 
+    // DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);
