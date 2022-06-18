@@ -2,10 +2,8 @@ package com.grupo11.demo.security;
 
 import com.grupo11.demo.security.jwt.IJwtService;
 import com.grupo11.demo.security.model.AuthenticationRequest;
-import com.grupo11.demo.security.model.Usuario;
 import com.grupo11.demo.security.model.dtos.AuthenticationResponse;
 import com.grupo11.demo.security.model.dtos.UsuarioDTO;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

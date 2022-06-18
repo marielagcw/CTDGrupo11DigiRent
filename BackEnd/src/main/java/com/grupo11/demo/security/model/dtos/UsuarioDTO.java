@@ -2,11 +2,6 @@ package com.grupo11.demo.security.model.dtos;
 
 import com.grupo11.demo.security.model.Rol;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 public class UsuarioDTO {
 
     private Integer id_usuarios;
