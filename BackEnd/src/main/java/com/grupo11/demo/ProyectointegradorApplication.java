@@ -10,5 +10,4 @@ public class ProyectointegradorApplication {
 		SpringApplication.run(ProyectointegradorApplication.class, args);
 	}
 
-
 }

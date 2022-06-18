@@ -1,34 +1,47 @@
 package com.grupo11.demo.model.dtos;
 
-//import com.grupo11.demo.model.Producto;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.grupo11.demo.model.Producto;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor
+
 public class ImagenDTO {
 
     private Integer id_imagen;
     private String titulo;
     private String url;
-    private Producto productos; // TODO Modificado, antes había un set, pero la relación imagen producto es muchas a una, por lo tanto cada imagen tiene un solo producto.
+    private Producto productos;
+
+    public ImagenDTO() {
+    }
+
+    public Integer getId_imagen() {
+        return id_imagen;
+    }
 
     public void setId_imagen(Integer id_imagen) {
         this.id_imagen = id_imagen;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }
 
-    public void setProductos(Producto producto) {
-        this.productos = producto;
+    public Producto getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Producto productos) {
+        this.productos = productos;
     }
 }

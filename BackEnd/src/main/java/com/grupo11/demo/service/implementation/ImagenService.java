@@ -19,6 +19,7 @@ public class ImagenService implements IImagenService {
     @Autowired
     private IImagenRepository repository;
 
+    // SAVE
     private ImagenDTO guardarImagen(ImagenDTO imagenDTO){
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
         repository.save(imagen);
@@ -26,6 +27,7 @@ public class ImagenService implements IImagenService {
         return imagenDTO;
     }
 
+    // FIND ALL
     @Override
     public Set<ImagenDTO> listarTodas() {
         List<Imagen> imagenes = repository.findAll();
@@ -36,11 +38,13 @@ public class ImagenService implements IImagenService {
         return imagenDTOList;
     }
 
+    // SAVE
     @Override
     public ImagenDTO agregar(ImagenDTO imagenDTO) {
         return guardarImagen(imagenDTO);
     }
 
+    // FIND BY ID
     @Override
     public ImagenDTO buscarPorId(Integer id) {
         Optional<Imagen> imagen = repository.findById(id);
@@ -52,7 +56,7 @@ public class ImagenService implements IImagenService {
         return imagenDTO;
     }
 
-
+    // UPDATE
     @Override
     public ImagenDTO actualizar(ImagenDTO imagenDTO) {
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
@@ -62,6 +66,7 @@ public class ImagenService implements IImagenService {
         return mapper.convertValue(repository.save(imagen), ImagenDTO.class);
     }
 
+    // DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);

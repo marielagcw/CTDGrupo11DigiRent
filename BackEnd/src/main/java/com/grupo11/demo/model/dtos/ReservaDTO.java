@@ -2,16 +2,10 @@ package com.grupo11.demo.model.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.grupo11.demo.model.Producto;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
 public class ReservaDTO {
     private Integer id_reserva;
     @JsonFormat(pattern = "HH:mm:ss")
@@ -19,4 +13,47 @@ public class ReservaDTO {
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private Producto productos;
+
+    public ReservaDTO() {
+    }
+
+    public Integer getId_reserva() {
+        return id_reserva;
+    }
+
+    public void setId_reserva(Integer id_reserva) {
+        this.id_reserva = id_reserva;
+    }
+
+    public LocalTime getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public LocalDate getFechaInicial() {
+        return fechaInicial;
+    }
+
+    public void setFechaInicial(LocalDate fechaInicial) {
+        this.fechaInicial = fechaInicial;
+    }
+
+    public LocalDate getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(LocalDate fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+    public Producto getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Producto productos) {
+        this.productos = productos;
+    }
 }

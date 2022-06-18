@@ -8,8 +8,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-
 @Component
 public class InitConfig implements ApplicationRunner {
 
@@ -29,7 +27,7 @@ public class InitConfig implements ApplicationRunner {
         usuario.setPassword(bCryptPasswordEncoder.encode("password"));
         Rol rol = new Rol();
         rol.setNombre("USER");
-        rol.setId_rol(1);
+        rol.setRoles_id_roles(1);
         usuario.setRol(rol);
         repo.save(usuario);
     }

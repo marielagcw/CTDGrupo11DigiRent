@@ -1,23 +1,18 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
+
 @Entity
 @Table(name = "caracteristicas")
 public class Caracteristica {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //TODO Se quita el secuenciador y se deja que Hibernate copie el sistema de IDs que establece la base de datos
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_caracteristica;
 
     @Column(name = "nombre")
@@ -30,9 +25,44 @@ public class Caracteristica {
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
+    public Caracteristica() {
+    }
+
     public Caracteristica(String nombre, Boolean estaDisponible, Set<Producto> productos) {
         this.nombre = nombre;
         this.estaDisponible = estaDisponible;
+        this.productos = productos;
+    }
+
+    public Integer getId_caracteristica() {
+        return id_caracteristica;
+    }
+
+    public void setId_caracteristica(Integer id_caracteristica) {
+        this.id_caracteristica = id_caracteristica;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Boolean getEstaDisponible() {
+        return estaDisponible;
+    }
+
+    public void setEstaDisponible(Boolean estaDisponible) {
+        this.estaDisponible = estaDisponible;
+    }
+
+    public Set<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Set<Producto> productos) {
         this.productos = productos;
     }
 }

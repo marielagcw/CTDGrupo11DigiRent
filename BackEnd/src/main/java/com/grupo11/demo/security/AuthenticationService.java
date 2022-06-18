@@ -35,7 +35,7 @@ public class AuthenticationService implements UserDetailsService {
 
         // Generamos un usuario acorde a lo que necesita Spring Security para luego seguir validando
         org.springframework.security.core.userdetails.User userDetail = new org.springframework.security.core.userdetails.User(user.getNombre(),
-                bCryptPasswordEncoder.encode("password"),
+                bCryptPasswordEncoder.encode(user.getPassword()),
                 true,
                 true,
                 true,

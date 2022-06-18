@@ -19,13 +19,15 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         @Autowired
         private IElementoPoliticaRepository repository;
 
+        // SAVE
         private ElementoPoliticaDTO guardarCategoria(ElementoPoliticaDTO elementoPoliticaDTO){
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
             repository.save(elementoPolitica);
-            elementoPoliticaDTO.setId_elementosPolitica(elementoPolitica.getId_elementosPolitica());
+            elementoPoliticaDTO.setId_elementos_politica(elementoPolitica.getId_elementos_politica());
             return elementoPoliticaDTO;
         }
 
+        // FIND ALL
         @Override
         public Set<ElementoPoliticaDTO> listarTodas() {
             List<ElementoPolitica> elementoPoliticas = repository.findAll();
@@ -36,11 +38,13 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
             return elementoPoliticaDTOList;
         }
 
+        // SAVE
         @Override
         public ElementoPoliticaDTO agregar(ElementoPoliticaDTO elementoPoliticaDTO) {
             return guardarCategoria(elementoPoliticaDTO);
         }
 
+        // FIND BY ID
         @Override
         public ElementoPoliticaDTO buscarPorId(Integer id) {
             Optional<ElementoPolitica> elementoPolitica = repository.findById(id);
@@ -52,15 +56,17 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
             return elementoPoliticaDTO;
         }
 
+        // UPDATE
         @Override
         public ElementoPoliticaDTO actualizar(ElementoPoliticaDTO elementoPoliticaDTO) {
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
-            repository.findById(elementoPolitica.getId_elementosPolitica()).orElseThrow(() -> {
+            repository.findById(elementoPolitica.getId_elementos_politica()).orElseThrow(() -> {
                 return new NoSuchElementException();
             });
             return mapper.convertValue(repository.save(elementoPolitica), ElementoPoliticaDTO.class);
         }
 
+        // DELETE
         @Override
         public void eliminar(Integer id) {
             repository.deleteById(id);

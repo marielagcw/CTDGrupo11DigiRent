@@ -1,8 +1,5 @@
 package com.grupo11.demo.controller;
 
-//import com.grupo11.demo.model.dtos.CaracteristicaDTO;
-
-import com.grupo11.demo.model.Ciudad;
 import com.grupo11.demo.model.dtos.CiudadDTO;
 import com.grupo11.demo.service.implementation.CiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
