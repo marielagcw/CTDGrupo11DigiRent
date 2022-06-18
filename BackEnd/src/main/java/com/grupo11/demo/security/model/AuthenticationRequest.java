@@ -1,4 +1,4 @@
-package com.grupo11.demo.security;
+package com.grupo11.demo.security.model;
 
 public class AuthenticationRequest {
 

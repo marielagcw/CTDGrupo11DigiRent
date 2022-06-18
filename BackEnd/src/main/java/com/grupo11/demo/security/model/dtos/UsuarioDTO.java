@@ -1,26 +1,20 @@
-package com.grupo11.demo.security.Entities;
+package com.grupo11.demo.security.model.dtos;
 
-import javax.persistence.*;
+import com.grupo11.demo.security.model.Rol;
 
-@Entity
-@Table(name = "usuarios")
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+public class UsuarioDTO {
+
     private Integer id_usuarios;
-    @Column(name="nombre_usuario")
     private String nombre;
-    @Column(name="apellido_usuario")
     private String apellido;
-    @Column(name="email_usuario")
     private String email;
-    @Column(name="contrasena_usuario")
     private String password;
-    @Column(name="ciudad_usuario")
     private String ciudad;
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "roles_id_roles", referencedColumnName = "roles_id_roles")
     private Rol roles;
 
     public Integer getId_usuarios() {
@@ -78,4 +72,5 @@ public class Usuario {
     public void setRol(Rol roles) {
         this.roles = roles;
     }
+
 }

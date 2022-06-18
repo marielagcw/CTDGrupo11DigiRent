@@ -6,31 +6,33 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class JwtUtil {
+public class JwtService implements IJwtService {
 
-    // ATTRIBUTES
+    // El SECRET_KEY es una palabra clave para generar y posteriormente validar el token
     private String SECRET_KEY = "secret";
 
-    // METHODS
+    @Override
     public String extractUserName(String token) {
         return extractClaimUsername(token);
     }
 
+    @Override
     public Date extractExpiration(String token) {
         return extractClaimDate(token);
     }
 
+    @Override
     public Date extractClaimDate(String token) {
         Claims claims = extractAllClaims(token);
         return claims.getExpiration();
     }
 
+    @Override
     public String extractClaimUsername(String token) {
         Claims claims = extractAllClaims(token);
         return claims.getSubject();
@@ -49,17 +51,20 @@ public class JwtUtil {
         return createToken(claims, userDetails.getUsername());
     }
 
+
     private String createToken(Map<String, Object> claims, String subject) {
+        Date now = new Date();
         return Jwts
                 .builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(Date.from(Instant.now().plusSeconds(3000)))
+                .setExpiration(new Date(now.getTime() + 10 * 60 * 1000))// 10 minutos
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
 
+    @Override
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUserName(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
