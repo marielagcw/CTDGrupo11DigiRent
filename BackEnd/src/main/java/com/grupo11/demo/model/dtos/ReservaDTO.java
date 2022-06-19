@@ -2,7 +2,7 @@ package com.grupo11.demo.model.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.grupo11.demo.model.Producto;
-import com.grupo11.demo.security.model.Usuario;
+import com.grupo11.demo.model.Usuario;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

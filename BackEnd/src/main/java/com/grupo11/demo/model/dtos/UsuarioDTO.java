@@ -1,9 +1,5 @@
-package com.grupo11.demo.security.model.dtos;
+package com.grupo11.demo.model.dtos;
 
-import com.grupo11.demo.model.dtos.ReservaDTO;
-import com.grupo11.demo.security.model.Rol;
-
-import java.beans.JavaBean;
 import java.util.HashSet;
 import java.util.Set;
 

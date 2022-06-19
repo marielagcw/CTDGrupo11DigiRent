@@ -1,9 +1,7 @@
-package com.grupo11.demo.security.model;
+package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.grupo11.demo.model.Reserva;
 
 import javax.persistence.*;
 import java.util.Set;

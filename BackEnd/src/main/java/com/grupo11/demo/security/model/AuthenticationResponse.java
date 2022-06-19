@@ -1,4 +1,4 @@
-package com.grupo11.demo.security.model.dtos;
+package com.grupo11.demo.security.model;
 
 public class AuthenticationResponse {
 

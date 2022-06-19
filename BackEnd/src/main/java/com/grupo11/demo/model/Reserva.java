@@ -1,8 +1,6 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grupo11.demo.security.model.Usuario;
 
 import javax.persistence.*;
 import java.time.LocalDate;

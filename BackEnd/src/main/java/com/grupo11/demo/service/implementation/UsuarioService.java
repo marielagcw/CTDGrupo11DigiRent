@@ -1,8 +1,9 @@
-package com.grupo11.demo.security;
+package com.grupo11.demo.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grupo11.demo.security.model.Usuario;
-import com.grupo11.demo.security.model.dtos.UsuarioDTO;
+import com.grupo11.demo.model.Usuario;
+import com.grupo11.demo.model.dtos.UsuarioDTO;
+import com.grupo11.demo.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,10 +17,10 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UsuarioService implements UserDetailsService {
 
     @Autowired
-    IUserRepository userRepository;
+    IUsuarioRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
