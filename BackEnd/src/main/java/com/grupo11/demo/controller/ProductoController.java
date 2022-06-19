@@ -51,10 +51,15 @@ public class ProductoController {
     }
 
     // FIND BY ID / GET BY ID
+    //@GetMapping("/{id}")
+    // public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
+    //    ProductoDTO productoDTO = productoService.buscarPorId(id);
+    //    return ResponseEntity.ok(productoDTO);
+    //}
     @GetMapping("/{id}")
-    public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
+    public ProductoDTO buscar(@PathVariable Integer id) {
         ProductoDTO productoDTO = productoService.buscarPorId(id);
-        return ResponseEntity.ok(productoDTO);
+        return productoDTO;
     }
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
