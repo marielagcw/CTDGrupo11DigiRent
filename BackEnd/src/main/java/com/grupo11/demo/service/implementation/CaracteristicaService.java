@@ -19,6 +19,7 @@ public class CaracteristicaService implements ICaracteristicaService {
     @Autowired
     private ICaracteristicaRepository repository;
 
+    // SAVE
     private CaracteristicaDTO guardarCaracteristica(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
         repository.save(caracteristica);

@@ -19,6 +19,7 @@ public class CategoriaService implements ICategoriaService {
     @Autowired
     private ICategoriaRepository repository;
 
+    // SAVE
     private CategoriaDTO guardarCategoria(CategoriaDTO categoriaDTO){
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         repository.save(categoria);
