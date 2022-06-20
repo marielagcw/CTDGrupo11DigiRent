@@ -3,6 +3,7 @@ package com.grupo11.demo.security.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,9 @@ public class JwtService implements IJwtService {
 
     // El SECRET_KEY es una palabra clave para generar y posteriormente validar el token
     private String SECRET_KEY = "secret";
+
+    @Value("${minutesToken}")
+    private int minutesToken;
 
     @Override
     public String extractUserName(String token) {
@@ -59,7 +63,7 @@ public class JwtService implements IJwtService {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(now.getTime() + 10 * 60 * 1000))// 10 minutos
+                .setExpiration(new Date(now.getTime() + minutesToken * 60 * 1000))// 10 minutos
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
