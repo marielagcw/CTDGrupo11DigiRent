@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 
-const PHOTOS = [];
+const PHOTOS = []; // para la galeria de imagenes onClick es necesario
 
 export default function ProductGalery({ galery }) {
     galery.forEach(info => {
@@ -32,7 +32,7 @@ export default function ProductGalery({ galery }) {
                 <div className='container'>
                     <div className="row gx-1">
                         <div className='left-side col-md-6'>
-                            <img src={galery[0].url} alt={galery[0].title} />
+                            <img src={PHOTOS[0]} alt={galery[0].title} />
                         </div>
                         <div className='rigth-side col-md-6 '>
 

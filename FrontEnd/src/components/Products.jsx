@@ -25,12 +25,12 @@ export default function Products() {
     if (isPending) {
         console.log(error);
     }
-    let { nombre_producto,
-        titulo_descripcion,
+    let { nombreProducto,
+        tituloDescripcion,
         descripcion,
         imagenes,
-        categorias,
-        ciudades,
+        categoria,
+        ciudad,
         caracteristicas,
         politicas } = { ...data };
 
@@ -41,15 +41,15 @@ export default function Products() {
                 <div className="title-product">
                     {isPending ? <Spinner /> :
                         <>
-                            <h3>{categorias.titulo}</h3>
-                            <h1>{titulo_descripcion}</h1>
+                            <h3>{categoria.titulo}</h3>
+                            <h1>{tituloDescripcion}</h1>
                         </>}
                 </div>
                 <div className='back d-flex justify-content-center allign-items-center' onClick={() => navigate('/')}>
                     <BsChevronLeft />
                 </div>
             </div>
-            {isPending ? <Spinner /> : <ProductLocation productInfo={ciudades} />}
+            {isPending ? <Spinner /> : <ProductLocation productInfo={ciudad} />}
             {isPending ? <Spinner /> : <ProductGalery galery={imagenes} />}
             <div id='description'>
                 <h2 className='description-title title'>Descripción</h2>
