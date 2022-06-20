@@ -12,7 +12,8 @@ public class Politica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_politica;
+    @Column(name="id_politica")
+    private Integer id;
 
     @Column(name = "titulo")
     private String titulo;
@@ -21,10 +22,11 @@ public class Politica {
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
-    @OneToMany(mappedBy = "politicas")
+    @OneToMany(mappedBy = "politica")
     @JsonIgnore
     private Set<ElementoPolitica> elementos = new HashSet<>();
 
+    // CONSTRUCTORES
     public Politica() {
     }
 
@@ -34,12 +36,14 @@ public class Politica {
         this.elementos = elementos;
     }
 
-    public Integer getId_politica() {
-        return id_politica;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_politica(Integer id_politica) {
-        this.id_politica = id_politica;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {

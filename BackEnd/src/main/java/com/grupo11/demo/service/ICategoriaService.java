@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface ICategoriaService {
 
-    Set<CategoriaDTO> listarTodas();
+    Set<CategoriaDTO> listarTodo();
 
     CategoriaDTO agregar(CategoriaDTO categoriaDTO);
 

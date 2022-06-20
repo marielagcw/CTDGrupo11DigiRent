@@ -19,7 +19,7 @@ public class CiudadController {
 
     @GetMapping("/listarTodos")
     public Set<CiudadDTO> listarTodos() {
-        return ciudadService.listarTodas();
+        return ciudadService.listarTodo();
     }
 
     @PostMapping("/agregar")

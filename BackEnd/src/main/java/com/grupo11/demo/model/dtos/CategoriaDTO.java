@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CategoriaDTO {
-    private Integer id_categoria;
+    private Integer id;
     private String titulo;
     private String descripcion;
     private String url;
@@ -15,12 +15,13 @@ public class CategoriaDTO {
     public CategoriaDTO() {
     }
 
-    public Integer getId_categoria() {
-        return id_categoria;
+    // GETTERS Y SETTERS
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_categoria(Integer id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {

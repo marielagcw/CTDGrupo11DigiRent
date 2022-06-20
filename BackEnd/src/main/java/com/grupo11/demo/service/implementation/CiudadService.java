@@ -23,13 +23,13 @@ public class CiudadService implements ICiudadService {
     private CiudadDTO guardarCiudad(CiudadDTO ciudadDTO){
         Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
         repository.save(ciudad);
-        ciudadDTO.setId_ciudad(ciudad.getId_ciudad());
+        ciudadDTO.setId(ciudad.getId());
         return ciudadDTO;
     }
 
     // FIND ALL
     @Override
-    public Set<CiudadDTO> listarTodas() {
+    public Set<CiudadDTO> listarTodo() {
         List<Ciudad> ciudades = repository.findAll();
         Set<CiudadDTO> CiudadDTOList = new HashSet<>();
         for (Ciudad ciudad : ciudades) {
@@ -60,7 +60,7 @@ public class CiudadService implements ICiudadService {
     @Override
     public CiudadDTO actualizar(CiudadDTO ciudadDTO) {
         Ciudad ciudad = mapper.convertValue(ciudadDTO, Ciudad.class);
-        repository.findById(ciudad.getId_ciudad()).orElseThrow(() -> {
+        repository.findById(ciudad.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(ciudad), CiudadDTO.class);

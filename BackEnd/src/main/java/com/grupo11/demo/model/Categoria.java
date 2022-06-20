@@ -10,7 +10,8 @@ import java.util.Set;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_categoria;
+    @Column(name="id_categoria")
+    private Integer id;
 
     @Column(name = "titulo")
     private String titulo;
@@ -21,7 +22,7 @@ public class Categoria {
     @Column(name = "url")
     private String url;
 
-    @OneToMany(mappedBy = "categorias")
+    @OneToMany(mappedBy = "categoria")
     @JsonIgnore
     private Set<Producto> productos;
 
@@ -35,12 +36,14 @@ public class Categoria {
         this.productos = productos;
     }
 
-    public Integer getId_categoria() {
-        return id_categoria;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_categoria(Integer id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {

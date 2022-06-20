@@ -1,25 +1,27 @@
 package com.grupo11.demo.model.dtos;
 
+import com.grupo11.demo.model.Reserva;
+import com.grupo11.demo.model.Rol;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class UsuarioDTO {
 
-    private Integer id_usuarios;
+    private Integer id;
     private String nombre;
     private String apellido;
     private String email;
     private String password;
     private String ciudad;
-    private RolDTO roles;
-    private Set<ReservaDTO> reservas = new HashSet<>();
+    private Rol rol;
 
-    public Integer getId_usuarios() {
-        return id_usuarios;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_usuarios(Integer id_usuarios) {
-        this.id_usuarios = id_usuarios;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -62,19 +64,12 @@ public class UsuarioDTO {
         this.ciudad = ciudad;
     }
 
-    public RolDTO getRoles() {
-        return roles;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRoles(RolDTO roles) {
-        this.roles = roles;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
-    public Set<ReservaDTO> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(Set<ReservaDTO> reservas) {
-        this.reservas = reservas;
-    }
 }

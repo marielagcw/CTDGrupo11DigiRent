@@ -8,29 +8,33 @@ public class ElementoPolitica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_elementos_politica;
+    @Column(name="id_elementos_politica")
+    private Integer id;
 
     @Column(name = "nombre")
     private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "politicas_id_politica", referencedColumnName = "id_politica", nullable = false)
-    private Politica politicas;
+    private Politica politica;
 
+    // CONSTRUCTORES
     public ElementoPolitica() {
     }
 
-    public ElementoPolitica(String nombre, Politica politicas) {
+    public ElementoPolitica(String nombre, Politica politica) {
         this.nombre = nombre;
-        this.politicas = politicas;
+        this.politica = politica;
     }
 
-    public Integer getId_elementos_politica() {
-        return id_elementos_politica;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_elementos_politica(Integer id_elementos_politica) {
-        this.id_elementos_politica = id_elementos_politica;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -41,11 +45,11 @@ public class ElementoPolitica {
         this.nombre = nombre;
     }
 
-    public Politica getPoliticas() {
-        return politicas;
+    public Politica getPolitica() {
+        return politica;
     }
 
-    public void setPoliticas(Politica politicas) {
-        this.politicas = politicas;
+    public void setPolitica(Politica politica) {
+        this.politica = politica;
     }
 }

@@ -23,13 +23,15 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         private ElementoPoliticaDTO guardarCategoria(ElementoPoliticaDTO elementoPoliticaDTO){
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
             repository.save(elementoPolitica);
-            elementoPoliticaDTO.setId_elementos_politica(elementoPolitica.getId_elementos_politica());
+            elementoPoliticaDTO.setId
+                    (elementoPolitica.getId
+                            ());
             return elementoPoliticaDTO;
         }
 
         // FIND ALL
         @Override
-        public Set<ElementoPoliticaDTO> listarTodas() {
+        public Set<ElementoPoliticaDTO> listarTodo() {
             List<ElementoPolitica> elementoPoliticas = repository.findAll();
             Set<ElementoPoliticaDTO> elementoPoliticaDTOList = new HashSet<>();
             for (ElementoPolitica elementoPolitica : elementoPoliticas) {
@@ -60,7 +62,8 @@ public class ElementoPoliticaService implements IElementoPoliticaService {
         @Override
         public ElementoPoliticaDTO actualizar(ElementoPoliticaDTO elementoPoliticaDTO) {
             ElementoPolitica elementoPolitica = mapper.convertValue(elementoPoliticaDTO, ElementoPolitica.class);
-            repository.findById(elementoPolitica.getId_elementos_politica()).orElseThrow(() -> {
+            repository.findById(elementoPolitica.getId
+                    ()).orElseThrow(() -> {
                 return new NoSuchElementException();
             });
             return mapper.convertValue(repository.save(elementoPolitica), ElementoPoliticaDTO.class);

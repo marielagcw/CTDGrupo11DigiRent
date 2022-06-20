@@ -4,19 +4,20 @@ import com.grupo11.demo.model.Politica;
 
 public class ElementoPoliticaDTO {
 
-    private Integer id_elementos_politica;
+    private Integer id;
     private String nombre;
-    private Politica politicas;
+    private Politica politica;
 
     public ElementoPoliticaDTO() {
     }
 
-    public Integer getId_elementos_politica() {
-        return id_elementos_politica;
+    // GETTERS Y SETTERS
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_elementos_politica(Integer id_elementos_politica) {
-        this.id_elementos_politica = id_elementos_politica;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -27,11 +28,11 @@ public class ElementoPoliticaDTO {
         this.nombre = nombre;
     }
 
-    public Politica getPoliticas() {
-        return politicas;
+    public Politica getPolitica() {
+        return politica;
     }
 
-    public void setPoliticas(Politica politicas) {
-        this.politicas = politicas;
+    public void setPolitica(Politica politica) {
+        this.politica = politica;
     }
 }

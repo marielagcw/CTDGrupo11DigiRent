@@ -10,7 +10,8 @@ public class Imagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_imagen;
+    @Column(name="id_imagen")
+    private Integer id;
 
     @Column(name = "titulo")
     private String titulo;
@@ -21,23 +22,26 @@ public class Imagen {
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
-    private Producto productos;
+    private Producto producto;
 
+    // CONSTRUCTORES
     public Imagen() {
     }
 
     public Imagen(String titulo, String url, Producto producto) {
         this.titulo = titulo;
         this.url = url;
-        this.productos = producto;
+        this.producto = producto;
     }
 
-    public Integer getId_imagen() {
-        return id_imagen;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_imagen(Integer id_imagen) {
-        this.id_imagen = id_imagen;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -56,11 +60,11 @@ public class Imagen {
         this.url = url;
     }
 
-    public Producto getProductos() {
-        return productos;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductos(Producto productos) {
-        this.productos = productos;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

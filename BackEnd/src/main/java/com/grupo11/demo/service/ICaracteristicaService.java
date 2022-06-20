@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface ICaracteristicaService {
 
-    Set<CaracteristicaDTO> listarTodas();
+    Set<CaracteristicaDTO> listarTodo();
 
     CaracteristicaDTO agregar(CaracteristicaDTO caracteristicaDTO);
 

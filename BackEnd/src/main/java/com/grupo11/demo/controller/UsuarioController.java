@@ -32,11 +32,11 @@ public class UsuarioController {
     ///FIND ALL
     @GetMapping("/listarTodos")
     public Set<UsuarioDTO> listarTodos() {
-        return service.listarTodas();
+        return service.listarTodo();
     }
 
     // SAVE
-    @PostMapping("/agregar")
+    @PostMapping("/registro")
     public ResponseEntity<?> guardar(@RequestBody UsuarioDTO usuarioDTO) {
         service.agregar(usuarioDTO);
         return ResponseEntity.ok(usuarioDTO);

@@ -21,7 +21,7 @@ public class RolService implements IRolService {
     public RolDTO agregar(RolDTO rolDTO) {
         Rol rol = mapper.convertValue(rolDTO, Rol.class);
         repository.save(rol);
-        rolDTO.setId_roles(rol.getId_roles());
+        rolDTO.setId(rol.getId());
         return rolDTO;
     }
 
@@ -49,7 +49,7 @@ public class RolService implements IRolService {
     // UPDATE
     public RolDTO actualizar(RolDTO rolDTO) {
         Rol rol = mapper.convertValue(rolDTO, Rol.class);
-        repository.findById(rol.getId_roles()).orElseThrow(() -> {
+        repository.findById(rol.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(rol), RolDTO.class);

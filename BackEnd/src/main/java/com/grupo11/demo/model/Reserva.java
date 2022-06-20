@@ -1,6 +1,7 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,7 +13,8 @@ public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_reserva;
+    @Column(name="id_reserva")
+    private Integer id;
     @Column (name = "hora_inicio")
     private LocalTime horaInicio;
     @Column(name = "fecha_inicial")
@@ -21,32 +23,32 @@ public class Reserva {
     private LocalDate fechaFinal;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
-    private Producto productos;
+    private Producto producto;
 
     @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuarios", nullable = false)
-    private Usuario usuarios;
+    @JoinColumn(name="usuarios_id_usuarios", referencedColumnName = "id_usuarios", nullable = false)
+    private Usuario usuario;
 
+    //CONSTRUCTORES
     public Reserva() {
     }
-
-    public Reserva(Integer id_reserva, LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto productos, Usuario usuarios) {
-        this.id_reserva = id_reserva;
+    public Reserva(LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto producto) {
         this.horaInicio = horaInicio;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
-        this.productos = productos;
-        this.usuarios = usuarios;
+        this.producto = producto;
     }
 
-    public Integer getId_reserva() {
-        return id_reserva;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_reserva(Integer id_reserva) {
-        this.id_reserva = id_reserva;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalTime getHoraInicio() {
@@ -73,19 +75,19 @@ public class Reserva {
         this.fechaFinal = fechaFinal;
     }
 
-    public Producto getProductos() {
-        return productos;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductos(Producto productos) {
-        this.productos = productos;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public Usuario getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

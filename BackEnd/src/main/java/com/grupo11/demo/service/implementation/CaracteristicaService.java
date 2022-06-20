@@ -23,13 +23,13 @@ public class CaracteristicaService implements ICaracteristicaService {
     private CaracteristicaDTO guardarCaracteristica(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
         repository.save(caracteristica);
-        caracteristicaDTO.setId_caracteristica(caracteristica.getId_caracteristica());
+        caracteristicaDTO.setId(caracteristica.getId());
         return caracteristicaDTO;
     }
 
     // FIND ALL
     @Override
-    public Set<CaracteristicaDTO> listarTodas() {
+    public Set<CaracteristicaDTO> listarTodo() {
         List<Caracteristica> caracteristicas = repository.findAll();
         Set<CaracteristicaDTO> CaracteristicaDTOList = new HashSet<>();
         for (Caracteristica caracteristica : caracteristicas) {
@@ -60,7 +60,7 @@ public class CaracteristicaService implements ICaracteristicaService {
     @Override
     public CaracteristicaDTO actualizar(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
-        repository.findById(caracteristica.getId_caracteristica()).orElseThrow(() -> {
+        repository.findById(caracteristica.getId()).orElseThrow(() -> {
             return new NoSuchElementException(); //TODO agregado buscar ID para verificar si existe o no, si no existe arroja excepción
         });
         return mapper.convertValue(repository.save(caracteristica), CaracteristicaDTO.class);

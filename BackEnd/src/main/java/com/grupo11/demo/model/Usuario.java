@@ -1,9 +1,11 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,7 +13,8 @@ import java.util.Set;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_usuarios;
+    @Column(name="id_usuarios")
+    private Integer id;
     @Column(name="nombre_usuario")
     private String nombre;
     @Column(name="apellido_usuario")
@@ -24,20 +27,19 @@ public class Usuario {
     private String ciudad;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "roles_id_roles", referencedColumnName="id_roles", nullable = false)
-    private Rol roles;
+    private Rol rol;
 
-    @OneToMany(mappedBy = "usuarios")
-    @JsonManagedReference
-    private Set<Reserva> reservas;
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
+    private Set<Reserva> reservas = new HashSet<>();
 
-    public Integer getId_usuarios() {
-        return id_usuarios;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_usuarios(Integer id_usuarios) {
-        this.id_usuarios = id_usuarios;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -80,12 +82,12 @@ public class Usuario {
         this.ciudad = ciudad;
     }
 
-    public Rol getRoles() {
-        return roles;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRoles(Rol roles) {
-        this.roles = roles;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     public Set<Reserva> getReservas() {

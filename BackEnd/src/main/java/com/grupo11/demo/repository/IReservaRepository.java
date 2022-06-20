@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface IReservaRepository  extends JpaRepository<Reserva, Integer> {
-    @Query("FROM Reserva r WHERE r.productos.id_producto = :id ")
+    @Query("FROM Reserva r WHERE r.producto.id = :id ")
     List<Reserva> findAllByProducto(Integer id, Pageable pageable);
+
 }

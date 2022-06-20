@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class CiudadDTO {
 
-    private Integer id_ciudad;
+    private Integer id;
     private String nombre;
     private String provincia;
     private String pais;
@@ -16,12 +16,13 @@ public class CiudadDTO {
     public CiudadDTO() {
     }
 
-    public Integer getId_ciudad() {
-        return id_ciudad;
+    // GETTERS Y SETTERS
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_ciudad(Integer id_ciudad) {
-        this.id_ciudad = id_ciudad;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {

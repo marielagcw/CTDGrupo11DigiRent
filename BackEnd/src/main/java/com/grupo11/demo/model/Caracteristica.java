@@ -13,7 +13,8 @@ public class Caracteristica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_caracteristica;
+    @Column(name="id_caracteristica")
+    private Integer id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -25,6 +26,7 @@ public class Caracteristica {
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
+    // CONSTRUCTORES
     public Caracteristica() {
     }
 
@@ -34,12 +36,14 @@ public class Caracteristica {
         this.productos = productos;
     }
 
-    public Integer getId_caracteristica() {
-        return id_caracteristica;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_caracteristica(Integer id_caracteristica) {
-        this.id_caracteristica = id_caracteristica;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {

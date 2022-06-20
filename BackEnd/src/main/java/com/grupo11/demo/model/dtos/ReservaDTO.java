@@ -8,23 +8,23 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class ReservaDTO {
-    private Integer id_reserva;
+    private Integer id;
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime horaInicio;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    private Producto productos;
-    private Usuario usuarios;
+    private Producto producto;
+    private Usuario usuario;
 
     public ReservaDTO() {
     }
 
-    public Integer getId_reserva() {
-        return id_reserva;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_reserva(Integer id_reserva) {
-        this.id_reserva = id_reserva;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalTime getHoraInicio() {
@@ -51,19 +51,19 @@ public class ReservaDTO {
         this.fechaFinal = fechaFinal;
     }
 
-    public Producto getProductos() {
-        return productos;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductos(Producto productos) {
-        this.productos = productos;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public Usuario getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

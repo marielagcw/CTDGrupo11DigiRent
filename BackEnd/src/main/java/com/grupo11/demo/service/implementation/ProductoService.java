@@ -26,13 +26,13 @@ public class ProductoService implements IProductoSevice {
     private ProductoDTO guardarProducto(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         repository.save(producto);
-        productoDTO.setId_producto(producto.getId_producto());
+        productoDTO.setId(producto.getId());
         return productoDTO;
     }
 
     // FIND ALL
     @Override
-    public Set<ProductoDTO> listarTodas(Pageable pageable) {
+    public Set<ProductoDTO> listarTodo(Pageable pageable) {
         Page<Producto> productos = repository.findAll(pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
@@ -75,7 +75,7 @@ public class ProductoService implements IProductoSevice {
     @Override
     public ProductoDTO actualizar(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
-        repository.findById(producto.getId_producto()).orElseThrow(() -> {
+        repository.findById(producto.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(producto), ProductoDTO.class);
@@ -91,7 +91,7 @@ public class ProductoService implements IProductoSevice {
     // FIND BY ID CIUDAD
     @Override
     public Set<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCiudades(id, pageable);
+        List<Producto> productos = repository.findAllByCiudad(id, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
             productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
@@ -103,7 +103,7 @@ public class ProductoService implements IProductoSevice {
 
     // FIND BY ID CATEGORIA
     public Set<ProductoDTO> buscarProductosPorCategoria(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCategorias(id, pageable);
+        List<Producto> productos = repository.findAllByCategoria(id, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
             productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));

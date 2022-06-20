@@ -7,13 +7,13 @@ import java.util.Set;
 
 public class ProductoDTO {
 
-    private Integer id_producto;
-    private String nombre_producto;
-    private String titulo_descripcion;
+    private Integer id;
+    private String nombreProducto;
+    private String tituloDescripcion;
     private String descripcion;
     private Set<Imagen> imagenes = new HashSet<>();
-    private Categoria categorias;
-    private Ciudad ciudades;
+    private Categoria categoria;
+    private Ciudad ciudad;
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
     private Set<Reserva> reservas = new HashSet<>();
@@ -21,28 +21,30 @@ public class ProductoDTO {
     public ProductoDTO() {
     }
 
-    public Integer getId_producto() {
-        return id_producto;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_producto(Integer id_producto) {
-        this.id_producto = id_producto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNombre_producto() {
-        return nombre_producto;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setNombre_producto(String nombre_producto) {
-        this.nombre_producto = nombre_producto;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
-    public String getTitulo_descripcion() {
-        return titulo_descripcion;
+    public String getTituloDescripcion() {
+        return tituloDescripcion;
     }
 
-    public void setTitulo_descripcion(String titulo_descripcion) {
-        this.titulo_descripcion = titulo_descripcion;
+    public void setTituloDescripcion(String tituloDescripcion) {
+        this.tituloDescripcion = tituloDescripcion;
     }
 
     public String getDescripcion() {
@@ -61,20 +63,20 @@ public class ProductoDTO {
         this.imagenes = imagenes;
     }
 
-    public Categoria getCategorias() {
-        return categorias;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategorias(Categoria categorias) {
-        this.categorias = categorias;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-    public Ciudad getCiudades() {
-        return ciudades;
+    public Ciudad getCiudad() {
+        return ciudad;
     }
 
-    public void setCiudades(Ciudad ciudades) {
-        this.ciudades = ciudades;
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
 
     public Set<Caracteristica> getCaracteristicas() {
@@ -91,5 +93,13 @@ public class ProductoDTO {
 
     public void setPoliticas(Set<Politica> politicas) {
         this.politicas = politicas;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }

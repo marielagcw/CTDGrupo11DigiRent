@@ -23,13 +23,13 @@ public class ImagenService implements IImagenService {
     private ImagenDTO guardarImagen(ImagenDTO imagenDTO){
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
         repository.save(imagen);
-        imagenDTO.setId_imagen(imagen.getId_imagen());
+        imagenDTO.setId(imagen.getId());
         return imagenDTO;
     }
 
     // FIND ALL
     @Override
-    public Set<ImagenDTO> listarTodas() {
+    public Set<ImagenDTO> listarTodo() {
         List<Imagen> imagenes = repository.findAll();
         Set<ImagenDTO> imagenDTOList = new HashSet<>();
         for (Imagen imagen : imagenes) {
@@ -60,7 +60,7 @@ public class ImagenService implements IImagenService {
     @Override
     public ImagenDTO actualizar(ImagenDTO imagenDTO) {
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
-        repository.findById(imagen.getId_imagen()).orElseThrow(() -> {
+        repository.findById(imagen.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(imagen), ImagenDTO.class);

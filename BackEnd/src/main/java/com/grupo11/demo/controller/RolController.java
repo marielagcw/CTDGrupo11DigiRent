@@ -22,9 +22,9 @@ public class RolController {
 
     // SAVE
     @PostMapping("/agregar")
-    public ResponseEntity<?> guardar(@RequestBody RolDTO usuarioDTO) {
-        service.agregar(usuarioDTO);
-        return ResponseEntity.ok(usuarioDTO);
+    public ResponseEntity<?> guardar(@RequestBody RolDTO rolDTO) {
+        service.agregar(rolDTO);
+        return ResponseEntity.ok(rolDTO);
     }
 
     // DELETE
@@ -36,16 +36,16 @@ public class RolController {
 
     // UPDATE
     @PutMapping("/actualizar")
-    public ResponseEntity<?> editarProducto(@RequestBody RolDTO usuarioDTO) {
-        service.actualizar(usuarioDTO);
-        return ResponseEntity.ok(usuarioDTO);
+    public ResponseEntity<?> editarProducto(@RequestBody RolDTO rolDTO) {
+        service.actualizar(rolDTO);
+        return ResponseEntity.ok(rolDTO);
     }
 
     // FIND BY ID
     @GetMapping("/{id}")
     public ResponseEntity<RolDTO> buscar(@PathVariable Integer id) {
-        RolDTO usuarioDTO = service.buscarPorId(id);
-        return ResponseEntity.ok(usuarioDTO);
+        RolDTO rolDTO = service.buscarPorId(id);
+        return ResponseEntity.ok(rolDTO);
 
     }
 }

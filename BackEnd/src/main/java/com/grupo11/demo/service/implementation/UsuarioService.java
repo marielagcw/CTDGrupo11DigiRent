@@ -34,12 +34,12 @@ public class UsuarioService implements UserDetailsService {
     public UsuarioDTO agregar(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
         userRepository.save(usuario);
-        usuarioDTO.setId_usuarios(usuario.getId_usuarios());
+        usuarioDTO.setId(usuario.getId());
         return usuarioDTO;
     }
 
     // FIND ALL
-    public Set<UsuarioDTO> listarTodas() {
+    public Set<UsuarioDTO> listarTodo() {
         List<Usuario> usuarios = userRepository.findAll();
         Set<UsuarioDTO> usuarioDTOList = new HashSet<>();
         for (Usuario usuario : usuarios) {
@@ -62,7 +62,7 @@ public class UsuarioService implements UserDetailsService {
     // UPDATE
     public UsuarioDTO actualizar(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
-        userRepository.findById(usuario.getId_usuarios()).orElseThrow(() -> {
+        userRepository.findById(usuario.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(userRepository.save(usuario), UsuarioDTO.class);
@@ -83,7 +83,7 @@ public class UsuarioService implements UserDetailsService {
         // Le asignamos los roles al usuario (en este caso cada usuario tiene un solo rol)
         Set<GrantedAuthority> autorizaciones = new HashSet<>();
         GrantedAuthority autorizacion = null;
-        autorizacion = new SimpleGrantedAuthority("ROLE_" + user.getRoles().getNombre());
+        autorizacion = new SimpleGrantedAuthority("ROLE_" + user.getRol().getNombre().toUpperCase(Locale.ROOT));
         autorizaciones.add(autorizacion);
 
         // Generamos un usuario de la librería de SpringSecurity donde indicamos username, password y rol que es lo que necesita spring para hacer las validaciones

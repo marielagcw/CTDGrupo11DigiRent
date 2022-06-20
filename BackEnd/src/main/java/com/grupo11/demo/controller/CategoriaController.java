@@ -19,7 +19,7 @@ public class CategoriaController {
 
     @GetMapping("/listarTodos")
     public Set<CategoriaDTO> listarTodos() {
-        return categoriaService.listarTodas();
+        return categoriaService.listarTodo();
     }
 
     @PostMapping("/agregar")
