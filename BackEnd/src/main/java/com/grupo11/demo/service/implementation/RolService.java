@@ -6,9 +6,11 @@ import com.grupo11.demo.model.dtos.RolDTO;
 import com.grupo11.demo.repository.IRolRepository;
 import com.grupo11.demo.service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class RolService implements IRolService {
 
     @Autowired
