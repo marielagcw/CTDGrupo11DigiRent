@@ -11,6 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/politicas")
+@CrossOrigin(origins = "*")
 public class PoliticaController {
 
     @Autowired
@@ -18,7 +19,7 @@ public class PoliticaController {
 
     @GetMapping("/listarTodos")
     public Set<PoliticaDTO> listarTodos() {
-        return politicaService.listarTodas();
+        return politicaService.listarTodo();
     }
 
     @PostMapping("/agregar")

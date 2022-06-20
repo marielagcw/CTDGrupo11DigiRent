@@ -1,59 +1,105 @@
 package com.grupo11.demo.model.dtos;
 
 import com.grupo11.demo.model.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@NoArgsConstructor
 public class ProductoDTO {
 
-    private Integer id_producto;
-    private String nombre_producto;
-    private String titulo_descripcion;
+    private Integer id;
+    private String nombreProducto;
+    private String tituloDescripcion;
     private String descripcion;
     private Set<Imagen> imagenes = new HashSet<>();
-    private Categoria categorias;
-    private Ciudad ciudades;
+    private Categoria categoria;
+    private Ciudad ciudad;
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
+    private Set<Reserva> reservas = new HashSet<>();
 
-    public void setId_producto(Integer id_producto) {
-        this.id_producto = id_producto;
+    public ProductoDTO() {
     }
 
-    public void setNombre_producto(String nombre_producto) {
-        this.nombre_producto = nombre_producto;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setTitulo_descripcion(String titulo_descripcion) {
-        this.titulo_descripcion = titulo_descripcion;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getTituloDescripcion() {
+        return tituloDescripcion;
+    }
+
+    public void setTituloDescripcion(String tituloDescripcion) {
+        this.tituloDescripcion = tituloDescripcion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public void setCategorias(Categoria categorias) {
-        this.categorias = categorias;
-    }
-
-    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
-        this.caracteristicas = caracteristicas;
+    public Set<Imagen> getImagenes() {
+        return imagenes;
     }
 
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
 
-    public void setCiudades(Ciudad ciudades) {
-        this.ciudades = ciudades;
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Set<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public Set<Politica> getPoliticas() {
+        return politicas;
     }
 
     public void setPoliticas(Set<Politica> politicas) {
         this.politicas = politicas;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }

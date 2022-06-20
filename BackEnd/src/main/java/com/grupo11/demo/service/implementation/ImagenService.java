@@ -19,15 +19,17 @@ public class ImagenService implements IImagenService {
     @Autowired
     private IImagenRepository repository;
 
+    // SAVE
     private ImagenDTO guardarImagen(ImagenDTO imagenDTO){
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
         repository.save(imagen);
-        imagenDTO.setId_imagen(imagen.getId_imagen());
+        imagenDTO.setId(imagen.getId());
         return imagenDTO;
     }
 
+    // FIND ALL
     @Override
-    public Set<ImagenDTO> listarTodas() {
+    public Set<ImagenDTO> listarTodo() {
         List<Imagen> imagenes = repository.findAll();
         Set<ImagenDTO> imagenDTOList = new HashSet<>();
         for (Imagen imagen : imagenes) {
@@ -36,11 +38,13 @@ public class ImagenService implements IImagenService {
         return imagenDTOList;
     }
 
+    // SAVE
     @Override
     public ImagenDTO agregar(ImagenDTO imagenDTO) {
         return guardarImagen(imagenDTO);
     }
 
+    // FIND BY ID
     @Override
     public ImagenDTO buscarPorId(Integer id) {
         Optional<Imagen> imagen = repository.findById(id);
@@ -52,16 +56,17 @@ public class ImagenService implements IImagenService {
         return imagenDTO;
     }
 
-
+    // UPDATE
     @Override
     public ImagenDTO actualizar(ImagenDTO imagenDTO) {
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
-        repository.findById(imagen.getId_imagen()).orElseThrow(() -> {
+        repository.findById(imagen.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(imagen), ImagenDTO.class);
     }
 
+    // DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface ICiudadService {
 
-    Set<CiudadDTO> listarTodas();
+    Set<CiudadDTO> listarTodo();
 
     CiudadDTO agregar(CiudadDTO ciudadDTO);
 

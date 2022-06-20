@@ -6,6 +6,7 @@ import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.repository.IProductoRepository;
 import com.grupo11.demo.service.IProductoSevice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +26,19 @@ public class ProductoService implements IProductoSevice {
     private ProductoDTO guardarProducto(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
         repository.save(producto);
-        productoDTO.setId_producto(producto.getId_producto());
+        productoDTO.setId(producto.getId());
         return productoDTO;
     }
 
     // FIND ALL
     @Override
-    public List<ProductoDTO> listarTodas(Pageable pageable) {
-        List<Producto> productos = repository.findAll(pageable).getContent();
-        return productos.stream()
-                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
-                .collect(Collectors.toList());
+    public Set<ProductoDTO> listarTodo(Pageable pageable) {
+        Page<Producto> productos = repository.findAll(pageable);
+        Set<ProductoDTO> productoDTOList = new HashSet<>();
+        for (Producto producto : productos) {
+            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+        return productoDTOList;
     }
 
     // FIND ALL RANDOM
@@ -72,33 +75,39 @@ public class ProductoService implements IProductoSevice {
     @Override
     public ProductoDTO actualizar(ProductoDTO productoDTO) {
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
-        repository.findById(producto.getId_producto()).orElseThrow(() -> {
+        repository.findById(producto.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(producto), ProductoDTO.class);
     }
 
-    //DELETE
+    // DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);
     }
 
+
     // FIND BY ID CIUDAD
     @Override
-    public List<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCiudades(id, pageable);
-        return productos.stream()
-                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
-                .collect(Collectors.toList());
+    public Set<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCiudad(id, pageable);
+        Set<ProductoDTO> productoDTOList = new HashSet<>();
+        for (Producto producto : productos) {
+            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+        return productoDTOList;
+
+
     }
 
     // FIND BY ID CATEGORIA
-    public List<ProductoDTO> buscarProductosPorCategoria(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCategorias(id, pageable);
-        return productos.stream()
-                .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
-                .collect(Collectors.toList());
+    public Set<ProductoDTO> buscarProductosPorCategoria(Integer id, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCategoria(id, pageable);
+        Set<ProductoDTO> productoDTOList = new HashSet<>();
+        for (Producto producto : productos) {
+            productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+        return productoDTOList;
     }
-
 }

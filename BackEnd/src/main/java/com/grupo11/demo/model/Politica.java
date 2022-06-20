@@ -1,24 +1,19 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "politicas")
 public class Politica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_politica;
+    @Column(name="id_politica")
+    private Integer id;
 
     @Column(name = "titulo")
     private String titulo;
@@ -27,9 +22,13 @@ public class Politica {
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
-    @OneToMany(mappedBy = "politicas")
+    @OneToMany(mappedBy = "politica")
     @JsonIgnore
     private Set<ElementoPolitica> elementos = new HashSet<>();
+
+    // CONSTRUCTORES
+    public Politica() {
+    }
 
     public Politica(String titulo, Set<Producto> productos, Set<ElementoPolitica> elementos) {
         this.titulo = titulo;
@@ -37,4 +36,37 @@ public class Politica {
         this.elementos = elementos;
     }
 
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Set<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public Set<ElementoPolitica> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(Set<ElementoPolitica> elementos) {
+        this.elementos = elementos;
+    }
 }

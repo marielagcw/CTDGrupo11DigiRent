@@ -28,7 +28,7 @@ public class ReservaService implements IReservaService {
     public ReservaDTO agregar(ReservaDTO reservaDTO) {
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
         repository.save(reserva);
-        reservaDTO.setId_reserva(reserva.getId_reserva());
+        reservaDTO.setId(reserva.getId());
         return reservaDTO;
     }
 
@@ -58,7 +58,7 @@ public class ReservaService implements IReservaService {
     @Override
     public ReservaDTO actualizar(ReservaDTO reservaDTO) {
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
-        repository.findById(reserva.getId_reserva()).orElseThrow(() -> {
+        repository.findById(reserva.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(reserva), ReservaDTO.class);

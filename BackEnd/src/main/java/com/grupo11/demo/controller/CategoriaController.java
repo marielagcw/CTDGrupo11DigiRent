@@ -11,7 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/categorias")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class CategoriaController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class CategoriaController {
 
     @GetMapping("/listarTodos")
     public Set<CategoriaDTO> listarTodos() {
-        return categoriaService.listarTodas();
+        return categoriaService.listarTodo();
     }
 
     @PostMapping("/agregar")

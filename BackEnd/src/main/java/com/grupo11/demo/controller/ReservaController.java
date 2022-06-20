@@ -2,7 +2,6 @@ package com.grupo11.demo.controller;
 
 import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.service.implementation.ReservaService;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

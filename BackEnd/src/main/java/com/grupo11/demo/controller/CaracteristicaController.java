@@ -11,6 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/caracteristicas")
+@CrossOrigin(origins = "*")
 public class CaracteristicaController {
 
     @Autowired
@@ -18,7 +19,7 @@ public class CaracteristicaController {
 
     @GetMapping("/listarTodos")
     public Set<CaracteristicaDTO> listarTodos() {
-        return caracteristicaService.listarTodas();
+        return caracteristicaService.listarTodo();
     }
 
     @PostMapping("/agregar")

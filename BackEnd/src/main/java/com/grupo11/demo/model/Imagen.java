@@ -1,21 +1,17 @@
 package com.grupo11.demo.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "imagenes")
 public class Imagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_imagen;
+    @Column(name="id_imagen")
+    private Integer id;
 
     @Column(name = "titulo")
     private String titulo;
@@ -24,13 +20,51 @@ public class Imagen {
     private String url;
 
     @ManyToOne
-    //@JsonIgnore
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false)
-    private Producto productos;
+    @JsonBackReference
+    @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
+    private Producto producto;
+
+    // CONSTRUCTORES
+    public Imagen() {
+    }
 
     public Imagen(String titulo, String url, Producto producto) {
         this.titulo = titulo;
         this.url = url;
-        this.productos = producto;
+        this.producto = producto;
+    }
+
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

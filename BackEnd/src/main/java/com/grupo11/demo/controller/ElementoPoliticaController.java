@@ -11,6 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/elementospolitica")
+@CrossOrigin(origins = "*")
 public class ElementoPoliticaController {
 
     @Autowired
@@ -18,7 +19,7 @@ public class ElementoPoliticaController {
 
     @GetMapping("/listarTodos")
     public Set<ElementoPoliticaDTO> listarTodos() {
-        return elementoPoliticaService.listarTodas();
+        return elementoPoliticaService.listarTodo();
     }
 
     @PostMapping("/agregar")

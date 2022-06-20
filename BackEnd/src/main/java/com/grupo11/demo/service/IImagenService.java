@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface IImagenService {
 
-    Set<ImagenDTO> listarTodas();
+    Set<ImagenDTO> listarTodo();
 
     ImagenDTO agregar(ImagenDTO imagenDTO);
 

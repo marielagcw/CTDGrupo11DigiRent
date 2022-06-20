@@ -1,33 +1,48 @@
 package com.grupo11.demo.model.dtos;
 
-//import com.grupo11.demo.model.Producto;
-
 import com.grupo11.demo.model.Producto;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor
+
 public class ImagenDTO {
 
-    private Integer id_imagen;
+    private Integer id;
     private String titulo;
     private String url;
-    private Producto productos; // TODO Modificado, antes había un set, pero la relación imagen producto es muchas a una, por lo tanto cada imagen tiene un solo producto.
+    private Producto producto;
 
-    public void setId_imagen(Integer id_imagen) {
-        this.id_imagen = id_imagen;
+    public ImagenDTO() {
+    }
+
+    // GETTERS Y SETTERS
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }
 
-    public void setProductos(Producto producto) {
-        this.productos = producto;
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

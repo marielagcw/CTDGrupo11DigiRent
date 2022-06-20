@@ -11,6 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/imagenes")
+@CrossOrigin(origins = "*")
 public class ImagenController {
 
     @Autowired
@@ -18,7 +19,7 @@ public class ImagenController {
 
     @GetMapping("/listarTodos")
     public Set<ImagenDTO> listarTodos() {
-        return imagenService.listarTodas();
+        return imagenService.listarTodo();
     }
 
     @PostMapping("/agregar")

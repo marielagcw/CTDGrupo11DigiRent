@@ -1,8 +1,5 @@
 package com.grupo11.demo.controller;
 
-//import com.grupo11.demo.model.dtos.CaracteristicaDTO;
-
-import com.grupo11.demo.model.Ciudad;
 import com.grupo11.demo.model.dtos.CiudadDTO;
 import com.grupo11.demo.service.implementation.CiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/ciudades")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class CiudadController {
 
     @Autowired
@@ -22,7 +19,7 @@ public class CiudadController {
 
     @GetMapping("/listarTodos")
     public Set<CiudadDTO> listarTodos() {
-        return ciudadService.listarTodas();
+        return ciudadService.listarTodo();
     }
 
     @PostMapping("/agregar")

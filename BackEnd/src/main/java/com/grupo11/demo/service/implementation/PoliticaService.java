@@ -19,15 +19,17 @@ public class PoliticaService implements IPoliticaService {
     @Autowired
     private IPoliticaRepository repository;
 
+    // SAVE
     private PoliticaDTO guardarPolitica(PoliticaDTO politicaDTO){
         Politica politica = mapper.convertValue(politicaDTO, Politica.class);
         repository.save(politica);
-        politicaDTO.setId_politica(politica.getId_politica());
+        politicaDTO.setId(politica.getId());
         return politicaDTO;
     }
 
+    // FIND ALL
     @Override
-    public Set<PoliticaDTO> listarTodas() {
+    public Set<PoliticaDTO> listarTodo() {
         List<Politica> politicas = repository.findAll();
         Set<PoliticaDTO> politicaDTOList = new HashSet<>();
         for (Politica politica : repository.findAll()) {
@@ -36,11 +38,13 @@ public class PoliticaService implements IPoliticaService {
         return politicaDTOList;
     }
 
+    // SAVE
     @Override
     public PoliticaDTO agregar(PoliticaDTO politicaDTO) {
         return guardarPolitica(politicaDTO);
     }
 
+    // FIND BY ID
     @Override
     public PoliticaDTO buscarPorId(Integer id) {
         Optional<Politica> politica = repository.findById(id);
@@ -52,15 +56,17 @@ public class PoliticaService implements IPoliticaService {
         return politicaDTO;
     }
 
+    // UPDATE
     @Override
     public PoliticaDTO actualizar(PoliticaDTO politicaDTO) {
         Politica politica = mapper.convertValue(politicaDTO, Politica.class);
-        repository.findById(politica.getId_politica()).orElseThrow(() -> {
+        repository.findById(politica.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(politica), PoliticaDTO.class);
     }
 
+    // DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);

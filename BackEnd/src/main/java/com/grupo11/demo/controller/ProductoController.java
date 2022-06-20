@@ -1,10 +1,8 @@
 package com.grupo11.demo.controller;
 
-import com.grupo11.demo.model.Producto;
 import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.service.implementation.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin(origins = "*")
 public class ProductoController {
 
     @Autowired
@@ -22,8 +21,8 @@ public class ProductoController {
 
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
-    public List<ProductoDTO> listarTodos(Pageable pageable) {
-        return productoService.listarTodas(pageable);
+    public Set<ProductoDTO> listarTodos(Pageable pageable) {
+        return productoService.listarTodo(pageable);
     }
 
     // FIND ALL RANDOM / GET ALL RANDOM
@@ -60,13 +59,13 @@ public class ProductoController {
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
     @GetMapping("/productosCiudad/{id}")
-    public List<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id, Pageable pageable) {
+    public Set<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id, Pageable pageable) {
         return productoService.buscarProductosPorCiudad(id, pageable);
     }
 
     // FIND BY ID CATEGORIA / GET BY CATEGORIA
     @GetMapping("/productosCategoria/{id}")
-    public List<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id, Pageable pageable) {
+    public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id, Pageable pageable) {
         return productoService.buscarProductosPorCategoria(id, pageable);
     }
 }

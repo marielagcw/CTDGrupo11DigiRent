@@ -19,15 +19,17 @@ public class CaracteristicaService implements ICaracteristicaService {
     @Autowired
     private ICaracteristicaRepository repository;
 
+    // SAVE
     private CaracteristicaDTO guardarCaracteristica(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
         repository.save(caracteristica);
-        caracteristicaDTO.setId_caracteristica(caracteristica.getId_caracteristica());
+        caracteristicaDTO.setId(caracteristica.getId());
         return caracteristicaDTO;
     }
 
+    // FIND ALL
     @Override
-    public Set<CaracteristicaDTO> listarTodas() {
+    public Set<CaracteristicaDTO> listarTodo() {
         List<Caracteristica> caracteristicas = repository.findAll();
         Set<CaracteristicaDTO> CaracteristicaDTOList = new HashSet<>();
         for (Caracteristica caracteristica : caracteristicas) {
@@ -36,11 +38,13 @@ public class CaracteristicaService implements ICaracteristicaService {
         return CaracteristicaDTOList;
     }
 
+    // SAVE
     @Override
     public CaracteristicaDTO agregar(CaracteristicaDTO caracteristicaDTO) {
         return guardarCaracteristica(caracteristicaDTO);
     }
 
+    // FIND BY ID
     @Override
     public CaracteristicaDTO buscarPorId(Integer id) {
         Optional<Caracteristica> caracteristica = repository.findById(id);
@@ -52,15 +56,17 @@ public class CaracteristicaService implements ICaracteristicaService {
         return caracteristicaDTO;
     }
 
+    // UPDATE
     @Override
     public CaracteristicaDTO actualizar(CaracteristicaDTO caracteristicaDTO) {
         Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
-        repository.findById(caracteristica.getId_caracteristica()).orElseThrow(() -> {
+        repository.findById(caracteristica.getId()).orElseThrow(() -> {
             return new NoSuchElementException(); //TODO agregado buscar ID para verificar si existe o no, si no existe arroja excepción
         });
         return mapper.convertValue(repository.save(caracteristica), CaracteristicaDTO.class);
     }
 
+    // DELETE
     @Override
     public void eliminar(Integer id) {
         repository.deleteById(id);
