@@ -58,13 +58,13 @@ public class ProductoController {
     }
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
-    @GetMapping("/productosCiudad/{id}")
+    @GetMapping("/ciudad/{id}")
     public Set<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id, Pageable pageable) {
         return productoService.buscarProductosPorCiudad(id, pageable);
     }
 
     // FIND BY ID CATEGORIA / GET BY CATEGORIA
-    @GetMapping("/productosCategoria/{id}")
+    @GetMapping("/categoria/{id}")
     public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id, Pageable pageable) {
         return productoService.buscarProductosPorCategoria(id, pageable);
     }

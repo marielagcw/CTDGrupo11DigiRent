@@ -3,7 +3,6 @@ package com.grupo11.demo.service.implementation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.Producto;
 import com.grupo11.demo.model.Reserva;
-import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.repository.IReservaRepository;
 import com.grupo11.demo.service.IReservaService;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -78,4 +78,10 @@ public class ReservaService implements IReservaService {
                 .collect(Collectors.toList());
     }
 
+    // FIND ALL BY FECHAS
+    public Boolean fechasDisponiblesPorProducto(Integer idProducto, LocalDate fechaIngreso, LocalDate fechaSalida) {
+        List<Reserva> reservas = repository.reservasPorProductoPorFechas(idProducto, fechaIngreso, fechaSalida);
+        System.out.println(reservas.toString());
+        return reservas.size() == 0;
+    }
 }

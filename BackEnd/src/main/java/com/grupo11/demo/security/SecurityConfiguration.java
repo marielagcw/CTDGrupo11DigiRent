@@ -51,8 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/productos/listarTodos" ).hasAnyAuthority("ROLE_USUARIO_PRIVADO", "ROLE_ADMINISTRADOR")
                 .anyRequest()
-                //.permitAll()
-                .authenticated()
+                .permitAll()
+                //.authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
