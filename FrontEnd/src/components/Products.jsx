@@ -15,17 +15,16 @@ import Spinner from './Spinner';
 
 
 export default function Products() {
+
     const { id } = useParams()
     const [fecha, setfecha] = useState(new Date([]));
     const navigate = useNavigate();
 
-    let url = "http://localhost:8080/productos/1";
+    let url = "http://localhost:8080/productos/" + id ;
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
     }
-    console.log("Info");
-    console.log(data);
     let { nombre_producto,
         titulo_descripcion,
         descripcion,
@@ -69,7 +68,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-            {isPending ? <Spinner /> :<ProductPolitics politics={politicas} />}
+            {isPending ? <Spinner /> : <ProductPolitics politics={politicas} />}
             <Footer />
         </div>
     )
