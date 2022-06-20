@@ -13,7 +13,7 @@ const CategoryCard = ({datos,seleccion,setSeleccion}) => {
 
     }
     return (
-        <div className="card categoria" onClick={handleClick} >
+        <div className={seleccion === id?"cat-seleccionada card categoria ":"card categoria"} onClick={handleClick} >
             <img src={url} className="card-img-top" alt={descripcion} />
             <div className="card-body">
                 <h2>{titulo}</h2>
