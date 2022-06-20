@@ -7,13 +7,14 @@ import CategoryList from './CategoryList';
 
 
 const Home = () => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
   return (
     <div id="home">
       <Header />
       <Navbar titulo={"Busca ofertas en hoteles, casas y mucho más"} busqueda={setSearch}/>
-      <CategoryList />
-      <ProductoList search={search} />
+      <CategoryList seleccion={category} setSeleccion={setCategory}/>
+      <ProductoList search={search} seleccion={category} />
       <Footer />
     </div>
   )

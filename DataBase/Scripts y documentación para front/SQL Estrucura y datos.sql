@@ -288,18 +288,18 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES 
-(1,'Hermosa casa en barrio tranquilo para disfrutar unos días de descanso lejos de la ciudad','Hostal del lago','Casa de descanso',1,1),
+(1,'Hermosa casa en barrio tranquilo para disfrutar unos días de descanso lejos de la ciudad','Hostal del lago','Casa de descanso',1,2),
 (2,'Excelente casa para disfrutar con amigos. Pileta con barra para tragos y parrilla. Lejos de la ciudad para pasar buenos momentos. 4 habitaciones, cocina amplia, comedor y living en planta baja, dormitorios en planta alta.','Filulay´s Home','Casa amplia',1,6),
-(3,'A pocos metros del centro, ubicado en un lugar estratégico. Incluye estacionamiento dentro del mismo edificio y servicio de lavandería.','Friyay','Departamento con vista a la ciudad',2,4),
+(3,'A pocos metros del centro, ubicado en un lugar estratégico. Incluye estacionamiento dentro del mismo edificio y servicio de lavandería.','Friyay','Departamento con vista a la ciudad',2,5),
 (4,'Departamento en planta baja, con patio y a pocos metros del río.','Imperial','Departamento interno',2,3),
 (5,'Excelente vista al lago en medio de la montaña, un lugar único para descansar y disfrutar la naturaleza.','Sweet Home','Cabaña con vista al lago',3,2),
-(6,'Confortable y cálida cabaña con hogar a leña y un paisaje soñado para liberarse de las preocupaciones.','Aires de montaña','Cabaña en la montaña',3,2),
+(6,'Confortable y cálida cabaña con hogar a leña y un paisaje soñado para liberarse de las preocupaciones.','Aires de montaña','Cabaña en la montaña',3,5),
 (7,'Pequeña casa muy cerca del mar, especialmente diseñada para disfrutar del atardecer. Bicicletas disponibles para recorrer la ciudad.','La vida es Hoy','Casa con vista al mar',4,5),
-(8,'Moderna casa en la playa, amplia, ideal para varias personas. A pocos metros de bares y lugares de encuentro para disfrutar las vacaciones de verano.','Si te he visto','Casa en la playa',4,5),
+(8,'Moderna casa en la playa, amplia, ideal para varias personas. A pocos metros de bares y lugares de encuentro para disfrutar las vacaciones de verano.','Si te he visto','Casa en la playa',4,3),
 (9,'Hermosa casa en barrio tranquilo para disfrutar unos días de descanso lejos de la ciudad','Hostal del lago','Casa de descanso',1,1),
-(10,'Excelente casa para disfrutar con amigos. Pileta con barra para tragos y parrilla. Lejos de la ciudad para pasar buenos momentos. 4 habitaciones, cocina amplia, comedor y living en planta baja, dormitorios en planta alta.','Filulay´s Home','Casa amplia',1,6),
+(10,'Excelente casa para disfrutar con amigos. Pileta con barra para tragos y parrilla. Lejos de la ciudad para pasar buenos momentos. 4 habitaciones, cocina amplia, comedor y living en planta baja, dormitorios en planta alta.','Filulay´s Home','Casa amplia',1,2),
 (11,'A pocos metros del centro, ubicado en un lugar estratégico. Incluye estacionamiento dentro del mismo edificio y servicio de lavandería.','Friyay','Departamento con vista a la ciudad',2,4),
-(12,'Departamento en planta baja, con patio y a pocos metros del río.','Imperial','Departamento interno',2,3);
+(12,'Departamento en planta baja, con patio y a pocos metros del río.','Imperial','Departamento interno',2,5);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 

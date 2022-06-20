@@ -102,7 +102,7 @@ public class ProductoService implements IProductoSevice {
     }
 
     // FIND BY ID CATEGORIA
-    public Set<ProductoDTO> buscarProductosPorCategoria(Integer id, Pageable pageable) {
+    public Set<ProductoDTO>     buscarProductosPorCategoria(Integer id, Pageable pageable) {
         List<Producto> productos = repository.findAllByCategoria(id, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {

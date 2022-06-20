@@ -27,7 +27,9 @@ public class ProductoController {
 
     // FIND ALL RANDOM / GET ALL RANDOM
     @GetMapping("/listarTodosRandom")
-    public List<ProductoDTO> listarTodosRandom (Pageable pageable){return productoService.listarRandom(pageable);}
+    public List<ProductoDTO> listarTodosRandom(Pageable pageable) {
+        return productoService.listarRandom(pageable);
+    }
 
     // SAVE / POST
     @PostMapping("/agregar")
@@ -51,16 +53,17 @@ public class ProductoController {
     }
 
     // FIND BY ID / GET BY ID
-    //@GetMapping("/{id}")
-    // public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
-    //    ProductoDTO productoDTO = productoService.buscarPorId(id);
-    //    return ResponseEntity.ok(productoDTO);
-    //}
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
+        ProductoDTO productoDTO = productoService.buscarPorId(id);
+        return ResponseEntity.ok(productoDTO);
+    }
+    /*
     @GetMapping("/{id}")
     public ProductoDTO buscar(@PathVariable Integer id) {
         ProductoDTO productoDTO = productoService.buscarPorId(id);
         return productoDTO;
-    }
+    }*/
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
     @GetMapping("/productosCiudad/{id}")

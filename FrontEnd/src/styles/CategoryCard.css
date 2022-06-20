@@ -14,17 +14,24 @@
 div.categoria {
     margin: 15px 7.5px;
     width: 50vw;
-    height: vh;
+    /* height: vh; */
     border: #F3F1ED 1px solid;
     border-radius: 15px;
-    box-shadow: var(--box-shadow);
-
+    box-shadow: var(--box-shadow);  
+    cursor: pointer;
+}
+div.categoria:active {
+    border: var(--primary) 1px solid;
+}
+div.cat-seleccionada{
+    box-shadow: 3px 3px 5px rgb(128, 128, 128);
 }
 
 .categoria .card-img-top {
     width: 100%;
     border-radius: 15px 15px 0 0;
 }
+
 
 .categoria div.card-body {
     height: 20%;
