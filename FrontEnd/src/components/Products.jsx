@@ -20,12 +20,12 @@ export default function Products() {
     const [fecha, setfecha] = useState(new Date([]));
     const navigate = useNavigate();
 
-    let url = "http://localhost:8080/productos/" + id ;
+    let url = "http://localhost:8080/productos/" + id;
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
     }
-    let { nombreProducto,
+    let {
         tituloDescripcion,
         descripcion,
         imagenes,
