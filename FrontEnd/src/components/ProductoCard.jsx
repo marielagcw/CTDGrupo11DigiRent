@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/ProductoCard.css'
 
 const ProductoCard = (props) => {
-    let { titulo_descripcion,
+    let { id_producto,
+        titulo_descripcion,
         descripcion,
         imagenes,
         categorias,
@@ -17,7 +18,7 @@ const ProductoCard = (props) => {
                 <h4 className='category'>{categorias.titulo}</h4>
                 <h5 className='location'>{ciudades.nombre + ", " + ciudades.provincia}</h5>
                 <p className="card-text description">{descripcion}</p>
-                <button type="button" className="btn btn-primary" onClick={() => navigate('/products')}>Ver detalle</button>
+                <button type="button" className="btn btn-primary" onClick={() => navigate('/products/'+id_producto)}>Ver detalle</button>
             </div>
         </div>
     )
