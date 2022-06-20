@@ -13,7 +13,7 @@ const PHOTOS = [];
 
 export default function ProductGalery({ galery }) {
     galery.forEach(info => {
-        PHOTOS.push(info.img)
+        PHOTOS.push(info.url)
     });
 
     const [isOpen, setIsOpen] = useState(false);
@@ -32,15 +32,15 @@ export default function ProductGalery({ galery }) {
                 <div className='container'>
                     <div className="row gx-1">
                         <div className='left-side col-md-6'>
-                            <img src={galery[0].img} alt={galery[0].title} />
+                            <img src={galery[0].url} alt={galery[0].title} />
                         </div>
                         <div className='rigth-side col-md-6 '>
 
-                            <img src={galery[2].img} alt="" />
-                            <img src={galery[4].img} alt="" />
+                            <img src={PHOTOS[2]} alt={galery[2].title} />
+                            <img src={PHOTOS[4]} alt={galery[2].title} />
 
-                            <img src={galery[6].img} alt="" />
-                            <img src={galery[1].img} alt="" />
+                            <img src={PHOTOS[3]} alt={galery[2].title} />
+                            <img src={PHOTOS[1]} alt={galery[2].title} />
                             <div id='open-galery' onClick={() => setIsOpen(true)}>
                                 <span >Ver Más</span>
                             </div>
@@ -58,7 +58,7 @@ export default function ProductGalery({ galery }) {
                 <Carousel  infiniteLoop autoPlay dynamicHeight stopOnHover>
                     {galery.map((e, i) =>
                         <div key={"contenedor_" + i}>
-                            <img src={e.img} key={"img_" + i} />
+                            <img src={e.url} key={"img_" + i} alt={e.titulo}/>
                             {/* <p className="legend">Legend 1</p> */}
                         </div>)}
                 </Carousel>
