@@ -17,13 +17,13 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"Agregar categoría\", () => {\r",
 							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.titulo).to.eql(\"titulo1\");\r",
+							"  pm.expect(responseJson.titulo).to.be.a(\"string\");\r",
 							"  pm.expect(responseJson.descripcion).to.be.a(\"string\");;\r",
 							"  pm.expect(responseJson.url).to.be.a(\"string\");;\r",
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_categoria).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -71,9 +71,8 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_categoria).to.be.a(\"number\");\r",
-							"})\r",
-							""
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -119,9 +118,8 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_categoria).to.be.a(\"number\");\r",
-							"})\r",
-							""
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -167,9 +165,8 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_categoria).to.be.a(\"number\");\r",
-							"})\r",
-							""
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -217,7 +214,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_categoria).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"    pm.expect(responseJson.length).to.be.greaterThan(0);\r",
 							"})"
 						],
@@ -254,7 +251,7 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.id_categoria).to.eql(1);\r",
+							"    pm.expect(responseJson.id).to.eql(1);\r",
 							"})\r",
 							""
 						],
@@ -312,7 +309,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"id_categoria\":1,\r\n        \"titulo\": \"nuevo\",\r\n        \"descripcion\": \"nuevo\",\r\n        \"url\": \"nuevo\"\r\n    }"
+					"raw": "    {\r\n        \"id\":1,\r\n        \"titulo\": \"nuevo\",\r\n        \"descripcion\": \"nuevo\",\r\n        \"url\": \"nuevo\"\r\n    }"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -359,7 +356,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"id_categoria\":100,\r\n        \"titulo\": \"nuevo\",\r\n        \"descripcion\": \"nuevo\",\r\n        \"url\": \"nuevo\"\r\n    }"
+					"raw": "    {\r\n        \"id\":100,\r\n        \"titulo\": \"nuevo\",\r\n        \"descripcion\": \"nuevo\",\r\n        \"url\": \"nuevo\"\r\n    }"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -391,7 +388,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_categoria).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -530,7 +527,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_categoria).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -553,6 +550,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",

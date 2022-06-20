@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "Post (categoria on body) 1",
+			"name": "Post (producto on body) 1",
 			"event": [
 				{
 					"listen": "test",
@@ -19,7 +19,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -32,139 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre_producto\": \"Producto1\",\r\n    \"titulo_descripcion\": \"tituloDescripcion1\",\r\n    \"descripcion\": \"descripcion1\",\r\n    \"categorias\": {\r\n        \"id_categoria\": 1\r\n    },\r\n    \"ciudades\": {\r\n        \"id_ciudad\": 1\r\n    },\r\n    \"caracteristicas\":[{\r\n        \"id_caracteristica\":1\r\n    }],\r\n    \"politicas\":[{\r\n        \"id_politica\":1\r\n    }]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (categoria on body) 2",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Respuesta exitosa\", () => {\r",
-							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre_producto\": \"Producto2\",\r\n    \"titulo_descripcion\": \"tituloDescripcion2\",\r\n    \"descripcion\": \"descripcion2\",\r\n    \"categorias\": {\r\n        \"id_categoria\": 1\r\n    },\r\n    \"ciudades\": {\r\n        \"id_ciudad\": 1\r\n    },\r\n    \"caracteristicas\":[{\r\n        \"id_caracteristica\":1\r\n    }],\r\n    \"politicas\":[{\r\n        \"id_politica\":1\r\n    }],\r\n    \"imagenes\":[{\r\n        \"id_imagen\":1\r\n    }]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (categoria on body) 3",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Respuesta exitosa\", () => {\r",
-							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre_producto\": \"Producto3\",\r\n    \"titulo_descripcion\": \"tituloDescripcion3\",\r\n    \"descripcion\": \"descripcion3\",\r\n    \"categorias\": {\r\n        \"id_categoria\": 1\r\n    },\r\n    \"ciudades\": {\r\n        \"id_ciudad\": 1\r\n    },\r\n    \"caracteristicas\":[{\r\n        \"id_caracteristica\":1\r\n    }],\r\n    \"politicas\":[{\r\n        \"id_politica\":1\r\n    }],\r\n    \"imagenes\":[{\r\n        \"id_imagen\":1\r\n    }]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (categoria on body) 3 Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Respuesta exitosa\", () => {\r",
-							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre_producto\": \"Producto3\",\r\n    \"titulo_descripcion\": \"tituloDescripcion3\",\r\n    \"descripcion\": \"descripcion3\",\r\n    \"categorias\": {\r\n        \"id_categoria\": 3\r\n    },\r\n    \"ciudades\": {\r\n        \"id_ciudad\": 3\r\n    },\r\n    \"caracteristicas\": [\r\n        {\r\n            \"id_caracteristica\": 1\r\n        }\r\n    ],\r\n    \"politicas\": [\r\n        {\r\n            \"id_politica\": 1\r\n        }\r\n    ],\r\n    \"imagenes\": [\r\n        {\r\n            \"id_imagen\": 1\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"nombreProducto\": \"Producto1\",\r\n    \"tituloDescripcion\": \"tituloDescripcion1\",\r\n    \"descripcion\": \"descripcion1\",\r\n    \"categoria\": {\r\n        \"id\": 1\r\n    },\r\n    \"ciudad\": {\r\n        \"id\": 1\r\n    },\r\n    \"caracteristicas\":[{\r\n        \"id\":1\r\n    }],\r\n    \"politicas\":[{\r\n        \"id\":1\r\n    }]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -201,16 +69,14 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							"pm.test(\"Los datos consultados del primer objeto son del tipo esperado\", ()=>{\r",
 							"          const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.nombre_producto).to.be.a(\"string\");\r",
-							"    pm.expect(responseJson.titulo_descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
-							"    pm.expect(responseJson.categorias).to.be.an(\"object\");\r",
-							"    pm.expect(responseJson.ciudades).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
 							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
 							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
 							"})\r",
@@ -227,7 +93,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/listarTodos?size=9&page=0",
+					"raw": "{{urlbase}}/listarTodos?size=8&page=0",
 					"host": [
 						"{{urlbase}}"
 					],
@@ -237,7 +103,7 @@
 					"query": [
 						{
 							"key": "size",
-							"value": "9"
+							"value": "8"
 						},
 						{
 							"key": "page",
@@ -266,16 +132,16 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							"pm.test(\"Los datos consultados del primer objeto son del tipo esperado\", ()=>{\r",
 							"          const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.nombre_producto).to.be.a(\"string\");\r",
-							"    pm.expect(responseJson.titulo_descripcion).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.nombreProducto).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.tituloDescripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
-							"    pm.expect(responseJson.categorias).to.be.an(\"object\");\r",
-							"    pm.expect(responseJson.ciudades).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
 							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
 							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
 							"})\r",
@@ -289,10 +155,13 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/listarTodosRandom?size=5&page=0",
+					"raw": "{{urlbase}}/listarTodosRandom?size=5&page=0&ord=desc&field=id",
 					"host": [
 						"{{urlbase}}"
 					],
@@ -307,6 +176,14 @@
 						{
 							"key": "page",
 							"value": "0"
+						},
+						{
+							"key": "ord",
+							"value": "desc"
+						},
+						{
+							"key": "field",
+							"value": "id"
 						}
 					]
 				}
@@ -327,16 +204,16 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.id_producto).to.eql(1);\r",
+							"    pm.expect(responseJson.id).to.eql(2);\r",
 							"});\r",
 							"pm.test(\"Los datos consultados son del tipo esperado\", ()=>{\r",
 							"          const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.nombre_producto).to.be.a(\"string\");\r",
-							"    pm.expect(responseJson.titulo_descripcion).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.nombreProducto).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.tituloDescripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
-							"    pm.expect(responseJson.categorias).to.be.an(\"object\");\r",
-							"    pm.expect(responseJson.ciudades).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
 							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
 							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
 							"})\r",
@@ -350,12 +227,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/1",
+					"raw": "{{urlbase}}/2",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
-						"1"
+						"2"
 					]
 				}
 			},
@@ -368,6 +245,13 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})\r",
 							"\r",
 							""
 						],
@@ -391,50 +275,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_producto\":5,\r\n    \"nombre_producto\": \"Hostal\",\r\n    \"titulo_descripcion\": \"Hostal\",\r\n    \"descripcion\": \"Lorem ipsum\",\r\n    \"categorias\": {\r\n        \"id_categoria\": 4\r\n    },\r\n    \"ciudades\": {\r\n        \"id_ciudad\": 1\r\n    }\r\n    \r\n}"
-				},
-				"url": {
-					"raw": "{{urlbase}}/actualizar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"actualizar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Put producto (producto con id en body) id inexistente",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+					"raw": "{\r\n    \"id\":1,\r\n    \"nombreProducto\": \"nuevo\",\r\n    \"tituloDescripcion\": \"nuevo\",\r\n    \"descripcion\": \"nuevo\",\r\n    \"categoria\": {\r\n        \"id\": 1\r\n    },\r\n    \"ciudad\": {\r\n        \"id\": 1\r\n    },\r\n    \"caracteristicas\":[{\r\n        \"id\":1\r\n    }],\r\n    \"politicas\":[{\r\n        \"id\":1\r\n    }]\r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -466,16 +307,14 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							"pm.test(\"Los datos consultados del primer objeto son del tipo esperado\", ()=>{\r",
 							"          const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.nombre_producto).to.be.a(\"string\");\r",
-							"    pm.expect(responseJson.titulo_descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
-							"    pm.expect(responseJson.categorias).to.be.an(\"object\");\r",
-							"    pm.expect(responseJson.ciudades).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
 							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
 							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
 							"})"
@@ -488,12 +327,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/listarTodos",
+					"raw": "{{urlbase}}/listarTodosRandom",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
-						"listarTodos"
+						"listarTodosRandom"
 					]
 				}
 			},
@@ -609,10 +448,28 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"// Test para verificar el tipo de contenido que hay en el header de la respuesta recibida\r",
-							"pm.test(\"Content-Type en el header es application/json\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-							"});"
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json()[0];\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})\r",
+							"pm.test(\"Los datos consultados del primer objeto son del tipo esperado\", ()=>{\r",
+							"          const responseJson = pm.response.json()[0];\r",
+							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
+							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -622,12 +479,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/listarTodos",
+					"raw": "{{urlbase}}/listarTodosRandom",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
-						"listarTodos"
+						"listarTodosRandom"
 					]
 				}
 			},
@@ -651,16 +508,16 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							"pm.test(\"Los datos consultados del primer objeto son del tipo esperado\", ()=>{\r",
 							"          const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.nombre_producto).to.be.a(\"string\");\r",
-							"    pm.expect(responseJson.titulo_descripcion).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.nombreProducto).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.tituloDescripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
-							"    pm.expect(responseJson.categorias).to.be.an(\"object\");\r",
-							"    pm.expect(responseJson.ciudades).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
 							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
 							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
 							"})\r",
@@ -693,11 +550,6 @@
 						{
 							"key": "page",
 							"value": "0"
-						},
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
 						}
 					]
 				}
@@ -722,16 +574,16 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.id_producto).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							"pm.test(\"Los datos consultados del primer objeto son del tipo esperado\", ()=>{\r",
 							"          const responseJson = pm.response.json()[0];\r",
-							"    pm.expect(responseJson.nombre_producto).to.be.a(\"string\");\r",
-							"    pm.expect(responseJson.titulo_descripcion).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.nombreProducto).to.be.a(\"string\");\r",
+							"    pm.expect(responseJson.tituloDescripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.descripcion).to.be.a(\"string\");\r",
 							"    pm.expect(responseJson.imagenes).to.be.an(\"array\");\r",
-							"    pm.expect(responseJson.categorias).to.be.an(\"object\");\r",
-							"    pm.expect(responseJson.ciudades).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.categoria).to.be.an(\"object\");\r",
+							"    pm.expect(responseJson.ciudad).to.be.an(\"object\");\r",
 							"    pm.expect(responseJson.caracteristicas).to.be.an(\"array\");\r",
 							"    pm.expect(responseJson.politicas).to.be.an(\"array\");\r",
 							"})\r",
@@ -783,6 +635,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",

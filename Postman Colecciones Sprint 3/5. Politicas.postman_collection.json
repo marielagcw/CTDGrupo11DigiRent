@@ -21,7 +21,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_politica).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -67,7 +67,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_politica).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -113,7 +113,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_politica).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -163,7 +163,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_politica).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -199,7 +199,7 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.id_politica).to.eql(1);\r",
+							"    pm.expect(responseJson.id).to.eql(1);\r",
 							"})\r",
 							""
 						],
@@ -255,7 +255,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_politica\":1,\r\n    \"titulo\": \"tituloPolitica1\",\r\n    \"elementos\":         {\r\n            \"id_elementosPolitica\": 1\r\n        }\r\n    \r\n}"
+					"raw": "{\r\n    \"id\": 1,\r\n    \"titulo\": \"Nuevo\"\r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -302,7 +302,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_politica\":100,\r\n    \"titulo\": \"nuevo\",\r\n    \"descripcion\": \"nuevo\",\r\n    \"politicas\": []\r\n}"
+					"raw": "{\r\n    \"id\": 1000,\r\n    \"titulo\": \"Nuevo\"\r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -334,7 +334,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_politica).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -477,7 +477,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_politica).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -500,6 +500,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
