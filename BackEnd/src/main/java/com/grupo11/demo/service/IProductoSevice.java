@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface IProductoSevice<T> {
 
-    Set<ProductoDTO> listarTodas(Pageable pageable);
+    Set<ProductoDTO> listarTodo(Pageable pageable);
 
     ProductoDTO agregar(ProductoDTO productoDTO);
 

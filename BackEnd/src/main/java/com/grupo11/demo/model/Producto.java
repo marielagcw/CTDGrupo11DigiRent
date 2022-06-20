@@ -13,29 +13,29 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer id_producto;
+    @Column(name="id_producto")
+    private Integer id;
 
     @Column(name = "nombre_producto")
-    private String nombre_producto;
+    private String nombreProducto;
 
     @Column(name = "titulo_descripcion")
-    private String titulo_descripcion;
+    private String tituloDescripcion;
 
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToMany(mappedBy = "productos")
+    @OneToMany(mappedBy = "producto")
     @JsonManagedReference
     private Set<Imagen> imagenes = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "categorias_id_categoria", referencedColumnName = "id_categoria")
-    private Categoria categorias;
+    private Categoria categoria;
 
     @ManyToOne
     @JoinColumn(name = "ciudades_id_ciudad", referencedColumnName = "id_ciudad")
-    private Ciudad ciudades;
+    private Ciudad ciudad;
 
     @ManyToMany
     @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "productos_id_producto"), inverseJoinColumns = @JoinColumn(name = "caracteristicas_id_caracteristica"))
@@ -49,43 +49,46 @@ public class Producto {
     @JsonIgnore
     private Set<Reserva> reservas;
 
+    // CONSTRUCTORES
     public Producto() {
     }
 
-    public Producto(String nombre_producto, String titulo_descripcion, String descripcion, Set<Imagen> imagenes, Categoria categorias, Ciudad ciudades, Set<Caracteristica> caracteristicas, Set<Politica> politicas, Set<Reserva> reservas) {
-        this.nombre_producto = nombre_producto;
-        this.titulo_descripcion = titulo_descripcion;
+    public Producto(String nombreProducto, String tituloDescripcion, String descripcion, Set<Imagen> imagenes, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas, Set<Politica> politicas, Set<Reserva> reservas) {
+        this.nombreProducto = nombreProducto;
+        this.tituloDescripcion = tituloDescripcion;
         this.descripcion = descripcion;
         this.imagenes = imagenes;
-        this.categorias = categorias;
-        this.ciudades = ciudades;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
         this.caracteristicas = caracteristicas;
         this.politicas = politicas;
         this.reservas = reservas;
     }
 
-    public Integer getId_producto() {
-        return id_producto;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_producto(Integer id_producto) {
-        this.id_producto = id_producto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNombre_producto() {
-        return nombre_producto;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setNombre_producto(String nombre_producto) {
-        this.nombre_producto = nombre_producto;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
-    public String getTitulo_descripcion() {
-        return titulo_descripcion;
+    public String getTituloDescripcion() {
+        return tituloDescripcion;
     }
 
-    public void setTitulo_descripcion(String titulo_descripcion) {
-        this.titulo_descripcion = titulo_descripcion;
+    public void setTituloDescripcion(String tituloDescripcion) {
+        this.tituloDescripcion = tituloDescripcion;
     }
 
     public String getDescripcion() {
@@ -104,20 +107,20 @@ public class Producto {
         this.imagenes = imagenes;
     }
 
-    public Categoria getCategorias() {
-        return categorias;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategorias(Categoria categorias) {
-        this.categorias = categorias;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-    public Ciudad getCiudades() {
-        return ciudades;
+    public Ciudad getCiudad() {
+        return ciudad;
     }
 
-    public void setCiudades(Ciudad ciudades) {
-        this.ciudades = ciudades;
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
 
     public Set<Caracteristica> getCaracteristicas() {

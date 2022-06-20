@@ -10,7 +10,8 @@ public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_reserva;
+    @Column(name="id_reserva")
+    private Integer id;
     @Column (name = "hora_inicio")
     private LocalTime horaInicio;
     @Column(name = "fecha_inicial")
@@ -22,23 +23,24 @@ public class Reserva {
     @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto")
     private Producto productos;
 
+    //CONSTRUCTORES
     public Reserva() {
     }
-
-    public Reserva(Integer id_reserva, LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto productos) {
-        this.id_reserva = id_reserva;
+    public Reserva(LocalTime horaInicio, LocalDate fechaInicial, LocalDate fechaFinal, Producto productos) {
         this.horaInicio = horaInicio;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.productos = productos;
     }
 
-    public Integer getId_reserva() {
-        return id_reserva;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_reserva(Integer id_reserva) {
-        this.id_reserva = id_reserva;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalTime getHoraInicio() {

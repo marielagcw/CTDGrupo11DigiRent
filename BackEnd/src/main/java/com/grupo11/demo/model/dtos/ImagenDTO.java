@@ -5,20 +5,21 @@ import com.grupo11.demo.model.Producto;
 
 public class ImagenDTO {
 
-    private Integer id_imagen;
+    private Integer id;
     private String titulo;
     private String url;
-    private Producto productos;
+    private Producto producto;
 
     public ImagenDTO() {
     }
 
-    public Integer getId_imagen() {
-        return id_imagen;
+    // GETTERS Y SETTERS
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_imagen(Integer id_imagen) {
-        this.id_imagen = id_imagen;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -37,11 +38,11 @@ public class ImagenDTO {
         this.url = url;
     }
 
-    public Producto getProductos() {
-        return productos;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductos(Producto productos) {
-        this.productos = productos;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface IElementoPoliticaService {
 
-    Set<ElementoPoliticaDTO> listarTodas();
+    Set<ElementoPoliticaDTO> listarTodo();
 
     ElementoPoliticaDTO agregar(ElementoPoliticaDTO elementoPoliticaDTO);
 

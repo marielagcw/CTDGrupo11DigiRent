@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class PoliticaDTO {
 
-    private Integer id_politica;
+    private Integer id;
     private String titulo;
     private Set<Producto> productos = new HashSet<>();
     private Set<ElementoPolitica> elementos = new HashSet<>();
@@ -16,12 +16,14 @@ public class PoliticaDTO {
     public PoliticaDTO() {
     }
 
-    public Integer getId_politica() {
-        return id_politica;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_politica(Integer id_politica) {
-        this.id_politica = id_politica;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {

@@ -19,7 +19,7 @@ public class PoliticaController {
 
     @GetMapping("/listarTodos")
     public Set<PoliticaDTO> listarTodos() {
-        return politicaService.listarTodas();
+        return politicaService.listarTodo();
     }
 
     @PostMapping("/agregar")

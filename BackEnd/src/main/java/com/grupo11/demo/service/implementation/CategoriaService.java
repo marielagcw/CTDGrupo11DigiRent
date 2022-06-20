@@ -23,13 +23,13 @@ public class CategoriaService implements ICategoriaService {
     private CategoriaDTO guardarCategoria(CategoriaDTO categoriaDTO){
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         repository.save(categoria);
-        categoriaDTO.setId_categoria(categoria.getId_categoria());
+        categoriaDTO.setId(categoria.getId());
         return categoriaDTO;
     }
 
     // FIND ALL
     @Override
-    public Set<CategoriaDTO> listarTodas() {
+    public Set<CategoriaDTO> listarTodo() {
         List<Categoria> categorias = repository.findAll();
         Set<CategoriaDTO> categoriaDTOList = new HashSet<>();
         for (Categoria categoria : categorias) {
@@ -60,7 +60,7 @@ public class CategoriaService implements ICategoriaService {
     @Override
     public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) {
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
-        repository.findById(categoria.getId_categoria()).orElseThrow(() -> {
+        repository.findById(categoria.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
         return mapper.convertValue(repository.save(categoria), CategoriaDTO.class);

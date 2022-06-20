@@ -22,7 +22,7 @@ public class ProductoController {
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
     public Set<ProductoDTO> listarTodos(Pageable pageable) {
-        return productoService.listarTodas(pageable);
+        return productoService.listarTodo(pageable);
     }
 
     // FIND ALL RANDOM / GET ALL RANDOM

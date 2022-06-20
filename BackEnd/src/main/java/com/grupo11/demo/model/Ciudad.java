@@ -12,7 +12,8 @@ public class Ciudad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_ciudad;
+    @Column(name="id_ciudad")
+    private Integer id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -23,10 +24,11 @@ public class Ciudad {
     @Column(name =  "pais")
     private String pais;
 
-    @OneToMany(mappedBy = "ciudades")
+    @OneToMany(mappedBy = "ciudad")
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
+    // CONSTRUCTORES
     public Ciudad() {
     }
 
@@ -37,12 +39,14 @@ public class Ciudad {
         this.productos = productos;
     }
 
-    public Integer getId_ciudad() {
-        return id_ciudad;
+    // GETTERS Y SETTERS
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_ciudad(Integer id_ciudad) {
-        this.id_ciudad = id_ciudad;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
