@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendar } from "@fortawesome/free-solid-svg-icons";
-import ciudades from "../productos.json";
+import { useFetch } from "../hooks/useFetch";
 import '../styles/Navbar.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -64,7 +64,16 @@ const Search = ({busqueda}) => {
         return dateFormateada;
     }
     //Array ciudades
-    let ciudadesList = ciudades.ciudades;
+    let ciudadesList = []; 
+    let url = "http://localhost:8080/ciudades/listarTodos";
+    let { data, isPending, error } = useFetch(url);
+    if (isPending) {
+        console.log(error);
+    }else{
+        data.forEach((e)=>{
+            !ciudadesList.includes(e.provincia)&&ciudadesList.push(e.provincia)
+        })
+    }
 
 
     return (<>
