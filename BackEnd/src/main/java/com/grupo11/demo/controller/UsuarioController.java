@@ -39,7 +39,7 @@ public class UsuarioController {
     @PostMapping("/registro")
     public ResponseEntity<?> guardar(@RequestBody UsuarioDTO usuarioDTO) {
         service.agregar(usuarioDTO);
-        return ResponseEntity.ok(usuarioDTO);
+        return ResponseEntity.status(201).body(usuarioDTO);
     }
 
     // DELETE
