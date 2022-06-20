@@ -1,5 +1,5 @@
 div#product {
-    height: 280vh;
+    height: 320vh;
 }
 
 .my-navbar div.back {
@@ -25,7 +25,7 @@ div#product {
 
 .location-prod {
     padding: 1.5vh 4vw;
-    height: 10vh;
+    height: 12vh;
     background-color: var(--quaternary);
 }
 

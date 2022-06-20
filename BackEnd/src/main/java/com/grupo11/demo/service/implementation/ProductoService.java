@@ -49,7 +49,7 @@ public class ProductoService implements IProductoSevice {
                 .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
                 .collect(Collectors.toList());
         Collections.shuffle(productoDTOS);
-        int randomSeriesLength = 4;
+        int randomSeriesLength = 8;
         return productoDTOS.subList(0, randomSeriesLength);
     }
 
