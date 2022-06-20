@@ -18,4 +18,6 @@ public interface IProductoRepository  extends JpaRepository<Producto, Integer> {
     @Query("FROM Producto p WHERE p.categoria.id = :id ")
     List<Producto> findAllByCategoria(Integer id, Pageable pageable);
 
+
+
 }
