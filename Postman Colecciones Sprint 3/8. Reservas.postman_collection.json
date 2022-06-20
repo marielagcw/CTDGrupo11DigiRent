@@ -20,13 +20,13 @@
 							"  pm.expect(responseJson.horaInicio).to.be.a(\"string\");\r",
 							"  pm.expect(responseJson.fechaInicial).to.be.a(\"string\");\r",
 							"  pm.expect(responseJson.fechaFinal).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.productos.id_producto).to.be.a(\"number\");\r",
+							"  pm.expect(responseJson.usuario.id).to.be.a(\"number\");\r",
 							"\r",
 							"\r",
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_reserva).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -39,7 +39,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"horaInicio\": \"10:10:00\",\r\n    \"fechaInicial\": \"2022-10-10\",\r\n    \"fechaFinal\": \"2022-01-20\",\r\n    \"productos\": {\r\n        \"id_producto\": 1\r\n    }\r\n}",
+					"raw": "{\r\n    \"horaInicio\": \"10:10:00\",\r\n    \"fechaInicial\": \"2022-10-10\",\r\n    \"fechaFinal\": \"2022-01-20\",\r\n    \"producto\": {\r\n        \"id\":1\r\n    },\r\n    \"usuario\":{\r\n        \"id\":2\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,15 +68,17 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"Agregar Imagen\", () => {\r",
 							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.titulo).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.url).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.horaInicio).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.fechaInicial).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.fechaFinal).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.usuario.id).to.be.a(\"number\");\r",
+							"\r",
 							"\r",
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_imagen).to.be.a(\"number\");\r",
-							"})\r",
-							""
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -87,7 +89,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo\": \"tituloImagen2\",\r\n    \"url\": \"url2\",\r\n    \"productos\": {\r\n        \"id_producto\": 3\r\n    }\r\n}",
+					"raw": "{\r\n    \"horaInicio\": \"10:10:00\",\r\n    \"fechaInicial\": \"2022-10-10\",\r\n    \"fechaFinal\": \"2022-01-20\",\r\n    \"producto\": {\r\n        \"id\":3\r\n    },\r\n    \"usuario\":{\r\n        \"id\":2\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -116,13 +118,16 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"Agregar Imagen\", () => {\r",
 							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.titulo).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.url).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.horaInicio).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.fechaInicial).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.fechaFinal).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.usuario.id).to.be.a(\"number\");\r",
+							"\r",
 							"\r",
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_imagen).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -135,7 +140,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo\": \"tituloImagen3\",\r\n    \"url\": \"url3\",\r\n     \"productos\": {\r\n        \"id_producto\": 3\r\n    }\r\n}",
+					"raw": "{\r\n    \"horaInicio\": \"10:10:00\",\r\n    \"fechaInicial\": \"2022-10-10\",\r\n    \"fechaFinal\": \"2022-01-20\",\r\n    \"producto\": {\r\n        \"id\":2\r\n    },\r\n    \"usuario\":{\r\n        \"id\":2\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -172,7 +177,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_reserva).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -208,7 +213,7 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.id_reserva).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -220,12 +225,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/1",
+					"raw": "{{urlbase}}/2",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
-						"1"
+						"2"
 					]
 				}
 			},
@@ -244,13 +249,13 @@
 							"  pm.expect(responseJson.horaInicio).to.be.a(\"string\");\r",
 							"  pm.expect(responseJson.fechaInicial).to.be.a(\"string\");\r",
 							"  pm.expect(responseJson.fechaFinal).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.productos.id_producto).to.be.a(\"number\");\r",
+							"  pm.expect(responseJson.producto.id).to.be.a(\"number\");\r",
 							"\r",
 							"\r",
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_reserva).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -274,54 +279,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_reserva\":1,\r\n    \"horaInicio\": \"12:00:00\",\r\n    \"fechaInicial\": \"2022-05-01\",\r\n    \"fechaFinal\": \"2022-06-15\",\r\n    \"productos\": {\r\n        \"id_producto\": 2\r\n    }\r\n}"
-				},
-				"url": {
-					"raw": "{{urlbase}}/actualizar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"actualizar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Put actualizar (requiere id en body) id inexistente",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el estado de la respuesta\r",
-							"pm.test(\"Internal Server Error: no se puede modificar id inexistente\", () => {\r",
-							"  pm.expect(pm.response.code).to.be.oneOf([500]);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id_reserva\":100,\r\n    \"horaInicio\": \"12:00:00\",\r\n    \"fechaInicial\": \"2022-05-01\",\r\n    \"fechaFinal\": \"2022-06-15\",\r\n    \"productos\": {\r\n        \"id_producto\": 2\r\n    }\r\n}"
+					"raw": "{\r\n    \"id\": 1,\r\n    \"horaInicio\": \"10:10:00\",\r\n    \"fechaInicial\": \"2022-10-10\",\r\n    \"fechaFinal\": \"2022-01-20\",\r\n    \"producto\": {\r\n        \"id\": 2\r\n    },\r\n    \"usuario\": {\r\n        \"id\": 3\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -416,13 +374,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{urlbase}}/eliminar/2",
+					"raw": "{{urlbase}}/eliminar/1",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
 						"eliminar",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -496,7 +454,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_reserva).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -519,7 +477,7 @@
 			"response": []
 		},
 		{
-			"name": "Buscar por productos",
+			"name": "Buscar por producto (id en url)",
 			"event": [
 				{
 					"listen": "test",
@@ -536,7 +494,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_reserva).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -547,19 +505,95 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlbase}}/reservasProducto/1",
+					"raw": "{{urlbase}}/reservasProducto/2",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
 						"reservasProducto",
-						"1"
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por producto y por fechas (requiere body)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaInicial\":\"2022-08-10\",\r\n    \"fechaFinal\": \"2022-10-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/reservasProducto/2/?size=4&page=0",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"reservasProducto",
+						"2",
+						""
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "4",
+							"description": "cantidad de elementos por página"
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"description": "número de página que se muestra"
+						}
 					]
 				}
 			},
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",

@@ -1,6 +1,7 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,6 +26,10 @@ public class Reserva {
     @JsonBackReference
     @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
     private Producto producto;
+
+    @ManyToOne
+    @JoinColumn(name="usuarios_id_usuarios", referencedColumnName = "id_usuarios", nullable = false)
+    private Usuario usuario;
 
     //CONSTRUCTORES
     public Reserva() {
@@ -78,5 +83,11 @@ public class Reserva {
         this.producto = producto;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

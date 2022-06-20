@@ -21,7 +21,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -34,7 +34,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Check-out: 10:00\",\r\n    \"politicas\":{\r\n        \"id_politica\":1\r\n    }\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Check-out: 10:00\",\r\n    \"politica\":{\r\n        \"id\":1\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,9 +67,8 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -80,7 +79,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"No se permiten fiestas\",\r\n    \"politicas\":{\r\n        \"id_politica\":1\r\n    }    \r\n}",
+					"raw": "{\r\n    \"nombre\": \"No se permiten fiestas\",\r\n    \"politica\":{\r\n        \"id\":1\r\n    }    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -113,9 +112,8 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -126,237 +124,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"No fumar\"   ,\r\n    \"politicas\":{\r\n        \"id_politica\":1\r\n    } \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Coronavirus",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus\"   ,\r\n    \"politicas\":{\r\n        \"id_politica\":2\r\n    } \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Detector de humo",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Detector de humo\"   ,\r\n    \"politicas\":{\r\n        \"id_politica\":2\r\n    } \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Depósito de seguridad",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Depósito de seguridad\"   ,\r\n    \"politicas\":{\r\n        \"id_politica\":2\r\n    } \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Agregá las fechas de tu viaje",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadíad\"   ,\r\n    \"politicas\":{\r\n        \"id_politica\":3\r\n    } \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) No se devuelve dinero por cancelaciones",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_elementosPolitica).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"No se devuelve dinero por cancelaciones\"   ,\r\n    \"politicas\":{\r\n        \"id_politica\":3\r\n    } \r\n}",
+					"raw": "{\r\n    \"nombre\": \"No fumar\"   ,\r\n    \"politica\":{\r\n        \"id\":1\r\n    } \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -393,7 +161,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_elementosPolitica).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -429,7 +197,7 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.id_elementosPolitica).to.eql(1);\r",
+							"    pm.expect(responseJson.id).to.eql(1);\r",
 							"})\r",
 							""
 						],
@@ -485,7 +253,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_elementosPolitica\": 1,\r\n    \"nombre\": \"elementoPolitica1\"\r\n}"
+					"raw": "{\r\n    \"id\":1,\r\n    \"nombre\": \"nuevo\",\r\n    \"politica\":{\r\n        \"id\":2\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -532,7 +300,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_elementosPolitica\":1000,\r\n    \"nombre\": \"elementoPolitica1\"    \r\n}"
+					"raw": "{\r\n    \"id\":1000,\r\n    \"nombre\": \"elementoPolitica1\"    \r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -564,7 +332,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_elementosPolitica).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -707,7 +475,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_elementosPolitica).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -730,6 +498,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",

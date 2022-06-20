@@ -23,7 +23,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_ciudad).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -71,7 +71,7 @@
 							"});\r",
 							"pm.test(\"El id no puede ser null\", ()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_ciudad).to.be.a(\"number\");\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
 							"})\r",
 							""
 						],
@@ -85,202 +85,6 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\": \"Huerta Grande\",\r\n    \"provincia\": \"Córdoba\",\r\n    \"pais\":\"Argentina\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) La Plata",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.provincia).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.pais).to.be.a(\"string\");\r",
-							"  \r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_ciudad).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"La Plata\",\r\n    \"provincia\": \"Buenos Aires\",\r\n    \"pais\":\"Argentina\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Campana",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.provincia).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.pais).to.be.a(\"string\");\r",
-							"  \r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_ciudad).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Campana\",\r\n    \"provincia\": \"Buenos Aires\",\r\n    \"pais\":\"Argentina\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Goya",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.provincia).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.pais).to.be.a(\"string\");\r",
-							"  \r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_ciudad).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Goya\",\r\n    \"provincia\": \"Corrientes\",\r\n    \"pais\":\"Argentina\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{urlbase}}/agregar",
-					"host": [
-						"{{urlbase}}"
-					],
-					"path": [
-						"agregar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post (requiere body) Wheelwright",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Tests para verificar el body de la respuesta recibida\r",
-							"pm.test(\"Agregar Ciudad\", () => {\r",
-							"  const responseJson = pm.response.json();\r",
-							"  pm.expect(responseJson.nombre).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.provincia).to.be.a(\"string\");\r",
-							"  pm.expect(responseJson.pais).to.be.a(\"string\");\r",
-							"  \r",
-							"});\r",
-							"pm.test(\"El id no puede ser null\", ()=>{\r",
-							"      const responseJson = pm.response.json();\r",
-							"      pm.expect(responseJson.id_ciudad).to.be.a(\"number\");\r",
-							"})\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Wheelwright\",\r\n    \"provincia\": \"Santa Fe\",\r\n    \"pais\":\"Argentina\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -317,7 +121,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_ciudad).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -353,7 +157,7 @@
 							"// Tests para verificar el body de la respuesta recibida\r",
 							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.id_ciudad).to.eql(1);\r",
+							"    pm.expect(responseJson.id).to.eql(1);\r",
 							"})\r",
 							""
 						],
@@ -409,7 +213,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id_ciudad\": 1,\r\n    \"nombre\": \"nueva\",\r\n    \"provincia\": \"nueva\",\r\n    \"pais\": \"nuevo\",\r\n    \"productos\": []\r\n}"
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nueva\",\r\n    \"provincia\": \"nueva\",\r\n    \"pais\": \"nuevo\",\r\n    \"productos\": []\r\n}"
 				},
 				"url": {
 					"raw": "{{urlbase}}/actualizar",
@@ -488,7 +292,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_ciudad).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -551,13 +355,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{urlbase}}/eliminar/2",
+					"raw": "{{urlbase}}/eliminar/1",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
 						"eliminar",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -631,7 +435,7 @@
 							"})\r",
 							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
 							"      const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson[0].id_ciudad).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
 							"})"
 						],
 						"type": "text/javascript"
@@ -654,6 +458,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
