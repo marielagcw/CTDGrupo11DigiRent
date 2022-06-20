@@ -5,8 +5,13 @@ import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
 
 
-const ProductoList = () => {
+const ProductoList = ({ search }) => {
+
     let url = "http://localhost:8080/productos/listarTodosRandom?size=8&page=0";
+    if (search) {
+        url = "http://localhost:8080/productos/productosCiudad/"+search;
+    }
+
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);

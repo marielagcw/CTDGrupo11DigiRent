@@ -9,7 +9,7 @@ import '../styles/Search.css'
 
 
 
-const Search = () => {
+const Search = ({busqueda}) => {
 
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
@@ -21,6 +21,7 @@ const Search = () => {
             "\nCon fecha: " + formateDate(fecha))
     }
     const handleChange = e => {
+        if(e.target.name == 'ciudad'){busqueda(e.target.value)}
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
