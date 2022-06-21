@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // METHODS
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(usuarioService);
+        auth.authenticationProvider(daoAuthenticationProvider());
     }
 
     // Configuración de los endpoints que serán públicos y de los que serán privados

@@ -33,6 +33,7 @@ public class UsuarioService implements UserDetailsService {
     // SAVE
     public UsuarioDTO agregar(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
         userRepository.save(usuario);
         usuarioDTO.setId(usuario.getId());
         return usuarioDTO;
@@ -89,7 +90,7 @@ public class UsuarioService implements UserDetailsService {
         // Generamos un usuario de la librería de SpringSecurity donde indicamos username, password y rol que es lo que necesita spring para hacer las validaciones
         User userDetail = new User(
                 userName,
-                bCryptPasswordEncoder.encode(user.getPassword()),
+                user.getPassword(),
                 true,
                 true,
                 true,
