@@ -38,8 +38,14 @@ public class UsuarioController {
     // SAVE
     @PostMapping("/registro")
     public ResponseEntity<?> guardar(@RequestBody UsuarioDTO usuarioDTO) {
-        service.agregar(usuarioDTO);
-        return ResponseEntity.status(201).body("El usuario fue registrado con éxito");
+        ResponseEntity response;
+        if(!service.noExisteUsername(usuarioDTO.getEmail())) {
+            response = ResponseEntity.status(409).body("El usuario ya existe");
+        } else {
+            service.agregar(usuarioDTO);
+            response = ResponseEntity.status(201).body("El usuario fue registrado con éxito");
+        }
+        return response;
     }
 
     // DELETE
@@ -66,13 +72,13 @@ public class UsuarioController {
 
     // TOKEN
     @PostMapping("/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-        }catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             throw new Exception("Incorrect", e);
         }
-        final UserDetails  userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtService.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse((jwt)));

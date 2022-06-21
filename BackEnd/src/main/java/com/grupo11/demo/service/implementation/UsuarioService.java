@@ -35,13 +35,9 @@ public class UsuarioService implements UserDetailsService {
     // ************************************************************************************//
     // SAVE
     public void agregar(UsuarioDTO usuarioDTO) {
-       if(repository.findByUsername(usuarioDTO.getEmail()).isEmpty()) {
-           Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
-           usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
-           repository.save(usuario);
-           usuarioDTO.setId(usuario.getId());
-       }
-
+        Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+        repository.save(usuario);
     }
 
     // FIND ALL
@@ -63,6 +59,11 @@ public class UsuarioService implements UserDetailsService {
             usuarioDTO = mapper.convertValue(usuario, UsuarioDTO.class);
         }
         return usuarioDTO;
+    }
+
+    // FIND BY EMAIL / USERNAME
+    public Boolean noExisteUsername(String email){
+        return repository.findByUsername(email).isEmpty();
     }
 
     // UPDATE
