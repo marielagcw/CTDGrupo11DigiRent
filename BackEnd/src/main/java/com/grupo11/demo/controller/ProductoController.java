@@ -3,11 +3,14 @@ package com.grupo11.demo.controller;
 import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.service.implementation.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,10 +24,19 @@ public class ProductoController {
 
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
-    public ResponseEntity<?> listarTodos(Pageable pageable) {
-        Set<ProductoDTO> productos = productoService.listarTodo(pageable);
-        return ResponseEntity.ok().body(productos);
+    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam String ord, @RequestParam String field) {
+        Set<ProductoDTO> productos;
+
+        if (ord == null || field == null) {
+            productos = productoService.listarTodo(pageable);
+        } else {
+            Sort.by(Sort.Order.asc("id"));
+            PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
+            productos = productoService.listarTodo(of);
+        }
+        return ResponseEntity.ok(productos);
     }
+
 
     // FIND ALL RANDOM / GET ALL RANDOM
     @GetMapping("/listarTodosRandom")
