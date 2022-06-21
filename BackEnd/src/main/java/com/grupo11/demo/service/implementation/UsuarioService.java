@@ -5,6 +5,7 @@ import com.grupo11.demo.model.Usuario;
 import com.grupo11.demo.model.dtos.UsuarioDTO;
 import com.grupo11.demo.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -20,7 +21,7 @@ import java.util.*;
 public class UsuarioService implements UserDetailsService {
 
     @Autowired
-    IUsuarioRepository userRepository;
+    IUsuarioRepository repository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -31,17 +32,16 @@ public class UsuarioService implements UserDetailsService {
 
     // ************************************************************************************//
     // SAVE
-    public UsuarioDTO agregar(UsuarioDTO usuarioDTO) {
+    public void agregar(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
         usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
-        userRepository.save(usuario);
+        repository.save(usuario);
         usuarioDTO.setId(usuario.getId());
-        return usuarioDTO;
     }
 
     // FIND ALL
     public Set<UsuarioDTO> listarTodo() {
-        List<Usuario> usuarios = userRepository.findAll();
+        List<Usuario> usuarios = repository.findAll();
         Set<UsuarioDTO> usuarioDTOList = new HashSet<>();
         for (Usuario usuario : usuarios) {
             usuarioDTOList.add(mapper.convertValue(usuario, UsuarioDTO.class));
@@ -51,7 +51,7 @@ public class UsuarioService implements UserDetailsService {
 
     // FIND BY ID
     public UsuarioDTO buscarPorId(Integer id) {
-        Optional<Usuario> usuario = userRepository.findById(id);
+        Optional<Usuario> usuario = repository.findById(id);
         UsuarioDTO usuarioDTO = null;
 
         if (usuario.isPresent()) {
@@ -61,17 +61,21 @@ public class UsuarioService implements UserDetailsService {
     }
 
     // UPDATE
-    public UsuarioDTO actualizar(UsuarioDTO usuarioDTO) {
+    public void actualizar(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
-        userRepository.findById(usuario.getId()).orElseThrow(() -> {
+        repository.findById(usuario.getId()).orElseThrow(() -> {
             return new NoSuchElementException();
         });
-        return mapper.convertValue(userRepository.save(usuario), UsuarioDTO.class);
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+        repository.save(usuario);
     }
 
     // DELETE
     public void eliminar(Integer id) {
-        userRepository.deleteById(id);
+        repository.findById(id).orElseThrow(() -> {
+            return new NoSuchElementException();
+        });
+        repository.deleteById(id);
     }
 
 
@@ -79,7 +83,7 @@ public class UsuarioService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         // Buscamos el usuario en la base de datos, si no existe arroja excepción
-        Usuario user = userRepository.findByUsername(userName).orElseThrow(() -> new UsernameNotFoundException("Invalid Credentials"));
+        Usuario user = repository.findByUsername(userName).orElseThrow(() -> new UsernameNotFoundException("Invalid Credentials"));
 
         // Le asignamos los roles al usuario (en este caso cada usuario tiene un solo rol)
         Set<GrantedAuthority> autorizaciones = new HashSet<>();

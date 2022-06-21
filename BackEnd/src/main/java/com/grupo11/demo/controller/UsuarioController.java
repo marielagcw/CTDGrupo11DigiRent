@@ -29,7 +29,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
-    ///FIND ALL
+    // FIND ALL
     @GetMapping("/listarTodos")
     public Set<UsuarioDTO> listarTodos() {
         return service.listarTodo();
@@ -39,7 +39,7 @@ public class UsuarioController {
     @PostMapping("/registro")
     public ResponseEntity<?> guardar(@RequestBody UsuarioDTO usuarioDTO) {
         service.agregar(usuarioDTO);
-        return ResponseEntity.status(201).body(usuarioDTO);
+        return ResponseEntity.status(201).body("El usuario fue registrado con éxito");
     }
 
     // DELETE
@@ -53,7 +53,7 @@ public class UsuarioController {
     @PutMapping("/actualizar")
     public ResponseEntity<?> editarProducto(@RequestBody UsuarioDTO usuarioDTO) {
         service.actualizar(usuarioDTO);
-        return ResponseEntity.ok(usuarioDTO);
+        return ResponseEntity.ok("El usuario fue modificado con éxito");
     }
 
     // FIND BY ID

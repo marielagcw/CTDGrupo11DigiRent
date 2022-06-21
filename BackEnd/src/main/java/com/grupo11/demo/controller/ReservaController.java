@@ -3,17 +3,13 @@ package com.grupo11.demo.controller;
 import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ReservaService;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 
@@ -24,7 +20,7 @@ public class ReservaController {
     @Autowired
     private ReservaService service;
 
-    //FIND ALL
+    // FIND ALL
     @GetMapping("/listarTodos")
     public Set<ReservaDTO> listarTodos() {
         return service.listarTodas();

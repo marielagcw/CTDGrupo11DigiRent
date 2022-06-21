@@ -21,13 +21,16 @@ public class ProductoController {
 
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
-    public Set<ProductoDTO> listarTodos(Pageable pageable) {
-        return productoService.listarTodo(pageable);
+    public ResponseEntity<?> listarTodos(Pageable pageable) {
+        Set<ProductoDTO> productos = productoService.listarTodo(pageable);
+        return ResponseEntity.ok().body(productos);
     }
 
     // FIND ALL RANDOM / GET ALL RANDOM
     @GetMapping("/listarTodosRandom")
-    public List<ProductoDTO> listarTodosRandom (Pageable pageable){return productoService.listarRandom(pageable);}
+    public List<ProductoDTO> listarTodosRandom(Pageable pageable) {
+        return productoService.listarRandom(pageable);
+    }
 
     // SAVE / POST
     @PostMapping("/agregar")

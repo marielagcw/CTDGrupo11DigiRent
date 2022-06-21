@@ -84,14 +84,15 @@ public class ProductoService implements IProductoSevice {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 
 
     // FIND BY ID CIUDAD
     @Override
-    public Set<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCiudad(id, pageable);
+    public Set<ProductoDTO> buscarProductosPorCiudad(Integer idCiudad, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCiudad(idCiudad, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
             productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
@@ -102,8 +103,8 @@ public class ProductoService implements IProductoSevice {
     }
 
     // FIND BY ID CATEGORIA
-    public Set<ProductoDTO> buscarProductosPorCategoria(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCategoria(id, pageable);
+    public Set<ProductoDTO> buscarProductosPorCategoria(Integer idCategoria, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCategoria(idCategoria, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
             productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));

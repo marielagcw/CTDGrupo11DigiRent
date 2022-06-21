@@ -16,7 +16,7 @@ public class RolController {
     @Autowired
     private RolService service;
 
-    ///FIND ALL
+    // FIND ALL
     @GetMapping("/listarTodos")
     public Set<RolDTO> listarTodos() {
         return service.listarTodas();
