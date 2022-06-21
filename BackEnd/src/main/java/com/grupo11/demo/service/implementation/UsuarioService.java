@@ -5,6 +5,7 @@ import com.grupo11.demo.model.Usuario;
 import com.grupo11.demo.model.dtos.UsuarioDTO;
 import com.grupo11.demo.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.*;
 
@@ -33,10 +35,13 @@ public class UsuarioService implements UserDetailsService {
     // ************************************************************************************//
     // SAVE
     public void agregar(UsuarioDTO usuarioDTO) {
-        Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
-        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
-        repository.save(usuario);
-        usuarioDTO.setId(usuario.getId());
+       if(repository.findByUsername(usuarioDTO.getEmail()).isEmpty()) {
+           Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
+           usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+           repository.save(usuario);
+           usuarioDTO.setId(usuario.getId());
+       }
+
     }
 
     // FIND ALL
