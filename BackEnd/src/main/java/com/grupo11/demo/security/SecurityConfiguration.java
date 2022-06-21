@@ -48,6 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/usuarios/authenticate", "/usuarios/registro").permitAll()
                 .antMatchers("/productos/listarTodosRandom**").permitAll()
+                .antMatchers("/v3/api-docs/**",
+                        "/swagger-ui*", "/swagger-ui/**").permitAll()
                 .antMatchers( "/**").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/productos/listarTodos**" ).hasAnyAuthority("ROLE_USUARIO_PRIVADO", "ROLE_ADMINISTRADOR")
                 .anyRequest()
