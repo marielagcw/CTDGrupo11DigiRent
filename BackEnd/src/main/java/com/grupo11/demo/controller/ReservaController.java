@@ -74,10 +74,10 @@ public class ReservaController {
         return service.buscarReservasPorProducto(id, pageable);
     }
 
-    // FIND BY PRODUCTO Y FECHAS
-    @GetMapping("/producto/{id}/fechaDisponible")
-    public ResponseEntity<Boolean> fechasDisponiblesPorProducto(@PathVariable Integer id, @RequestBody ReservaFechasDTO reservaFechasDTO) {
-        Boolean estaDisponible = service.fechasDisponiblesPorProducto(id, reservaFechasDTO.getFechaInicial(), reservaFechasDTO.getFechaFinal());
+    // FIND BY FECHAS
+    @GetMapping("/fechaDisponible")
+    public ResponseEntity<Boolean> fechaDisponible(@RequestBody ReservaFechasDTO reservaFechasDTO) {
+        Boolean estaDisponible = service.fechaDisponible(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial());
         return ResponseEntity.ok(estaDisponible);
     }
 }
