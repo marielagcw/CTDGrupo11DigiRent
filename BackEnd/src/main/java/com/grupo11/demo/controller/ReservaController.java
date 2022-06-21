@@ -4,7 +4,9 @@ import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +24,20 @@ public class ReservaController {
 
     // FIND ALL
     @GetMapping("/listarTodos")
-    public Set<ReservaDTO> listarTodos() {
-        return service.listarTodas();
+    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam String ord, @RequestParam String field) {
+        Set<ReservaDTO> reservas;
+
+        if (ord == null || field == null) {
+            reservas = service.listarTodo(pageable);
+        } else {
+            Sort.by(Sort.Order.asc("id"));
+            PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
+            reservas = service.listarTodo(of);
+        }
+        return ResponseEntity.ok(reservas);
     }
+
+
 
     // SAVE
     @PostMapping("/agregar")
@@ -63,7 +76,7 @@ public class ReservaController {
 
     // FIND BY PRODUCTO Y FECHAS
     @GetMapping("/producto/{id}/fechaDisponible")
-    public ResponseEntity<Boolean> fechasDisponiblesPorProducto(@PathVariable Integer id, @RequestBody ReservaFechasDTO reservaFechasDTO){
+    public ResponseEntity<Boolean> fechasDisponiblesPorProducto(@PathVariable Integer id, @RequestBody ReservaFechasDTO reservaFechasDTO) {
         Boolean estaDisponible = service.fechasDisponiblesPorProducto(id, reservaFechasDTO.getFechaInicial(), reservaFechasDTO.getFechaFinal());
         return ResponseEntity.ok(estaDisponible);
     }

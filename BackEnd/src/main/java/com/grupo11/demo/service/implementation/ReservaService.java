@@ -7,6 +7,7 @@ import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.repository.IReservaRepository;
 import com.grupo11.demo.service.IReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,8 @@ public class ReservaService implements IReservaService {
 
     // FIND ALL
     @Override
-    public Set<ReservaDTO> listarTodas() {
-        List<Reserva> reservas = repository.findAll();
+    public Set<ReservaDTO> listarTodo(Pageable pageable) {
+        Page<Reserva> reservas = repository.findAll(pageable);
         Set<ReservaDTO> reservaDTOList = new HashSet<>();
         for (Reserva reserva : reservas) {
             reservaDTOList.add(mapper.convertValue(reserva, ReservaDTO.class));
