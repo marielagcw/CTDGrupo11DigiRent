@@ -47,13 +47,8 @@ public class CiudadService implements ICiudadService {
     // FIND BY ID
     @Override
     public CiudadDTO buscarPorId(Integer id) {
-        Optional<Ciudad> ciudad = repository.findById(id);
-        CiudadDTO ciudadDTO = null;
-
-        if (ciudad.isPresent()) {
-            ciudadDTO = mapper.convertValue(ciudad, CiudadDTO.class);
-        }
-        return ciudadDTO;
+        Ciudad ciudad = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(ciudad, CiudadDTO.class);
     }
 
     // UPDATE
@@ -69,6 +64,7 @@ public class CiudadService implements ICiudadService {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 

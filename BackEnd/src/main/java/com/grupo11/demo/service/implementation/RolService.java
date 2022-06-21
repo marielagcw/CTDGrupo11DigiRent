@@ -39,13 +39,9 @@ public class RolService implements IRolService {
 
     // FIND BY ID
     public RolDTO buscarPorId(Integer id) {
-        Optional<Rol> rol = repository.findById(id);
-        RolDTO rolDTO = null;
+        Rol rol = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(rol, RolDTO.class);
 
-        if (rol.isPresent()) {
-            rolDTO = mapper.convertValue(rol, RolDTO.class);
-        }
-        return rolDTO;
     }
 
     // UPDATE
@@ -59,6 +55,7 @@ public class RolService implements IRolService {
 
     // DELETE
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
         repository.deleteById(id);
     }
 

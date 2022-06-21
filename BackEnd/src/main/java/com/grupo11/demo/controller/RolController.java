@@ -26,7 +26,7 @@ public class RolController {
     @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody RolDTO rolDTO) {
         service.agregar(rolDTO);
-        return ResponseEntity.ok(rolDTO);
+        return ResponseEntity.status(201).body(rolDTO);
     }
 
     // DELETE

@@ -47,13 +47,8 @@ public class CaracteristicaService implements ICaracteristicaService {
     // FIND BY ID
     @Override
     public CaracteristicaDTO buscarPorId(Integer id) {
-        Optional<Caracteristica> caracteristica = repository.findById(id);
-        CaracteristicaDTO caracteristicaDTO = null;
-
-        if (caracteristica.isPresent()) {
-            caracteristicaDTO = mapper.convertValue(caracteristica, CaracteristicaDTO.class);
-        }
-        return caracteristicaDTO;
+        Caracteristica caracteristica = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(caracteristica, CaracteristicaDTO.class);
     }
 
     // UPDATE
@@ -69,6 +64,7 @@ public class CaracteristicaService implements ICaracteristicaService {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 }

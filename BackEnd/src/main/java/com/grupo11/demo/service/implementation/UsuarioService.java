@@ -5,8 +5,6 @@ import com.grupo11.demo.model.Usuario;
 import com.grupo11.demo.model.dtos.UsuarioDTO;
 import com.grupo11.demo.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -15,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.*;
 
@@ -52,13 +49,8 @@ public class UsuarioService implements UserDetailsService {
 
     // FIND BY ID
     public UsuarioDTO buscarPorId(Integer id) {
-        Optional<Usuario> usuario = repository.findById(id);
-        UsuarioDTO usuarioDTO = null;
-
-        if (usuario.isPresent()) {
-            usuarioDTO = mapper.convertValue(usuario, UsuarioDTO.class);
-        }
-        return usuarioDTO;
+        Usuario usuario = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+       return mapper.convertValue(usuario, UsuarioDTO.class);
     }
 
     // FIND BY EMAIL / USERNAME

@@ -46,12 +46,8 @@ public class ReservaService implements IReservaService {
     // FIND BY ID
     @Override
     public ReservaDTO buscarPorId(Integer id) {
-        Optional<Reserva> reserva = repository.findById(id);
-        ReservaDTO reservaDTO = null;
-        if (reserva.isPresent()) {
-            reservaDTO = mapper.convertValue(reserva, ReservaDTO.class);
-        }
-        return reservaDTO;
+        Reserva reserva = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(reserva, ReservaDTO.class);
     }
 
     // UPDATE

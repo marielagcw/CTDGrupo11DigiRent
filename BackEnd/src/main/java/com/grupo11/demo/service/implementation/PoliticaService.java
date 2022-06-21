@@ -47,13 +47,8 @@ public class PoliticaService implements IPoliticaService {
     // FIND BY ID
     @Override
     public PoliticaDTO buscarPorId(Integer id) {
-        Optional<Politica> politica = repository.findById(id);
-        PoliticaDTO politicaDTO = null;
-
-        if (politica.isPresent()) {
-            politicaDTO = mapper.convertValue(politica, PoliticaDTO.class);
-        }
-        return politicaDTO;
+            Politica politica = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+            return mapper.convertValue(politica, PoliticaDTO.class);
     }
 
     // UPDATE
@@ -69,6 +64,7 @@ public class PoliticaService implements IPoliticaService {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 

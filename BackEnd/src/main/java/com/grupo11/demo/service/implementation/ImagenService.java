@@ -20,7 +20,7 @@ public class ImagenService implements IImagenService {
     private IImagenRepository repository;
 
     // SAVE
-    private ImagenDTO guardarImagen(ImagenDTO imagenDTO){
+    private ImagenDTO guardarImagen(ImagenDTO imagenDTO) {
         Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
         repository.save(imagen);
         imagenDTO.setId(imagen.getId());
@@ -47,13 +47,8 @@ public class ImagenService implements IImagenService {
     // FIND BY ID
     @Override
     public ImagenDTO buscarPorId(Integer id) {
-        Optional<Imagen> imagen = repository.findById(id);
-        ImagenDTO imagenDTO = null;
-
-        if (imagen.isPresent()) {
-            imagenDTO = mapper.convertValue(imagen, ImagenDTO.class);
-        }
-        return imagenDTO;
+        Imagen imagen = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(imagen, ImagenDTO.class);
     }
 
     // UPDATE
@@ -69,6 +64,7 @@ public class ImagenService implements IImagenService {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 

@@ -62,13 +62,8 @@ public class ProductoService implements IProductoSevice {
     // FIND BY ID
     @Override
     public ProductoDTO buscarPorId(Integer id) {
-        Optional<Producto> producto = repository.findById(id);
-        ProductoDTO productoDTO = null;
-
-        if (producto.isPresent()) {
-            productoDTO = mapper.convertValue(producto, ProductoDTO.class);
-        }
-        return productoDTO;
+        Producto producto = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(producto, ProductoDTO.class);
     }
 
     // UPDATE
