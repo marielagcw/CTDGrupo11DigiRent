@@ -4,6 +4,7 @@ import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -90,10 +91,10 @@ public class ProductoController {
         return service.buscarProductosPorCategoria(id, pageable);
     }
 
-    // LISTADO DE PRODUCTOS OCUPADOS POR FECHAS
-    @PostMapping("/productosNoDisponibles")
-    public ResponseEntity<?> productosNoDisponibles(@RequestBody ReservaFechasDTO reservaFechasDTO) {
-        List<ProductoDTO> productoList = service.listadoProductosNoDisponibles(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial());
+    // LISTADO DE PRODUCTOS DISPONIBLES POR FECHAS
+    @PostMapping("/productosDisponiblesFechas")
+    public ResponseEntity<?> productosNoDisponibles(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
+        List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
         return ResponseEntity.ok().body(productoList);
     }
 }

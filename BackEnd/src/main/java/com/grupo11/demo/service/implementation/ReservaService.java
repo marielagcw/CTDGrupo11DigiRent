@@ -77,8 +77,4 @@ public class ReservaService implements IReservaService {
                 .collect(Collectors.toList());
     }
 
-    // FIND ALL BY FECHAS
-    public List<Reserva> reservasPorFechas(LocalDate fechaSalida, LocalDate fechaIngreso) {
-        return repository.reservasPorFechas(fechaSalida, fechaIngreso);
-    }
 }
