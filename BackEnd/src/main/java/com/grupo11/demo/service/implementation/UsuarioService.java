@@ -50,11 +50,11 @@ public class UsuarioService implements UserDetailsService {
     // FIND BY ID
     public UsuarioDTO buscarPorId(Integer id) {
         Usuario usuario = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
-       return mapper.convertValue(usuario, UsuarioDTO.class);
+        return mapper.convertValue(usuario, UsuarioDTO.class);
     }
 
     // FIND BY EMAIL / USERNAME
-    public Boolean noExisteUsername(String email){
+    public Boolean noExisteUsername(String email) {
         return repository.findByUsername(email).isEmpty();
     }
 
@@ -76,6 +76,11 @@ public class UsuarioService implements UserDetailsService {
         repository.deleteById(id);
     }
 
+    // BUSCAR POR EMAIL
+    public UsuarioDTO buscarPorUsername(String username) {
+        Usuario usuario = repository.findByUsername(username).orElseThrow(() -> new NoSuchElementException());
+        return mapper.convertValue(usuario, UsuarioDTO.class);
+    }
 
     // ************************************************************************************//
     @Override

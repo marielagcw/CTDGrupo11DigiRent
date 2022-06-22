@@ -1,10 +1,6 @@
 package com.grupo11.demo.model.dtos;
 
-import com.grupo11.demo.model.Reserva;
 import com.grupo11.demo.model.Rol;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class UsuarioDTO {
 

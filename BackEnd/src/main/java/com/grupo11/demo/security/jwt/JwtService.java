@@ -1,8 +1,11 @@
 package com.grupo11.demo.security.jwt;
 
+import com.grupo11.demo.model.dtos.UsuarioDTO;
+import com.grupo11.demo.service.implementation.UsuarioService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -16,6 +19,8 @@ public class JwtService implements IJwtService {
 
     // El SECRET_KEY es una palabra clave para generar y posteriormente validar el token
     private String SECRET_KEY = "secret";
+    @Autowired
+    private UsuarioService usuarioService;
 
     @Value("${minutesToken}")
     private int minutesToken;
@@ -52,6 +57,11 @@ public class JwtService implements IJwtService {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        UsuarioDTO usuario = usuarioService.buscarPorUsername(userDetails.getUsername());
+        claims.put("Nombre", usuario.getNombre() );
+        claims.put("Apellido", usuario.getApellido());
+        claims.put("Email", usuario.getEmail());
+        claims.put("Id", usuario.getId());
         return createToken(claims, userDetails.getUsername());
     }
 

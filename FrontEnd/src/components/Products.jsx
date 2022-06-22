@@ -32,7 +32,8 @@ export default function Products() {
         categoria,
         ciudad,
         caracteristicas,
-        politicas } = { ...data };
+        politicas, 
+        reservas} = { ...data };
 
     return (
         <div id='product'>
