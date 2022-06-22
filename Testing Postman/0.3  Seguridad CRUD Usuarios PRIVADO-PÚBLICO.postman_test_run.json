@@ -1,0 +1,266 @@
+{
+	"id": "6d6ec328-90e7-4e67-8a79-7d8bee136561",
+	"name": "0.3  Seguridad CRUD Usuarios PRIVADO/PÚBLICO",
+	"timestamp": "2022-06-21T19:31:04.801Z",
+	"collection_id": "18027182-8dc8b237-1e05-4a5e-902a-215a06ce491b",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 8,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "bd512beb-5cf7-4da9-88c9-0aa08625e385",
+			"name": "Get All PRIVADO",
+			"url": "http://localhost:8080/usuarios/listarTodos",
+			"time": 7,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "9f441b47-702b-4567-bf85-38f66a9fbd4a",
+			"name": "Get All PUBLICO",
+			"url": "http://localhost:8080/usuarios/listarTodos",
+			"time": 4,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "ed254c79-18d6-4bc8-98fe-2eed30f2bd4b",
+			"name": "Get By Id (id en la url) PRIVADO",
+			"url": "http://localhost:8080/usuarios/5",
+			"time": 6,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "c3a3498c-aca1-40a6-aba7-eac05956e8bf",
+			"name": "Get By Id (id en la url) PÚBLICO",
+			"url": "http://localhost:8080/usuarios/5",
+			"time": 4,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "8c8831ac-2b9a-4dba-bf69-87f5fc4e6a7d",
+			"name": "Put  (id en el body) PRIVADO",
+			"url": "http://localhost:8080/usuarios/actualizar",
+			"time": 7,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "1a8ec7ba-e0dc-4f38-9026-e13dd509b80c",
+			"name": "Put  (id en el body) PÚBLICO",
+			"url": "http://localhost:8080/usuarios/actualizar",
+			"time": 8,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "60ac3dd7-f894-4fa1-a981-c13fc8b37d3a",
+			"name": "Put  (id en la url) PRIVADO",
+			"url": "http://localhost:8080/usuarios/eliminar/7",
+			"time": 9,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		},
+		{
+			"id": "96c95c09-092b-436e-9dcf-9099b842c881",
+			"name": "Put  (id en la url) PÚBLICO",
+			"url": "http://localhost:8080/usuarios/eliminar/7",
+			"time": 9,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Respuesta correcta, no tiene permisos": true
+			},
+			"testPassFailCounts": {
+				"Respuesta correcta, no tiene permisos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Respuesta correcta, no tiene permisos": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 54,
+	"collection": {
+		"requests": [
+			{
+				"id": "bd512beb-5cf7-4da9-88c9-0aa08625e385",
+				"method": "GET"
+			},
+			{
+				"id": "9f441b47-702b-4567-bf85-38f66a9fbd4a",
+				"method": "GET"
+			},
+			{
+				"id": "ed254c79-18d6-4bc8-98fe-2eed30f2bd4b",
+				"method": "GET"
+			},
+			{
+				"id": "c3a3498c-aca1-40a6-aba7-eac05956e8bf",
+				"method": "GET"
+			},
+			{
+				"id": "8c8831ac-2b9a-4dba-bf69-87f5fc4e6a7d",
+				"method": "PUT"
+			},
+			{
+				"id": "1a8ec7ba-e0dc-4f38-9026-e13dd509b80c",
+				"method": "PUT"
+			},
+			{
+				"id": "60ac3dd7-f894-4fa1-a981-c13fc8b37d3a",
+				"method": "DELETE"
+			},
+			{
+				"id": "96c95c09-092b-436e-9dcf-9099b842c881",
+				"method": "DELETE"
+			}
+		]
+	}
+}

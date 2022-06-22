@@ -1,0 +1,80 @@
+{
+	"id": "6daa6539-9503-4519-bdf4-41d243d9ec50",
+	"name": "0.2 Seguridad Token",
+	"timestamp": "2022-06-21T19:16:29.706Z",
+	"collection_id": "18027182-581c932c-2991-4aee-8278-4dbe28ad62da",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 2,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "d0b84a4b-5479-47c9-bab5-4fbcf60c7f8e",
+			"name": "Post Token (requiere body) Admin",
+			"url": "http://localhost:8080/usuarios/authenticate",
+			"time": 74,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Al enviar los datos del login se recibe un status 200": true
+			},
+			"testPassFailCounts": {
+				"Al enviar los datos del login se recibe un status 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				74
+			],
+			"allTests": [
+				{
+					"Al enviar los datos del login se recibe un status 200": true
+				}
+			]
+		},
+		{
+			"id": "029dda9f-feac-470b-85e0-17648eb9b67a",
+			"name": "Post Token (requiere body) Usuario Privado",
+			"url": "http://localhost:8080/usuarios/authenticate",
+			"time": 72,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Al enviar los datos del login se recibe un status 200": true
+			},
+			"testPassFailCounts": {
+				"Al enviar los datos del login se recibe un status 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				72
+			],
+			"allTests": [
+				{
+					"Al enviar los datos del login se recibe un status 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 146,
+	"collection": {
+		"requests": [
+			{
+				"id": "d0b84a4b-5479-47c9-bab5-4fbcf60c7f8e",
+				"method": "POST"
+			},
+			{
+				"id": "029dda9f-feac-470b-85e0-17648eb9b67a",
+				"method": "POST"
+			}
+		]
+	}
+}
