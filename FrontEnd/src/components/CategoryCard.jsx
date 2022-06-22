@@ -4,6 +4,7 @@ import '../styles/CategoryCard.css'
 const CategoryCard = ({datos,seleccion,setSeleccion}) => {
     let{url,descripcion,titulo,id} = {...datos};
     const handleClick = (e) =>{
+        //debugger;
         // console.log(e.target);
         if (seleccion !== id) {
             setSeleccion(id);

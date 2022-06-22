@@ -15,12 +15,15 @@ const ProductoList = ({ search, seleccion }) => {
 
         let endpoint = "http://localhost:8080/productos/listarTodosRandom?size=8&page=0";
         if (validesBusqueda && !seleccion) {
-            endpoint = "http://localhost:8080/productos/productosCiudad/listarTodos";
+            // endpoint = "http://localhost:8080/productos/productosCiudad/listarTodos";
+            endpoint = "http://localhost:8080/productos/ciudad/listarTodos";
             setBusqueda(true);
         } else if (validesSeleccion && !search) {
-            endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
+            // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
+            endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
         } else if (validesBusqueda && validesSeleccion) {
-            endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
+            // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
+            endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
             setBusqueda(true);
         }
         setUrl(endpoint);

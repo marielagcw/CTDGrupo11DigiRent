@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/ProductoCard.css'
 
 const ProductoCard = (props) => {
+    
     let { id,
         tituloDescripcion,
         descripcion,

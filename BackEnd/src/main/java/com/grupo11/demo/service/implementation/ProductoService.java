@@ -54,8 +54,9 @@ public class ProductoService implements IProductoSevice {
                 .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
                 .collect(Collectors.toList());
         Collections.shuffle(productoDTOS);
-        int randomSeriesLength = 4;
-        return productoDTOS.subList(0, randomSeriesLength);
+        //int randomSeriesLength = 4;
+        //return productoDTOS.subList(0, randomSeriesLength);
+        return productoDTOS;
     }
 
     // SAVE
@@ -112,11 +113,10 @@ public class ProductoService implements IProductoSevice {
         return productoDTOList;
     }
 
-    // BUSCAR PRODUCTOS OCUPADOS POR FECHAS
-    public List<ProductoDTO> listadoProductosNoDisponibles(LocalDate fechaSalida, LocalDate fechaIngreso) {
-        List<Reserva> reservas = reservaService.reservasPorFechas(fechaSalida, fechaIngreso);
-        List<Producto> productoList = reservas.stream().map(reserva -> reserva.getProducto()).collect(Collectors.toList());
-        return productoList.stream().map(producto -> mapper.convertValue(producto, ProductoDTO.class)).collect(Collectors.toList());
+    // BUSCAR PRODUCTOS DISPONIBLES POR FECHA
+    public List<ProductoDTO> buscarProductosDisponiblesPorFecha(LocalDate fechaSalida, LocalDate fechaIngreso, Pageable pageable){
+        List<Producto> productos =  repository.buscarProductosDisponiblesPorFecha(fechaSalida, fechaIngreso, pageable);
+       return productos.stream().map(producto -> mapper.convertValue(producto, ProductoDTO.class)).collect(Collectors.toList());
     }
 
 }

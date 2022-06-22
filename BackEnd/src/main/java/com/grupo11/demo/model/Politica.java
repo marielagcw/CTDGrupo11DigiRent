@@ -1,6 +1,7 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -23,7 +24,7 @@ public class Politica {
     private Set<Producto> productos = new HashSet<>();
 
     @OneToMany(mappedBy = "politica")
-    @JsonIgnore
+    @JsonManagedReference
     private Set<ElementoPolitica> elementos = new HashSet<>();
 
     // CONSTRUCTORES

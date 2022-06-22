@@ -14,6 +14,4 @@ public interface IReservaRepository  extends JpaRepository<Reserva, Integer> {
     @Query("FROM Reserva r WHERE r.producto.id = :id ")
     List<Reserva> findAllByProducto(Integer id, Pageable pageable);
 
-    @Query("FROM Reserva r WHERE r.fechaInicial < :fechaSalida AND r.fechaFinal > :fechaIngreso")
-    List<Reserva> reservasPorFechas(LocalDate fechaSalida, LocalDate fechaIngreso);
 }

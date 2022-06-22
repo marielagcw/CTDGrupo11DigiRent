@@ -19,7 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
     @Autowired
     private AuthenticationManager authenticationManager;
