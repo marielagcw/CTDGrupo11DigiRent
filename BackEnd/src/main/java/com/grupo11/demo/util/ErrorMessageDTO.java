@@ -1,8 +1,5 @@
 package com.grupo11.demo.util;
 
-import lombok.Data;
-
-@Data
 public class ErrorMessageDTO {
 
     private String reason;

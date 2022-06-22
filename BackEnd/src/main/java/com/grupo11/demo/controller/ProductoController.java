@@ -90,10 +90,10 @@ public class ProductoController {
         return service.buscarProductosPorCategoria(id, pageable);
     }
 
-    // FIND PRODUCTOS BY FECHAS
-    @PostMapping("/fechaDisponible")
-    public ResponseEntity<?> fechaDisponible(@RequestBody ReservaFechasDTO reservaFechasDTO) {
-        List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial());
+    // LISTADO DE PRODUCTOS OCUPADOS POR FECHAS
+    @PostMapping("/productosNoDisponibles")
+    public ResponseEntity<?> productosNoDisponibles(@RequestBody ReservaFechasDTO reservaFechasDTO) {
+        List<ProductoDTO> productoList = service.listadoProductosNoDisponibles(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial());
         return ResponseEntity.ok().body(productoList);
     }
 }
