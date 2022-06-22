@@ -1,7 +1,9 @@
 package com.grupo11.demo.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grupo11.demo.model.Producto;
 import com.grupo11.demo.model.Reserva;
+import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.repository.IReservaRepository;
 import com.grupo11.demo.service.IReservaService;
@@ -76,8 +78,7 @@ public class ReservaService implements IReservaService {
     }
 
     // FIND ALL BY FECHAS
-    public Boolean fechaDisponible(LocalDate fechaSalida, LocalDate fechaIngreso) {
-        List<Reserva> reservas = repository.reservasPorFechas(fechaSalida, fechaIngreso);
-        return reservas.size() == 0;
+    public List<Reserva> fechaDisponible(LocalDate fechaSalida, LocalDate fechaIngreso) {
+        return repository.reservasPorFechas(fechaSalida, fechaIngreso);
     }
 }

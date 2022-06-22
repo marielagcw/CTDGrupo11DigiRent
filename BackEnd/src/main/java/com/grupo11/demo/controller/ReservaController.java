@@ -1,5 +1,6 @@
 package com.grupo11.demo.controller;
 
+import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ReservaService;
@@ -38,7 +39,6 @@ public class ReservaController {
     }
 
 
-
     // SAVE
     @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody ReservaDTO reserva) {
@@ -74,10 +74,4 @@ public class ReservaController {
         return service.buscarReservasPorProducto(id, pageable);
     }
 
-    // FIND BY FECHAS
-    @GetMapping("/fechaDisponible")
-    public ResponseEntity<Boolean> fechaDisponible(@RequestBody ReservaFechasDTO reservaFechasDTO) {
-        Boolean estaDisponible = service.fechaDisponible(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial());
-        return ResponseEntity.ok(estaDisponible);
-    }
 }

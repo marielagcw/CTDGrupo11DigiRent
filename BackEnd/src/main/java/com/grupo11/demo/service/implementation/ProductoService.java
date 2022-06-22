@@ -2,6 +2,7 @@ package com.grupo11.demo.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.Producto;
+import com.grupo11.demo.model.Reserva;
 import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.repository.IProductoRepository;
 import com.grupo11.demo.service.IProductoSevice;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,9 @@ public class ProductoService implements IProductoSevice {
 
     @Autowired
     private IProductoRepository repository;
+
+    @Autowired
+    private ReservaService reservaService;
 
     // SAVE
     private ProductoDTO guardarProducto(ProductoDTO productoDTO) {
@@ -106,4 +111,12 @@ public class ProductoService implements IProductoSevice {
         }
         return productoDTOList;
     }
+
+    // FIND PRODUCTOS POR FECHAS DISPONIBLES
+    public List<ProductoDTO> buscarProductosDisponiblesPorFecha(LocalDate fechaSalida, LocalDate fechaIngreso) {
+        List<Reserva> reservas = reservaService.fechaDisponible(fechaSalida, fechaIngreso);
+        List<Producto> productoList = reservas.stream().map(reserva -> reserva.getProducto()).collect(Collectors.toList());
+        return productoList.stream().map(producto -> mapper.convertValue(producto, ProductoDTO.class)).collect(Collectors.toList());
+    }
+
 }
