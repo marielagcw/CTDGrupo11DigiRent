@@ -14,11 +14,13 @@ const frase = "Elegí donde querés vivir";
 const Header = ({ user, btn }) => {
   const navigate = useNavigate();
   const storage = window.localStorage;
+
   const userSession = storage.getItem('user');
   const location = useLocation();
 
   //controla tamaño ventana
   const [widthWindow, setWidthWindow] = useState(0);
+  const [logged, setlogged] = useState(storage.getItem('jwt'))
 
   useEffect(() => {
     const detectarWidth = () => { setWidthWindow(window.visualViewport.width) };
@@ -27,6 +29,9 @@ const Header = ({ user, btn }) => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
+  useEffect(()=>{
+    setlogged(storage.getItem('jwt'))
+  },[])
   return (
     <>
       <nav className='navbar navbar-light'>
@@ -54,7 +59,7 @@ const Header = ({ user, btn }) => {
                     <UserInfoMobile userInfo={JSON.parse(userSession)} />
                   </div>
                   <div style={{height:'67%', display:'flex', justifyContent:'end', alignItems:'end'}}>
-                    <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.removeItem('user'); navigate('/') }}>Cerrar Sesion</span>?</p>
+                    <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.clear(); navigate('/') }}>Cerrar Sesion</span>?</p>
                   </div>
                   <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
                 </>

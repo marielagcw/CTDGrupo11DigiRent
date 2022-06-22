@@ -47,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/usuarios/authenticate", "/usuarios/registro").permitAll()
+                .antMatchers("/categorias/listarTodos**").permitAll()
                 .antMatchers("/productos/listarTodosRandom**").permitAll()
                 .antMatchers("/v3/api-docs/**",
                         "/swagger-ui*", "/swagger-ui/**").permitAll()
@@ -58,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/productos/listarTodos**").hasAnyAuthority("ROLE_USUARIO_PRIVADO", "ROLE_ADMINISTRADOR")
                 .anyRequest()
-                //.permitAll()
+//                .permitAll()
                 .authenticated()
                 .and()
                 .sessionManagement()

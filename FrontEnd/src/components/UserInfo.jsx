@@ -13,7 +13,7 @@ export default function UserInfo({userInfo}) {
     }
     const cierreSesion = () =>{
         let storage = window.localStorage;
-        storage.removeItem('user');
+        storage.clear();
     }
     return(
         <div className="user-info">

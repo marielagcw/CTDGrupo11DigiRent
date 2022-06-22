@@ -1,4 +1,8 @@
+import React from 'react';
 import { useState } from 'react';
+import UserInfo from '../components/UserInfo';
+
+
 
 export const useForm = (initialForm, validateForm) => {
     const [form, setForm] = useState(initialForm);
@@ -21,24 +25,52 @@ export const useForm = (initialForm, validateForm) => {
         setErrors(validateForm(form))
     };
     const handleSubmit = (e) => {
+
+
         e.preventDefault();
         const storage = window.localStorage;
-        if(e.target.classList.contains('login')){
-            let user = storage.getItem('user');
-            let band = true;
-            for (const key in form) {
-                if (Object.hasOwnProperty.call(form, key)) {
-                    const element = form[key];
-                    if (element!==user[key]) {
-                        band=false;
-                        errors.badCredentials = "Error en las credenciales ingresadas"
+        if (e.target.classList.contains('login')) {
+            let url = "http://localhost:8080/usuarios/authenticate";
+            let fetchInfo = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: form.email,
+                    password: form.password
+                })
+            }
+            let login = async () => {
+                try {
+                    let data = await fetch(url, fetchInfo);
+                    if (data.ok) {
+                        setLoading(false);
+                    } else {
+                        throw {
+                            err: true
+                        }
                     }
+                    let token = await data.json();
+                    storage.setItem('jwt', JSON.stringify(token));
+                    console.log(storage.getItem('jwt'));
+                    storage.setItem('user',JSON.stringify({ name: "nombre", lastName: "apellido"}));
+                } catch (err) {
+                    setResponse("Error en las credenciales ingresadas")
                 }
             }
-            return {logged:band, info:{name:user.name,lastName:user.lastName}};
-        }else{
-            storage.setItem('user',JSON.stringify(form));
-            return {logged:true, info:{name:form.name,lastName:form.lastName}};
+            // let userInfo = async (token)=>{
+            //     let data = await fetch();
+            //     let user = await data.json();
+            // }
+            login();
+            //setResponse(userInfo(storage.getItem('jwt')));
+
+            // return { logged: band, info: { name: user.name, lastName: user.lastName } };
+            return { logged: storage.getItem('jwt') };
+        } else {
+            storage.setItem('user', JSON.stringify(form));
+            return { logged: true };
         }
     };
 
