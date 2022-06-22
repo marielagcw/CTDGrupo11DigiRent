@@ -92,7 +92,7 @@ public class ProductoController {
     }
 
     // LISTADO DE PRODUCTOS DISPONIBLES POR FECHAS
-    @PostMapping("/productosDisponiblesFechas")
+    @PostMapping("/fechaDisponible")
     public ResponseEntity<?> productosNoDisponibles(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
         List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
         return ResponseEntity.ok().body(productoList);
