@@ -76,7 +76,8 @@ const Search = ({busqueda}) => {
         })
     }
 
-    let urlFechas = "http://localhost:8080/reservas/fechaDisponible"
+    // let urlFechas = "http://localhost:8080/reservas/fechaDisponible"
+    let urlFechas = "http://localhost:8080/productos/fechaDisponible"
     let fechasElegidas = {
         "fechaInicial": "2022-06-21",
         "fechaFinal": "2022-06-21"
