@@ -1,0 +1,173 @@
+{
+	"id": "3edb0c3c-9466-4c5f-ad12-363bc5062498",
+	"name": "0.1  Seguridad Creación de Usuarios",
+	"timestamp": "2022-06-21T19:20:31.703Z",
+	"collection_id": "18027182-0724e749-20a1-4ac1-8e46-2b2283f100ed",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 5,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b154cb4e-0d99-4cec-baf7-1226385986e3",
+			"name": "Post Usuario (requiere body)",
+			"url": "http://localhost:8080/usuarios/registro",
+			"time": 75,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Al crear el usuario se recibe respuesta cód. 201": true
+			},
+			"testPassFailCounts": {
+				"Al crear el usuario se recibe respuesta cód. 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				75
+			],
+			"allTests": [
+				{
+					"Al crear el usuario se recibe respuesta cód. 201": true
+				}
+			]
+		},
+		{
+			"id": "1dfbd02d-5788-4146-a066-563c89068df4",
+			"name": "Post Usuario (requiere body) Usuario Público",
+			"url": "http://localhost:8080/usuarios/registro",
+			"time": 74,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"No se puede agregar un usuario que ya existe": true
+			},
+			"testPassFailCounts": {
+				"No se puede agregar un usuario que ya existe": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				74
+			],
+			"allTests": [
+				{
+					"No se puede agregar un usuario que ya existe": true
+				}
+			]
+		},
+		{
+			"id": "c491f609-dfb9-457a-b517-bc3d57c875af",
+			"name": "Post Usuario (requiere body) Usuario Privado",
+			"url": "http://localhost:8080/usuarios/registro",
+			"time": 73,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"No se puede agregar un usuario que ya existe": true
+			},
+			"testPassFailCounts": {
+				"No se puede agregar un usuario que ya existe": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				73
+			],
+			"allTests": [
+				{
+					"No se puede agregar un usuario que ya existe": true
+				}
+			]
+		},
+		{
+			"id": "9888eef0-1a5a-4f18-bdae-6f0e8a12c1a8",
+			"name": "Post Usuario (requiere body) Usuario Privado Copy",
+			"url": "http://localhost:8080/usuarios/registro",
+			"time": 71,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"No se puede agregar un usuario que ya existe": true
+			},
+			"testPassFailCounts": {
+				"No se puede agregar un usuario que ya existe": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				71
+			],
+			"allTests": [
+				{
+					"No se puede agregar un usuario que ya existe": true
+				}
+			]
+		},
+		{
+			"id": "5af95262-b463-4f38-a0e8-227133bd7877",
+			"name": "Post Usuario (requiere body) Usuario Existente",
+			"url": "http://localhost:8080/usuarios/registro",
+			"time": 6,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"No se puede agregar un usuario que ya existe": true
+			},
+			"testPassFailCounts": {
+				"No se puede agregar un usuario que ya existe": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"No se puede agregar un usuario que ya existe": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 299,
+	"collection": {
+		"requests": [
+			{
+				"id": "b154cb4e-0d99-4cec-baf7-1226385986e3",
+				"method": "POST"
+			},
+			{
+				"id": "1dfbd02d-5788-4146-a066-563c89068df4",
+				"method": "POST"
+			},
+			{
+				"id": "c491f609-dfb9-457a-b517-bc3d57c875af",
+				"method": "POST"
+			},
+			{
+				"id": "9888eef0-1a5a-4f18-bdae-6f0e8a12c1a8",
+				"method": "POST"
+			},
+			{
+				"id": "5af95262-b463-4f38-a0e8-227133bd7877",
+				"method": "POST"
+			}
+		]
+	}
+}

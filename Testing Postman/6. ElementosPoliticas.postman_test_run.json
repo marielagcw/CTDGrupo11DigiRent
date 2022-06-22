@@ -1,0 +1,419 @@
+{
+	"id": "fca20277-af05-406e-a4b2-2d0eeeef5797",
+	"name": "6. ElementosPoliticas",
+	"timestamp": "2022-06-21T20:56:39.335Z",
+	"collection_id": "18027182-3c031e50-5944-40bb-9d01-0e329057d112",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 21,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "46a61631-0016-4db0-b1fd-ca4d2c84b88c",
+			"name": "Post (requiere body) Check-out: 10:00",
+			"url": "http://localhost:8080/elementospolitica/agregar",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Ciudad": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Agregar Ciudad": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "3c997260-696d-440b-983c-ccd1a65d27cb",
+			"name": "Post (requiere body) No se permiten fiestas",
+			"url": "http://localhost:8080/elementospolitica/agregar",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Ciudad": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Agregar Ciudad": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "d9f13470-4aff-4174-b8e7-0c888f0184f3",
+			"name": "Post (requiere body) No fumar",
+			"url": "http://localhost:8080/elementospolitica/agregar",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Ciudad": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Agregar Ciudad": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "42d8de36-063c-4c00-9646-a4fdfbeb3260",
+			"name": "Get All",
+			"url": "http://localhost:8080/elementospolitica/listarTodos",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "34397944-7d3d-4ee3-a047-52731757e20d",
+			"name": "Get by id",
+			"url": "http://localhost:8080/elementospolitica/1",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"El objeto corresponde al id consultado": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El objeto corresponde al id consultado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"El objeto corresponde al id consultado": true
+				}
+			]
+		},
+		{
+			"id": "eaeca013-f2bb-4de3-8c38-55de28272bf4",
+			"name": "Put actualizar (requiere  id en body)",
+			"url": "http://localhost:8080/elementospolitica/actualizar",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Internal Server Error: no se puede modificar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede modificar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede modificar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "1730b3fb-0d0c-47d0-904e-9b28f97dcee9",
+			"name": "Put actualizar (requiere id en body) id inexistente",
+			"url": "http://localhost:8080/elementospolitica/actualizar",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Internal Server Error: no se puede modificar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede modificar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede modificar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "dd5628f9-3542-4147-af26-a0ad4318407a",
+			"name": "Get después del Update",
+			"url": "http://localhost:8080/elementospolitica/listarTodos",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "5b3ef510-7937-439a-8cd7-22a59c06928b",
+			"name": "Delete ( id en url)",
+			"url": "http://localhost:8080/elementospolitica/eliminar/7",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true
+				}
+			]
+		},
+		{
+			"id": "5e2debf0-7d87-416d-9390-a0c60e185ea2",
+			"name": "Delete ( id en url) id inexistente",
+			"url": "http://localhost:8080/elementospolitica/eliminar/200",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Internal Server Error: no se puede eliminar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede eliminar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede eliminar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "5c1931f5-a789-409f-82ff-b5f719c39818",
+			"name": "Get All después del Delete",
+			"url": "http://localhost:8080/elementospolitica/listarTodos",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 99,
+	"collection": {
+		"requests": [
+			{
+				"id": "46a61631-0016-4db0-b1fd-ca4d2c84b88c",
+				"method": "POST"
+			},
+			{
+				"id": "3c997260-696d-440b-983c-ccd1a65d27cb",
+				"method": "POST"
+			},
+			{
+				"id": "d9f13470-4aff-4174-b8e7-0c888f0184f3",
+				"method": "POST"
+			},
+			{
+				"id": "42d8de36-063c-4c00-9646-a4fdfbeb3260",
+				"method": "GET"
+			},
+			{
+				"id": "34397944-7d3d-4ee3-a047-52731757e20d",
+				"method": "GET"
+			},
+			{
+				"id": "eaeca013-f2bb-4de3-8c38-55de28272bf4",
+				"method": "PUT"
+			},
+			{
+				"id": "1730b3fb-0d0c-47d0-904e-9b28f97dcee9",
+				"method": "PUT"
+			},
+			{
+				"id": "dd5628f9-3542-4147-af26-a0ad4318407a",
+				"method": "GET"
+			},
+			{
+				"id": "5b3ef510-7937-439a-8cd7-22a59c06928b",
+				"method": "DELETE"
+			},
+			{
+				"id": "5e2debf0-7d87-416d-9390-a0c60e185ea2",
+				"method": "DELETE"
+			},
+			{
+				"id": "5c1931f5-a789-409f-82ff-b5f719c39818",
+				"method": "GET"
+			}
+		]
+	}
+}

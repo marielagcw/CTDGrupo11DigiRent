@@ -63,6 +63,7 @@ const Search = ({busqueda}) => {
 
         return dateFormateada;
     }
+
     //Array ciudades
     let ciudadesList = []; 
     let url = "http://localhost:8080/ciudades/listarTodos";
@@ -75,6 +76,26 @@ const Search = ({busqueda}) => {
         })
     }
 
+    let urlFechas = "http://localhost:8080/reservas/fechaDisponible"
+    let fechasElegidas = {
+        "fechaInicial": "2022-06-21",
+        "fechaFinal": "2022-06-21"
+      }
+
+    let fetchInfo = {
+        method: "POST",
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(fechasElegidas)
+    }
+    
+    let {data1, isPending1, error1} = useFetch(urlFechas, fetchInfo);
+    if(isPending1){
+        console.log(error1);
+    } else{
+        
+    }
 
     return (<>
         <div className="searchContainer">

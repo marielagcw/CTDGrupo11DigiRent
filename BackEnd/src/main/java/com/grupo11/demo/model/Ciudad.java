@@ -28,7 +28,6 @@ public class Ciudad {
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
 
-    // CONSTRUCTORES
     public Ciudad() {
     }
 

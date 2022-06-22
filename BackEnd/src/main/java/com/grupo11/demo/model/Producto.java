@@ -39,15 +39,15 @@ public class Producto {
 
     @ManyToMany
     @JoinTable(name = "productos_has_caracteristicas", joinColumns = @JoinColumn(name = "productos_id_producto"), inverseJoinColumns = @JoinColumn(name = "caracteristicas_id_caracteristica"))
-    private Set<Caracteristica> caracteristicas;
+    private Set<Caracteristica> caracteristicas = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "productos_has_politicas", joinColumns = @JoinColumn(name = "productos_id_producto"), inverseJoinColumns = @JoinColumn(name = "politicas_id_politica"))
-    private Set<Politica> politicas;
+    private Set<Politica> politicas = new HashSet<>();
 
-    @OneToMany(mappedBy = "productos")
-    @JsonIgnore
-    private Set<Reserva> reservas;
+    @OneToMany(mappedBy = "producto")
+    @JsonManagedReference
+    private Set<Reserva> reservas = new HashSet<>();
 
     // CONSTRUCTORES
     public Producto() {

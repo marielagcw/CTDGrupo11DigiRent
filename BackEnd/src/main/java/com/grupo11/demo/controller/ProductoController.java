@@ -1,9 +1,12 @@
 package com.grupo11.demo.controller;
 
 import com.grupo11.demo.model.dtos.ProductoDTO;
+import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,45 +20,55 @@ import java.util.Set;
 public class ProductoController {
 
     @Autowired
-    private ProductoService productoService;
+    private ProductoService service;
 
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
-    public Set<ProductoDTO> listarTodos(Pageable pageable) {
-        return productoService.listarTodo(pageable);
+    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam String ord, @RequestParam String field) {
+        Set<ProductoDTO> productos;
+
+        if (ord == null || field == null) {
+            productos = service.listarTodo(pageable);
+        } else {
+            Sort.by(Sort.Order.asc("id"));
+            PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
+            productos = service.listarTodo(of);
+        }
+        return ResponseEntity.ok(productos);
     }
+
 
     // FIND ALL RANDOM / GET ALL RANDOM
     @GetMapping("/listarTodosRandom")
     public List<ProductoDTO> listarTodosRandom(Pageable pageable) {
-        return productoService.listarRandom(pageable);
+        return service.listarRandom(pageable);
     }
 
     // SAVE / POST
     @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody ProductoDTO producto) {
-        productoService.agregar(producto);
+        service.agregar(producto);
         return ResponseEntity.ok(producto);
     }
 
     // DELETE
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
-        productoService.eliminar(id);
+        service.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     // UPDATE / PUT
     @PutMapping("/actualizar")
     public ResponseEntity<?> editarProducto(@RequestBody ProductoDTO productoDTO) {
-        productoService.actualizar(productoDTO);
+        service.actualizar(productoDTO);
         return ResponseEntity.ok(productoDTO);
     }
 
     // FIND BY ID / GET BY ID
     @GetMapping("/{id}")
     public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
-        ProductoDTO productoDTO = productoService.buscarPorId(id);
+        ProductoDTO productoDTO = service.buscarPorId(id);
         return ResponseEntity.ok(productoDTO);
     }
     /*
@@ -66,14 +79,21 @@ public class ProductoController {
     }*/
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
-    @GetMapping("/productosCiudad/{id}")
+    @GetMapping("/ciudad/{id}")
     public Set<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id, Pageable pageable) {
-        return productoService.buscarProductosPorCiudad(id, pageable);
+        return service.buscarProductosPorCiudad(id, pageable);
     }
 
     // FIND BY ID CATEGORIA / GET BY CATEGORIA
-    @GetMapping("/productosCategoria/{id}")
+    @GetMapping("/categoria/{id}")
     public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id, Pageable pageable) {
-        return productoService.buscarProductosPorCategoria(id, pageable);
+        return service.buscarProductosPorCategoria(id, pageable);
+    }
+
+    // FIND PRODUCTOS BY FECHAS
+    @PostMapping("/fechaDisponible")
+    public ResponseEntity<?> fechaDisponible(@RequestBody ReservaFechasDTO reservaFechasDTO) {
+        List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial());
+        return ResponseEntity.ok().body(productoList);
     }
 }

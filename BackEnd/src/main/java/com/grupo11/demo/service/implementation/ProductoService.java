@@ -2,6 +2,7 @@ package com.grupo11.demo.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.Producto;
+import com.grupo11.demo.model.Reserva;
 import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.repository.IProductoRepository;
 import com.grupo11.demo.service.IProductoSevice;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,9 @@ public class ProductoService implements IProductoSevice {
 
     @Autowired
     private IProductoRepository repository;
+
+    @Autowired
+    private ReservaService reservaService;
 
     // SAVE
     private ProductoDTO guardarProducto(ProductoDTO productoDTO) {
@@ -49,7 +54,7 @@ public class ProductoService implements IProductoSevice {
                 .map(producto -> mapper.convertValue(producto, ProductoDTO.class))
                 .collect(Collectors.toList());
         Collections.shuffle(productoDTOS);
-        int randomSeriesLength = 8;
+        int randomSeriesLength = 4;
         return productoDTOS.subList(0, randomSeriesLength);
     }
 
@@ -62,13 +67,8 @@ public class ProductoService implements IProductoSevice {
     // FIND BY ID
     @Override
     public ProductoDTO buscarPorId(Integer id) {
-        Optional<Producto> producto = repository.findById(id);
-        ProductoDTO productoDTO = null;
-
-        if (producto.isPresent()) {
-            productoDTO = mapper.convertValue(producto, ProductoDTO.class);
-        }
-        return productoDTO;
+        Producto producto = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(producto, ProductoDTO.class);
     }
 
     // UPDATE
@@ -84,14 +84,15 @@ public class ProductoService implements IProductoSevice {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 
 
     // FIND BY ID CIUDAD
     @Override
-    public Set<ProductoDTO> buscarProductosPorCiudad(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCiudad(id, pageable);
+    public Set<ProductoDTO> buscarProductosPorCiudad(Integer idCiudad, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCiudad(idCiudad, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
             productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
@@ -102,12 +103,20 @@ public class ProductoService implements IProductoSevice {
     }
 
     // FIND BY ID CATEGORIA
-    public Set<ProductoDTO>     buscarProductosPorCategoria(Integer id, Pageable pageable) {
-        List<Producto> productos = repository.findAllByCategoria(id, pageable);
+    public Set<ProductoDTO> buscarProductosPorCategoria(Integer idCategoria, Pageable pageable) {
+        List<Producto> productos = repository.findAllByCategoria(idCategoria, pageable);
         Set<ProductoDTO> productoDTOList = new HashSet<>();
         for (Producto producto : productos) {
             productoDTOList.add(mapper.convertValue(producto, ProductoDTO.class));
         }
         return productoDTOList;
     }
+
+    // FIND PRODUCTOS POR FECHAS DISPONIBLES
+    public List<ProductoDTO> buscarProductosDisponiblesPorFecha(LocalDate fechaSalida, LocalDate fechaIngreso) {
+        List<Reserva> reservas = reservaService.fechaDisponible(fechaSalida, fechaIngreso);
+        List<Producto> productoList = reservas.stream().map(reserva -> reserva.getProducto()).collect(Collectors.toList());
+        return productoList.stream().map(producto -> mapper.convertValue(producto, ProductoDTO.class)).collect(Collectors.toList());
+    }
+
 }

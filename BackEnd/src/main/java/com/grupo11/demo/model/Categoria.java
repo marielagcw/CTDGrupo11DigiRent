@@ -26,7 +26,6 @@ public class Categoria {
     @JsonIgnore
     private Set<Producto> productos;
 
-    // CONSTRUCTORES
     public Categoria() {
     }
 

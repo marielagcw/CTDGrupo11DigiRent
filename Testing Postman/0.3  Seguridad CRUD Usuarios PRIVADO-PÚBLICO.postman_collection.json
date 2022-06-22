@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "8dc8b237-1e05-4a5e-902a-215a06ce491b",
+		"name": "0.3  Seguridad CRUD Usuarios PRIVADO/PÚBLICO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18027182"
+	},
+	"item": [
+		{
+			"name": "Get All PRIVADO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All PUBLICO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id (id en la url) PRIVADO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/5",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id (id en la url) PÚBLICO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/5",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put  (id en el body) PRIVADO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"nombre\": \"Natali\",\r\n    \"apellido\": \"Correa\",\r\n    \"email\": \"gmail.com\",\r\n    \"password\": \"111111\",\r\n    \"ciudad\": \"Goya\",\r\n    \"rol\": {\r\n        \"id\": 1\r\n    },\r\n    \"reservas\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put  (id en el body) PÚBLICO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"nombre\": \"Natali\",\r\n    \"apellido\": \"Correa\",\r\n    \"email\": \"gmail.com\",\r\n    \"password\": \"111111\",\r\n    \"ciudad\": \"Goya\",\r\n    \"rol\": {\r\n        \"id\": 1\r\n    },\r\n    \"reservas\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put  (id en la url) PRIVADO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/7",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put  (id en la url) PÚBLICO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/7",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlbase",
+			"value": "localhost:8080/usuarios"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJpZWxhZ2N3QGdtYWlsLmNvbSIsImV4cCI6MTY1NTg0MDc5NywiaWF0IjoxNjU1ODM5NTk3fQ.c1FDET0jCSbGZl9rNCbUfOjyUlRSDTS70UbRN8B-DOk",
+			"type": "string"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

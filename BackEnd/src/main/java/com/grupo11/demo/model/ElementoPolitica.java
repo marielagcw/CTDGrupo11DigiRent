@@ -1,7 +1,5 @@
 package com.grupo11.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +15,6 @@ public class ElementoPolitica {
     private String nombre;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "politicas_id_politica", referencedColumnName = "id_politica", nullable = false)
     private Politica politica;
 

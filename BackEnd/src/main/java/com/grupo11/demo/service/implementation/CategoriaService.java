@@ -47,13 +47,8 @@ public class CategoriaService implements ICategoriaService {
     // FIND BY ID
     @Override
     public CategoriaDTO buscarPorId(Integer id) {
-        Optional<Categoria> categoria = repository.findById(id);
-        CategoriaDTO categoriaDTO = null;
-
-        if (categoria.isPresent()) {
-            categoriaDTO = mapper.convertValue(categoria, CategoriaDTO.class);
-        }
-        return categoriaDTO;
+        Categoria categoria = repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado", id)));
+        return mapper.convertValue(categoria, CategoriaDTO.class);
     }
 
     // UPDATE
@@ -69,6 +64,7 @@ public class CategoriaService implements ICategoriaService {
     // DELETE
     @Override
     public void eliminar(Integer id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("El id no pudo ser encontrado y no se pudo eliminar", id)));
         repository.deleteById(id);
     }
 }

@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "ee082092-ea15-40bf-958d-49264961fe5c",
+		"name": "0.4 Seguridad CRUD Roles ADMIN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18027182"
+	},
+	"item": [
+		{
+			"name": "Post Rol (requiere body)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Al crear el usuario se recibe respuesta cód. 201\", ()=>{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201]);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"rolNombre\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Rol (requiere body)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Al crear el usuario se recibe respuesta cód. 201\", ()=>{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201]);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"rolNombre2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
+							"    pm.expect(responseJson.length).to.be.greaterThan(0);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id (id en la url)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"El id encontrado es el que se buscaba\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.id).to.eql(2);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/2",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put  (id en el body)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Al crear el usuario se recibe respuesta cód. 201\", ()=>{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"nombre\": \"rolNombre\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put  (id en la url)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/4",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlbase",
+			"value": "localhost:8080/roles"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnamxvYm9zMTQxQGdtYWlsLmNvbSIsImV4cCI6MTY1NTg0MDQ5MCwiaWF0IjoxNjU1ODM5MjkwfQ.Aji7tqFV01OZGSsbj5p_OdeU5AvQVEgsE4K0f42FWAg",
+			"type": "string"
+		}
+	]
+}

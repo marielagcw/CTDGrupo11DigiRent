@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Set;
 
 @Repository
 public interface IProductoRepository  extends JpaRepository<Producto, Integer> {
@@ -17,7 +16,5 @@ public interface IProductoRepository  extends JpaRepository<Producto, Integer> {
 
     @Query("FROM Producto p WHERE p.categoria.id = :id ")
     List<Producto> findAllByCategoria(Integer id, Pageable pageable);
-
-
 
 }
