@@ -71,6 +71,12 @@ public class ProductoController {
         ProductoDTO productoDTO = service.buscarPorId(id);
         return ResponseEntity.ok(productoDTO);
     }
+    /*
+    @GetMapping("/{id}")
+    public ProductoDTO buscar(@PathVariable Integer id) {
+        ProductoDTO productoDTO = productoService.buscarPorId(id);
+        return productoDTO;
+    }*/
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
     @GetMapping("/ciudad/{id}")
