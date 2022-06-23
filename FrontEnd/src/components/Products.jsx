@@ -65,7 +65,7 @@ export default function Products() {
                     </div>
                     <div className="button-container">
                         <p>Agregá tus fechas de viajes para obtener precios exactos</p>
-                        <button className='btn btn-primary btn-lg btn-max-width'>Iniciar reserva</button>
+                        <button className='btn btn-primary btn-lg btn-max-width' onClick={()=>navigate(`/reserva/${id}`)}>Iniciar reserva</button>
                     </div>
                 </div>
             </div>

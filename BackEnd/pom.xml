@@ -49,16 +49,7 @@
 <!--			<optional>true</optional>-->
 <!--		</dependency>-->
 <!--		Documentación-->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
-		</dependency>
+
 		<!--    Spring Security     -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

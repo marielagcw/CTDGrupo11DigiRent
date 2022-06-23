@@ -3,7 +3,7 @@ import LogInForm from './components/LogInForm';
 import RegistreForm from './components/RegistreForm';
 import Products from './components/Products';
 import ProductDetails from './components/ProductDetails';
-import Test from './components/Test';
+import Reserva from './components/Reserva';
 import {
   BrowserRouter,
   Routes,
@@ -21,6 +21,7 @@ function App() {
         <Route path="/products/:id/*" element={<Products />} />
         {/* <Route path="/products" element={<Products />} />
         <Route path='/test' element={<Test />} /> */}
+        <Route path="/reserva/:productId" element= {<Reserva />}/>
       </Routes>
     </BrowserRouter>
 

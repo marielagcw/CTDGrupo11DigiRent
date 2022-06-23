@@ -1,0 +1,29 @@
+div#container-reserva{
+    height: 140vh;
+    background-color: var(--quaternary)
+
+}
+
+.res-grid {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    
+   
+}
+
+.form-grid {
+    margin: 2vh 1vw;
+}
+
+div#resPolitica{
+    height: 60vh;
+
+}
+
+/* div#formReserva{
+    position: absolute;
+    left: 3.15%;
+    right: 34.85;
+    top: 21.11%;
+
+} */
