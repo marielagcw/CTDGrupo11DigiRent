@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
@@ -17,53 +18,139 @@ const initialForm = {
     confirmPassword: ""
 };
 
+
 const validationForm = form => {
     let errors = {};
     let regrexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+    let badUser = false;
     if (!form.name.trim()) {
         errors.name = "El campo 'Nombre' es requerido"
-    } else if (!regrexName.test(form.name.trim())) {
+        badUser = true;
+} else if (!regrexName.test(form.name.trim())) {
         errors.name = "El campo solo permite letras"
+        badUser = true;
     }
     if (!form.lastName.trim()) {
         errors.lastName = "El campo 'Apellido' es requerido"
+        badUser = true;
     } else if (!regrexName.test(form.lastName.trim())) {
         errors.lastName = "El campo solo permite letras"
+        badUser = true;
     }
     if (!form.email.trim()) {
+        badUser = true;
         errors.email = "El campo 'Email' es requerido"
     } else if (!regexEmail.test(form.email)) {
+        badUser = true;
         errors.email = "Ingrese un mail valido!"
     }
     if (!form.password.trim()) {
+        badUser = true;
         errors.password = "El campo 'Contraseña' es requerido"
     } else if (form.password.length < 6) {
+        badUser = true;
         errors.password = "La contraseña debe tener 6 caracteres o más"
     }
     if (!form.confirmPassword.trim()) {
         errors.confirmPassword = "El campo 'Confirmar Contraseña' es requerido"
+        badUser = true;
     } else if (form.confirmPassword !== form.password) {
         errors.confirmPassword = "Las contraseñas no coinciden"
+        badUser = true;
+    }
+    if(errors.length === 0){
+        badUser = false;
+    }
+    /*if(!badUser){
+        
+    }*/
+    
+    return (errors);
+};
+
+/*const createNewUser = async (newUser) => {
+    let url = 'https://localhost:8080/usuarios/registro'
+
+    let fetchInfo = {
+        mode:'no-cors',
+        method:'POST',
+        headers: new Headers({
+            "Content-Type": "application/json",
+            'Access-Control-Allow-Origin': '*',
+        }),
+        body: JSON.stringify(newUser)
     }
 
-    return errors;
-};
+    fetch(url, fetchInfo).then(dateJson => dateJson.json()).then(data => {
+        console.log(data)
+    })
+
+
+}*/
+
 
 const RegistreForm = (  ) => {
     const navigate = useNavigate();
+    const [data, setData] = useState()
     const [logged, setLogged] = useState({ logged: false, info: {} })
+
+    
+   /* const createNewUser = async form => {
+        let url = 'http://localhost:8080/usuarios/registro'
+        let newUser = {
+            nombre: form.name,
+            apellido: form.lastName,
+            email: form.email,
+            password: form.password,
+            ciudad: "La plata",
+            rol:{
+                id: 1
+            }
+        }
+
+        /*let fetchInfo = {
+            mode:'no-cors',
+            method:'POST',
+            headers: new Headers({
+                "Content-Type": "application/json",
+                'Access-Control-Allow-Origin': '*',
+            }),
+            body: JSON.stringify(newUser)
+        }
+        
+        await axios.post(url,newUser).then(datos => console.log(datos)).catch(err => console.log(err));
+    }*/
+    
 
     const {
         form,
         errors,
         loading,
         response,
-        handleSubmit,
         handleBlur,
         handleChange } = useForm(initialForm, validationForm);
 
     const [passwordType, setPasswordType] = useState('password')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        let url = 'http://localhost:8080/usuarios/registro'
+        let newUser = {
+            nombre: form.name,
+            apellido: form.lastName,
+            email: form.email,
+            password: form.password,
+            ciudad: "La plata",
+            rol:{
+                id: 1
+            }
+        }
+
+        await axios.post(url,newUser).then(datos => console.log(datos)).catch(err => console.log(err));
+        setLogged({logged:true})
+    } 
+
 
     const handleDisplayPassword = (e) => {
         if (passwordType === 'text') {
@@ -76,9 +163,10 @@ const RegistreForm = (  ) => {
     }
     useEffect(() => {
         if (logged.logged) {
+            
             navigate('/');
         }
-    }, [logged])
+    }, [logged, data])
 
     return (
         <>
@@ -87,7 +175,9 @@ const RegistreForm = (  ) => {
             <div className="flex" id='registreForm'>
                 <div className='form-container'>
                     <h1 className='create-acount'>Crear cuenta</h1>
-                    <form onSubmit={(e) => setLogged(handleSubmit(e))}
+                    <form onSubmit={(e) => {
+                            setLogged(handleSubmit(e))
+                        }}
                         className='d-flex flex-column register'>
                         <div className="d-flex">
                             <div className="d-flex flex-column">

@@ -46,7 +46,7 @@ public class Producto {
     private Set<Politica> politicas = new HashSet<>();
 
     @OneToMany(mappedBy = "producto")
-    @JsonManagedReference
+    @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
     // CONSTRUCTORES
