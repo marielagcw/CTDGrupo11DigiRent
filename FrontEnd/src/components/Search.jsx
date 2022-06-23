@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { useFetch } from "../hooks/useFetch";
+import axios from "axios";
 import '../styles/Navbar.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -15,28 +16,50 @@ const Search = ({ busqueda }) => {
     const [formData, setFormData] = useState({})
 
     const HandleSubmit = e => {
+        let data;
         e.preventDefault();
-        let url = "http://localhost:8080/reservas/listarTodos";
         let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
-        console.log(token);
-        // token = JSON.stringify(token)
-        console.log(token);
-        let fetchInfo = {
-            method: 'GET',
+
+        const axiosInstance = axios.create({
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'*',
-                'Authorization': 'Bearer '.concat(token),
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': 'Bearer ' +token
             }
+        });
+        let user = JSON.parse(window.localStorage.getItem('user'));
+        axiosInstance
+            .get("http://localhost:8080/productos/listarTodos")
+            .then(response => {
+                console.log(response);
+                data = response;
+            })
+            .catch(e => console.log(e));
+            //TODO filtrar con informacion cuando se renderize
+            console.log(data);
+            console.log(user);
 
-        }
-        let info = fetch(url,fetchInfo).then((res)=>res.json).then((a)=>{return a})
-        let { data, isPending, error } = info;
-        console.log(data);
+        // console.log(user);
+        // let url = "http://localhost:8080/reservas/listarTodos";
+        // let fetchInfo = {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'application/json, text/plain, */*',
+        //         'Content-Type': 'application/json',
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Authorization': 'Bearer ' +token
+
+        //     }
+        // }
+        // let info = () => axios(url, fetchInfo).then((res) => res.json).then((a) => {
+        //     console.log(a);
+        //     return a
+        // })
+        // console.log(info());
     }
     const handleChange = e => {
-        if (e.target.name == 'ciudad') { busqueda(e.target.value) }
+        if (e.target.name === 'ciudad') { busqueda(e.target.value) }
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
