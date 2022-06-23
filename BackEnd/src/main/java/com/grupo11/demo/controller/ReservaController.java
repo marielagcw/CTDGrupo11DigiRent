@@ -25,7 +25,7 @@ public class ReservaController {
 
     // FIND ALL
     @GetMapping("/listarTodos")
-    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam String ord, @RequestParam String field) {
+    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field) {
         Set<ReservaDTO> reservas;
 
         if (ord == null || field == null) {
