@@ -17,3 +17,21 @@ div#imgdetalle{
     
 }
 
+.informacionReserva{
+    position: absolute;
+    left: 2.01%;
+    right: 2.01%;
+    top: 52.51%;
+    bottom: 44.06%;
+}
+
+.containerReservaConf{
+    position: relative;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 10%;
+
+
+}
+
