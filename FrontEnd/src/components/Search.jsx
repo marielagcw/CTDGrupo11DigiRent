@@ -9,19 +9,34 @@ import '../styles/Search.css'
 
 
 
-const Search = ({busqueda}) => {
+const Search = ({ busqueda }) => {
 
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
 
-    const handleSubmit = e => {
+    const HandleSubmit = e => {
         e.preventDefault();
-        alert("Procesando Solicitud!\n" +
-            "Buscando en: " + formData.ciudad +
-            "\nCon fecha: " + formateDate(fecha))
+        let url = "http://localhost:8080/reservas/listarTodos";
+        let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
+        console.log(token);
+        // token = JSON.stringify(token)
+        console.log(token);
+        let fetchInfo = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*',
+                'Authorization': 'Bearer '.concat(token),
+            }
+
+        }
+        let info = fetch(url,fetchInfo).then((res)=>res.json).then((a)=>{return a})
+        let { data, isPending, error } = info;
+        console.log(data);
     }
     const handleChange = e => {
-        if(e.target.name == 'ciudad'){busqueda(e.target.value)}
+        if (e.target.name == 'ciudad') { busqueda(e.target.value) }
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -54,7 +69,6 @@ const Search = ({busqueda}) => {
 
     const formateDate = (dateSinFormato) => {
         let fInicio, fFin;
-
         [fInicio, fFin] = dateSinFormato;
 
         let dateFormateada = fInicio.getDate() + "/" + (fInicio.getMonth() + 1) +
@@ -65,14 +79,14 @@ const Search = ({busqueda}) => {
     }
 
     //Array ciudades
-    let ciudadesList = []; 
+    let ciudadesList = [];
     let url = "http://localhost:8080/ciudades/listarTodos";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
-    }else{
-        data.forEach((e)=>{
-            !ciudadesList.includes(e.provincia)&&ciudadesList.push(e.provincia)
+    } else {
+        data.forEach((e) => {
+            !ciudadesList.includes(e.provincia) && ciudadesList.push(e.provincia)
         })
     }
 
@@ -89,17 +103,17 @@ const Search = ({busqueda}) => {
     //     },
     //     body: JSON.stringify(fechasElegidas)
     // }
-    
+
     // let {data1, isPending1, error1} = useFetch(urlFechas, fetchInfo);
     // if(isPending1){
     //     console.log(error1);
     // } else{
-        
+
     // }
 
     return (<>
         <div className="searchContainer">
-            <form action="POST" onSubmit={handleSubmit} className='d-flex align-items-center pt-3'>
+            <form action="POST" onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
                     <input className='input-search' type="text" list="ciudades" placeholder='¿A donde vamos?' name='ciudad' onChange={handleChange} />
                     <span className='icon iconLocation'>
@@ -125,6 +139,7 @@ const Search = ({busqueda}) => {
                     </div>
                 </div>
                 <button type='submit' className='btn btn-lg btn-primary ms-2'>Aceptar</button>
+
             </form>
 
         </div>
