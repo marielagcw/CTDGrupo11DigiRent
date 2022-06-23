@@ -19,6 +19,7 @@ const Header = ({ user, btn }) => {
 
   //controla tamaño ventana
   const [widthWindow, setWidthWindow] = useState(0);
+  const [logged, setlogged] = useState(storage.getItem('jwt'))
 
   useEffect(() => {
     const detectarWidth = () => { setWidthWindow(window.visualViewport.width) };
@@ -27,6 +28,7 @@ const Header = ({ user, btn }) => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
+  
   return (
     <>
       <nav className='navbar navbar-light'>
@@ -37,7 +39,7 @@ const Header = ({ user, btn }) => {
             </div>
             <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
             <p className='ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
-          </div>{userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
+          </div>{userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :  
             <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
@@ -54,7 +56,7 @@ const Header = ({ user, btn }) => {
                     <UserInfoMobile userInfo={JSON.parse(userSession)} />
                   </div>
                   <div style={{height:'67%', display:'flex', justifyContent:'end', alignItems:'end'}}>
-                    <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.removeItem('user'); navigate('/') }}>Cerrar Sesion</span>?</p>
+                    <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.clear(); navigate('/') }}>Cerrar Sesion</span>?</p>
                   </div>
                   <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
                 </>

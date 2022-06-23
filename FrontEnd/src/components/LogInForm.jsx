@@ -31,7 +31,6 @@ const validationForm = form => {
   if (form.password.length < 6) {
     errors.password = "La contraseña debe tener 6 caracteres o más"
   }
-
   return errors;
 };
 
@@ -47,10 +46,10 @@ const LogInForm = () => {
 
   const navigate = useNavigate()
   const [passwordType, setPasswordType] = useState('password');
-  const [logged, setLogged] = useState({ logged: false, info: {} })
+  const [logged, setLogged] = useState(window.localStorage.getItem('jwt'))
 
   useEffect(() => {
-    if (logged.logged) {
+    if (logged) {
       navigate('/');
     }
   }, [logged])
@@ -68,6 +67,14 @@ const LogInForm = () => {
       console.log(e.target.classList);
     }
   }
+  /* --------------------------------- FETCH --------------------------------- */
+  // const [post, setpost] = useState(false)
+  // useEffect(() => {
+
+
+
+  // }, [post])
+
 
   return (
     <>
@@ -103,6 +110,7 @@ const LogInForm = () => {
               </span>
             </div>
             {errors.password && <p className='error'>{errors.password}</p>}
+            {response && <p className="error">{response}</p>}
             <div className='mt-5 row justify-content-center'>
               <button className='btn btn-primary btn-lg'
                 disabled={Object.entries(errors).length > 0}
