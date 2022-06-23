@@ -46,7 +46,7 @@ const LogInForm = () => {
 
   const navigate = useNavigate()
   const [passwordType, setPasswordType] = useState('password');
-  const [logged, setLogged] = useState( window.localStorage.getItem('jwt') )
+  const [logged, setLogged] = useState(window.localStorage.getItem('jwt'))
 
   useEffect(() => {
     if (logged) {
@@ -67,14 +67,14 @@ const LogInForm = () => {
       console.log(e.target.classList);
     }
   }
- /* --------------------------------- FETCH --------------------------------- */
+  /* --------------------------------- FETCH --------------------------------- */
   // const [post, setpost] = useState(false)
   // useEffect(() => {
-    
-  
+
+
 
   // }, [post])
-  
+
 
   return (
     <>
@@ -110,7 +110,7 @@ const LogInForm = () => {
               </span>
             </div>
             {errors.password && <p className='error'>{errors.password}</p>}
-            {response&& <p className="error">{response}</p> }
+            {response && <p className="error">{response}</p>}
             <div className='mt-5 row justify-content-center'>
               <button className='btn btn-primary btn-lg'
                 disabled={Object.entries(errors).length > 0}

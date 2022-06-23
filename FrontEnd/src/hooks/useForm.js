@@ -1,7 +1,5 @@
-import React from 'react';
 import { useState } from 'react';
-import UserInfo from '../components/UserInfo';
-
+import jwt_decode from "jwt-decode";
 
 
 export const useForm = (initialForm, validateForm) => {
@@ -24,11 +22,12 @@ export const useForm = (initialForm, validateForm) => {
 
         setErrors(validateForm(form))
     };
+
     const handleSubmit = (e) => {
-
-
         e.preventDefault();
         const storage = window.localStorage;
+
+
         if (e.target.classList.contains('login')) {
             let url = "http://localhost:8080/usuarios/authenticate";
             let fetchInfo = {
@@ -41,6 +40,7 @@ export const useForm = (initialForm, validateForm) => {
                     password: form.password
                 })
             }
+
             let login = async () => {
                 try {
                     let data = await fetch(url, fetchInfo);
@@ -53,23 +53,31 @@ export const useForm = (initialForm, validateForm) => {
                     }
                     let token = await data.json();
                     storage.setItem('jwt', JSON.stringify(token));
-                    console.log(storage.getItem('jwt'));
-                    storage.setItem('user',JSON.stringify({ name: "nombre", lastName: "apellido"}));
+                    console.log('Hola');
+                    userInfo();
+                    //     storage.setItem('user', JSON.stringify(userInfo()));
+                    // console.log(storage.getItem('user'));
+
                 } catch (err) {
                     setResponse("Error en las credenciales ingresadas")
                 }
             }
-            // let userInfo = async (token)=>{
-            //     let data = await fetch();
-            //     let user = await data.json();
-            // }
+            let userInfo = async () => {
+                let token = await storage.getItem('jwt');
+                token = jwt_decode(token);
+                let userFromBack = {
+                    name: token.Nombre,
+                    lastName: token.Apellido,
+                    id: token.Id
+                }
+                storage.setItem('user', JSON.stringify(userFromBack))
+            }
             login();
-            //setResponse(userInfo(storage.getItem('jwt')));
 
-            // return { logged: band, info: { name: user.name, lastName: user.lastName } };
-            return { logged: storage.getItem('jwt') };
+
+            return storage.getItem('user') != null;
         } else {
-            storage.setItem('user', JSON.stringify(form));
+            // storage.setItem('user', JSON.stringify(form));
             return { logged: true };
         }
     };

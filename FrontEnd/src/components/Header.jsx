@@ -14,7 +14,6 @@ const frase = "Elegí donde querés vivir";
 const Header = ({ user, btn }) => {
   const navigate = useNavigate();
   const storage = window.localStorage;
-
   const userSession = storage.getItem('user');
   const location = useLocation();
 
@@ -29,9 +28,7 @@ const Header = ({ user, btn }) => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
-  useEffect(()=>{
-    setlogged(storage.getItem('jwt'))
-  },[])
+  
   return (
     <>
       <nav className='navbar navbar-light'>
@@ -42,7 +39,7 @@ const Header = ({ user, btn }) => {
             </div>
             <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
             <p className='ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
-          </div>{userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
+          </div>{userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :  
             <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
