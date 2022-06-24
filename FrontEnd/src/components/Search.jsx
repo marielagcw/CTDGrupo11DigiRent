@@ -34,13 +34,14 @@ const Search = ({ busqueda,fechaFilter }) => {
         });
         const handleResponse = async (informacion, fecha) => {
             try {
-
+                console.log(informacion);
                 let aux = [];
                 await informacion.forEach((e) => {
-                    let { fechaFinal, fechaInicial, id } = { ...e };
+                    let { fechaFinal, fechaInicial} = { ...e };
+                    let id = e.producto.id
                     let mayor = fecha[0].getDate() >= new Date(Date.parse(fechaFinal) + UNDIA);
                     let menor = fecha[1].getDate() <= new Date(Date.parse(fechaInicial) + UNDIA);
-                    if (mayor || menor) {
+                    if ((mayor || menor) && !aux.includes(id) ) {
                         aux.push(id);
                     }
                 })
