@@ -10,7 +10,6 @@ public class CategoriaDTO {
     private String titulo;
     private String descripcion;
     private String url;
-    private Set<Producto> productos = new HashSet<>();
 
     public CategoriaDTO() {
     }
@@ -48,11 +47,4 @@ public class CategoriaDTO {
         this.url = url;
     }
 
-    public Set<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
-    }
 }

@@ -34,7 +34,8 @@ public class Producto {
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(name = "ciudades_id_ciudad", referencedColumnName = "id_ciudad")
+    @JoinColumn(
+            name = "ciudades_id_ciudad", referencedColumnName = "id_ciudad")
     private Ciudad ciudad;
 
     @ManyToMany

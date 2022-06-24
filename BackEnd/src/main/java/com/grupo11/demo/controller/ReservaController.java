@@ -4,6 +4,7 @@ import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.model.dtos.ReservaDTO;
 import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ReservaService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -70,8 +71,15 @@ public class ReservaController {
 
     // FIND BY PRODUCTOS
     @GetMapping("/producto/{id}")
-    public List<ReservaDTO> listarReservasPorProducto(@PathVariable Integer id, Pageable pageable) {
-        return service.buscarReservasPorProducto(id, pageable);
+    public ResponseEntity<?> listarReservasPorProducto(@PathVariable Integer id, Pageable pageable) {
+        List<ReservaDTO> reservaDTOList= service.buscarReservasPorProducto(id, pageable);
+        return ResponseEntity.ok().body(reservaDTOList);
     }
 
+    // FIND BY USUARIOS
+    @GetMapping("/usuario/{id}")
+public ResponseEntity<?> listarReservasPorUsuario(@PathVariable Integer id, Pageable pageable){
+        List<ReservaDTO> reservaDTOList = service.buscarReservasPorUsuario(id, pageable);
+        return ResponseEntity.ok().body(reservaDTOList);
+    }
 }

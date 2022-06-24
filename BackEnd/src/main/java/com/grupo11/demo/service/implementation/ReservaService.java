@@ -77,4 +77,10 @@ public class ReservaService implements IReservaService {
                 .collect(Collectors.toList());
     }
 
+    // FIND ALL BY USUARIO
+    public List<ReservaDTO> buscarReservasPorUsuario(Integer id, Pageable pageable) {
+        List<Reserva> reservas = repository.findAllByUsuario(id, pageable);
+        return reservas.stream().map(reserva -> mapper.convertValue(reserva, ReservaDTO.class)).collect(Collectors.toList());
+    }
+
 }

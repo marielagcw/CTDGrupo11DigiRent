@@ -16,7 +16,6 @@ public class ProductoDTO {
     private Ciudad ciudad;
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private Set<Politica> politicas = new HashSet<>();
-    private Set<Reserva> reservas = new HashSet<>();
 
     public ProductoDTO() {
     }
@@ -95,11 +94,4 @@ public class ProductoDTO {
         this.politicas = politicas;
     }
 
-    public Set<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(Set<Reserva> reservas) {
-        this.reservas = reservas;
-    }
 }
