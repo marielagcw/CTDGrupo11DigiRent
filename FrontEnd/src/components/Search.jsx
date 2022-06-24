@@ -11,12 +11,11 @@ import '../styles/Search.css'
 
 
 const Search = ({ busqueda }) => {
-
+    const UNDIA = 86400000 * 1;
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
-
+    const [filtroFecha, setFiltroFecha] = useState([])
     const HandleSubmit = e => {
-        let data;
         e.preventDefault();
         let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
 
@@ -25,39 +24,43 @@ const Search = ({ busqueda }) => {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Authorization': 'Bearer ' +token
+                'Authorization': 'Bearer ' + token
             }
         });
-        let user = JSON.parse(window.localStorage.getItem('user'));
+        const handleResponse = async (informacion, fecha) => {
+            try {
+                console.log("parametro");
+                console.log(informacion);
+                let aux = [];
+                await informacion.forEach((e) => {
+                    let { fechaFinal, fechaInicial, id } = { ...e };
+
+                    // console.log(new Date(Date.parse(fechaFinal)+));
+
+                    let mayor = fecha[0].getDate() >= new Date(Date.parse(fechaFinal) + UNDIA);
+                    let menor = fecha[1].getDate() <= new Date(Date.parse(fechaInicial) + UNDIA);
+                    if (mayor || menor) {
+                        aux.push(id);
+                    }
+                })
+                setFiltroFecha(aux)
+            } catch (error) {
+                console.log(error);
+            }
+        }
         axiosInstance
-            .get("http://localhost:8080/productos/listarTodos")
+            .get("http://localhost:8080/reservas/listarTodos")
             .then(response => {
-                console.log(response);
-                data = response;
+                // console.log(response.data);
+
+                handleResponse(response.data, fecha)
             })
             .catch(e => console.log(e));
-            //TODO filtrar con informacion cuando se renderize
-            console.log(data);
-            console.log(user);
 
-        // console.log(user);
-        // let url = "http://localhost:8080/reservas/listarTodos";
-        // let fetchInfo = {
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept': 'application/json, text/plain, */*',
-        //         'Content-Type': 'application/json',
-        //         'Access-Control-Allow-Origin': '*',
-        //         'Authorization': 'Bearer ' +token
-
-        //     }
-        // }
-        // let info = () => axios(url, fetchInfo).then((res) => res.json).then((a) => {
-        //     console.log(a);
-        //     return a
-        // })
-        // console.log(info());
+        console.log("filtroFecha");
+        console.log(filtroFecha);
     }
+
     const handleChange = e => {
         if (e.target.name === 'ciudad') { busqueda(e.target.value) }
         setFormData({
@@ -136,7 +139,7 @@ const Search = ({ busqueda }) => {
 
     return (<>
         <div className="searchContainer">
-            <form action="POST" onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
+            <form onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
                     <input className='input-search' type="text" list="ciudades" placeholder='¿A donde vamos?' name='ciudad' onChange={handleChange} />
                     <span className='icon iconLocation'>
