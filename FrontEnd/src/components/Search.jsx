@@ -10,11 +10,16 @@ import '../styles/Search.css'
 
 
 
-const Search = ({ busqueda }) => {
+const Search = ({ busqueda,fechaFilter }) => {
     const UNDIA = 86400000 * 1;
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
     const [filtroFecha, setFiltroFecha] = useState([])
+    useEffect(() => {
+        fechaFilter(filtroFecha)
+    }, [filtroFecha])
+    
+
     const HandleSubmit = e => {
         e.preventDefault();
         let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
@@ -29,14 +34,10 @@ const Search = ({ busqueda }) => {
         });
         const handleResponse = async (informacion, fecha) => {
             try {
-                console.log("parametro");
-                console.log(informacion);
+
                 let aux = [];
                 await informacion.forEach((e) => {
                     let { fechaFinal, fechaInicial, id } = { ...e };
-
-                    // console.log(new Date(Date.parse(fechaFinal)+));
-
                     let mayor = fecha[0].getDate() >= new Date(Date.parse(fechaFinal) + UNDIA);
                     let menor = fecha[1].getDate() <= new Date(Date.parse(fechaInicial) + UNDIA);
                     if (mayor || menor) {
@@ -51,14 +52,10 @@ const Search = ({ busqueda }) => {
         axiosInstance
             .get("http://localhost:8080/reservas/listarTodos")
             .then(response => {
-                // console.log(response.data);
-
                 handleResponse(response.data, fecha)
             })
             .catch(e => console.log(e));
 
-        console.log("filtroFecha");
-        console.log(filtroFecha);
     }
 
     const handleChange = e => {

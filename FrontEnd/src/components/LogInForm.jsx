@@ -59,12 +59,9 @@ const LogInForm = () => {
     if (passwordType === 'text') {
       setPasswordType('password')
       e.target.classList.remove('display-password')
-      console.log(e.target.classList);
-
     } else {
       setPasswordType('text')
       e.target.classList.add('display-password')
-      console.log(e.target.classList);
     }
   }
   /* --------------------------------- FETCH --------------------------------- */

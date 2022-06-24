@@ -11,8 +11,6 @@ const CategoryList = ({seleccion,setSeleccion}) => {
     if (isPending) {
         console.log(error);
     }
-    console.log("DATA");
-    console.log(data);
     return (
         <>
             <div className="category-container m-3">

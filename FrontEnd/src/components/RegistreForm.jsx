@@ -96,7 +96,7 @@ const RegistreForm = (  ) => {
     const [logged, setLogged] = useState({ logged: false, info: {} })
 
     
-   /* const createNewUser = async form => {
+    /* const createNewUser = async form => {
         let url = 'http://localhost:8080/usuarios/registro'
         let newUser = {
             nombre: form.name,

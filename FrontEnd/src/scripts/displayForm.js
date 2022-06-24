@@ -2,7 +2,6 @@
 
 export const displayForm = (e) => {
     /*e.target.classList.add('collapse')*/
-    console.log(e.target.id);
     let formRegistre = document.querySelector('#registreForm');
     let formLogIng = document.querySelector('#logInForm');
     /*let closeBtn = document.querySelector('.btn-close');*/
@@ -23,7 +22,6 @@ export const displayForm = (e) => {
         }
         formLogIng.classList.remove('collapse')
     } else if(e.target.id === 'link'){
-        console.log("Llegó al if del link");
         if(formLogIng.classList.contains("collapse")){
             formLogIng.classList.remove('collapes')
             formRegistre.classList.add('collapse')

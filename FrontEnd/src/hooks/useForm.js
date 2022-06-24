@@ -53,10 +53,7 @@ export const useForm = (initialForm, validateForm) => {
                     }
                     let token = await data.json();
                     storage.setItem('jwt', JSON.stringify(token));
-                    console.log('Hola');
                     userInfo();
-                    //     storage.setItem('user', JSON.stringify(userInfo()));
-                    // console.log(storage.getItem('user'));
 
                 } catch (err) {
                     setResponse("Error en las credenciales ingresadas")
