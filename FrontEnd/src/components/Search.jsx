@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { useFetch } from "../hooks/useFetch";
+import axios from "axios";
 import '../styles/Navbar.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -9,19 +10,57 @@ import '../styles/Search.css'
 
 
 
-const Search = ({busqueda}) => {
-
+const Search = ({ busqueda,fechaFilter }) => {
+    const UNDIA = 86400000 * 1;
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
+    const [filtroFecha, setFiltroFecha] = useState([])
+    useEffect(() => {
+        fechaFilter(filtroFecha)
+    }, [filtroFecha])
+    
 
-    const handleSubmit = e => {
+    const HandleSubmit = e => {
         e.preventDefault();
-        alert("Procesando Solicitud!\n" +
-            "Buscando en: " + formData.ciudad +
-            "\nCon fecha: " + formateDate(fecha))
+        let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
+
+        const axiosInstance = axios.create({
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        const handleResponse = async (informacion, fecha) => {
+            try {
+                console.log(informacion);
+                let aux = [];
+                await informacion.forEach((e) => {
+                    let { fechaFinal, fechaInicial} = { ...e };
+                    let id = e.producto.id
+                    let mayor = fecha[0].getDate() >= new Date(Date.parse(fechaFinal) + UNDIA);
+                    let menor = fecha[1].getDate() <= new Date(Date.parse(fechaInicial) + UNDIA);
+                    if ((mayor || menor) && !aux.includes(id) ) {
+                        aux.push(id);
+                    }
+                })
+                setFiltroFecha(aux)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        axiosInstance
+            .get("http://localhost:8080/reservas/listarTodos")
+            .then(response => {
+                handleResponse(response.data, fecha)
+            })
+            .catch(e => console.log(e));
+
     }
+
     const handleChange = e => {
-        if(e.target.name == 'ciudad'){busqueda(e.target.value)}
+        if (e.target.name === 'ciudad') { busqueda(e.target.value) }
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -54,7 +93,6 @@ const Search = ({busqueda}) => {
 
     const formateDate = (dateSinFormato) => {
         let fInicio, fFin;
-
         [fInicio, fFin] = dateSinFormato;
 
         let dateFormateada = fInicio.getDate() + "/" + (fInicio.getMonth() + 1) +
@@ -65,14 +103,14 @@ const Search = ({busqueda}) => {
     }
 
     //Array ciudades
-    let ciudadesList = []; 
+    let ciudadesList = [];
     let url = "http://localhost:8080/ciudades/listarTodos";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
-    }else{
-        data.forEach((e)=>{
-            !ciudadesList.includes(e.provincia)&&ciudadesList.push(e.provincia)
+    } else {
+        data.forEach((e) => {
+            !ciudadesList.includes(e.provincia) && ciudadesList.push(e.provincia)
         })
     }
 
@@ -89,17 +127,17 @@ const Search = ({busqueda}) => {
     //     },
     //     body: JSON.stringify(fechasElegidas)
     // }
-    
+
     // let {data1, isPending1, error1} = useFetch(urlFechas, fetchInfo);
     // if(isPending1){
     //     console.log(error1);
     // } else{
-        
+
     // }
 
     return (<>
         <div className="searchContainer">
-            <form action="POST" onSubmit={handleSubmit} className='d-flex align-items-center pt-3'>
+            <form onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
                     <input className='input-search' type="text" list="ciudades" placeholder='¿A donde vamos?' name='ciudad' onChange={handleChange} />
                     <span className='icon iconLocation'>
@@ -125,6 +163,7 @@ const Search = ({busqueda}) => {
                     </div>
                 </div>
                 <button type='submit' className='btn btn-lg btn-primary ms-2'>Aceptar</button>
+
             </form>
 
         </div>

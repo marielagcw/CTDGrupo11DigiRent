@@ -5,23 +5,27 @@ import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
 
 
-const ProductoList = ({ search, seleccion }) => {
+const ProductoList = ({ search, seleccion, fechaFilter }) => {
     const [url, setUrl] = useState("http://localhost:8080/productos/listarTodosRandom?size=8&page=0")
     const [busqueda, setBusqueda] = useState(false)
-
+    const validesBusqueda = (search !== '' && search != null);
+    const validesSeleccion = (seleccion !== '' && seleccion != null);
     useEffect(() => {
-        let validesBusqueda = (search !== '' && search != null);
-        let validesSeleccion = (seleccion !== '' && seleccion != null);
+
 
         let endpoint = "http://localhost:8080/productos/listarTodosRandom?size=8&page=0";
-        if (validesBusqueda && !seleccion) {
+
+        if (validesBusqueda && !validesSeleccion) {
             // endpoint = "http://localhost:8080/productos/productosCiudad/listarTodos";
             endpoint = "http://localhost:8080/productos/ciudad/listarTodos";
             setBusqueda(true);
-        } else if (validesSeleccion && !search) {
+        }
+        if (validesSeleccion && !validesBusqueda) {
             // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
             endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
-        } else if (validesBusqueda && validesSeleccion) {
+            setBusqueda(false);
+        }
+        if (validesBusqueda && validesSeleccion) {
             // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
             endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
             setBusqueda(true);
@@ -29,8 +33,7 @@ const ProductoList = ({ search, seleccion }) => {
         setUrl(endpoint);
 
 
-    }, [search, seleccion])
-
+    }, [search, seleccion, fechaFilter])
 
 
     let { data, isPending, error } = useFetch(url, {
@@ -42,24 +45,53 @@ const ProductoList = ({ search, seleccion }) => {
     if (isPending) {
         console.log(error);
     }
+    const busquedaConDate = (fechaFilter) => {
+        let band = fechaFilter.length > 0;
+        // debugger;
+        let render =
+            !band ?// SIN FECHA FILTRO NORMAL
+                (validesBusqueda ?//Si hay busqueda, render filtro 
+                    data.map((prod, i) => {
+                        console.log("busqueda");
+                        return (
+                            prod.ciudad.provincia.includes(search) &&
+                            <ProductoCard info={prod} key={"prod" + i} />)
+                    })
+                    ://sino, busuqeda normal o defiltro
+                    data.map((prod, i) => {
+                        console.log("NO busqueda");
+                        return (
+                            i < 8 &&
+                            <ProductoCard info={prod} key={"prod" + i} />)
+                    })
+                )
+                :
+                (// CON FECHA FILTRO ESPECIAL
+
+                    validesBusqueda ?
+                        data.map((prod, i) => {
+                            console.log("fecha busqueda");
+                            return (
+                                prod.ciudad.provincia.includes(search) && fechaFilter.includes(prod.id) &&
+                                <ProductoCard info={prod} key={"prod" + i} />)
+                        })
+                        :
+                        data.map((prod, i) => {
+                            console.log("fecha");
+                            return (
+                                i < 8 && fechaFilter.includes(prod.id) &&
+                                <ProductoCard info={prod} key={"prod" + i} />)
+                        })
+                )
+        return render
+    }
     return (
         <>
             <div className="category-container m-3">
                 <h2 className='list-title category'>Recomendaciones</h2>
                 <div className='d-flex justify-content-between align-item-center flex-wrap'>
-                    {!data ? <Spinner /> : //Si no hay datos, render spinner
-                        busqueda ?
-                            data.map((prod, i) => { //Si hay busqueda, render filtro 
-                                return (
-                                    prod.ciudad.provincia.includes(search) &&
-                                    <ProductoCard info={prod} key={"prod" + i} />)
-                            }) :
-                            data.map((prod, i) => {//sino, busuqeda normal o defiltro
-                                return (
-                                    i < 8 &&
-                                    <ProductoCard info={prod} key={"prod" + i} />)
-                            })
-                    }
+                    {!data ? <Spinner /> : busquedaConDate(fechaFilter)}
+
                 </div>
             </div>
         </>

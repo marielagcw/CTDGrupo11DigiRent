@@ -18,7 +18,7 @@ import java.util.Map;
 public class JwtService implements IJwtService {
 
     // El SECRET_KEY es una palabra clave para generar y posteriormente validar el token
-    private String SECRET_KEY = "secret";
+    private final String SECRET_KEY = "secret";
     @Autowired
     private UsuarioService usuarioService;
 
