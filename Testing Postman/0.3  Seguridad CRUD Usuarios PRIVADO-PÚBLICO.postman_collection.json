@@ -17,6 +17,7 @@
 							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
 							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
 							"});\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -110,6 +111,7 @@
 							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
 							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
 							"});\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -154,6 +156,7 @@
 							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
 							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
 							"});\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -201,6 +204,7 @@
 							"pm.test(\"Respuesta correcta, no tiene permisos\", () => {\r",
 							"  pm.expect(pm.response.code).to.be.oneOf([403]);\r",
 							"});\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -394,7 +398,7 @@
 		},
 		{
 			"key": "jwt",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJpZWxhZ2N3QGdtYWlsLmNvbSIsImV4cCI6MTY1NTg0MDc5NywiaWF0IjoxNjU1ODM5NTk3fQ.c1FDET0jCSbGZl9rNCbUfOjyUlRSDTS70UbRN8B-DOk",
+			"value": "",
 			"type": "string"
 		},
 		{

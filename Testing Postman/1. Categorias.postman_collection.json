@@ -579,7 +579,7 @@
 		},
 		{
 			"key": "jwt",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnamxvYm9zMTQxQGdtYWlsLmNvbSIsImV4cCI6MTY1NTg0MzE3NCwiaWF0IjoxNjU1ODQxOTc0fQ.jlFxZJeUWytuO6HUWqEDmQYD3w3LNrHyEjkGAp1iZd8",
+			"value": "",
 			"type": "string"
 		}
 	]

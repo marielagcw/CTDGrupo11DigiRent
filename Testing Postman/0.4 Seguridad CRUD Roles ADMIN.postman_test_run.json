@@ -1,7 +1,7 @@
 {
-	"id": "ffa75e15-32ec-4100-9dd7-7c38750097f8",
+	"id": "ebd0b73c-beed-4b4f-9a7a-d87681483da3",
 	"name": "0.4 Seguridad CRUD Roles ADMIN",
-	"timestamp": "2022-06-21T19:41:27.501Z",
+	"timestamp": "2022-06-25T22:30:27.862Z",
 	"collection_id": "18027182-ee082092-ea15-40bf-958d-49264961fe5c",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "30920617-e38f-4cb5-b737-5166d0f093e5",
 			"name": "Post Rol (requiere body)",
 			"url": "http://localhost:8080/roles/agregar",
-			"time": 26,
+			"time": 19,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -27,7 +27,7 @@
 				}
 			},
 			"times": [
-				26
+				19
 			],
 			"allTests": [
 				{
@@ -39,7 +39,7 @@
 			"id": "803b5a20-ddcb-4138-b503-d6303a27a17b",
 			"name": "Post Rol (requiere body)",
 			"url": "http://localhost:8080/roles/agregar",
-			"time": 12,
+			"time": 10,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -54,7 +54,7 @@
 				}
 			},
 			"times": [
-				12
+				10
 			],
 			"allTests": [
 				{
@@ -66,7 +66,7 @@
 			"id": "68e10de9-7f5a-4c24-99eb-ba1a3bd916a3",
 			"name": "Get All",
 			"url": "http://localhost:8080/roles/listarTodos",
-			"time": 11,
+			"time": 9,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -91,7 +91,7 @@
 				}
 			},
 			"times": [
-				11
+				9
 			],
 			"allTests": [
 				{
@@ -105,7 +105,7 @@
 			"id": "4a5f19f2-4748-47f7-aed3-78848e612ba7",
 			"name": "Get By Id (id en la url)",
 			"url": "http://localhost:8080/roles/2",
-			"time": 11,
+			"time": 9,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -125,7 +125,7 @@
 				}
 			},
 			"times": [
-				11
+				9
 			],
 			"allTests": [
 				{
@@ -138,7 +138,7 @@
 			"id": "59635cc1-9790-4227-aca5-f6d26ed1dd45",
 			"name": "Put  (id en el body)",
 			"url": "http://localhost:8080/roles/actualizar",
-			"time": 13,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -153,7 +153,7 @@
 				}
 			},
 			"times": [
-				13
+				11
 			],
 			"allTests": [
 				{
@@ -165,7 +165,7 @@
 			"id": "f19bf1d8-0d79-406f-a2f4-2784dada08e4",
 			"name": "Put  (id en la url)",
 			"url": "http://localhost:8080/roles/eliminar/4",
-			"time": 16,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -180,7 +180,7 @@
 				}
 			},
 			"times": [
-				16
+				11
 			],
 			"allTests": [
 				{
@@ -190,7 +190,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 89,
+	"totalTime": 69,
 	"collection": {
 		"requests": [
 			{

@@ -1,18 +1,18 @@
 {
-	"id": "fa56b89d-c642-4141-8aa9-043ef1af7bd4",
+	"id": "11562ee4-bfd1-497b-b794-693d2b0d50a3",
 	"name": "7. Productos Público",
-	"timestamp": "2022-06-22T00:49:36.385Z",
+	"timestamp": "2022-06-25T22:37:40.363Z",
 	"collection_id": "18027182-4a8d614b-0135-4db1-a29d-fc2036926e10",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 17,
+	"totalPass": 19,
 	"totalFail": 0,
 	"results": [
 		{
 			"id": "e50761fc-b266-4f33-a22d-f03cae3819f3",
 			"name": "Get All Random",
 			"url": "http://localhost:8080/productos/listarTodosRandom",
-			"time": 334,
+			"time": 54,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -42,7 +42,7 @@
 				}
 			},
 			"times": [
-				334
+				54
 			],
 			"allTests": [
 				{
@@ -57,7 +57,7 @@
 			"id": "db50abf2-71b0-44d5-bfed-5e03f1cdb6c7",
 			"name": "Get by id",
 			"url": "http://localhost:8080/productos/2",
-			"time": 24,
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -82,7 +82,7 @@
 				}
 			},
 			"times": [
-				24
+				10
 			],
 			"allTests": [
 				{
@@ -96,7 +96,7 @@
 			"id": "410b6d68-6f84-47bf-976a-56bfcca46159",
 			"name": "Buscar por ciudad",
 			"url": "http://localhost:8080/productos/ciudad/2?size=2&page=0",
-			"time": 28,
+			"time": 14,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -131,7 +131,7 @@
 				}
 			},
 			"times": [
-				28
+				14
 			],
 			"allTests": [
 				{
@@ -147,7 +147,7 @@
 			"id": "b0f3d356-db0f-4117-8f9d-d8a18c2fbc89",
 			"name": "Buscar por categorias",
 			"url": "http://localhost:8080/productos/categoria/1?size=2&page=0",
-			"time": 27,
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -182,7 +182,7 @@
 				}
 			},
 			"times": [
-				27
+				12
 			],
 			"allTests": [
 				{
@@ -193,10 +193,64 @@
 					"El array trae la cantidad de productos solicitados por parámetro": true
 				}
 			]
+		},
+		{
+			"id": "e7dc3be8-f575-4c48-a8b7-63eb2a693f3b",
+			"name": "Buscar por ciudad y fechas (requiere body)",
+			"url": "http://localhost:8080/productos/ciudad/2/fechaDisponible",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true
+				}
+			]
+		},
+		{
+			"id": "2d85babb-86a7-40d7-9475-b05c6fa0252c",
+			"name": "Buscar por fechas (requiere body)",
+			"url": "http://localhost:8080/productos/fechaDisponible",
+			"time": 41,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true
+				}
+			]
 		}
 	],
 	"count": 1,
-	"totalTime": 413,
+	"totalTime": 150,
 	"collection": {
 		"requests": [
 			{
@@ -214,6 +268,14 @@
 			{
 				"id": "b0f3d356-db0f-4117-8f9d-d8a18c2fbc89",
 				"method": "GET"
+			},
+			{
+				"id": "e7dc3be8-f575-4c48-a8b7-63eb2a693f3b",
+				"method": "POST"
+			},
+			{
+				"id": "2d85babb-86a7-40d7-9475-b05c6fa0252c",
+				"method": "POST"
 			}
 		]
 	}

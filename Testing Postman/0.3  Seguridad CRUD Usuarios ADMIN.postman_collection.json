@@ -274,13 +274,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlbase}}/eliminar/7",
+					"raw": "{{urlbase}}/eliminar/4",
 					"host": [
 						"{{urlbase}}"
 					],
 					"path": [
 						"eliminar",
-						"7"
+						"4"
 					]
 				}
 			},
@@ -368,7 +368,7 @@
 		},
 		{
 			"key": "jwt",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnamxvYm9zMTQxQGdtYWlsLmNvbSIsImV4cCI6MTY1NTg0MDQ5MCwiaWF0IjoxNjU1ODM5MjkwfQ.Aji7tqFV01OZGSsbj5p_OdeU5AvQVEgsE4K0f42FWAg",
+			"value": "",
 			"type": "string"
 		},
 		{

@@ -92,8 +92,15 @@ public class ProductoController {
 
     // LISTADO DE PRODUCTOS DISPONIBLES POR FECHAS
     @PostMapping("/fechaDisponible")
-    public ResponseEntity<?> productosNoDisponibles(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
+    public ResponseEntity<?> productosDisponiblesFecha(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
         List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
+        return ResponseEntity.ok().body(productoList);
+    }
+
+    // LISTADO DE PRODUCTOS DISPONIBLES POR CIUDAD Y POR FECHAS
+    @PostMapping("/ciudad/{id}/fechaDisponible")
+    public ResponseEntity<?> productosDisponiblesCiudadFecha(@PathVariable Integer id, @RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
+        List<ProductoDTO> productoList = service.buscarProductosPorCiudadFechas(id, reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
         return ResponseEntity.ok().body(productoList);
     }
 }

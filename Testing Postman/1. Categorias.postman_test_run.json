@@ -1,7 +1,7 @@
 {
-	"id": "84809382-1a43-4e71-87b5-7a1bd1cd1a6e",
+	"id": "483de8e8-d22b-49f9-835b-745e4a748a17",
 	"name": "1. Categorias",
-	"timestamp": "2022-06-21T20:08:37.864Z",
+	"timestamp": "2022-06-25T22:31:48.659Z",
 	"collection_id": "18027182-5fcd3d09-2573-4d62-a96c-09c946b9e165",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "abf0ea1d-1271-4a1c-94f3-4b3cb0c71e55",
 			"name": "Post (requiere body) Cabañas",
 			"url": "http://localhost:8080/categorias/agregar",
-			"time": 16,
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -32,7 +32,7 @@
 				}
 			},
 			"times": [
-				16
+				12
 			],
 			"allTests": [
 				{
@@ -45,7 +45,7 @@
 			"id": "340a14b8-b016-4df6-84b6-28a5c6bf6028",
 			"name": "Post (requiere body) Casa temporaria",
 			"url": "http://localhost:8080/categorias/agregar",
-			"time": 13,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -65,7 +65,7 @@
 				}
 			},
 			"times": [
-				13
+				11
 			],
 			"allTests": [
 				{
@@ -78,7 +78,7 @@
 			"id": "b6b6460e-5bc1-4eb6-82f3-c14105839a7b",
 			"name": "Post (requiere body) casa de playa",
 			"url": "http://localhost:8080/categorias/agregar",
-			"time": 15,
+			"time": 9,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -98,7 +98,7 @@
 				}
 			},
 			"times": [
-				15
+				9
 			],
 			"allTests": [
 				{
@@ -111,7 +111,7 @@
 			"id": "97e23364-32e5-4e35-a074-983bdeeb85de",
 			"name": "Post (requiere body) hostal",
 			"url": "http://localhost:8080/categorias/agregar",
-			"time": 13,
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -131,7 +131,7 @@
 				}
 			},
 			"times": [
-				13
+				10
 			],
 			"allTests": [
 				{
@@ -144,7 +144,7 @@
 			"id": "79076782-260d-4267-a1a9-e4b1efd192dc",
 			"name": "Get All",
 			"url": "http://localhost:8080/categorias/listarTodos",
-			"time": 11,
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -169,7 +169,7 @@
 				}
 			},
 			"times": [
-				11
+				10
 			],
 			"allTests": [
 				{
@@ -183,7 +183,7 @@
 			"id": "94f424a2-3aa9-4ed5-b5fc-f3b5909f5b8f",
 			"name": "Get by id",
 			"url": "http://localhost:8080/categorias/1",
-			"time": 10,
+			"time": 7,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -203,7 +203,7 @@
 				}
 			},
 			"times": [
-				10
+				7
 			],
 			"allTests": [
 				{
@@ -243,7 +243,7 @@
 			"id": "532b5609-7cbd-4b10-8d92-ef93fe98db31",
 			"name": "Put actualizar (requiere id en body) id inexistente",
 			"url": "http://localhost:8080/categorias/actualizar",
-			"time": 12,
+			"time": 9,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -258,7 +258,7 @@
 				}
 			},
 			"times": [
-				12
+				9
 			],
 			"allTests": [
 				{
@@ -270,7 +270,7 @@
 			"id": "e1e04994-6d6a-4eda-8ed3-1a98e67950c4",
 			"name": "Get by id después del update",
 			"url": "http://localhost:8080/categorias/1",
-			"time": 12,
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -290,7 +290,7 @@
 				}
 			},
 			"times": [
-				12
+				10
 			],
 			"allTests": [
 				{
@@ -303,7 +303,7 @@
 			"id": "62aa59a1-f993-4dad-86d7-8b4c561177ff",
 			"name": "Delete ( id en url)",
 			"url": "http://localhost:8080/categorias/eliminar/7",
-			"time": 15,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -318,7 +318,7 @@
 				}
 			},
 			"times": [
-				15
+				11
 			],
 			"allTests": [
 				{
@@ -330,7 +330,7 @@
 			"id": "0c53c484-5ad2-4aa3-bd74-33c1e36afb5a",
 			"name": "Delete ( id en url) id inexistente",
 			"url": "http://localhost:8080/categorias/eliminar/200",
-			"time": 9,
+			"time": 8,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -345,7 +345,7 @@
 				}
 			},
 			"times": [
-				9
+				8
 			],
 			"allTests": [
 				{
@@ -357,7 +357,7 @@
 			"id": "07c03df5-4bec-4a58-93b9-49fa20f4db0a",
 			"name": "Get by id después del delete",
 			"url": "http://localhost:8080/categorias/7",
-			"time": 11,
+			"time": 7,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -372,7 +372,7 @@
 				}
 			},
 			"times": [
-				11
+				7
 			],
 			"allTests": [
 				{
@@ -382,7 +382,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 147,
+	"totalTime": 114,
 	"collection": {
 		"requests": [
 			{

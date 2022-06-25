@@ -1,7 +1,7 @@
 {
-	"id": "f5261a15-a129-4c30-82aa-fb50b3a67924",
+	"id": "614cf9b2-7786-4114-8e16-d40e3072fea3",
 	"name": "0.3  Seguridad CRUD Usuarios ADMIN",
-	"timestamp": "2022-06-21T19:25:46.586Z",
+	"timestamp": "2022-06-25T22:28:07.620Z",
 	"collection_id": "18027182-c394125e-de94-4a8a-a50c-8b002459e357",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "b1d4b9d4-ecb9-4b37-ac2a-71b9ad1e57f9",
 			"name": "Get All",
 			"url": "http://localhost:8080/usuarios/listarTodos",
-			"time": 14,
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -37,7 +37,7 @@
 				}
 			},
 			"times": [
-				14
+				12
 			],
 			"allTests": [
 				{
@@ -51,7 +51,7 @@
 			"id": "d486c8c3-51d3-4c09-98a1-fbedf08b4a31",
 			"name": "Get By Id (id en la url)",
 			"url": "http://localhost:8080/usuarios/5",
-			"time": 9,
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -71,7 +71,7 @@
 				}
 			},
 			"times": [
-				9
+				10
 			],
 			"allTests": [
 				{
@@ -84,7 +84,7 @@
 			"id": "79923893-56c6-440c-91bd-b61f83106b61",
 			"name": "Put  (id en el body)",
 			"url": "http://localhost:8080/usuarios/actualizar",
-			"time": 84,
+			"time": 89,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -99,7 +99,7 @@
 				}
 			},
 			"times": [
-				84
+				89
 			],
 			"allTests": [
 				{
@@ -111,7 +111,7 @@
 			"id": "0be5911a-3f90-4114-8297-427ce66232ee",
 			"name": "Put  (id en el body) Id inexistente",
 			"url": "http://localhost:8080/usuarios/actualizar",
-			"time": 9,
+			"time": 8,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -126,7 +126,7 @@
 				}
 			},
 			"times": [
-				9
+				8
 			],
 			"allTests": [
 				{
@@ -138,7 +138,7 @@
 			"id": "b5949e61-8cdc-4e31-9b72-fc39ec0af50c",
 			"name": "Get By Id (id en la url) después del Update",
 			"url": "http://localhost:8080/usuarios/5",
-			"time": 9,
+			"time": 8,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -163,7 +163,7 @@
 				}
 			},
 			"times": [
-				9
+				8
 			],
 			"allTests": [
 				{
@@ -176,8 +176,8 @@
 		{
 			"id": "6b462ba1-a2b8-4b5f-a2a4-d2257685f1c2",
 			"name": "Put  (id en la url)",
-			"url": "http://localhost:8080/usuarios/eliminar/7",
-			"time": 13,
+			"url": "http://localhost:8080/usuarios/eliminar/4",
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -192,7 +192,7 @@
 				}
 			},
 			"times": [
-				13
+				12
 			],
 			"allTests": [
 				{
@@ -204,7 +204,7 @@
 			"id": "2fa36c16-6364-4405-9478-b9e90105a506",
 			"name": "Get By Id (id en la url) después del Delete",
 			"url": "http://localhost:8080/usuarios/7",
-			"time": 10,
+			"time": 8,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -219,7 +219,7 @@
 				}
 			},
 			"times": [
-				10
+				8
 			],
 			"allTests": [
 				{
@@ -229,7 +229,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 148,
+	"totalTime": 147,
 	"collection": {
 		"requests": [
 			{

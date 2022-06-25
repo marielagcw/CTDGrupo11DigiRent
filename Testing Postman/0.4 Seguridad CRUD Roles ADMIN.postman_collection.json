@@ -34,7 +34,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\":\"rolNombre\"\r\n}",
+					"raw": "{\r\n    \"nombre\":\"rolNombre1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -321,7 +321,7 @@
 		},
 		{
 			"key": "jwt",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnamxvYm9zMTQxQGdtYWlsLmNvbSIsImV4cCI6MTY1NTg0MDQ5MCwiaWF0IjoxNjU1ODM5MjkwfQ.Aji7tqFV01OZGSsbj5p_OdeU5AvQVEgsE4K0f42FWAg",
+			"value": "",
 			"type": "string"
 		}
 	]
