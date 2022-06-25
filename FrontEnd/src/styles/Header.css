@@ -9,9 +9,16 @@
 }
 
 .image-container {
-    width: 60px;
-    height: 60px;
+    width: 120px;
     padding-left: 11px;
+}
+
+.logo-text {
+    text-align: center;
+}
+
+.frase {
+    font-style:italic;
 }
 
 .collapse {
