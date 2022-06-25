@@ -33,13 +33,16 @@ const Header = ({ user, btn }) => {
     <>
       <nav className='navbar navbar-light'>
         <div className='container-fluid'>
-          <div className='logo d-flex align-items-center' onClick={() => navigate('/')}>
-            <div className='image-container d-flex align-items-center'>
-              <img src={logo} className='img-fluid' alt='logo' />
+          <div className='logo-frase d-flex align-items-center'>
+            <div className='logo' onClick={() => navigate('/')}>
+              <div className='image-container d-flex align-items-center'>
+                <img src={logo} className='img-fluid' alt='logo' />
+              </div>
+              <p className='logo-text ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
             </div>
-            <p className='ps-2 fw-bold mb-0'>Digi <span className='bg-tertiary fw-bold text-light ps-1 pe-1'>Rent</span></p>
-            <p className='ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
-          </div>{userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :  
+            <p className='frase ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
+          </div>
+          {userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :  
             <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
@@ -66,9 +69,9 @@ const Header = ({ user, btn }) => {
                 <a id="home" className="menu-item" href="/">Menú</a> 
               </div>
               <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
-                {location.pathname != '/login' && <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>}
+                {location.pathname !== '/login' && <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
-                {location.pathname != '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
+                {location.pathname !== '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
                 }
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
               </div>

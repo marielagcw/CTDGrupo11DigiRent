@@ -110,7 +110,7 @@ const Search = ({ busqueda,fechaFilter }) => {
         console.log(error);
     } else {
         data.forEach((e) => {
-            !ciudadesList.includes(e.provincia) && ciudadesList.push(e.provincia)
+            !ciudadesList.includes(e.nombre) && ciudadesList.push(e.nombre)
         })
     }
 
@@ -162,7 +162,7 @@ const Search = ({ busqueda,fechaFilter }) => {
                         </div>
                     </div>
                 </div>
-                <button type='submit' className='btn btn-lg btn-primary ms-2'>Buscar</button>
+                <button type='submit' className='btn btn-lg btn-primary ms-2'>Aceptar</button>
 
             </form>
 

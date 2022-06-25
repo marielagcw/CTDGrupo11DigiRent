@@ -13,8 +13,12 @@ h1 {
     line-height: 42px;
 }
 
+input {
+    font-size: 14px;
+}
+
 .iconInput {
-    position: relative;
+    position: relative; 
 }
 
 .icon {
