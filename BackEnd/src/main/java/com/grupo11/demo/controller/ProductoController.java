@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/productos")
@@ -24,15 +24,22 @@ public class ProductoController {
 
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
-    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field) {
-        Set<ProductoDTO> productos;
+    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field, @RequestParam(required = false) String atributoOrden, @RequestParam(required = false) String atributo) {
 
+        // Lista que se retorna
+        List<ProductoDTO> productos;
+
+        // ORDEN DEL LISTADO DE PRODUCTOS
         if (ord == null || field == null) {
             productos = service.listarTodo(pageable);
         } else {
             Sort.by(Sort.Order.asc("id"));
             PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
             productos = service.listarTodo(of);
+        }
+        // ORDEN DE LAS LISTAS INTERNAS DE CADA PRODUCTO
+        if (atributoOrden != null && atributo != null) {
+            productos = productos.stream().map(productoDTO -> service.ordenarListasInternas(productoDTO, atributoOrden, atributo)).collect(Collectors.toList());
         }
         return ResponseEntity.ok(productos);
     }
@@ -67,39 +74,70 @@ public class ProductoController {
 
     // FIND BY ID / GET BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id) {
+    public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id, @RequestParam(required = false) String atributoOrden, @RequestParam(required = false) String atributo) {
         ProductoDTO productoDTO = service.buscarPorId(id);
+        service.ordenarListasInternas(productoDTO, atributoOrden, atributo);
         return ResponseEntity.ok(productoDTO);
     }
-    /*
-    @GetMapping("/{id}")
-    public ProductoDTO buscar(@PathVariable Integer id) {
-        ProductoDTO productoDTO = productoService.buscarPorId(id);
-        return productoDTO;
-    }*/
+
 
     // FIND BY ID CIUDAD / GET BY CIUDAD
     @GetMapping("/ciudad/{id}")
-    public Set<ProductoDTO> listarProductosPorCiudad(@PathVariable Integer id, Pageable pageable) {
-        return service.buscarProductosPorCiudad(id, pageable);
+    public ResponseEntity<?> listarProductosPorCiudad(@PathVariable Integer id, Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field, @RequestParam(required = false) String atributoOrden, @RequestParam(required = false) String atributo) {
+
+        // Lista que se retorna
+        List<ProductoDTO> productos;
+
+        // ORDEN DEL LISTADO DE PRODUCTOS
+        if (ord == null || field == null) {
+            productos = service.buscarProductosPorCiudad(id, pageable);
+        } else {
+            Sort.by(Sort.Order.asc("id"));
+            PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
+            productos = service.buscarProductosPorCiudad(id, of);
+        }
+        // ORDEN DE LAS LISTAS INTERNAS DE CADA PRODUCTO
+        if (atributoOrden != null && atributo != null) {
+            productos = productos.stream().map(productoDTO -> service.ordenarListasInternas(productoDTO, atributoOrden, atributo)).collect(Collectors.toList());
+        }
+        return ResponseEntity.ok(productos);
     }
 
     // FIND BY ID CATEGORIA / GET BY CATEGORIA
     @GetMapping("/categoria/{id}")
-    public Set<ProductoDTO> listarProductosPorCategoria(@PathVariable Integer id, Pageable pageable) {
-        return service.buscarProductosPorCategoria(id, pageable);
+    public ResponseEntity<?> listarProductosPorCategoria(@PathVariable Integer id, Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field, @RequestParam(required = false) String atributoOrden, @RequestParam(required = false) String atributo) {
+
+        // Lista que se retorna
+        List<ProductoDTO> productos;
+
+        // ORDEN DEL LISTADO DE PRODUCTOS
+        if (ord == null || field == null) {
+            productos = service.buscarProductosPorCategoria(id, pageable);
+        } else {
+            Sort.by(Sort.Order.asc("id"));
+            PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
+            productos = service.buscarProductosPorCategoria(id, of);
+        }
+        // ORDEN DE LAS LISTAS INTERNAS DE CADA PRODUCTO
+        if (atributoOrden != null && atributo != null) {
+            productos = productos.stream().map(productoDTO -> service.ordenarListasInternas(productoDTO, atributoOrden, atributo)).collect(Collectors.toList());
+        }
+        return ResponseEntity.ok(productos);
+
     }
 
     // LISTADO DE PRODUCTOS DISPONIBLES POR FECHAS
     @PostMapping("/fechaDisponible")
-    public ResponseEntity<?> productosDisponiblesFecha(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
+    public ResponseEntity<?> productosDisponiblesFecha(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable
+            pageable) {
         List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
         return ResponseEntity.ok().body(productoList);
     }
 
     // LISTADO DE PRODUCTOS DISPONIBLES POR CIUDAD Y POR FECHAS
     @PostMapping("/ciudad/{id}/fechaDisponible")
-    public ResponseEntity<?> productosDisponiblesCiudadFecha(@PathVariable Integer id, @RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
+    public ResponseEntity<?> productosDisponiblesCiudadFecha(@PathVariable Integer
+                                                                     id, @RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
         List<ProductoDTO> productoList = service.buscarProductosPorCiudadFechas(id, reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
         return ResponseEntity.ok().body(productoList);
     }
