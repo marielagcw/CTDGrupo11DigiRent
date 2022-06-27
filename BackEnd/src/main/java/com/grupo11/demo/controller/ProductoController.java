@@ -76,7 +76,9 @@ public class ProductoController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductoDTO> buscar(@PathVariable Integer id, @RequestParam(required = false) String atributoOrden, @RequestParam(required = false) String atributo) {
         ProductoDTO productoDTO = service.buscarPorId(id);
-        service.ordenarListasInternas(productoDTO, atributoOrden, atributo);
+        if (atributoOrden != null && atributo != null) {
+            service.ordenarListasInternas(productoDTO, atributoOrden, atributo);
+        }
         return ResponseEntity.ok(productoDTO);
     }
 

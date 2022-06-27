@@ -9,6 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import ProductoForm from './components/ProductoForm';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         {/* <Route path="/products" element={<Products />} />
         <Route path='/test' element={<Test />} /> */}
         <Route path="/reserva/:productId" element= {<Reserva />}/>
+        <Route path="/nuevoProducto" element={<ProductoForm/>}/>
       </Routes>
     </BrowserRouter>
 
