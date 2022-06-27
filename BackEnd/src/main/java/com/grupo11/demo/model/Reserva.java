@@ -22,7 +22,6 @@ public class Reserva {
     private LocalDate fechaFinal;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "productos_id_producto", referencedColumnName = "id_producto", nullable = false)
     private Producto producto;
 

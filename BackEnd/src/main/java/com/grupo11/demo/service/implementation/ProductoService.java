@@ -2,7 +2,6 @@ package com.grupo11.demo.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo11.demo.model.Producto;
-import com.grupo11.demo.model.Reserva;
 import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.repository.IProductoRepository;
 import com.grupo11.demo.service.IProductoSevice;
@@ -119,4 +118,15 @@ public class ProductoService implements IProductoSevice {
        return productos.stream().map(producto -> mapper.convertValue(producto, ProductoDTO.class)).collect(Collectors.toList());
     }
 
+    // BUSCAR PRODUCTOS DISPONIBLES POR CIUDAD Y POR FECHA
+    public List<ProductoDTO> buscarProductosPorCiudadFechas(Integer idCiudad, LocalDate fechaFinal, LocalDate fechaInicial, Pageable pageable) {
+        List<Producto> productoList = repository.buscarProductosDisponiblesPorFecha(fechaFinal, fechaInicial,pageable);
+        List<Producto> productosCiudad = new ArrayList<>();
+        productoList.forEach(producto -> {
+            if(producto.getCiudad().getId().equals(idCiudad)){
+                productosCiudad.add(producto);
+            }
+        });
+        return productosCiudad.stream().map(producto -> mapper.convertValue(producto, ProductoDTO.class)).collect(Collectors.toList());
+    }
 }

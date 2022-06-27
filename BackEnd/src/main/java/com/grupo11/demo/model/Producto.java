@@ -34,7 +34,8 @@ public class Producto {
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(name = "ciudades_id_ciudad", referencedColumnName = "id_ciudad")
+    @JoinColumn(
+            name = "ciudades_id_ciudad", referencedColumnName = "id_ciudad")
     private Ciudad ciudad;
 
     @ManyToMany
@@ -46,7 +47,7 @@ public class Producto {
     private Set<Politica> politicas = new HashSet<>();
 
     @OneToMany(mappedBy = "producto")
-    @JsonManagedReference
+    @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
     // CONSTRUCTORES

@@ -14,4 +14,6 @@ public interface IReservaRepository  extends JpaRepository<Reserva, Integer> {
     @Query("FROM Reserva r WHERE r.producto.id = :id ")
     List<Reserva> findAllByProducto(Integer id, Pageable pageable);
 
+    @Query("FROM Reserva r WHERE r.usuario.id= :id")
+    List<Reserva> findAllByUsuario(Integer id, Pageable pageable);
 }

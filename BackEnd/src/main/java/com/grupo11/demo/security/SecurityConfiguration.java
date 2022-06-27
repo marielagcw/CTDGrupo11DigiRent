@@ -46,26 +46,34 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/usuarios/authenticate", "/usuarios/registro").permitAll()
-                .antMatchers("/categorias/listarTodos**").permitAll()
-                .antMatchers("/productos/listarTodosRandom**").permitAll()
+                // Para acceder a la documentación
                 .antMatchers("/v3/api-docs/**",
                         "/swagger-ui*", "/swagger-ui/**").permitAll()
-                .antMatchers().permitAll()
-                .antMatchers("/productos/fechaDisponible").permitAll()
-                .antMatchers("/productos/{id}").permitAll()
-                .antMatchers("/productos/ciudad/{id}").permitAll()
-                .antMatchers("/productos/categoria/{id}").permitAll()
+                // Para el acceso a registro y login
+                .antMatchers("/usuarios/authenticate", "/usuarios/registro").permitAll()
+                // Para renderizado público del Home
+                .antMatchers("/categorias/listarTodos**").permitAll()
+                .antMatchers("/productos/listarTodosRandom**").permitAll()
                 .antMatchers("/categorias/listarTodos", "/categorias/{id}").permitAll()
                 .antMatchers("/ciudades/listarTodos", "/ciudades/{id}").permitAll()
+                .antMatchers("/productos/ciudad/{id}/fechaDisponible").permitAll()
+                // Para la búsqueda de productos
+                .antMatchers("/productos/fechaDisponible").permitAll()
+                .antMatchers("/productos/ciudad/{id}").permitAll()
+                .antMatchers("/productos/categoria/{id}").permitAll()
+                // Para el renderizado del producto completo
+                .antMatchers("/productos/{id}").permitAll()
                 .antMatchers("/caracteristicas/listarTodos**", "/caracteristicas/{id}").permitAll()
                 .antMatchers("/imagenes/listarTodos", "/imagenes/{id}").permitAll()
                 .antMatchers("/politicas/listarTodos", "/politicas/{id}").permitAll()
                 .antMatchers("/elementosPoliticas/listarTodos", "/elementosPoliticas/{id}").permitAll()
-                .antMatchers("/productos/listarTodos**").hasAnyAuthority("ROLE_USUARIO_PRIVADO", "ROLE_ADMINISTRADOR")
+                // Permisos para solamente rol administrador
                 .antMatchers("/**").hasAuthority("ROLE_ADMINISTRADOR")
+                // Permisos para rol administrador y rol usuario privado
+                .antMatchers("/productos/listarTodos**", "/reservas**").hasAnyAuthority("ROLE_USUARIO_PRIVADO", "ROLE_ADMINISTRADOR")
+                // Los demás endpoints requieren siempre permisos
                 .anyRequest()
-//                .permitAll()
+                //.permitAll()
                 .authenticated()
                 .and()
                 .sessionManagement()
