@@ -45,8 +45,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
                 .disable()
-                // Para acceder a la documentación
                 .authorizeRequests()
+                // Para acceder a la documentación
                 .antMatchers("/v3/api-docs/**",
                         "/swagger-ui*", "/swagger-ui/**").permitAll()
                 // Para el acceso a registro y login
