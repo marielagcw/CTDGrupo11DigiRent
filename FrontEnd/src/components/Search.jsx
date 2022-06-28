@@ -10,62 +10,82 @@ import '../styles/Search.css'
 
 
 
-const Search = ({ busqueda,fechaFilter }) => {
-    const UNDIA = 86400000 * 1;
+const Search = ({ busqueda }) => {
+
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
-    const [filtroFecha, setFiltroFecha] = useState([])
-    useEffect(() => {
-        fechaFilter(filtroFecha)
-    }, [filtroFecha])
-    
+    const [datosFiltrados, setDatosFiltrados] = useState({})
 
-    const HandleSubmit = e => {
+    /*const HandleSubmit = e => {
+        let data;
         e.preventDefault();
         let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
 
         const axiosInstance = axios.create({
             headers: {
-                'Accept': 'application/json, text/plain, */*',
+                'Accept': 'application/json, text/plain, *',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' +token
             }
         });
-        const handleResponse = async (informacion, fecha) => {
-            try {
-                console.log(informacion);
-                let aux = [];
-                await informacion.forEach((e) => {
-                    let { fechaFinal, fechaInicial} = { ...e };
-                    let id = e.producto.id
-                    let mayor = fecha[0].getDate() >= new Date(Date.parse(fechaFinal) + UNDIA);
-                    let menor = fecha[1].getDate() <= new Date(Date.parse(fechaInicial) + UNDIA);
-                    if ((mayor || menor) && !aux.includes(id) ) {
-                        aux.push(id);
-                    }
-                })
-                setFiltroFecha(aux)
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        let user = JSON.parse(window.localStorage.getItem('user'));
         axiosInstance
-            .get("http://localhost:8080/reservas/listarTodos")
+            .get("http://localhost:8080/productos/listarTodos")
             .then(response => {
-                handleResponse(response.data, fecha)
+                console.log(response);
+                data = response;
             })
             .catch(e => console.log(e));
+            //TODO filtrar con informacion cuando se renderize
+            console.log(data);
+            console.log(user);
+
+        // console.log(user);
+        // let url = "http://localhost:8080/reservas/listarTodos";
+        // let fetchInfo = {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'application/json, text/plain, ',
+        //         'Content-Type': 'application/json',
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Authorization': 'Bearer ' +token
+
+        //     }
+        // }
+        // let info = () => axios(url, fetchInfo).then((res) => res.json).then((a) => {
+        //     console.log(a);
+        //     return a
+        // })
+        // console.log(info());
+    } */
+
+    const HandleSubmit = (e) => {
+        e.preventDefault()
+        let cod = document.getElementById("ciudades");
+        if((cod.selectedIndex + 1) != 0 && formatDataToSubmit(fecha) !== ''){
+            let ciudad_id = cod.selectedIndex + 1
+            let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible`
+            let fechasElegidas = {
+                fechaInicial: formatDataToSubmit(fecha)[0],
+                fechaFinal: formatDataToSubmit(fecha)[1]   
+            }
+
+            let buscados = axios.post(url, JSON.stringify(fechasElegidas)).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+            console.log(datosFiltrados);
+            
+        };
 
     }
 
-    const handleChange = e => {
+    /*const handleChange = e => {
+        console.log(e.target);
         if (e.target.name === 'ciudad') { busqueda(e.target.value) }
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         })
-    }
+    }*/
     useEffect(() => {
         const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
         window.addEventListener('resize', (e) => detectarWidth())
@@ -102,6 +122,25 @@ const Search = ({ busqueda,fechaFilter }) => {
         return dateFormateada;
     }
 
+    const formatDataToSubmit = (dataSinFormatear) => {
+        let fInicio, fFin;
+        let dataFormateadaFinal
+        let dataFormateadaInicio
+        if(dataSinFormatear.toString() != ['Invalid Date']){
+            [fInicio, fFin] = dataSinFormatear;
+            dataFormateadaInicio = `${fInicio.getFullYear()}/${fInicio.getDate()}/${(fInicio.getMonth() + 1)}`
+            dataFormateadaFinal = `${fFin.getFullYear()}/${fFin.getDate()}/${(fFin.getMonth() + 1)}`
+        }else{
+            dataFormateadaInicio = ''
+            dataFormateadaFinal = ''
+        }
+
+
+        return [dataFormateadaInicio, dataFormateadaFinal]
+
+    }
+
+
     //Array ciudades
     let ciudadesList = [];
     let url = "http://localhost:8080/ciudades/listarTodos";
@@ -110,7 +149,7 @@ const Search = ({ busqueda,fechaFilter }) => {
         console.log(error);
     } else {
         data.forEach((e) => {
-            !ciudadesList.includes(e.nombre) && ciudadesList.push(e.nombre)
+            !ciudadesList.includes(e.provincia) && ciudadesList.push(e.provincia)
         })
     }
 
@@ -137,20 +176,27 @@ const Search = ({ busqueda,fechaFilter }) => {
 
     return (<>
         <div className="searchContainer">
-            <form onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
+            <form action="POST" onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
-                    <input className='input-search' type="text" list="ciudades" placeholder='¿A donde vamos?' name='ciudad' onChange={handleChange} />
+                    
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
-                    <datalist id="ciudades">
+                    <select name="ciudad" className='input-search' id="ciudades">
                         {ciudadesList.map((e, i) =>
-                            <option fecha={e} key={"ciudad_" + i} >{e}</option>
+                            (
+                                <>
+                                    <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}                                        
+                                    </option>
+                                    
+                                </>
+                            )
+                            
                         )}
-                    </datalist>
+                    </select>
                 </div>
                 <div className="iconInput">
-                    <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={(fecha[0] ? formateDate(fecha) : '')} onChange={handleChange} />
+                    <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={(fecha[0] ? formateDate(fecha) : '')} />
                     <span onClick={showCalendar} className='icon iconCalender'>
                         <FontAwesomeIcon icon={faCalendar} />
                     </span>
