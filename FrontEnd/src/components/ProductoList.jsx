@@ -7,7 +7,8 @@ import Spinner from './Spinner';
 
 const ProductoList = ({ search, seleccion }) => {
     const [url, setUrl] = useState("http://localhost:8080/productos/listarTodosRandom?size=8&page=0")
-    const [busqueda, setBusqueda] = useState(false)
+    const [busqueda, setBusqueda] = useState(true)
+    const [datos, setDatos] = useState('')
 
     useEffect(() => {
         let validesBusqueda = (search !== '' && search != null);
@@ -27,6 +28,14 @@ const ProductoList = ({ search, seleccion }) => {
             setBusqueda(true);
         }
         setUrl(endpoint);
+
+        if(search){
+            setDatos(search)
+            setBusqueda(false)
+        }
+
+        console.log(search);
+
 
 
     }, [search, seleccion])
@@ -50,11 +59,12 @@ const ProductoList = ({ search, seleccion }) => {
                     {!data ? <Spinner /> : //Si no hay datos, render spinner
                         busqueda ?
                             data.map((prod, i) => { //Si hay busqueda, render filtro 
+                                console.log(data)
                                 return (
-                                    prod.ciudad.provincia.includes(search) &&
                                     <ProductoCard info={prod} key={"prod" + i} />)
                             }) :
-                            data.map((prod, i) => {//sino, busuqeda normal o defiltro
+                            datos.map((prod, i) => {//sino, busuqeda normal o defiltro
+                                console.log(datos)
                                 return (
                                     i < 8 &&
                                     <ProductoCard info={prod} key={"prod" + i} />)

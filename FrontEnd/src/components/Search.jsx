@@ -60,21 +60,54 @@ const Search = ({ busqueda }) => {
         // console.log(info());
     } */
 
-    const HandleSubmit = (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault()
         let cod = document.getElementById("ciudades");
-        if((cod.selectedIndex + 1) != 0 && formatDataToSubmit(fecha) !== ''){
-            let ciudad_id = cod.selectedIndex + 1
-            let url = `http://localhost/8080/ciudad/${ciudad_id}/fechaDisponible`
+        let ciudad_id;
+        let buscadorCiudadVacio = (cod.selectedIndex !== 0)
+        let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
+
+        console.log(buscadorFechaVacio);
+        console.log(buscadorCiudadVacio);
+
+        if(!buscadorFechaVacio && !buscadorCiudadVacio){
+            ciudad_id = cod.selectedIndex + 1
+            let url = `http://localhost:8080/ciudad/${ciudad_id}/fechaDisponible`
             let fechasElegidas = {
                 fechaInicial: formatDataToSubmit(fecha)[0],
                 fechaFinal: formatDataToSubmit(fecha)[1]   
             }
 
-            let buscados = axios.post(url, JSON.stringify(fechasElegidas)).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
-            console.log(datosFiltrados);
+            await axios.post(url, fechasElegidas).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
             
-        };
+        }else{
+            if(buscadorCiudadVacio && buscadorFechaVacio){
+
+                let url = `http://localhost:8080/productos/listarTodos`
+
+                await axios.post(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+
+
+            }else if(buscadorCiudadVacio){
+                
+                let url = `http://localhost:8080/productos/fechaDisponible`
+                let fechasElegidas = {
+                    fechaInicial: formatDataToSubmit(fecha)[0],
+                    fechaFinal: formatDataToSubmit(fecha)[1]   
+                }
+                await axios.post(url, fechasElegidas).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+                
+            }else{
+                ciudad_id = (cod.selectedIndex + 1)
+                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+
+                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+
+                busqueda(datosFiltrados.data)
+                console.log(cod.value);
+            }
+        }
+
 
     }
 
@@ -143,7 +176,7 @@ const Search = ({ busqueda }) => {
 
     //Array ciudades
     let ciudadesList = [];
-    let url = "http://localhost:8080/ciudades/listarTodos";
+    let url = "http://localhost:8080/ciudades/listarTodos?ord=DESC&field=id";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
@@ -186,6 +219,7 @@ const Search = ({ busqueda }) => {
                         {ciudadesList.map((e, i) =>
                             (
                                 <>
+                                {console.log(ciudadesList)}
                                     <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}                                        
                                     </option>
                                     
