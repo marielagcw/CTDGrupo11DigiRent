@@ -28,3 +28,12 @@ div#volverProductoFormulario{
     font-size: 3rem;
     color: white;
 }
+.grupoSelectPlus{
+    display:flex;
+    flex-direction: row;
+}
+
+.btn.btn-primary.plus{
+    height: 2.5rem;
+    margin-left: 0.5rem;
+}
