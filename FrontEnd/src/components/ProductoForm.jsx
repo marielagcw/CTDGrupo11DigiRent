@@ -3,7 +3,7 @@ import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { BsChevronLeft } from "react-icons/bs";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/ProductoForm.css";
 
 export default function ProductoForm() {
@@ -18,12 +18,13 @@ export default function ProductoForm() {
       <div className="g-col-6 g-col-md-4">
         <div id="navbarNuevoProducto">
           <Navbar titulo="Administración de productos" />
-          <div className="" onClick={() => navigate("/")}>
+          <div id="volverProductoFormulario" onClick={() => navigate("/")}>
             <BsChevronLeft />
           </div>
         </div>
       </div>
-      <div className="container">
+      <h2 id="tituloProductoFormulario">Crear propiedad</h2>
+      <div id="cardProductoFormulario">
         <form>
           <div className="row justify-content-md-center">
             <div className="col-md-6">
@@ -35,6 +36,7 @@ export default function ProductoForm() {
                 className="form-control"
                 id="nombreProducto"
                 placeholder="Hotel Ejemplo"
+                required
               />
             </div>
             <div className="col-md-6">
@@ -59,6 +61,7 @@ export default function ProductoForm() {
                 className="form-control"
                 id="direccion"
                 placeholder="Calle N° 200"
+                required
               />
             </div>
             <div className="col-md-6">
@@ -85,7 +88,9 @@ export default function ProductoForm() {
             ></textarea>
           </div>
           <fieldset>
-            <legend>Agregar atributos</legend>
+            <legend className="fieldsetProductoFormulario">
+              Agregar atributos
+            </legend>
             <div className="row justify-content-md-center">
               <div className="col-md-8">
                 <label for="nombreAtributo" className="form-label">
@@ -96,6 +101,7 @@ export default function ProductoForm() {
                   className="form-control"
                   id="nombreAtributo"
                   placeholder="WiFi"
+                  required
                 />
               </div>
               <div className="col-md-4">
@@ -108,9 +114,10 @@ export default function ProductoForm() {
                     class="form-control"
                     placeholder="fa wifi"
                     id="icono"
+                    required
                   />
                   <button
-                    class="btn btn-outline-secondary"
+                    class="btn btn-primary"
                     type="button"
                     id="button-addon2"
                   >
@@ -121,9 +128,14 @@ export default function ProductoForm() {
             </div>
           </fieldset>
           <fieldset>
-            <legend>Políticas del producto</legend>
-            <div className="row justify-content-md-center">
-              <div className="col-md-3">
+            <legend className="fieldsetProductoFormulario">
+              Políticas del producto
+            </legend>
+            <div
+              id="divContenedorPoliticas"
+              className="row justify-content-md-left"
+            >
+              <div className="col-md-4">
                 <label for="descripcionNormas" className="form-label">
                   Descripción
                 </label>
@@ -133,6 +145,8 @@ export default function ProductoForm() {
                   id="descripcionNormas"
                   placeholder="Escribir aquí"
                 />
+              </div>
+              <div className="col-md-4">
                 <label for="descripcionSalud" className="form-label">
                   Descripción
                 </label>
@@ -142,6 +156,8 @@ export default function ProductoForm() {
                   id="descripcionSalud"
                   placeholder="Escribir aquí"
                 />
+              </div>
+              <div className="col-md-4">
                 <label for="descripcionPolitica" className="form-label">
                   Descripción
                 </label>
@@ -155,26 +171,26 @@ export default function ProductoForm() {
             </div>
           </fieldset>
           <fieldset>
-            <legend>Cargar imagen</legend>
+            <legend className="fieldsetProductoFormulario">
+              Cargar imagen
+            </legend>
             <div class="input-group mb-3">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Insertar https://"
-                aria-describedby="button-addon2"
+                required
               />
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="button-addon2"
-              >
+              <button class="btn btn-primary" type="button" id="button-addon2">
                 <div>+</div>
               </button>
             </div>
           </fieldset>
-          <button type="submit" className="btn btn-primary">
-            Crear
-          </button>
+          <div class="d-grid gap-2 col-2 mx-auto">
+            <button type="submit" className="btn btn-primary">
+              Crear
+            </button>
+          </div>
         </form>
       </div>
       <Footer />
