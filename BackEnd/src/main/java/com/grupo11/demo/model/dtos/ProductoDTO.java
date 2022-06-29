@@ -13,6 +13,7 @@ public class ProductoDTO {
     private String descripcion;
     private List<Imagen> imagenes = new ArrayList<>();
     private Categoria categoria;
+    private String direccion;
     private Ciudad ciudad;
     private List<Caracteristica> caracteristicas = new ArrayList<>();
     private List<Politica> politicas = new ArrayList<>();
@@ -94,4 +95,11 @@ public class ProductoDTO {
         this.politicas = politicas;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }

@@ -1,6 +1,7 @@
 package com.grupo11.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,7 +20,8 @@ public class Caracteristica {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "esta_disponible")
+    @Column(name = "esta_disponible"
+    )
     private Boolean estaDisponible; // TODO → Hay un problema, sea true o false se guarda siempre como null en la base de datos =(
 
     @ManyToMany(mappedBy = "caracteristicas")

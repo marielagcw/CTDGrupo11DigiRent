@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import "../styles/ProductoForm.css";
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-import { useEffect } from "react";
 
 export default function ProductoForm() {
   // React Router
@@ -14,7 +13,7 @@ export default function ProductoForm() {
 
   /* -------------------------- Lógica del formulario ------------------------- */
 
-  const [data, setData] = useState({
+  const [datosForm, setDatosForm] = useState({
     nombreProducto: "",
     categoria: "",
     direccion: "",
@@ -28,17 +27,13 @@ export default function ProductoForm() {
     cargarImagen: "",
   });
 
-  // Obtenemos las ciudades y las categorías para los select
-  const ciudades = useFetch("http://localhost:8080/ciudades/listarTodos").data;
-  console.log(ciudades);
-  const categorias = useFetch(
-    "http://localhost:8080/categorias/listarTodos"
-  ).data;
-  console.log(categorias);
+  const urlCiudades = "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=nombre";
+  const { data: dataCiudades, ispending: isPendingCiudades, error: errorCiudades } =
+    useFetch(urlCiudades);
 
-  // useEffect(()=>{
-    
-  // }, [])
+  const urlCategorias = "http://localhost:8080/categorias/listarTodos";
+  const {data: dataCategorias,isPending: isPendingCategorias, error: errorCategorias} =
+    useFetch(urlCategorias);
 
   /* ----------------------- Renderizado del formulario ----------------------- */
   return (
@@ -57,7 +52,7 @@ export default function ProductoForm() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log(data);
+            console.log(datosForm);
             navigate("/");
           }}
         >
@@ -71,9 +66,9 @@ export default function ProductoForm() {
                 className="form-control"
                 id="nombreProducto"
                 placeholder="Hotel Ejemplo"
-                value={data.nombreProducto}
+                value={datosForm.nombreProducto}
                 onChange={(e) =>
-                  setData({ ...data, nombreProducto: e.target.value })
+                  setDatosForm({ ...datosForm, nombreProducto: e.target.value })
                 }
                 required
               />
@@ -85,13 +80,18 @@ export default function ProductoForm() {
               </label>
               <select
                 onChange={(e) =>
-                  setData({ ...data, categoria: e.target.value })
+                  setDatosForm({ ...datosForm, categoria: e.target.value })
                 }
                 className="form-select mb-3"
                 id="categoria"
               >
-                <option defaultValue={data.categoria}>Hotel</option>
-                
+                {dataCategorias?.map((categoria, i) => {
+                  return (
+                    <option value={categoria.titulo} key={"cat" + i}>
+                      {categoria.titulo}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -105,9 +105,9 @@ export default function ProductoForm() {
                 className="form-control"
                 id="direccion"
                 placeholder="Calle N° 200"
-                value={data.direccion}
+                value={datosForm.direccion}
                 onChange={(e) =>
-                  setData({ ...data, direccion: e.target.value })
+                  setDatosForm({ ...datosForm, direccion: e.target.value })
                 }
                 required
               />
@@ -117,11 +117,20 @@ export default function ProductoForm() {
               <label htmlFor="selectCiudades" className="form-label">
                 Ciudad
               </label>
-              <select className="form-select mb-3" id="selectCiudades">
-                <option defaultValue={data.categoria}>Ciudad</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select
+                onChange={(e) =>
+                  setDatosForm({ ...datosForm, ciudad: e.target.value })
+                }
+                className="form-select mb-3"
+                id="selectCiudades"
+              >
+                {dataCiudades?.map((ciudad, i) => {
+                  return (
+                    <option value={ciudad.nombre} key={"ciudad" + i}>
+                      {ciudad.nombre}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -135,9 +144,12 @@ export default function ProductoForm() {
               id="descripcionProducto"
               rows="3"
               placeholder="Escribir aquí"
-              value={data.descripcionProducto}
+              value={datosForm.descripcionProducto}
               onChange={(e) =>
-                setData({ ...data, descripcionProducto: e.target.value })
+                setDatosForm({
+                  ...datosForm,
+                  descripcionProducto: e.target.value,
+                })
               }
               required
             ></textarea>
@@ -157,9 +169,12 @@ export default function ProductoForm() {
                   className="form-control"
                   id="nombreAtributo"
                   placeholder="WiFi"
-                  value={data.nombreAtributo}
+                  value={datosForm.nombreAtributo}
                   onChange={(e) =>
-                    setData({ ...data, nombreAtributo: e.target.value })
+                    setDatosForm({
+                      ...datosForm,
+                      nombreAtributo: e.target.value,
+                    })
                   }
                   required
                 />
@@ -170,18 +185,21 @@ export default function ProductoForm() {
                   Ícono
                 </label>
                 <div className="grupoSelectPlus">
-                <div className="input-group mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="fa wifi"
-                    id="iconoAtributo"
-                    value={data.iconoAtributo}
-                    onChange={(e) =>
-                      setData({ ...data, iconoAtributo: e.target.value })
-                    }
-                    required
-                  />
+                  <div className="input-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="fa wifi"
+                      id="iconoAtributo"
+                      value={datosForm.iconoAtributo}
+                      onChange={(e) =>
+                        setDatosForm({
+                          ...datosForm,
+                          iconoAtributo: e.target.value,
+                        })
+                      }
+                      required
+                    />
                   </div>
                   <button
                     className="btn btn-primary plus"
@@ -213,9 +231,12 @@ export default function ProductoForm() {
                   className="form-control"
                   id="descripcionNormas"
                   placeholder="Escribir aquí"
-                  value={data.descripcionNormas}
+                  value={datosForm.descripcionNormas}
                   onChange={(e) =>
-                    setData({ ...data, descripcionNormas: e.target.value })
+                    setDatosForm({
+                      ...datosForm,
+                      descripcionNormas: e.target.value,
+                    })
                   }
                   required
                 />
@@ -231,9 +252,12 @@ export default function ProductoForm() {
                   className="form-control"
                   id="descripcionSalud"
                   placeholder="Escribir aquí"
-                  value={data.descripcionSalud}
+                  value={datosForm.descripcionSalud}
                   onChange={(e) =>
-                    setData({ ...data, descripcionSalud: e.target.value })
+                    setDatosForm({
+                      ...datosForm,
+                      descripcionSalud: e.target.value,
+                    })
                   }
                   required
                 />
@@ -249,9 +273,12 @@ export default function ProductoForm() {
                   className="form-control"
                   id="descripcionPolitica"
                   placeholder="Escribir aquí"
-                  value={data.descripcionPolitica}
+                  value={datosForm.descripcionPolitica}
                   onChange={(e) =>
-                    setData({ ...data, descripcionPolitica: e.target.value })
+                    setDatosForm({
+                      ...datosForm,
+                      descripcionPolitica: e.target.value,
+                    })
                   }
                   required
                 />
@@ -263,19 +290,19 @@ export default function ProductoForm() {
             <legend className="fieldsetProductoFormulario">
               <h3>Cargar imagen</h3>
             </legend>
-              <div className="grupoSelectPlus">
-            <div className="input-group mb-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Insertar https://"
-                id="cargarImagen"
-                value={data.cargarImagen}
-                onChange={(e) =>
-                  setData({ ...data, cargarImagen: e.target.value })
-                }
-                required
-              />
+            <div className="grupoSelectPlus">
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Insertar https://"
+                  id="cargarImagen"
+                  value={datosForm.cargarImagen}
+                  onChange={(e) =>
+                    setDatosForm({ ...datosForm, cargarImagen: e.target.value })
+                  }
+                  required
+                />
               </div>
               <button
                 className="btn btn-primary plus"
