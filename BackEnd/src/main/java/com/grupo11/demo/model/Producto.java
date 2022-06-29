@@ -25,9 +25,6 @@ public class Producto {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name = "direccion")
-    private String direccion;
-
     @OneToMany(mappedBy = "producto")
     @JsonManagedReference
     private Set<Imagen> imagenes = new HashSet<>();
@@ -57,11 +54,10 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombreProducto, String tituloDescripcion, String descripcion, String direccion, Set<Imagen> imagenes, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas, Set<Politica> politicas, Set<Reserva> reservas) {
+    public Producto(String nombreProducto, String tituloDescripcion, String descripcion, Set<Imagen> imagenes, Categoria categoria, Ciudad ciudad, Set<Caracteristica> caracteristicas, Set<Politica> politicas, Set<Reserva> reservas) {
         this.nombreProducto = nombreProducto;
         this.tituloDescripcion = tituloDescripcion;
         this.descripcion = descripcion;
-        this.direccion = direccion;
         this.imagenes = imagenes;
         this.categoria = categoria;
         this.ciudad = ciudad;
@@ -102,14 +98,6 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public Set<Imagen> getImagenes() {

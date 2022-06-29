@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/ProductoForm.css";
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
+import ProductoFormAgregar from "./ProductoFormAgregar";
 
 export default function ProductoForm() {
   // React Router
@@ -27,13 +28,22 @@ export default function ProductoForm() {
     cargarImagen: "",
   });
 
-  const urlCiudades = "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=nombre";
-  const { data: dataCiudades, ispending: isPendingCiudades, error: errorCiudades } =
-    useFetch(urlCiudades);
+  console.log(datosForm);
+
+  const urlCiudades =
+    "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=nombre";
+  const {
+    data: dataCiudades,
+    ispending: isPendingCiudades,
+    error: errorCiudades,
+  } = useFetch(urlCiudades);
 
   const urlCategorias = "http://localhost:8080/categorias/listarTodos";
-  const {data: dataCategorias,isPending: isPendingCategorias, error: errorCategorias} =
-    useFetch(urlCategorias);
+  const {
+    data: dataCategorias,
+    isPending: isPendingCategorias,
+    error: errorCategorias,
+  } = useFetch(urlCategorias);
 
   /* ----------------------- Renderizado del formulario ----------------------- */
   return (
@@ -134,7 +144,6 @@ export default function ProductoForm() {
               </select>
             </div>
           </div>
-
           <div className="col-md-12">
             <label htmlFor="descripcionProducto" className="form-label">
               Descripción
@@ -154,65 +163,20 @@ export default function ProductoForm() {
               required
             ></textarea>
           </div>
-
           <fieldset>
             <legend className="fieldsetProductoFormulario">
               <h3>Agregar atributos</h3>
             </legend>
-            <div className="row justify-content-md-center">
-              <div className="col-md-8">
-                <label htmlFor="nombreAtributo" className="form-label">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="nombreAtributo"
-                  placeholder="WiFi"
-                  value={datosForm.nombreAtributo}
-                  onChange={(e) =>
-                    setDatosForm({
-                      ...datosForm,
-                      nombreAtributo: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
-
-              <div className="col-md-4">
-                <label htmlFor="iconoAtributo" className="form-label">
-                  Ícono
-                </label>
-                <div className="grupoSelectPlus">
-                  <div className="input-group mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="fa wifi"
-                      id="iconoAtributo"
-                      value={datosForm.iconoAtributo}
-                      onChange={(e) =>
-                        setDatosForm({
-                          ...datosForm,
-                          iconoAtributo: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                  </div>
-                  <button
-                    className="btn btn-primary plus"
-                    type="button"
-                    id="button-addon2"
-                  >
-                    <div>+</div>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <ProductoFormAgregar
+              getAtributo={(atributoNombre, atributoIcono) => {
+                setDatosForm({
+                  ...datosForm,
+                  nombreAtributo: atributoNombre,
+                  iconoAtributo: atributoIcono,
+                });
+              }}
+            />
           </fieldset>
-
           <fieldset>
             <legend className="fieldsetProductoFormulario">
               <h3>Políticas del producto</h3>
@@ -285,7 +249,6 @@ export default function ProductoForm() {
               </div>
             </div>
           </fieldset>
-
           <fieldset>
             <legend className="fieldsetProductoFormulario">
               <h3>Cargar imagen</h3>
@@ -313,7 +276,6 @@ export default function ProductoForm() {
               </button>
             </div>
           </fieldset>
-
           <div className="d-grid gap-2 col-2 mx-auto">
             <button type="submit" className="btn btn-primary">
               Crear

@@ -1,10 +1,7 @@
 package com.grupo11.demo.controller;
 
-import com.grupo11.demo.model.dtos.ProductoDTO;
 import com.grupo11.demo.model.dtos.ReservaDTO;
-import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ReservaService;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
