@@ -38,3 +38,22 @@ input {
 .iconLocation {
     left: 0.5rem;
 }
+
+/*Desktop*/
+@media screen and (max-width: 1200px) {}
+
+/*Tablet*/
+@media screen and (max-width: 900px) {
+    #titulo-navbar{
+        margin: 0 40px 0;
+        text-align: center;
+    }
+}
+
+/*Mobile*/
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    #titulo-navbar{
+        text-align: center;
+        font-size: 30px;
+    }
+}
