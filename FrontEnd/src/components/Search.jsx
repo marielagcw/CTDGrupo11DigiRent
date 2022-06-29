@@ -69,32 +69,42 @@ const Search = ({ busqueda }) => {
 
 
     
-        if(!buscadorFechaVacio && !buscadorCiudadVacio){
-            ciudad_id = cod.selectedIndex + 1
-            let url = `http://localhost:8080/ciudad/${ciudad_id}/fechaDisponible`
-            let fechasElegidas = {
-                fechaInicial: formatDataToSubmit(fecha)[0],
-                fechaFinal: formatDataToSubmit(fecha)[1]   
+        if(!buscadorFechaVacio){
+            if(!buscadorCiudadVacio){
+                ciudad_id = cod.selectedIndex + 1
+                let fechaInicial= formatDataToSubmit(fecha)[0]
+                let fechaFinal= formatDataToSubmit(fecha)[1]   
+                
+                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+
+                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+            }else{
+
+                ciudad_id = (cod.selectedIndex + 1)
+                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+    
+                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+    
+                busqueda(datosFiltrados.data)
+
+            }
+            
+        }else if(buscadorCiudadVacio){
+            if(buscadorFechaVacio){
+
+                let url = `http://localhost:8080/productos/listarTodos`
+    
+                await axios.post(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+            }else{
+
+                let fechaInicial= formatDataToSubmit(fecha)[0]
+                let fechaFinal= formatDataToSubmit(fecha)[1]   
+                
+                let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+
             }
 
-            await axios.post(url, fechasElegidas).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
-            
-        }else if(buscadorCiudadVacio && buscadorFechaVacio){
-
-            let url = `http://localhost:8080/productos/listarTodos`
-
-            await axios.post(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
-
-
-        }else if(buscadorCiudadVacio){
-                
-                let url = `http://localhost:8080/productos/fechaDisponible`
-                let fechasElegidas = {
-                    fechaInicial: formatDataToSubmit(fecha)[0],
-                    fechaFinal: formatDataToSubmit(fecha)[1]   
-                }
-                await axios.post(url, fechasElegidas).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
-                
         }else if(buscadorFechaVacio){
             ciudad_id = (cod.selectedIndex + 1)
             let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
@@ -103,8 +113,6 @@ const Search = ({ busqueda }) => {
 
             busqueda(datosFiltrados.data)
 
-
-            
         }
     }
 
@@ -158,8 +166,8 @@ const Search = ({ busqueda }) => {
         let dataFormateadaInicio
         if(dataSinFormatear.toString() != ['Invalid Date']){
             [fInicio, fFin] = dataSinFormatear;
-            dataFormateadaInicio = `${fInicio.getFullYear()}/${fInicio.getDate()}/${(fInicio.getMonth() + 1)}`
-            dataFormateadaFinal = `${fFin.getFullYear()}/${fFin.getDate()}/${(fFin.getMonth() + 1)}`
+            dataFormateadaInicio = `${fInicio.getFullYear()}-${fInicio.getDate()}-${(fInicio.getMonth() + 1)}`
+            dataFormateadaFinal = `${fFin.getFullYear()}-${fFin.getDate()}-${(fFin.getMonth() + 1)}`
         }else{
             dataFormateadaInicio = ''
             dataFormateadaFinal = ''
