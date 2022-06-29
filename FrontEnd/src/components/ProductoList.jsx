@@ -34,8 +34,6 @@ const ProductoList = ({ search, seleccion }) => {
             setBusqueda(false)
         }
 
-        console.log(search);
-
 
 
     }, [search, seleccion])

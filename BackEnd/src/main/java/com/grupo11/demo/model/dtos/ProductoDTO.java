@@ -2,8 +2,8 @@ package com.grupo11.demo.model.dtos;
 
 import com.grupo11.demo.model.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductoDTO {
 
@@ -11,11 +11,11 @@ public class ProductoDTO {
     private String nombreProducto;
     private String tituloDescripcion;
     private String descripcion;
-    private Set<Imagen> imagenes = new HashSet<>();
+    private List<Imagen> imagenes = new ArrayList<>();
     private Categoria categoria;
     private Ciudad ciudad;
-    private Set<Caracteristica> caracteristicas = new HashSet<>();
-    private Set<Politica> politicas = new HashSet<>();
+    private List<Caracteristica> caracteristicas = new ArrayList<>();
+    private List<Politica> politicas = new ArrayList<>();
 
     public ProductoDTO() {
     }
@@ -54,11 +54,11 @@ public class ProductoDTO {
         this.descripcion = descripcion;
     }
 
-    public Set<Imagen> getImagenes() {
+    public List<Imagen> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(Set<Imagen> imagenes) {
+    public void setImagenes(List<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
 
@@ -78,19 +78,19 @@ public class ProductoDTO {
         this.ciudad = ciudad;
     }
 
-    public Set<Caracteristica> getCaracteristicas() {
+    public List<Caracteristica> getCaracteristicas() {
         return caracteristicas;
     }
 
-    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+    public void setCaracteristicas(List<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
 
-    public Set<Politica> getPoliticas() {
+    public List<Politica> getPoliticas() {
         return politicas;
     }
 
-    public void setPoliticas(Set<Politica> politicas) {
+    public void setPoliticas(List<Politica> politicas) {
         this.politicas = politicas;
     }
 

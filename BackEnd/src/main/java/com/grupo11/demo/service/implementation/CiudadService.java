@@ -6,6 +6,8 @@ import com.grupo11.demo.model.dtos.CiudadDTO;
 import com.grupo11.demo.repository.ICiudadRepository;
 import com.grupo11.demo.service.ICiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -29,9 +31,9 @@ public class CiudadService implements ICiudadService {
 
     // FIND ALL
     @Override
-    public Set<CiudadDTO> listarTodo() {
-        List<Ciudad> ciudades = repository.findAll();
-        Set<CiudadDTO> CiudadDTOList = new HashSet<>();
+    public List<CiudadDTO> listarTodo(Pageable pageable) {
+        Page<Ciudad> ciudades = repository.findAll(pageable);
+        List<CiudadDTO> CiudadDTOList = new ArrayList<>();
         for (Ciudad ciudad : ciudades) {
             CiudadDTOList.add(mapper.convertValue(ciudad, CiudadDTO.class));
         }

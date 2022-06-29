@@ -64,12 +64,11 @@ const Search = ({ busqueda }) => {
         e.preventDefault()
         let cod = document.getElementById("ciudades");
         let ciudad_id;
-        let buscadorCiudadVacio = (cod.selectedIndex !== 0)
+        let buscadorCiudadVacio = (cod.selectedIndex === 0)
         let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
 
-        console.log(buscadorFechaVacio);
-        console.log(buscadorCiudadVacio);
 
+    
         if(!buscadorFechaVacio && !buscadorCiudadVacio){
             ciudad_id = cod.selectedIndex + 1
             let url = `http://localhost:8080/ciudad/${ciudad_id}/fechaDisponible`
@@ -80,15 +79,14 @@ const Search = ({ busqueda }) => {
 
             await axios.post(url, fechasElegidas).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
             
-        }else{
-            if(buscadorCiudadVacio && buscadorFechaVacio){
+        }else if(buscadorCiudadVacio && buscadorFechaVacio){
 
-                let url = `http://localhost:8080/productos/listarTodos`
+            let url = `http://localhost:8080/productos/listarTodos`
 
-                await axios.post(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+            await axios.post(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
 
 
-            }else if(buscadorCiudadVacio){
+        }else if(buscadorCiudadVacio){
                 
                 let url = `http://localhost:8080/productos/fechaDisponible`
                 let fechasElegidas = {
@@ -97,18 +95,17 @@ const Search = ({ busqueda }) => {
                 }
                 await axios.post(url, fechasElegidas).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
                 
-            }else{
-                ciudad_id = (cod.selectedIndex + 1)
-                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+        }else if(buscadorFechaVacio){
+            ciudad_id = (cod.selectedIndex + 1)
+            let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
 
-                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+            await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
 
-                busqueda(datosFiltrados.data)
-                console.log(cod.value);
-            }
+            busqueda(datosFiltrados.data)
+
+
+            
         }
-
-
     }
 
     /*const handleChange = e => {
@@ -220,7 +217,7 @@ const Search = ({ busqueda }) => {
                             (
                                 <>
                                 {console.log(ciudadesList)}
-                                    <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}                                        
+                                    <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}
                                     </option>
                                     
                                 </>
