@@ -20,14 +20,22 @@ export default function ProductoForm() {
     direccion: "",
     selectCiudades: "",
     descripcionProducto: "",
-    nombreAtributo: "",
-    iconoAtributo: "",
+    atributos: [],
     descripcionNormas: "",
     descripcionSalud: "",
     descripcionPolitica: "",
     cargarImagen: "",
   });
 
+  console.log(datosForm);
+  const agregarAtributo = (atributo) => {
+    setDatosForm((datos)=>{
+      debugger;
+      return {...datos,
+        atributos: [...datos.atributos, atributo]
+      }
+    })
+  }
   console.log(datosForm);
 
   const urlCiudades =
@@ -44,6 +52,9 @@ export default function ProductoForm() {
     isPending: isPendingCategorias,
     error: errorCategorias,
   } = useFetch(urlCategorias);
+
+  /* ------------------------------- HandleClick ------------------------------ */
+  
 
   /* ----------------------- Renderizado del formulario ----------------------- */
   return (
@@ -63,7 +74,7 @@ export default function ProductoForm() {
           onSubmit={(e) => {
             e.preventDefault();
             console.log(datosForm);
-            navigate("/");
+            navigate("/confirmacionExitosa");
           }}
         >
           <div className="row justify-content-md-center">
@@ -85,9 +96,17 @@ export default function ProductoForm() {
             </div>
 
             <div className="col-md-6">
-              <label htmlFor="categoria" className="form-label">
-                Categoría
-              </label>
+              <div className="contenedorAgregarNuevo">
+                <label htmlFor="categoria" className="form-label">
+                  Categoría
+                </label>
+                <div
+                  className="text-primary stretched-link"
+                  
+                >
+                  Agregar categoría
+                </div>
+              </div>
               <select
                 onChange={(e) =>
                   setDatosForm({ ...datosForm, categoria: e.target.value })
@@ -167,14 +186,11 @@ export default function ProductoForm() {
             <legend className="fieldsetProductoFormulario">
               <h3>Agregar atributos</h3>
             </legend>
+            {datosForm.atributos.map((caracteristica)=>{
+              return <ProductoFormAgregar atributo={caracteristica} getAtributo={agregarAtributo} />
+            })}
             <ProductoFormAgregar
-              getAtributo={(atributoNombre, atributoIcono) => {
-                setDatosForm({
-                  ...datosForm,
-                  nombreAtributo: atributoNombre,
-                  iconoAtributo: atributoIcono,
-                });
-              }}
+              getAtributo={agregarAtributo}
             />
           </fieldset>
           <fieldset>

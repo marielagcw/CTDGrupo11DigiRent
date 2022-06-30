@@ -4,12 +4,14 @@ import RegistreForm from './components/RegistreForm';
 import Products from './components/Products';
 import ProductDetails from './components/ProductDetails';
 import Reserva from './components/Reserva';
+
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
 import ProductoForm from './components/ProductoForm';
+import TemplateConfirmacion from  "./components/TemplateConfirmacion"
 
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
         <Route path='/test' element={<Test />} /> */}
         <Route path="/reserva/:productId" element= {<Reserva />}/>
         <Route path="/nuevoProducto" element={<ProductoForm/>}/>
+        <Route path="/confirmacionExitosa" element={<TemplateConfirmacion />}/>
       </Routes>
     </BrowserRouter>
 
