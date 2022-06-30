@@ -64,9 +64,8 @@ const Search = ({ busqueda }) => {
         e.preventDefault()
         let cod = document.getElementById("ciudades");
         let ciudad_id;
-        let buscadorCiudadVacio = (cod.selectedIndex === 0)
+        let buscadorCiudadVacio = (cod.value === "initialOption")
         let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
-
 
     
         if(!buscadorFechaVacio){
@@ -78,7 +77,25 @@ const Search = ({ busqueda }) => {
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
 
                 await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+
+                busqueda(datosFiltrados.data)
+
             }else{
+
+                let fechaInicial= formatDataToSubmit(fecha)[0]
+                let fechaFinal= formatDataToSubmit(fecha)[1]   
+                
+                let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+        
+                busqueda(datosFiltrados.data)
+
+            }
+            
+        }
+        if(buscadorFechaVacio){
+            if(!buscadorCiudadVacio){
+
 
                 ciudad_id = (cod.selectedIndex + 1)
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
@@ -87,25 +104,19 @@ const Search = ({ busqueda }) => {
     
                 busqueda(datosFiltrados.data)
 
-            }
-            
-        }else if(buscadorCiudadVacio){
-            if(buscadorFechaVacio){
+            }else{
 
                 let url = `http://localhost:8080/productos/listarTodos`
     
-                await axios.post(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
-            }else{
-
-                let fechaInicial= formatDataToSubmit(fecha)[0]
-                let fechaFinal= formatDataToSubmit(fecha)[1]   
-                
-                let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
                 await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+
+                busqueda(datosFiltrados.data)
+                
 
             }
 
-        }else if(buscadorFechaVacio){
+        }
+        if(buscadorFechaVacio){
             ciudad_id = (cod.selectedIndex + 1)
             let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
 
@@ -114,6 +125,8 @@ const Search = ({ busqueda }) => {
             busqueda(datosFiltrados.data)
 
         }
+
+        //if(bus)
     }
 
     /*const handleChange = e => {
@@ -164,10 +177,35 @@ const Search = ({ busqueda }) => {
         let fInicio, fFin;
         let dataFormateadaFinal
         let dataFormateadaInicio
+        let fMount, iMount;
+        let fDay, iDay;
         if(dataSinFormatear.toString() != ['Invalid Date']){
             [fInicio, fFin] = dataSinFormatear;
-            dataFormateadaInicio = `${fInicio.getFullYear()}-${fInicio.getDate()}-${(fInicio.getMonth() + 1)}`
-            dataFormateadaFinal = `${fFin.getFullYear()}-${fFin.getDate()}-${(fFin.getMonth() + 1)}`
+            if((fInicio.getMonth() + 1) < 10){
+                iMount = `0${(fInicio.getMonth() + 1)}`
+            }else{
+                iMount = (fInicio.getMonth() + 1)
+            }
+            if((fFin.getMonth() + 1) < 10){
+                fMount = `0${(fFin.getMonth() + 1)}`
+            }else{
+                fMount = (fFin.getMonth() + 1)
+            }
+            if(fInicio.getDate() < 10){
+                iDay = `0${fInicio.getDate()}`
+            }else{
+                iDay = fInicio.getDate()
+            }
+            if(fFin.getDate() < 10){
+                fDay = `0${fFin.getDate()}`
+            }else{
+                fDay = fFin.getDate()
+            }
+
+            console.log(fInicio.getDate());
+
+            dataFormateadaInicio = `${fInicio.getFullYear()}-${iMount}-${iDay}`
+            dataFormateadaFinal = `${fFin.getFullYear()}-${fMount}-${fDay}`
         }else{
             dataFormateadaInicio = ''
             dataFormateadaFinal = ''
@@ -181,13 +219,13 @@ const Search = ({ busqueda }) => {
 
     //Array ciudades
     let ciudadesList = [];
-    let url = "http://localhost:8080/ciudades/listarTodos?ord=DESC&field=id";
+    let url = "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=id";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
     } else {
         data.forEach((e) => {
-            !ciudadesList.includes(e.provincia) && ciudadesList.push(e.provincia)
+            ciudadesList.push(`${e.nombre}, ${e.provincia}`)
         })
     }
 
@@ -221,10 +259,10 @@ const Search = ({ busqueda }) => {
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
                     <select name="ciudad" className='input-search' id="ciudades">
+                    <option selected value="initialOption" hidden >Selecciona una opción</option>
                         {ciudadesList.map((e, i) =>
                             (
                                 <>
-                                {console.log(ciudadesList)}
                                     <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}
                                     </option>
                                     
