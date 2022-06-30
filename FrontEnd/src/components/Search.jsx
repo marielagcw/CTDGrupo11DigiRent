@@ -12,6 +12,7 @@ import '../styles/Search.css'
 
 const Search = ({ busqueda }) => {
 
+    const [today, setToday] = useState(new Date)
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
     const [datosFiltrados, setDatosFiltrados] = useState({})
@@ -66,19 +67,24 @@ const Search = ({ busqueda }) => {
         let ciudad_id;
         let buscadorCiudadVacio = (cod.value === "initialOption")
         let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
+        let datos = '';
 
     
+        console.log(buscadorFechaVacio);
         if(!buscadorFechaVacio){
             if(!buscadorCiudadVacio){
-                ciudad_id = cod.selectedIndex + 1
+                ciudad_id = cod.selectedIndex
                 let fechaInicial= formatDataToSubmit(fecha)[0]
                 let fechaFinal= formatDataToSubmit(fecha)[1]   
                 
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
 
-                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+                datos = await axios.get(url)
 
-                busqueda(datosFiltrados.data)
+                busqueda(datos.data)
+
+                console.log(datos);
+    
 
             }else{
 
@@ -86,9 +92,11 @@ const Search = ({ busqueda }) => {
                 let fechaFinal= formatDataToSubmit(fecha)[1]   
                 
                 let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
-                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
-        
-                busqueda(datosFiltrados.data)
+
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
+    
 
             }
             
@@ -97,36 +105,41 @@ const Search = ({ busqueda }) => {
             if(!buscadorCiudadVacio){
 
 
-                ciudad_id = (cod.selectedIndex + 1)
+                ciudad_id = cod.selectedIndex
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
     
-                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
     
-                busqueda(datosFiltrados.data)
 
             }else{
 
                 let url = `http://localhost:8080/productos/listarTodos`
     
-                await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
 
-                busqueda(datosFiltrados.data)
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
+    
                 
 
             }
 
         }
         if(buscadorFechaVacio){
-            ciudad_id = (cod.selectedIndex + 1)
+            ciudad_id = cod.selectedIndex
             let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
 
-            await axios.get(url).then(response => setDatosFiltrados(response)).catch(r => console.log(r))
+            datos = await axios.get(url)
 
-            busqueda(datosFiltrados.data)
+            busqueda(datos.data)
+
+
 
         }
 
-        //if(bus)
     }
 
     /*const handleChange = e => {
@@ -138,6 +151,7 @@ const Search = ({ busqueda }) => {
         })
     }*/
     useEffect(() => {
+        setToday(new Date(Date.now()))
         const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
         window.addEventListener('resize', (e) => detectarWidth())
         return () => {
@@ -248,8 +262,7 @@ const Search = ({ busqueda }) => {
     //     console.log(error1);
     // } else{
 
-    // }
-
+    // }    
     return (<>
         <div className="searchContainer">
             <form action="POST" onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
@@ -259,13 +272,11 @@ const Search = ({ busqueda }) => {
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
                     <select name="ciudad" className='input-search' id="ciudades">
-                    <option selected value="initialOption" hidden >Selecciona una opción</option>
+                    <option selected value="initialOption" className='initialOption' hidden >Selecciona una opción</option>
                         {ciudadesList.map((e, i) =>
                             (
                                 <>
-                                    <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}
-                                    </option>
-                                    
+                                    <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}</option>
                                 </>
                             )
                             
@@ -278,7 +289,7 @@ const Search = ({ busqueda }) => {
                         <FontAwesomeIcon icon={faCalendar} />
                     </span>
                     <div className='calandary-container d-none form-absolute'>
-                        <Calendar showDoubleView={widthWindow > 414} selectRange={true} onChange={setfecha} />
+                        <Calendar defaultView='month' showDoubleView={widthWindow > 414} minDate={today} selectRange={true} onChange={setfecha} />
                         <div className='d-flex flex-row justify-content-around'>
                             <button onClick={showCalendar} className='btn btn-secondary btn-lg btn-calendary'>Cerrar</button>
                             <button onClick={sendCalendar} className='btn btn-primary btn-lg btn-calendary'>Aplicar</button>

@@ -41,6 +41,11 @@
 
 }
 
+.initialOption{
+    color: red !important;
+}
+
+
 @media (770px <= width <= 1200px ){
     .calandary-container{
         left: calc(100% - 482px);

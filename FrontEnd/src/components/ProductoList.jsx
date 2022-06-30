@@ -29,13 +29,6 @@ const ProductoList = ({ search, seleccion }) => {
         }
         setUrl(endpoint);
 
-        if(search){
-            setDatos(search)
-            setBusqueda(false)
-        }
-
-
-
     }, [search, seleccion])
 
 
@@ -54,19 +47,19 @@ const ProductoList = ({ search, seleccion }) => {
             <div className="category-container m-3">
                 <h2 className='list-title category'>Recomendaciones</h2>
                 <div className='d-flex justify-content-between align-item-center flex-wrap'>
-                    {!data ? <Spinner /> : //Si no hay datos, render spinner
-                        busqueda ?
+                    {!data && !search ? <Spinner /> : //Si no hay datos, render spinner
+                        !search ?
                             data.map((prod, i) => { //Si hay busqueda, render filtro 
-                                console.log(data)
                                 return (
                                     <ProductoCard info={prod} key={"prod" + i} />)
                             }) :
-                            datos.map((prod, i) => {//sino, busuqeda normal o defiltro
-                                console.log(datos)
-                                return (
-                                    i < 8 &&
-                                    <ProductoCard info={prod} key={"prod" + i} />)
-                            })
+                            search !== '' ?
+                                search.map((prod, i) => {//sino, busuqeda normal o defiltro
+                                    return (
+                                        i < 8 &&
+                                        <ProductoCard info={prod} key={"prod" + i} />)
+                                }):
+                                <h2>No se encontraron datos</h2>
                     }
                 </div>
             </div>
