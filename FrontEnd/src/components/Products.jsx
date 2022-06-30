@@ -12,6 +12,7 @@ import { BsChevronLeft } from 'react-icons/bs';
 import ProductPolitics from './ProductPolitics';
 import Calendar from 'react-calendar';
 import Spinner from './Spinner';
+import ProductMap from './ProductMap';
 
 
 export default function Products() {
@@ -69,6 +70,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
+            {isPending ? <Spinner /> : <ProductMap lat = {9.423765} lng={-1.664428} />}
             {isPending ? <Spinner /> : <ProductPolitics politics={politicas} />}
             <Footer />
         </div>
