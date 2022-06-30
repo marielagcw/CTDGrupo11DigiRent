@@ -18,6 +18,7 @@ export default function ProductPolitics({ politics }) {
                             >{arrPol.map((e, i) => {
                                 return (
                                     <li
+                                        id="elem-politicas"
                                         className='pol-item'
                                         key={"pol_" + i}>
                                         {e.nombre}

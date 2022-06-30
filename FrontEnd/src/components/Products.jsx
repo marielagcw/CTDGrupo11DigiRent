@@ -35,6 +35,7 @@ export default function Products() {
         politicas, 
         reservas} = { ...data };
 
+
     return (
         <div id='product'>
             <Header />
@@ -59,13 +60,13 @@ export default function Products() {
             {isPending ? <Spinner /> : <ProductCharact caract={caracteristicas} />}
             <div id='calendar'>
                 <h2>Fechas disponibles</h2>
-                <div className='d-flex flex-row justify-content-around align-items-center'>
+                <div id="si" className='d-flex flex-row justify-content-around align-items-center'>
                     <div className="calendar-container">
-                        <Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} />
+                    {window.innerWidth >= 414 && window.innerWidth <= 736 ? <Calendar minDate={new Date(Date.now())} showDoubleView={false} selectRange={true} onChange={setfecha} />:<Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} />}
                     </div>
                     <div className="button-container">
                         <p>Agregá tus fechas de viajes para obtener precios exactos</p>
-                        <button className='btn btn-primary btn-lg btn-max-width' onClick={()=>navigate(`/reserva/${id}`)}>Iniciar reserva</button>
+                        <button id="btn-iniciar-reserva" className='btn btn-primary btn-lg btn-max-width' onClick={()=>navigate(`/reserva/${id}`)}>Iniciar reserva</button>
                     </div>
                 </div>
             </div>

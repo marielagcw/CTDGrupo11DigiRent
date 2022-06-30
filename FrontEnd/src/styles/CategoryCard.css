@@ -55,7 +55,7 @@ div.cat-seleccionada{
 }
 
 /*Tablet*/
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     .d-flex {
         flex-wrap: wrap;
     }
@@ -66,8 +66,45 @@ div.cat-seleccionada{
     }
 }
 
+/*Tablet personalizada*/
+@media screen and (min-width: 539px) and (max-width: 721px) {
+    div.card.categoria {
+        height: 34vh;
+    }
+}
+
 /*Mobile*/
 @media screen and (min-width: 414px) and (max-width: 767px) {
+    div.categoria {
+        padding: 0 0 10% 0;
+        width: 100%;
+        border-color: yellowgreen;
+    }
+
+    div.categoria .card-body {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .categoria img.card-img-top {
+        height: 100%;
+        width:100%;
+        padding: 0 0 1% 0;
+    }
+
+    .categoria .card-body h2 {
+        text-align: center;
+        word-wrap: normal;
+    }
+
+    .categoria .card-body .card-text {
+        display: none;
+    }
+
+
+}
+/*Mobile más pequeño*/
+@media screen and (min-width: 359px) and (max-width: 767px) {
     div.categoria {
         height: 25vh;
     }
@@ -87,6 +124,4 @@ div.cat-seleccionada{
     .categoria .card-body .card-text {
         display: none;
     }
-
-
 }

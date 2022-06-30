@@ -39,3 +39,28 @@
         grid-template-columns: auto auto ;
     }
 } */
+
+/*Desktop*/
+@media screen and (max-width: 1200px) {}
+
+/*Tablet*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #elem-politicas{
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+/*Mobile*/
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    #elem-politicas{
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    div.d-flex.flex-row.justify-content-around.align-items-center {
+        display:flex;
+        flex-direction: column;
+    }
+}

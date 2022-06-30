@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 div#product {
     height: 320vh;
 }
@@ -97,5 +100,32 @@ hr {
 @media screen and (max-width: 428px) {
     div#product {
         height: 340vh;
+    }
+}
+/*Desktop*/
+@media screen and (max-width: 1200px) {}
+
+/*Tablet*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {}
+
+/*Mobile*/
+@media screen and (min-width: 414px) and (max-width: 767px) {
+
+    .d-flex {
+        flex-wrap: wrap;
+    }
+
+    div.calendar-container {
+
+    }
+
+    div.button-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-iniciar-reserva {
+        width: 100%;
     }
 }
