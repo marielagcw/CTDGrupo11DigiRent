@@ -9,7 +9,7 @@ const Navbar = ({busqueda, titulo}) => {
 
     return (
         <div className='myNavbar d-flex flex-column align-items-center pt-3 pb-3'>
-            <h1>{titulo}</h1>
+            <h1 className='tituloFondoVerde'>{titulo}</h1>
             {busqueda&&<Search busqueda={busqueda} />}
         </div>
     )
