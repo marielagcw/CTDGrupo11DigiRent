@@ -17,7 +17,11 @@ export default function UserInfo({userInfo}) {
     }
     return(
         <div className="user-info">
-            <div id="logo-us" className='user-logo'><span>{getLogo()}</span></div>
+{/*             {btn !== 'admin' && <Link to='/admin'>
+                <button className='btn btn-lg btn-border-primary' id='userAdmin'>Administración</button>
+                </Link>} */}
+            <a id="btn-admin" className="text-link" href="/admin">Administración</a>
+            <div id="logo-span" className='user-logo'><span>{getLogo()}</span></div>
             <div className='d-flex flex-column'>
             <span id="info-us">Hola, </span>
             <span id="info-us" className='user-name'>{userInfo.name+" "+userInfo.lastName}</span>

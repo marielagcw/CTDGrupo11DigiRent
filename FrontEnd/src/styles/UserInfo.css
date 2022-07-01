@@ -1,13 +1,18 @@
 div.user-info{
-    width: 13vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: auto 20px;
-    
 }
 
+a#btn-admin {
+    margin: 0 2vh;
+    font-size: smaller;
+}
 
+a#btn-admin:hover {
+    color: var(--tertiary);
+} 
 
 div.user-info span, .user-info-mobile span{
     font-weight: bold;
@@ -22,14 +27,17 @@ div.user-info div.user-logo, div.user-info-mobile div.user-logo{
     border: solid 3px var(--secondary);
     /* background-color: var(--secondary); */
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 6vh;
+    height: 6vh;
+    
     display: inline-flex;
     justify-content: center;
     align-items: center;
 }
 
-
+div#logo-span div.user-logo{
+    color: blue;
+}
 
 div.user-info div.user-logo span, div.user-info-mobile div.user-logo span{
     color: var(--secondary);
@@ -63,7 +71,7 @@ div.user-info-mobile{
 /*Desktop*/
 @media screen and (min-width: 1200px) {
     #info-us {
-        margin-left: 4px;
+        margin-left: 2vh;
     }
 }
 
