@@ -1,42 +1,72 @@
 import "../styles/ProductoForm.css";
 import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  solid,
+  regular,
+  brands,
+} from "@fortawesome/fontawesome-svg-core/import.macro";
+import { faHandPointLeft, faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 
 const ProductoFormAgregar = ({
-  getAtributo: agregarAtributo,
-  atributo: atr = {
-    nombreAtributo: "",
-    iconoAtributo: "",
-    yaInsertado: false,
+  getCaracteristica: agregarCaracteristica,
+  caracteristica: char = {
+    nombreCaracteristica: "",
+    insertado: false,
+    icono: "",
+    id: ""
   },
 }) => {
-  const [atributo, setAtributo] = useState(atr);
+  const [caracteristica, setCaracteristica] = useState(char);
+  /* ---------------------------- Pedidos a la API ---------------------------- */
 
+  const urlCaracteristicas =
+    "http://localhost:8080/caracteristicas/listarTodos?ord=ASC&field=nombre";
+  const {
+    data: dataCaracteristicas,
+    ispending: isPendingCaracteristicas,
+    error: errorCaracteristicas,
+  } = useFetch(urlCaracteristicas);
+
+  /* ----------------------- Renderizado del componente ----------------------- */
   return (
     <>
       <div className="row justify-content-md-center">
         <div className="col-md-8">
-          <label htmlFor="nombreAtributo" className="form-label">
+          <label htmlFor="nombreCaracteristica" className="form-label">
             Nombre
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="nombreAtributo"
-            placeholder="WiFi"
-            value={atributo.nombreAtributo}
-            disabled={atributo.yaInsertado}
-            onChange={(e) =>
-              setAtributo({
-                ...atributo,
-                nombreAtributo: e.target.value,
-              })
-            }
+          {/* ------------------------- Select nombre caract. ------------------------ */}
+          <select
+            className="form-select"
+            id="nombreCaracteristica"
+            disabled={caracteristica.insertado}
+            value={JSON.stringify(caracteristica).nombre}
+            onChange={(e) => {
+              setCaracteristica((caracteristicaPrevia) => ({
+                ...caracteristicaPrevia,
+                nombreCaracteristica: JSON.parse(e.target.value).nombre,
+                icono: JSON.parse(e.target.value).icono,
+                id: JSON.parse(e.target.value).id
+              }));
+            }}
             required
-          />
+          >
+            <option key={-1}>Elegir atributo</option>
+            {dataCaracteristicas?.map((charData, i) => {
+              let datos = JSON.stringify(charData)
+              return (
+                <option value={datos} key={i}>
+                  {JSON.parse(datos).nombre}
+                </option>
+              );
+            })}
+          </select>
         </div>
 
         <div className="col-md-4">
-          <label htmlFor="iconoAtributo" className="form-label">
+          <label htmlFor="iconoCaracteristica" className="form-label">
             Ícono
           </label>
           <div className="grupoSelectPlus">
@@ -44,34 +74,41 @@ const ProductoFormAgregar = ({
               <input
                 type="text"
                 className="form-control"
-                placeholder="fa wifi"
-                id="iconoAtributo"
-                value={atributo.iconoAtributo}
-                disabled={atributo.yaInsertado}
-                onChange={(e) =>
-                  setAtributo({
-                    ...atributo,
-                    iconoAtributo: e.target.value,
-                  })
-                }
-                required
-              />
+                id="nombreProducto"
+                placeholder= {caracteristica.icono}
+                disabled
+              ></input>
             </div>
-            {!atributo.yaInsertado?<button
-              className="btn btn-primary plus"
-              type="button"
-              id="button-addon2"
-              onClick={(e) => {
-                agregarAtributo({...atributo, 
-                  yaInsertado: true})
-                setAtributo({
-                  nombreAtributo: "",
-                  iconoAtributo: "",
-                })
-              }}
-            >
-              <div>+</div>
-            </button>:<button className="btn btn-primary plus">x</button>}
+            {/* ------------------------- Botón agregar  ------------------------ */}
+            {!caracteristica.insertado ? (
+              <button
+                className="btn btn-primary ms-2 mark"
+                type="button"
+                id="button-addon2"
+                disabled={caracteristica?.nombreCaracteristica === ""}
+                onClick={(e) => {
+                  agregarCaracteristica({
+                    ...caracteristica,
+                    insertado: true,
+                  });
+                  setCaracteristica({
+                    insertado: e.target.value,
+                  });
+                }}
+              >
+                <FontAwesomeIcon icon={solid("plus")} />
+              </button>
+            ) : (
+              /* ------------------------- Botón eliminar   ------------------------ */
+              <button
+                className="btn btn-primary ms-2 mark"
+                onClick={() => {
+                  console.log(caracteristica);
+                }}
+              >
+                <FontAwesomeIcon icon={solid("xmark")} />
+              </button>
+            )}
           </div>
         </div>
       </div>

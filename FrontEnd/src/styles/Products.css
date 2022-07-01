@@ -36,7 +36,8 @@ div#product {
 #description,
 #charact,
 #politics,
-#calendar {
+#calendar,
+#map {
     padding: 5vh 4vw;
     width: 100%;
 }

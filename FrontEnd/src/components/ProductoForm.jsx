@@ -7,37 +7,18 @@ import "../styles/ProductoForm.css";
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import ProductoFormAgregar from "./ProductoFormAgregar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  solid,
+  regular,
+  brands,
+} from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default function ProductoForm() {
   // React Router
   const navigate = useNavigate();
 
-  /* -------------------------- Lógica del formulario ------------------------- */
-
-  const [datosForm, setDatosForm] = useState({
-    nombreProducto: "",
-    categoria: "",
-    direccion: "",
-    selectCiudades: "",
-    descripcionProducto: "",
-    atributos: [],
-    descripcionNormas: "",
-    descripcionSalud: "",
-    descripcionPolitica: "",
-    cargarImagen: "",
-  });
-
-  console.log(datosForm);
-  const agregarAtributo = (atributo) => {
-    setDatosForm((datos)=>{
-      debugger;
-      return {...datos,
-        atributos: [...datos.atributos, atributo]
-      }
-    })
-  }
-  console.log(datosForm);
-
+  /* ---------------------------- Pedidos a la API ---------------------------- */
   const urlCiudades =
     "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=nombre";
   const {
@@ -53,8 +34,33 @@ export default function ProductoForm() {
     error: errorCategorias,
   } = useFetch(urlCategorias);
 
-  /* ------------------------------- HandleClick ------------------------------ */
-  
+  /* -------------------------- Lógica del formulario ------------------------- */
+
+  // Guardamos los datos para normalizarlos antes del fetch
+  const [datosForm, setDatosForm] = useState({
+    nombreProducto: "",
+    categoria: "",
+    direccion: "",
+    selectCiudades: "",
+    descripcionProducto: "",
+    caracteristica: [],
+    descripcionNormas: "",
+    descripcionSalud: "",
+    descripcionPolitica: "",
+    cargarImagen: "",
+  });
+
+  console.log(datosForm);
+  // Guardamos los datos que vienen del componente ProductoFormAgregar
+  const agregarCaracteristica = (caracteristica) => {
+    setDatosForm((datos) => {
+      return {
+        ...datos,
+        caracteristica: [...datos.caracteristica, caracteristica],
+      };
+    });
+  };
+ 
 
   /* ----------------------- Renderizado del formulario ----------------------- */
   return (
@@ -73,13 +79,12 @@ export default function ProductoForm() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log(datosForm);
             navigate("/confirmacionExitosa");
           }}
         >
           <div className="row justify-content-md-center">
             <div className="col-md-6">
-              <label htmlFor="nombreProducto" className="form-label">
+              <label htmlFor="nombreProducto" className="form-label p-1 mb-0">
                 Nombre del Producto
               </label>
               <input
@@ -97,74 +102,94 @@ export default function ProductoForm() {
 
             <div className="col-md-6">
               <div className="contenedorAgregarNuevo">
-                <label htmlFor="categoria" className="form-label">
+                <label htmlFor="categoria" className="form-label p-1 mb-0">
                   Categoría
                 </label>
-                <div
-                  className="text-primary stretched-link"
-                  
+                <p
+                  className="text-primary mb-0"
+                  onClick={() => {
+                    console.log("agregar caracteristica");
+                  }}
                 >
                   Agregar categoría
-                </div>
+                </p>
               </div>
               <select
                 onChange={(e) =>
                   setDatosForm({ ...datosForm, categoria: e.target.value })
                 }
-                className="form-select mb-3"
+                className="form-select"
                 id="categoria"
               >
                 {dataCategorias?.map((categoria, i) => {
                   return (
-                    <option value={categoria.titulo} key={"cat" + i}>
+                    <option value={categoria.titulo} key={i + "categoria"}>
                       {categoria.titulo}
                     </option>
                   );
                 })}
               </select>
             </div>
-          </div>
-          <div className="row justify-content-md-center">
-            <div className="col-md-6">
-              <label htmlFor="direccion" className="form-label">
-                Dirección
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="direccion"
-                placeholder="Calle N° 200"
-                value={datosForm.direccion}
-                onChange={(e) =>
-                  setDatosForm({ ...datosForm, direccion: e.target.value })
-                }
-                required
-              />
-            </div>
 
-            <div className="col-md-6">
-              <label htmlFor="selectCiudades" className="form-label">
-                Ciudad
-              </label>
-              <select
-                onChange={(e) =>
-                  setDatosForm({ ...datosForm, ciudad: e.target.value })
-                }
-                className="form-select mb-3"
-                id="selectCiudades"
-              >
-                {dataCiudades?.map((ciudad, i) => {
-                  return (
-                    <option value={ciudad.nombre} key={"ciudad" + i}>
-                      {ciudad.nombre}
-                    </option>
-                  );
-                })}
-              </select>
+            <div className="row justify-content-md-center">
+              <div className="col-md-6 ms-0 ps-0 ">
+                <label htmlFor="direccion" className="form-label p-1 mb-0">
+                  Dirección
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="direccion"
+                  placeholder="Calle N° 200"
+                  value={datosForm.direccion}
+                  onChange={(e) =>
+                    setDatosForm({ ...datosForm, direccion: e.target.value })
+                  }
+                  required
+                />
+              </div>
+
+              <div className="col-md-6 pe-0">
+                <div className="contenedorAgregarNuevo">
+                  <label
+                    htmlFor="selectCiudades"
+                    className="form-label p-1 mb-0"
+                  >
+                    Ciudad
+                  </label>
+                  <p
+                    className="text-primary mb-0"
+                    onClick={() => {
+                      console.log("agregar caracteristica");
+                    }}
+                  >
+                    Agregar ciudad
+                  </p>
+                </div>
+                <select
+                  onChange={(e) => {
+                    setDatosForm({ ...datosForm, ciudad: e.target.value });
+                  }}
+                  className="form-select"
+                  id="selectCiudades"
+                >
+                  {dataCiudades?.map((ciudad, i) => {
+                    return (
+                      <option value={ciudad.nombre} key={i + "ciudad"}>
+                        {ciudad.nombre}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
             </div>
           </div>
+
           <div className="col-md-12">
-            <label htmlFor="descripcionProducto" className="form-label">
+            <label
+              htmlFor="descripcionProducto"
+              className="form-label p-1 mb-0"
+            >
               Descripción
             </label>
             <textarea
@@ -184,18 +209,22 @@ export default function ProductoForm() {
           </div>
           <fieldset>
             <legend className="fieldsetProductoFormulario">
-              <h3>Agregar atributos</h3>
+              <h3 className="mt-3 mb-0">Agregar caracteristica</h3>
             </legend>
-            {datosForm.atributos.map((caracteristica)=>{
-              return <ProductoFormAgregar atributo={caracteristica} getAtributo={agregarAtributo} />
+            {datosForm.caracteristica.map((caracteristica, i) => {
+              return (
+                <ProductoFormAgregar
+                  key={i + "componenteAgregar"}
+                  caracteristica={caracteristica}
+                  getcaracteristica={agregarCaracteristica}
+                />
+              );
             })}
-            <ProductoFormAgregar
-              getAtributo={agregarAtributo}
-            />
+            <ProductoFormAgregar getCaracteristica={agregarCaracteristica} />
           </fieldset>
           <fieldset>
             <legend className="fieldsetProductoFormulario">
-              <h3>Políticas del producto</h3>
+              <h3 className="mt-3 mb-0">Políticas del producto</h3>
             </legend>
             <div
               id="divContenedorPoliticas"
@@ -203,7 +232,10 @@ export default function ProductoForm() {
             >
               <div className="col-md-4">
                 <h5>Normas de la casa</h5>
-                <label htmlFor="descripcionNormas" className="form-label">
+                <label
+                  htmlFor="descripcionNormas"
+                  className="form-label p-1 mb-0"
+                >
                   Descripción
                 </label>
                 <textarea
@@ -224,7 +256,10 @@ export default function ProductoForm() {
 
               <div className="col-md-4">
                 <h5>Salud y seguridad</h5>
-                <label htmlFor="descripcionSalud" className="form-label">
+                <label
+                  htmlFor="descripcionSalud"
+                  className="form-label p-1 mb-0"
+                >
                   Descripción
                 </label>
                 <textarea
@@ -245,7 +280,10 @@ export default function ProductoForm() {
 
               <div className="col-md-4">
                 <h5>Política de cancelación</h5>
-                <label htmlFor="descripcionPolitica" className="form-label">
+                <label
+                  htmlFor="descripcionPolitica"
+                  className="form-label p-1 mb-0"
+                >
                   Descripción
                 </label>
                 <textarea
@@ -267,10 +305,10 @@ export default function ProductoForm() {
           </fieldset>
           <fieldset>
             <legend className="fieldsetProductoFormulario">
-              <h3>Cargar imagen</h3>
+              <h3 className="mt-3 mb-0">Cargar imagen</h3>
             </legend>
             <div className="grupoSelectPlus">
-              <div className="input-group mb-3">
+              <div className="input-group">
                 <input
                   type="text"
                   className="form-control"
@@ -284,16 +322,16 @@ export default function ProductoForm() {
                 />
               </div>
               <button
-                className="btn btn-primary plus"
+                className="btn btn-primary ms-2 mark"
                 type="button"
                 id="button-addon2"
               >
-                <div>+</div>
+                <FontAwesomeIcon icon={solid("plus")} />
               </button>
             </div>
           </fieldset>
           <div className="d-grid gap-2 col-2 mx-auto">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary m-3">
               Crear
             </button>
           </div>

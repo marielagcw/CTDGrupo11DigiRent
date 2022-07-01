@@ -1,12 +1,13 @@
 package com.grupo11.demo.service;
 
 import com.grupo11.demo.model.dtos.CaracteristicaDTO;
+import org.springframework.data.domain.Pageable;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ICaracteristicaService {
 
-    Set<CaracteristicaDTO> listarTodo();
+    List<CaracteristicaDTO> listarTodo(Pageable pageable);
 
     CaracteristicaDTO agregar(CaracteristicaDTO caracteristicaDTO);
 

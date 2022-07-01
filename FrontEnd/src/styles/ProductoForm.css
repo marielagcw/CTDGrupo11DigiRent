@@ -33,11 +33,13 @@ div#volverProductoFormulario{
     flex-direction: row;
 }
 
-.btn.btn-primary.plus{
+.btn.btn-primary.mark{
     height: 2.5rem;
-    margin-left: 0.5rem;
+    width: 2.5rem;
 }
 div.contenedorAgregarNuevo{
+    margin:0rem;
+    padding:0px;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
