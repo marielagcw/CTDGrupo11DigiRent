@@ -79,7 +79,50 @@ input {
 }
 
 /*Tablet*/
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #titulo-navbar{
+        margin: 0 40px 0;
+        text-align: center;
+    }
+
+    div.title-product h1{
+        font-size: 3vh;
+    }
+
+    div.title-product h3 {
+        font-size: 2vh;
+        text-transform: uppercase;
+    }
+
+
+    div#product div.my-navbar.myNavbar.d-flex.flex-row.align-items-center.justify-content-between.pt-3.pb-3 {
+        padding: 0 3% 0 3%;
+        height: 3.5%;
+    }
+
+    div#product div.back.d-flex.justify-content-center.allign-items-center svg {
+        width: 70%;
+        height: 100%;
+    }
+
+    div.location-prod {
+        display: flex;
+        padding: 3vh 1.5vh;
+    }
+
+    div.location-prod svg {
+        font-size: 4vh;
+        justify-content: center;
+        padding: 0 1vh 0 0;
+    }
+
+    div.location-prod h2, div.location-prod p {
+        font-size: 2.5vh;
+    }
+}
+
+/*Tablet personalizada*/
+@media screen and (min-width: 539px) and (max-width: 721px) {
     #titulo-navbar{
         margin: 0 40px 0;
         text-align: center;
@@ -137,9 +180,64 @@ input {
         text-transform: uppercase;
     }
 
-    div.div.logo {
-        width: 40%;
-        height: 40%;
+    div.image-container {
+        width: 15vh;
+        height: 7.5vh;
+    }
+
+    div.logo {
+        font-size: 1.5vh;
+    }
+
+    div#product div.my-navbar.myNavbar.d-flex.flex-row.align-items-center.justify-content-between.pt-3.pb-3 {
+        padding: 0 3% 0 3%;
+        height: 3.5%;
+    }
+
+    div#product div.back.d-flex.justify-content-center.allign-items-center svg {
+        width: 70%;
+        height: 100%;
+    }
+
+    div.location-prod {
+        display: flex;
+        padding: 3vh 1.5vh;
+    }
+
+    div.location-prod svg {
+        font-size: 4vh;
+        justify-content: center;
+        padding: 0 1vh 0 0;
+    }
+
+    div.location-prod h2, div.location-prod p {
+        font-size: 2vh;
+    }
+}
+
+/*Mobile más pequeño*/
+@media screen and (min-width: 359px) and (max-width: 767px) {
+    #titulo-navbar{
+        text-align: center;
+        font-size: 30px;
+    }
+
+    div.title-product h1{
+        font-size: 2.5vh;
+    }
+
+    div.title-product h3 {
+        font-size: 1.75vh;
+        text-transform: uppercase;
+    }
+
+    div.image-container {
+        width: 15vh;
+        height: 7.5vh;
+    }
+
+    div.logo {
+        font-size: 1.5vh;
     }
 
     div#product div.my-navbar.myNavbar.d-flex.flex-row.align-items-center.justify-content-between.pt-3.pb-3 {

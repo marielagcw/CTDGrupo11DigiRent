@@ -9,7 +9,6 @@ import ProductGalery from './ProductGalery';
 import { useNavigate, Route, useParams, Routes } from 'react-router-dom';
 import ProductCharact from './ProductCharact';
 import { BsChevronLeft } from 'react-icons/bs';
-import { HiLocationMarker } from 'react-icons/bs';
 import ProductPolitics from './ProductPolitics';
 import Calendar from 'react-calendar';
 import Spinner from './Spinner';

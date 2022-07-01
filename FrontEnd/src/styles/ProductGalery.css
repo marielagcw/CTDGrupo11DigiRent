@@ -16,6 +16,7 @@ div#galery {
 #open-galery span{
     color: var(--quaternary);
     text-decoration: underline;
+    font-weight: bold;
 }
 #mobile-carrusel{
     display: none;

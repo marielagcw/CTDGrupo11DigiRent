@@ -157,7 +157,3 @@ a:hover{
 @media screen and (max-width:818px) {
     .mobile-style{display: none;}
 }
-
-#header .navbar {
-    animation:none !important;
-}
