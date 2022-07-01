@@ -43,7 +43,7 @@ export default function ProductoForm() {
     direccion: "",
     selectCiudades: "",
     descripcionProducto: "",
-    caracteristica: [],
+    caracteristicaState: [],
     descripcionNormas: "",
     descripcionSalud: "",
     descripcionPolitica: "",
@@ -56,11 +56,24 @@ export default function ProductoForm() {
     setDatosForm((datos) => {
       return {
         ...datos,
-        caracteristica: [...datos.caracteristica, caracteristica],
+        caracteristicaState: [...datos.caracteristicaState, caracteristica],
       };
     });
   };
- 
+
+   const eliminarCaracteristica = (caracteristica) => {
+    setDatosForm((datos) => {
+      return {
+        ...datos,
+        caracteristicaState: [
+          ...datos.caracteristicaState,
+          datos.caracteristicaState.filter((item) => item.id !== caracteristica.id)
+        ],
+      };
+    });
+  };
+
+
 
   /* ----------------------- Renderizado del formulario ----------------------- */
   return (
@@ -211,12 +224,13 @@ export default function ProductoForm() {
             <legend className="fieldsetProductoFormulario">
               <h3 className="mt-3 mb-0">Agregar caracteristica</h3>
             </legend>
-            {datosForm.caracteristica.map((caracteristica, i) => {
+            {datosForm.caracteristicaState.map((caracteristica, i) => {
               return (
                 <ProductoFormAgregar
                   key={i + "componenteAgregar"}
                   caracteristica={caracteristica}
                   getcaracteristica={agregarCaracteristica}
+                  newGetCaracteristica={eliminarCaracteristica}
                 />
               );
             })}
