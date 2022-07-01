@@ -31,7 +31,7 @@ const Header = ({ user, btn }) => {
   
   return (
     <>
-      <nav className='navbar navbar-light'>
+      <nav id="header" className='navbar navbar-light navbar-fixed-top'>
         <div className='container-fluid'>
           <div className='logo-frase d-flex align-items-center'>
             <div className='logo' onClick={() => navigate('/')}>

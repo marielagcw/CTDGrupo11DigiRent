@@ -40,13 +40,84 @@ input {
 }
 
 /*Desktop*/
-@media screen and (max-width: 1200px) {}
+@media screen and (min-width: 1200px) {
+
+    div.title-product h1{
+        font-size: 2.5vh;
+    }
+
+    div.title-product h3 {
+        font-size: 1.5vh;
+        text-transform: uppercase;
+    }
+
+
+    div#product div.my-navbar.myNavbar.d-flex.flex-row.align-items-center.justify-content-between.pt-3.pb-3 {
+        padding: 0 3% 0 3%;
+        height: 3.5%;
+    }
+
+    div#product div.back.d-flex.justify-content-center.allign-items-center svg {
+        width: 70%;
+        height: 100%;
+    }
+
+    div.location-prod {
+        display: flex;
+        padding: 3vh 1.5vh;
+    }
+
+    div.location-prod svg {
+        font-size: 4vh;
+        margin-top: 0.25%;
+        padding: 0 1vh 0 0;
+    }
+
+    div.location-prod h2, div.location-prod p {
+        font-size: 2vh;
+    }
+}
 
 /*Tablet*/
 @media screen and (max-width: 900px) {
     #titulo-navbar{
         margin: 0 40px 0;
         text-align: center;
+    }
+
+    div.title-product h1{
+        font-size: 3vh;
+    }
+
+    div.title-product h3 {
+        font-size: 2vh;
+        text-transform: uppercase;
+    }
+
+
+    div#product div.my-navbar.myNavbar.d-flex.flex-row.align-items-center.justify-content-between.pt-3.pb-3 {
+        padding: 0 3% 0 3%;
+        height: 3.5%;
+    }
+
+    div#product div.back.d-flex.justify-content-center.allign-items-center svg {
+        width: 70%;
+        height: 100%;
+    }
+
+    div.location-prod {
+        display: flex;
+        padding: 3vh 1.5vh;
+    }
+
+    div.location-prod svg {
+        font-size: 4vh;
+        justify-content: center;
+        padding: 0 1vh 0 0;
+    }
+
+    div.location-prod h2, div.location-prod p {
+        font-size: 2.5vh;
     }
 }
 
@@ -55,5 +126,44 @@ input {
     #titulo-navbar{
         text-align: center;
         font-size: 30px;
+    }
+
+    div.title-product h1{
+        font-size: 2.5vh;
+    }
+
+    div.title-product h3 {
+        font-size: 1.75vh;
+        text-transform: uppercase;
+    }
+
+    div.div.logo {
+        width: 40%;
+        height: 40%;
+    }
+
+    div#product div.my-navbar.myNavbar.d-flex.flex-row.align-items-center.justify-content-between.pt-3.pb-3 {
+        padding: 0 3% 0 3%;
+        height: 3.5%;
+    }
+
+    div#product div.back.d-flex.justify-content-center.allign-items-center svg {
+        width: 70%;
+        height: 100%;
+    }
+
+    div.location-prod {
+        display: flex;
+        padding: 3vh 1.5vh;
+    }
+
+    div.location-prod svg {
+        font-size: 4vh;
+        justify-content: center;
+        padding: 0 1vh 0 0;
+    }
+
+    div.location-prod h2, div.location-prod p {
+        font-size: 2vh;
     }
 }

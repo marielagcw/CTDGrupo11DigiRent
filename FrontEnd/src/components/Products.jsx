@@ -9,6 +9,7 @@ import ProductGalery from './ProductGalery';
 import { useNavigate, Route, useParams, Routes } from 'react-router-dom';
 import ProductCharact from './ProductCharact';
 import { BsChevronLeft } from 'react-icons/bs';
+import { HiLocationMarker } from 'react-icons/bs';
 import ProductPolitics from './ProductPolitics';
 import Calendar from 'react-calendar';
 import Spinner from './Spinner';
@@ -62,7 +63,7 @@ export default function Products() {
                 <h2>Fechas disponibles</h2>
                 <div id="si" className='d-flex flex-row justify-content-around align-items-center'>
                     <div className="calendar-container">
-                    {window.innerWidth >= 414 && window.innerWidth <= 736 ? <Calendar minDate={new Date(Date.now())} showDoubleView={false} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />:<Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />}
+                    {window.innerWidth >= 359 && window.innerWidth <= 736 ? <Calendar minDate={new Date(Date.now())} showDoubleView={false} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />:<Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />}
                     </div>
                     <div className="button-container">
                         <p>Agregá tus fechas de viajes para obtener precios exactos</p>

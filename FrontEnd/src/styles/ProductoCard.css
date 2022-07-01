@@ -131,3 +131,10 @@ div.producto div.card-body .btn-primary {
     }
 
 }
+/*Mobile más pequeño*/
+@media screen and (min-width: 359px) and (max-width: 767px) {
+    div.producto img.card-img-top{
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+    }
+}

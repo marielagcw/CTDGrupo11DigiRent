@@ -21,14 +21,14 @@ export default function ProductGalery({ galery }) {
     return (
         <>
             <div id='galery'>
-                <div className='d-flex justify-content-start align-items-center share-and-fav'>
+{/*                 <div className='d-flex justify-content-start align-items-center share-and-fav'>
                     <div className='p-2 share icono'>
                         <BsShare />
                     </div>
                     <div className='p-2 heart icono'>
                         <BsHeart />
                     </div>
-                </div>
+                </div> */}
                 <div className='container'>
                     <div className="row gx-1">
                         <div className='left-side col-md-6'>

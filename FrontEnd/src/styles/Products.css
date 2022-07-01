@@ -123,6 +123,28 @@ hr {
         flex-wrap: wrap;
     }
 
+    div.button-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .btn-iniciar-reserva {
+        width: 100%;
+    }
+
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+        color: transparent;
+    }
+
+}
+
+/*Mobile más pequeño*/
+@media screen and (min-width: 359px) and (max-width: 767px) {
+    .d-flex {
+        flex-wrap: wrap;
+    }
 
     div.button-container{
         display: flex;
@@ -139,4 +161,6 @@ hr {
         color: transparent;
     }
 
+
+    
 }
