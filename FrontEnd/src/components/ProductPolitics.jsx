@@ -11,15 +11,14 @@ export default function ProductPolitics({ politics }) {
                 {politics.map((pol, i) => {
                     let arrPol = pol.elementos;
                     return (
-                        <div className="grid-item" key={'pol_title_' + i}>
-                            <h4>{pol.titulo}</h4>
+                        <div key={'pol_title_' + i}>
+                            <h4 id="titulo-politicas">{pol.titulo}</h4>
                             <ul
                                 className='pol-ul d-flex flex-column justify-content-around allign-items-ceter'
                             >{arrPol.map((e, i) => {
                                 return (
                                     <li
                                         id="elem-politicas"
-                                        className='pol-item'
                                         key={"pol_" + i}>
                                         {e.nombre}
                                     </li>

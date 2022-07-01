@@ -75,15 +75,15 @@ div.cat-seleccionada{
 
 /*Mobile*/
 @media screen and (min-width: 414px) and (max-width: 767px) {
-    div.categoria {
-        padding: 0 0 10% 0;
+    div.card.categoria {
         width: 100%;
-        border-color: yellowgreen;
+        height: 100%;
     }
 
     div.categoria .card-body {
         display: flex;
-        margin-top: 10px;
+        margin: 0;
+        padding: 0;
     }
 
     .categoria img.card-img-top {
@@ -105,15 +105,21 @@ div.cat-seleccionada{
 }
 /*Mobile más pequeño*/
 @media screen and (min-width: 359px) and (max-width: 767px) {
-    div.categoria {
-        height: 25vh;
+    div.card.categoria {
+        width: 100%;
+        height: 100%;
     }
-    .categoria .card-img-top {
-        height:max-content;
-        /* width:100%; */
+
+    div.categoria .card-body {
+        display: flex;
+        margin: 0;
+        padding: 0;
     }
-    div.categoria div.card-body{
-        padding: 3%;
+
+    .categoria img.card-img-top {
+        height: 100%;
+        width:100%;
+        padding: 0 0 1% 0;
     }
 
     .categoria .card-body h2 {
@@ -124,4 +130,5 @@ div.cat-seleccionada{
     .categoria .card-body .card-text {
         display: none;
     }
+
 }

@@ -103,10 +103,18 @@ hr {
     }
 }
 /*Desktop*/
-@media screen and (max-width: 1200px) {}
+@media screen and (min-width: 1200px) {
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+            color: transparent;
+    }
+}
 
 /*Tablet*/
-@media screen and (min-width: 768px) and (max-width: 1024px) {}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+        color: transparent;
+    }
+}
 
 /*Mobile*/
 @media screen and (min-width: 414px) and (max-width: 767px) {
@@ -115,17 +123,20 @@ hr {
         flex-wrap: wrap;
     }
 
-    div.calendar-container {
-
-    }
 
     div.button-container{
         display: flex;
         flex-direction: column;
         align-items: center;
+        
     }
 
     .btn-iniciar-reserva {
         width: 100%;
     }
+
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+        color: transparent;
+    }
+
 }
