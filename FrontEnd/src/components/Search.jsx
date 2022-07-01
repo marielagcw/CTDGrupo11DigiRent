@@ -16,64 +16,25 @@ const Search = ({ busqueda }) => {
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
     const [datosFiltrados, setDatosFiltrados] = useState({})
-
-    /*const HandleSubmit = e => {
-        let data;
-        e.preventDefault();
-        let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
-
-        const axiosInstance = axios.create({
-            headers: {
-                'Accept': 'application/json, text/plain, *',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Authorization': 'Bearer ' +token
-            }
-        });
-        let user = JSON.parse(window.localStorage.getItem('user'));
-        axiosInstance
-            .get("http://localhost:8080/productos/listarTodos")
-            .then(response => {
-                console.log(response);
-                data = response;
-            })
-            .catch(e => console.log(e));
-            //TODO filtrar con informacion cuando se renderize
-            console.log(data);
-            console.log(user);
-
-        // console.log(user);
-        // let url = "http://localhost:8080/reservas/listarTodos";
-        // let fetchInfo = {
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept': 'application/json, text/plain, ',
-        //         'Content-Type': 'application/json',
-        //         'Access-Control-Allow-Origin': '*',
-        //         'Authorization': 'Bearer ' +token
-
-        //     }
-        // }
-        // let info = () => axios(url, fetchInfo).then((res) => res.json).then((a) => {
-        //     console.log(a);
-        //     return a
-        // })
-        // console.log(info());
-    } */
+    const [ciudadesFiltradas, setCiudadesFiltradas] = useState([''])
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
-        let cod = document.getElementById("ciudades");
-        let ciudad_id;
-        let buscadorCiudadVacio = (cod.value === "initialOption")
+        let cod = document.querySelectorAll(".ciudad");
+        let inputCiudad = document.querySelector('.input-search').value
+        let ciudad_id = null;
+        ciudadesList.map((ciudad,i) => {
+            console.log(ciudad);
+            if(inputCiudad === ciudad){
+                return ciudad_id = i + 1
+            }
+        })
+        let buscadorCiudadVacio = ciudad_id === null
         let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
         let datos = '';
 
-    
-        console.log(buscadorFechaVacio);
         if(!buscadorFechaVacio){
             if(!buscadorCiudadVacio){
-                ciudad_id = cod.selectedIndex
                 let fechaInicial= formatDataToSubmit(fecha)[0]
                 let fechaFinal= formatDataToSubmit(fecha)[1]   
                 
@@ -105,7 +66,6 @@ const Search = ({ busqueda }) => {
             if(!buscadorCiudadVacio){
 
 
-                ciudad_id = cod.selectedIndex
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
     
 
@@ -129,7 +89,6 @@ const Search = ({ busqueda }) => {
 
         }
         if(buscadorFechaVacio){
-            ciudad_id = cod.selectedIndex
             let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
 
             datos = await axios.get(url)
@@ -142,14 +101,7 @@ const Search = ({ busqueda }) => {
 
     }
 
-    /*const handleChange = e => {
-        console.log(e.target);
-        if (e.target.name === 'ciudad') { busqueda(e.target.value) }
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        })
-    }*/
+
     useEffect(() => {
         setToday(new Date(Date.now()))
         const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
@@ -157,7 +109,7 @@ const Search = ({ busqueda }) => {
         return () => {
             window.removeEventListener('resize', detectarWidth())
         }
-    }, [widthWindow])
+    }, [widthWindow, ciudadesFiltradas])
 
     const [fecha, setfecha] = useState(new Date([]));
 
@@ -185,6 +137,17 @@ const Search = ({ busqueda }) => {
 
 
         return dateFormateada;
+    }
+
+    const handleChange = (e) => {
+        let cityFilter = e.target.value;
+        let ciudadesFiltradas = ciudadesList.filter(ciudad => ciudad.includes(cityFilter))
+        setCiudadesFiltradas(ciudadesFiltradas)     
+        console.log(ciudadesFiltradas);
+        let displayOptions = document.querySelector('.displayOptions')
+        displayOptions.hidden = false;
+
+
     }
 
     const formatDataToSubmit = (dataSinFormatear) => {
@@ -230,6 +193,14 @@ const Search = ({ busqueda }) => {
 
     }
 
+    const displayNone = (e) => {
+        let inputCiudad = document.querySelector('.input-search')
+        let displayOptions = document.querySelector('.displayOptions')
+        inputCiudad.value = e.target.textContent
+        displayOptions.hidden = true;
+        
+    }
+
 
     //Array ciudades
     let ciudadesList = [];
@@ -243,26 +214,6 @@ const Search = ({ busqueda }) => {
         })
     }
 
-    // let urlFechas = "http://localhost:8080/reservas/fechaDisponible"
-    // let fechasElegidas = {
-    //     "fechaInicial": "2022-06-21",
-    //     "fechaFinal": "2022-06-21"
-    //   }
-
-    // let fetchInfo = {
-    //     method: "POST",
-    //     headers: {
-    //     'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(fechasElegidas)
-    // }
-
-    // let {data1, isPending1, error1} = useFetch(urlFechas, fetchInfo);
-    // if(isPending1){
-    //     console.log(error1);
-    // } else{
-
-    // }    
     return (<>
         <div className="searchContainer">
             <form action="POST" onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
@@ -271,17 +222,27 @@ const Search = ({ busqueda }) => {
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
-                    <select name="ciudad" className='input-search' id="ciudades">
-                    <option selected value="initialOption" className='initialOption' hidden >Selecciona una opción</option>
-                        {ciudadesList.map((e, i) =>
-                            (
-                                <>
-                                    <option className="iconInput" fecha={e} key={"ciudad_" + i} >{e}</option>
-                                </>
-                            )
+                    <input onChange={handleChange} autoComplete='off' name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
+                        <div hidden={true} className='displayOptions'>
+                            {ciudadesFiltradas !== [''] ? 
+                                ciudadesFiltradas.map((e, i) =>
+                                    (
+                                        <>
+                                            <div className="iconInput ciudad" fecha={e} onClick={displayNone} key={i} >{e}</div>
+                                        </>
+                                    )
+                                    
+                                ):
+                                (ciudadesList.map((e, i) =>
+                                    (
+                                        <>
+                                            <div className="iconInput ciudad" fecha={e} onClick={displayNone} key={"ciudad_" + i} >{e}</div>
+                                        </>
+                                    )
+                                    
+                                ))}
                             
-                        )}
-                    </select>
+                        </div>
                 </div>
                 <div className="iconInput">
                     <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={(fecha[0] ? formateDate(fecha) : '')} />
