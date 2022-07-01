@@ -51,85 +51,60 @@ export default function Reserva() {
                 </div>
             </div>
 
-            {/* <div id='container-reserva'> */}
+           
 
             <div className='reserva-container'>
                 <div className='row'>
                     <div className='col-md-8'>
-                    <h2 className='create-acount'>Completá tus datos </h2>
-                    <ReservaForm />
+                        <h2 className='create-acount'>Completá tus datos </h2>
+                            <ReservaForm />
                     </div>
-                    <div className='res-grid'>
+                    <div className='col-md-4'>
+                        <div id='detalleReserva'>
+                            <ReservaDetalle />
+                        </div>
+                    </div>          
+                </div>
+
+                
+                <div className='row'>
+                    <div className='col-md-8'>
+                        <div id='calendar'>
+                            <h2>Seleccioná tu fecha de reserva</h2>
+                            <div className='d-flex flex-row justify-content-around align-items-center'>
+                                <div className="calendar-container">
+                                <Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} />
+                                </div>
+                            </div>
+                    
+                        </div>
+
+                    </div>
+
+                
+                    
+                </div>
+
+
+                <div className='row'>
+                    <div className='col-md-8'>
+                        <div id='horaLlegada'>
+                        <h2>Tu horario de llegada</h2>
+                        <ReservaHoraLlegada />           
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div className='row'>
-                    <div>
-
-                </div>
-
-                <div id='calendar'>
-                <h2>Seleccioná tu fecha de reserva</h2>
-                <div className='d-flex flex-row justify-content-around align-items-center'>
-                    <div className="calendar-container">
-                        <Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} />
+                    <div id='resPolitica'>
+                        <ProductPolitics politics={politicas}/> 
                     </div>
-                    
-                </div>
-            </div>
 
-
-            
-            </div>
-                    
 
                 </div>
-                
 
-
-
-
-            <div className='res-grid'>
-            <div>
-                
-                
-
-            </div>
-            {/* <div className='res-grid'>
-            <div>
-                <div id='formReserva'>
-                <h2 className='create-acount'>Completá tus datos </h2>
-                    <div className='form-grid'></div>
-                    <ReservaForm />
-                </div> */}
-                <div id='detalleReserva'>
-                    <ReservaDetalle />
-
-                </div>
-            </div>
-            </div>      
-
-            
-            {/* <div className='res-grid'>
-            <div id='calendar'>
-                <h2>Seleccioná tu fecha de reserva</h2>
-                <div className='d-flex flex-row justify-content-around align-items-center'>
-                    <div className="calendar-container">
-                        <Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} />
-                    </div>
-                    
-                </div>
-            </div>
-            </div> */}
-
-            <div className='res-grid'>
-            <div id='horaLlegada'>
-                <h2>Tu horario de llegada</h2>
-                <ReservaHoraLlegada />           
-            </div>
-            </div>
-            {/* </div> */}
-            <div id='resPolitica'>
-            <ProductPolitics politics={politicas}/> 
             </div>
             <Footer />
         </div>

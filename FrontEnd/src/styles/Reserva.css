@@ -9,16 +9,18 @@
 }
 
 
-.res-grid {
+/* .res-grid {
     display: grid;
     grid-template-columns: 60% 40%;
     
    
-}
+} */
 
 .form-grid {
     margin: 2vh 1vw;
 }
+
+
 
 div#resPolitica{
     height: 60vh;
