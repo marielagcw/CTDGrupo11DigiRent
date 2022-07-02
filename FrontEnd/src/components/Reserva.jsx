@@ -55,7 +55,7 @@ export default function Reserva() {
 
             <div className='reserva-container'>
                 <div className='row'>
-                    <div className='col-md-8'>
+                    <div className='col-sm-12 col-md-8 col-md-8'>
                         <h2 className='create-acount'>Completá tus datos </h2>
                             <ReservaForm />
                     </div>

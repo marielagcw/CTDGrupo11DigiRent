@@ -15,6 +15,9 @@ div#detalleReserva{
 
 }
 
+div#horaLlegada{
+    margin-left: 5%;
+}
 
 div#resPolitica{
     height: 60vh;
@@ -22,9 +25,7 @@ div#resPolitica{
 }
 
 /* div#formReserva{
-    position: absolute;
-    left: 3.15%;
-    right: 34.85;
-    top: 21.11%;
-
-} */
+    margin-left: 5%;
+    
+}
+ */
