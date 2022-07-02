@@ -86,11 +86,11 @@ input {
     }
 
     div.title-product h1{
-        font-size: 3vh;
+        font-size: 2.5vh;
     }
 
     div.title-product h3 {
-        font-size: 2vh;
+        font-size: 1.5vh;
         text-transform: uppercase;
     }
 
@@ -111,9 +111,10 @@ input {
     }
 
     div.location-prod svg {
-        font-size: 4vh;
+        font-size: 3vh;
         justify-content: center;
         padding: 0 1vh 0 0;
+        margin-top: 1vh;
     }
 
     div.location-prod h2, div.location-prod p {

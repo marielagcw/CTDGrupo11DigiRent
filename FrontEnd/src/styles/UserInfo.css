@@ -35,10 +35,6 @@ div.user-info div.user-logo, div.user-info-mobile div.user-logo{
     align-items: center;
 }
 
-div#logo-span div.user-logo{
-    color: blue;
-}
-
 div.user-info div.user-logo span, div.user-info-mobile div.user-logo span{
     color: var(--secondary);
     font-weight: bolder;
@@ -79,11 +75,10 @@ div.user-info-mobile{
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
     div.user-info{
-        width: 20vw;
+        margin: auto 1vh;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin: auto 1px;
     }
 
     #logo-us.user-logo {
@@ -92,12 +87,11 @@ div.user-info-mobile{
     }
 
     #info-us {
-        margin-left: 4px;
+        margin-left: 2vh;
     }
 }
 
 /*Tablet personalizada*/
-@media screen and (min-width: 539px) and (max-width: 721px) {}
+@media screen and (min-width: 539px) and (max-width: 721px) {
 
-/*Mobile*/
-@media screen and (min-width: 414px) and (max-width: 767px) {}
+}
