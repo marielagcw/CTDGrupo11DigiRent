@@ -96,6 +96,7 @@ export default function Reserva() {
 
 
                 </div>
+            </div>
 
                 <div className='row'>
                     <div id='resPolitica'>
@@ -105,7 +106,7 @@ export default function Reserva() {
 
                 </div>
 
-            </div>
+            
             <Footer />
         </div>
         

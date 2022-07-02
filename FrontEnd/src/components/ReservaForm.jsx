@@ -34,7 +34,7 @@ const ReservaForm = (  ) => {
 
     return (
         <>
-            <div className="flex" id='reservaForm'>
+            <div className="flex" id='reservaForm'>                
             <div className="card producto mb-3" >
                 <div className='category-container m-3'>
                     <div className='d-flex justify-content-between align-item-center flex-wrap'></div>
@@ -42,6 +42,7 @@ const ReservaForm = (  ) => {
                         className='d-flex flex-column register'>
                         <div className="d-flex">
 
+                            
                             <div className="d-flex flex-column">
                                 <label htmlFor="name">Nombre</label>
                                 <input
