@@ -15,6 +15,7 @@ const Search = ({ busqueda,fechaFilter }) => {
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
     const [filtroFecha, setFiltroFecha] = useState([])
+    
     useEffect(() => {
         fechaFilter(filtroFecha)
     }, [filtroFecha])

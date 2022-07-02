@@ -43,4 +43,8 @@ div.contenedorAgregarNuevo{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    
+}
+div.contenedorAgregarNuevo p{
+    text-align: end;
 }
