@@ -10,69 +10,106 @@ import '../styles/Search.css'
 
 
 
-const Search = ({ busqueda,fechaFilter }) => {
-    const UNDIA = 86400000 * 1;
+const Search = ({ busqueda }) => {
+
+    const [today, setToday] = useState(new Date)
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
-    const [filtroFecha, setFiltroFecha] = useState([])
-    useEffect(() => {
-        fechaFilter(filtroFecha)
-    }, [filtroFecha])
+    const [datosFiltrados, setDatosFiltrados] = useState({})
+    const [ciudadesFiltradas, setCiudadesFiltradas] = useState([''])
+
+    const HandleSubmit = async (e) => {
+        e.preventDefault()
+        let cod = document.querySelectorAll(".ciudad");
+        let inputCiudad = document.querySelector('.input-search').value
+        let ciudad_id = null;
+        ciudadesList.map((ciudad,i) => {
+            console.log(ciudad);
+            if(inputCiudad === ciudad){
+                return ciudad_id = i + 1
+            }
+        })
+        let buscadorCiudadVacio = ciudad_id === null
+        let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
+        let datos = '';
+
+        if(!buscadorFechaVacio){
+            if(!buscadorCiudadVacio){
+                let fechaInicial= formatDataToSubmit(fecha)[0]
+                let fechaFinal= formatDataToSubmit(fecha)[1]   
+                
+                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
+
+                console.log(datos);
     
 
-    const HandleSubmit = e => {
-        e.preventDefault();
-        let token = JSON.parse(window.localStorage.getItem('jwt')).jwt;
+            }else{
 
-        const axiosInstance = axios.create({
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Authorization': 'Bearer ' + token
+                let fechaInicial= formatDataToSubmit(fecha)[0]
+                let fechaFinal= formatDataToSubmit(fecha)[1]   
+                
+                let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
+    
+
             }
-        });
-        const handleResponse = async (informacion, fecha) => {
-            try {
-                console.log(informacion);
-                let aux = [];
-                await informacion.forEach((e) => {
-                    let { fechaFinal, fechaInicial} = { ...e };
-                    let id = e.producto.id
-                    let mayor = fecha[0].getDate() >= new Date(Date.parse(fechaFinal) + UNDIA);
-                    let menor = fecha[1].getDate() <= new Date(Date.parse(fechaInicial) + UNDIA);
-                    if ((mayor || menor) && !aux.includes(id) ) {
-                        aux.push(id);
-                    }
-                })
-                setFiltroFecha(aux)
-            } catch (error) {
-                console.log(error);
-            }
+            
         }
-        axiosInstance
-            .get("http://localhost:8080/reservas/listarTodos")
-            .then(response => {
-                handleResponse(response.data, fecha)
-            })
-            .catch(e => console.log(e));
+        if(buscadorFechaVacio){
+            if(!buscadorCiudadVacio){
+
+
+                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+    
+
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
+    
+
+            }else{
+
+                let url = `http://localhost:8080/productos/listarTodos`
+    
+
+                datos = await axios.get(url)
+
+                busqueda(datos.data)
+    
+                
+
+            }
+
+        }
+        if(buscadorFechaVacio){
+            let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+
+            datos = await axios.get(url)
+
+            busqueda(datos.data)
+
+
+
+        }
 
     }
 
-    const handleChange = e => {
-        if (e.target.name === 'ciudad') { busqueda(e.target.value) }
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        })
-    }
+
     useEffect(() => {
+        setToday(new Date(Date.now()))
         const detectarWidth = (e) => { setWidthWindow(window.visualViewport.width) };
         window.addEventListener('resize', (e) => detectarWidth())
         return () => {
             window.removeEventListener('resize', detectarWidth())
         }
-    }, [widthWindow])
+    }, [widthWindow, ciudadesFiltradas])
 
     const [fecha, setfecha] = useState(new Date([]));
 
@@ -102,60 +139,118 @@ const Search = ({ busqueda,fechaFilter }) => {
         return dateFormateada;
     }
 
+    const handleChange = (e) => {
+        let cityFilter = e.target.value;
+        let ciudadesFiltradas = ciudadesList.filter(ciudad => ciudad.includes(cityFilter))
+        setCiudadesFiltradas(ciudadesFiltradas)     
+        console.log(ciudadesFiltradas);
+        let displayOptions = document.querySelector('.displayOptions')
+        displayOptions.hidden = false;
+
+
+    }
+
+    const formatDataToSubmit = (dataSinFormatear) => {
+        let fInicio, fFin;
+        let dataFormateadaFinal
+        let dataFormateadaInicio
+        let fMount, iMount;
+        let fDay, iDay;
+        if(dataSinFormatear.toString() != ['Invalid Date']){
+            [fInicio, fFin] = dataSinFormatear;
+            if((fInicio.getMonth() + 1) < 10){
+                iMount = `0${(fInicio.getMonth() + 1)}`
+            }else{
+                iMount = (fInicio.getMonth() + 1)
+            }
+            if((fFin.getMonth() + 1) < 10){
+                fMount = `0${(fFin.getMonth() + 1)}`
+            }else{
+                fMount = (fFin.getMonth() + 1)
+            }
+            if(fInicio.getDate() < 10){
+                iDay = `0${fInicio.getDate()}`
+            }else{
+                iDay = fInicio.getDate()
+            }
+            if(fFin.getDate() < 10){
+                fDay = `0${fFin.getDate()}`
+            }else{
+                fDay = fFin.getDate()
+            }
+
+            console.log(fInicio.getDate());
+
+            dataFormateadaInicio = `${fInicio.getFullYear()}-${iMount}-${iDay}`
+            dataFormateadaFinal = `${fFin.getFullYear()}-${fMount}-${fDay}`
+        }else{
+            dataFormateadaInicio = ''
+            dataFormateadaFinal = ''
+        }
+
+
+        return [dataFormateadaInicio, dataFormateadaFinal]
+
+    }
+
+    const displayNone = (e) => {
+        let inputCiudad = document.querySelector('.input-search')
+        let displayOptions = document.querySelector('.displayOptions')
+        inputCiudad.value = e.target.textContent
+        displayOptions.hidden = true;
+        
+    }
+
+
     //Array ciudades
     let ciudadesList = [];
-    let url = "http://localhost:8080/ciudades/listarTodos";
+    let url = "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=id";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
     } else {
         data.forEach((e) => {
-            !ciudadesList.includes(e.nombre) && ciudadesList.push(e.nombre)
+            ciudadesList.push(`${e.nombre}, ${e.provincia}`)
         })
     }
-
-    // let urlFechas = "http://localhost:8080/reservas/fechaDisponible"
-    // let fechasElegidas = {
-    //     "fechaInicial": "2022-06-21",
-    //     "fechaFinal": "2022-06-21"
-    //   }
-
-    // let fetchInfo = {
-    //     method: "POST",
-    //     headers: {
-    //     'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(fechasElegidas)
-    // }
-
-    // let {data1, isPending1, error1} = useFetch(urlFechas, fetchInfo);
-    // if(isPending1){
-    //     console.log(error1);
-    // } else{
-
-    // }
 
     return (<>
         <div className="searchContainer">
             <form onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
-                    <input className='input-search' type="text" list="ciudades" placeholder='¿A donde vamos?' name='ciudad' onChange={handleChange} />
+                    
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
-                    <datalist id="ciudades">
-                        {ciudadesList.map((e, i) =>
-                            <option fecha={e} key={"ciudad_" + i} >{e}</option>
-                        )}
-                    </datalist>
+                    <input onChange={handleChange} autoComplete='off' name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
+                        <div hidden={true} className='displayOptions'>
+                            {ciudadesFiltradas !== [''] ? 
+                                ciudadesFiltradas.map((e, i) =>
+                                    (
+                                        <>
+                                            <div className="iconInput ciudad" fecha={e} onClick={displayNone} key={i} >{e}</div>
+                                        </>
+                                    )
+                                    
+                                ):
+                                (ciudadesList.map((e, i) =>
+                                    (
+                                        <>
+                                            <div className="iconInput ciudad" fecha={e} onClick={displayNone} key={"ciudad_" + i} >{e}</div>
+                                        </>
+                                    )
+                                    
+                                ))}
+                            
+                        </div>
                 </div>
                 <div className="iconInput">
-                    <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={(fecha[0] ? formateDate(fecha) : '')} onChange={handleChange} />
+                    <input type="text" className='ms-2 input-search' name="date" id="input-calendar" placeholder='Check in - Check out' value={(fecha[0] ? formateDate(fecha) : '')} />
                     <span onClick={showCalendar} className='icon iconCalender'>
                         <FontAwesomeIcon icon={faCalendar} />
                     </span>
                     <div className='calandary-container d-none form-absolute'>
-                        <Calendar showDoubleView={widthWindow > 414} selectRange={true} onChange={setfecha} />
+                        <Calendar defaultView='month' showDoubleView={widthWindow > 414} minDate={today} selectRange={true} onChange={setfecha} />
                         <div className='d-flex flex-row justify-content-around'>
                             <button onClick={showCalendar} className='btn btn-secondary btn-lg btn-calendary'>Cerrar</button>
                             <button onClick={sendCalendar} className='btn btn-primary btn-lg btn-calendary'>Aplicar</button>

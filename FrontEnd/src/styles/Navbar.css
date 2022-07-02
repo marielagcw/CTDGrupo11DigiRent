@@ -1,5 +1,9 @@
 .myNavbar {
     background-color: var(--tertiary);
+    /*color: white;*/
+}
+
+h1.tituloFondoVerde, h2.tituloFondoVerde, h3.tituloFondoVerde {
     color: white;
 }
 

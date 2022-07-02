@@ -2,9 +2,10 @@ div#product {
     height: 320vh;
 }
 
-.my-navbar div.back {
+div.back {
     cursor: pointer;
     font-size: 3.5em;
+    color: white;
 }
 
 .my-navbar {
@@ -64,6 +65,10 @@ hr {
     height: 120px;
     background-color: white;
 }
+
+.react-calendar__month-view__days__day--neighboringMonth {
+    visibility: hidden;
+  }
 
 .calendar-container,
 .button-container {
