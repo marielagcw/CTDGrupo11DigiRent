@@ -36,13 +36,13 @@ const ReservaForm = (  ) => {
         <>
             <div className="flex" id='reservaForm'>                
             <div className="card producto mb-3" >
-                <div className='category-container m-3'>
+                <div className="col-md-12">
                     <div className='d-flex justify-content-between align-item-center flex-wrap'></div>
                     <form onSubmit={(e) => setLogged(handleSubmit(e))}
                         className='d-flex flex-column register'>
                         <div className="d-flex">
 
-                            
+                            <div className="col-md-6">
                             <div className="d-flex flex-column">
                                 <label htmlFor="name">Nombre</label>
                                 <input
@@ -56,6 +56,8 @@ const ReservaForm = (  ) => {
                                 />
                                 
                             </div>
+                            </div>
+                            <div className="col-md-6">
                             <div className="d-flex flex-column ms-2">
                                 <label htmlFor="lastName">Apellido</label>
                                 <input type="text"
@@ -68,33 +70,40 @@ const ReservaForm = (  ) => {
                                 />
                                 
                             </div>
+                            </div>
                         </div>
                         <div className="d-flex">
-                        <div className="d-flex flex-column">
-                            <label htmlFor="email">Correo electrónico</label>
-                            <input type="email"
-                                className='input'
-                                name='email'
-                                placeholder='dbrodriguez@gmail.com'
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={form.email} disabled
-                             />
+                            <div className="col-md-6">
+
+                                <div className="d-flex flex-column">
+                                    <label htmlFor="email">Correo electrónico</label>
+                                    <input type="email"
+                                        className='input'
+                                        name='email'
+                                        placeholder='dbrodriguez@gmail.com'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={form.email} disabled
+                                    />
                             
-                        </div>
-                        <div className="d-flex flex-column ms-2">
+                                </div>
+                            </div>
+
+                            <div className="col-md-6">
+                            <div className="d-flex flex-column ms-2">
                                 <label htmlFor="name">Ciudad</label>
                                 <input
                                     type="text"
                                     className='input'
                                     name='ciudad'
-                                    placeholder='Escribe tu nombre'
+                                    placeholder='Ciudad'
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={form.name} required
                                 />
                                 
-                        </div>
+                            </div>
+                            </div>
 
                         </div>
                         
