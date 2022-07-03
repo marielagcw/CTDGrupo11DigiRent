@@ -31,7 +31,7 @@ const Header = ({ user, btn }) => {
   
   return (
     <>
-      <nav className='navbar navbar-light'>
+      <nav id="header" className='navbar navbar-light'>
         <div className='container-fluid'>
           <div className='logo-frase d-flex align-items-center'>
             <div className='logo' onClick={() => navigate('/')}>
@@ -58,7 +58,8 @@ const Header = ({ user, btn }) => {
                   <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
                     <UserInfoMobile userInfo={JSON.parse(userSession)} />
                   </div>
-                  <div style={{height:'67%', display:'flex', justifyContent:'end', alignItems:'end'}}>
+                  <div style={{height:'67%', display:'flex', flexDirection:'column',justifyContent:'end', alignItems:'end'}}>
+                    <a className="text-link" href="/admin">Administración</a>
                     <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.clear(); navigate('/') }}>Cerrar Sesion</span>?</p>
                   </div>
                   <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
@@ -71,8 +72,7 @@ const Header = ({ user, btn }) => {
               <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
                 {location.pathname !== '/login' && <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
-                {location.pathname !== '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
-                }
+                {location.pathname !== '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
               </div>
               </>

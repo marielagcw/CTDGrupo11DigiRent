@@ -1,5 +1,5 @@
-div#product {
-    height: 320vh;
+*{
+    box-sizing: border-box;
 }
 
 div.back {
@@ -104,4 +104,76 @@ hr {
     div#product {
         height: 340vh;
     }
+}
+/*Desktop*/
+@media screen and (min-width: 1200px) {
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+            color: transparent;
+    }
+}
+
+/*Tablet*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+        color: transparent;
+    }
+}
+
+/*Tablet personalizada*/
+@media screen and (min-width: 539px) and (max-width: 721px) {
+
+}
+
+/*Mobile*/
+@media screen and (min-width: 414px) and (max-width: 767px) {
+
+    .d-flex {
+        flex-wrap: wrap;
+    }
+
+    div.button-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .btn-iniciar-reserva {
+        width: 100%;
+    }
+
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+        color: transparent;
+    }
+
+    button.btn.btn-primary.btn-lg.btn-max-width {
+        width: 100%;
+
+}
+}
+/*Mobile más pequeño*/
+@media screen and (min-width: 359px) and (max-width: 767px) {
+    .d-flex {
+        flex-wrap: wrap;
+    }
+
+    div.button-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .btn-iniciar-reserva {
+        width: 100%;
+    }
+
+    button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+        color: transparent;
+    }
+    button.btn.btn-primary.btn-lg.btn-max-width {
+        width: 100%;
+    }
+
+    
 }

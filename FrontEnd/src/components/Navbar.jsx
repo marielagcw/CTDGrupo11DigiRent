@@ -8,9 +8,9 @@ const Navbar = ({busqueda, titulo, fechaFilter}) => {
 
 
     return (
-        <div className='myNavbar d-flex flex-column align-items-center pt-3 pb-3'>
-            <h1 className='tituloFondoVerde'>{titulo}</h1>
-            {busqueda&&<Search busqueda={busqueda} />}
+        <div id="header-producto" className='myNavbar d-flex flex-column align-items-center pt-3 pb-3'>
+            <h1 id="titulo-navbar">{titulo}</h1>
+            {busqueda&&<Search busqueda={busqueda} fechaFilter={fechaFilter}/>}
         </div>
     )
 }

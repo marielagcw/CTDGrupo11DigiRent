@@ -4,7 +4,6 @@ import '../styles/ProductGalery.css'
 import 'react-bnb-gallery/dist/style.css'
 import ReactBnbGallery from 'react-bnb-gallery';
 //
-import { BsShare, BsHeart } from 'react-icons/bs';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
@@ -21,14 +20,6 @@ export default function ProductGalery({ galery }) {
     return (
         <>
             <div id='galery'>
-                <div className='d-flex justify-content-start align-items-center share-and-fav'>
-                    <div className='p-2 share icono'>
-                        <BsShare />
-                    </div>
-                    <div className='p-2 heart icono'>
-                        <BsHeart />
-                    </div>
-                </div>
                 <div className='container'>
                     <div className="row gx-1">
                         <div className='left-side col-md-6'>
