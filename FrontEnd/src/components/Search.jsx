@@ -257,7 +257,7 @@ const Search = ({ busqueda }) => {
                         </div>
                     </div>
                 </div>
-                <button type='submit' className='btn btn-lg btn-primary ms-2'>Aceptar</button>
+                <button type='submit' className='btn btn-lg btn-primary ms-2'>Buscar</button>
 
             </form>
 
