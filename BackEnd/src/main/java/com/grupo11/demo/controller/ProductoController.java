@@ -1,16 +1,17 @@
 package com.grupo11.demo.controller;
 
 import com.grupo11.demo.model.dtos.ProductoDTO;
-import com.grupo11.demo.model.dtos.ReservaFechasDTO;
 import com.grupo11.demo.service.implementation.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -129,18 +130,26 @@ public class ProductoController {
     }
 
     // LISTADO DE PRODUCTOS DISPONIBLES POR FECHAS
-    @PostMapping("/fechaDisponible")
-    public ResponseEntity<?> productosDisponiblesFecha(@RequestBody ReservaFechasDTO reservaFechasDTO, Pageable
-            pageable) {
-        List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
+    @GetMapping("/fechaDisponible")
+    public ResponseEntity<?> productosDisponiblesFecha(@RequestParam("fechaInicial")
+                                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicial,
+                                                       @RequestParam("fechaFinal")
+                                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFinal,
+                                                       Pageable pageable) {
+        List<ProductoDTO> productoList = service.buscarProductosDisponiblesPorFecha(fechaFinal, fechaInicial, pageable);
         return ResponseEntity.ok().body(productoList);
     }
 
     // LISTADO DE PRODUCTOS DISPONIBLES POR CIUDAD Y POR FECHAS
-    @PostMapping("/ciudad/{id}/fechaDisponible")
-    public ResponseEntity<?> productosDisponiblesCiudadFecha(@PathVariable Integer
-                                                                     id, @RequestBody ReservaFechasDTO reservaFechasDTO, Pageable pageable) {
-        List<ProductoDTO> productoList = service.buscarProductosPorCiudadFechas(id, reservaFechasDTO.getFechaFinal(), reservaFechasDTO.getFechaInicial(), pageable);
+    @GetMapping("/ciudad/{id}/fechaDisponible")
+    public ResponseEntity<?> productosDisponiblesCiudadFecha(@PathVariable Integer id,
+                                                             @RequestParam("fechaInicial")
+                                                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicial,
+                                                             @RequestParam("fechaFinal")
+                                                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFinal,
+                                                             Pageable pageable) {
+        List<ProductoDTO> productoList = service.buscarProductosPorCiudadFechas(id,fechaFinal, fechaInicial, pageable);
         return ResponseEntity.ok().body(productoList);
     }
+
 }

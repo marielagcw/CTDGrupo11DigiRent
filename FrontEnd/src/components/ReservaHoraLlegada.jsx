@@ -11,7 +11,7 @@ const ReservaHoraLlegada = () =>{
 
     return (
         <>
-            <div id='reservaHora'>
+            <div className="card producto mb-3" >
                 <div className='iconoCheck'>
                     <span>Tu habitacion va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</span>
                 </div>

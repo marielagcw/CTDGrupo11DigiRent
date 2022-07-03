@@ -2,9 +2,10 @@
     box-sizing: border-box;
 }
 
-.my-navbar div.back {
+div.back {
     cursor: pointer;
     font-size: 3.5em;
+    color: white;
 }
 
 .my-navbar {
@@ -36,7 +37,8 @@
 #description,
 #charact,
 #politics,
-#calendar {
+#calendar,
+#map {
     padding: 5vh 4vw;
     width: 100%;
 }
@@ -63,6 +65,10 @@ hr {
     height: 120px;
     background-color: white;
 }
+
+.react-calendar__month-view__days__day--neighboringMonth {
+    visibility: hidden;
+  }
 
 .calendar-container,
 .button-container {

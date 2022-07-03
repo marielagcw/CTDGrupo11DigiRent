@@ -1,18 +1,22 @@
-div#container-reserva{
+.reserva-container {
+    background-color: var(--quaternary);
     height: 140vh;
-    background-color: var(--quaternary)
-
 }
 
-.res-grid {
-    display: grid;
-    grid-template-columns: 60% 40%;
+div#detalleReserva{
+    position: absolute;
     
-   
+    height: 110.72vh;
+    left: 67.13%;
+    right: 2.93%;
+    top: 40.66%;
+    bottom: -42.96%;
+    background-color: white;
+
 }
 
-.form-grid {
-    margin: 2vh 1vw;
+div#horaLlegada{
+    margin-left: 5%;
 }
 
 div#resPolitica{

@@ -11,7 +11,9 @@ import ProductCharact from './ProductCharact';
 import { BsChevronLeft } from 'react-icons/bs';
 import ProductPolitics from './ProductPolitics';
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import Spinner from './Spinner';
+import ProductMap from './ProductMap';
 
 
 export default function Products() {
@@ -43,8 +45,8 @@ export default function Products() {
                 <div className="title-product">
                     {isPending ? <Spinner /> :
                         <>
-                            <h3>{categoria.titulo}</h3>
-                            <h1>{tituloDescripcion}</h1>
+                            <h3 className='tituloFondoVerde'>{categoria.titulo}</h3>
+                            <h1 className='tituloFondoVerde'>{tituloDescripcion}</h1>
                         </>}
                 </div>
                 <div className='back d-flex justify-content-center allign-items-center' onClick={() => navigate('/')}>
@@ -70,6 +72,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
+            {isPending ? <Spinner /> : <ProductMap lat = {9.423765} lng={-1.664428} />}
             {isPending ? <Spinner /> : <ProductPolitics politics={politicas} />}
             <Footer />
         </div>

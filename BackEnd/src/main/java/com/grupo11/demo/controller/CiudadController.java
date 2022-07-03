@@ -3,11 +3,14 @@ package com.grupo11.demo.controller;
 import com.grupo11.demo.model.dtos.CiudadDTO;
 import com.grupo11.demo.service.implementation.CiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/ciudades")
@@ -18,8 +21,16 @@ public class CiudadController {
     private CiudadService ciudadService;
 
     @GetMapping("/listarTodos")
-    public Set<CiudadDTO> listarTodos() {
-        return ciudadService.listarTodo();
+    public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field) {
+        List<CiudadDTO> ciudades;
+        if (ord == null || field == null) {
+            ciudades = ciudadService.listarTodo(pageable);
+        } else {
+            Sort.by(Sort.Order.asc("id"));
+            PageRequest of = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.Direction.fromString(ord), field);
+            ciudades = ciudadService.listarTodo(of);
+        }
+        return ResponseEntity.ok().body(ciudades);
     }
 
     @PostMapping("/agregar")

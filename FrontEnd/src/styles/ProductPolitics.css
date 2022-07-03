@@ -1,7 +1,7 @@
 .pol-grid {
     display: grid;
     grid-template-columns: auto auto auto;
-    margin: auto;
+    margin: auto auto 5vh auto;
 }
 
 .pol-grid .grid-item {
