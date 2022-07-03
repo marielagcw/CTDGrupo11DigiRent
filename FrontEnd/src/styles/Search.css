@@ -27,6 +27,10 @@
     position: absolute;
 }
 
+.react-calendar__month-view__days__day--neighboringMonth {
+    visibility: hidden;
+  }
+
 .react-calendar__tile--active{
     background-color: var(--primary);
 }
@@ -40,6 +44,18 @@
     background-color: var(--tertiary);
 
 }
+
+.displayOptions{
+    background-color: white;
+    width: 100% !important;
+    margin: 0px;
+    position: absolute;
+    z-index: 1;
+    color: black;
+    padding-left: 27px;
+
+}
+
 
 @media (770px <= width <= 1200px ){
     .calandary-container{

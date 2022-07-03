@@ -8,14 +8,10 @@ import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import ProductoFormSelect from "./ProductoFormSelect";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  solid,
-  regular,
-  brands,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
 import ProductoFormAgregar from "./ProductoFormAgregar";
 import axios from "axios";
+import { ProductoFormPoliticas } from "./ProductoFormPoliticas";
+import ProductoFormImagenes from "./ProductoFormImagenes";
 
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -46,6 +42,7 @@ export default function ProductoForm() {
   } = useFetch(urlCategorias);
 
   /* ---------------------------------- Posts --------------------------------- */
+  // POST Nueva categoría
   const urlPostCategoria = "http://localhost:8080/categorias/agregar";
   const postApiCategoria = () => {
     axios.post(urlPostCategoria, bodyCategoria).then((res) => {
@@ -54,6 +51,7 @@ export default function ProductoForm() {
     });
   };
 
+  // POST Nueva Ciudad
   const urlPostCiudad = "http://localhost:8080/ciudades/agregar";
   const postApiCiudad = () => {
     axios.post(urlPostCiudad, bodyCiudad).then((res) => {
@@ -62,6 +60,7 @@ export default function ProductoForm() {
     });
   };
 
+  // POST Nueva característica
   const urlPostCaracteristica = "http://localhost:8080/caracteristicas/agregar";
   const postApiCaracteristica = () => {
     axios.post(urlPostCaracteristica, bodyCaracteristica).then((res) => {
@@ -70,18 +69,20 @@ export default function ProductoForm() {
     });
   };
 
+  /* ------------------------------ POST Nuevo Producto ----------------------------- */
   const urlPostProducto = "http://localhost:8080/productos/agregar";
-  const postApiProducto = ()=>{
+  const postApiProducto = () => {
     axios.post(urlPostProducto, bodyProducto).then((res) => {
       console.log(res);
       console.log(res.data);
     });
-  }
+  };
 
   /* -------------------------------------------------------------------------- */
   /*                            Normalización de datos                          */
   /* -------------------------------------------------------------------------- */
 
+  // State para guardar los datos de todo el formulario
   const [datosForm, setDatosForm] = useState({
     nombreProducto: "",
     categoria: "",
@@ -89,24 +90,27 @@ export default function ProductoForm() {
     ciudad: "",
     descripcionProducto: "",
     caracteristicaState: [],
-    descripcionNormas: "",
-    descripcionSalud: "",
-    descripcionPolitica: "",
-    cargarImagen: "",
+    politicasNormas: { nombre: "", politica: { id: 1 } },
+    politicasSalud: { nombre: "", politica: { id: 2 } },
+    politicasCancelacion: { nombre: "", politica: { id: 3 } },
+    imagenState: [],
   });
 
+  // State para Modal nueva categoría
   const [datosCategoria, setDatosCategoria] = useState({
     titulo: "",
     descripcion: "",
     url: "",
   });
 
+  // State para Modal nueva ciudad
   const [datosCiudad, setDatosCiudad] = useState({
     nombre: "",
     provincia: "",
     pais: "",
   });
 
+  // State para Modal nueva característica
   const [datosCaracteristica, setDatosCaracteristica] = useState({
     nombre: "",
     icono: "",
@@ -114,30 +118,53 @@ export default function ProductoForm() {
 
   /* --------------------- Preparación del body para fetch -------------------- */
 
+  // Body para nueva categoría
   const bodyCategoria = {
     titulo: datosCategoria.titulo,
     descripcion: datosCategoria.descripcion,
     url: datosCategoria.url,
   };
 
+  // Body para nueva ciudad
   const bodyCiudad = {
     nombre: datosCiudad.nombre,
     provincia: datosCiudad.provincia,
     pais: datosCiudad.pais,
   };
 
+  // Body para nueva característica
   const bodyCaracteristica = {
     nombre: datosCaracteristica.nombre,
     icono: datosCaracteristica.icono,
   };
 
+  // Body para nuevo elemento política: norma
+  const bodyNormas = {
+    nombre: datosForm.descripcionNormas,
+    politica: { id: 1 },
+  };
+
+  // Body para nuevo elemento política: salud
+  const bodySalud = {
+    nombre: datosForm.descripcionSalud,
+    politica: { id: 2 },
+  };
+
+  // Body para nuevo elemento política: cancelación
+  const bodyCancelacion = {
+    nombre: datosForm.descripcionCancelacion,
+    politica: { id: 3 },
+  };
+
+  /* --------------------------- Body para producto --------------------------- */
   const bodyProducto = {
     nombreProducto: datosForm.nombreProducto,
-    tituloDescripcion: datosForm.descripcionProducto,
-    descripcion: datosForm.descripcion,
-    // asignar el id de la categoría
-    // asignar el id de la ciudad
-  }
+    descripcion: datosForm.descripcionProducto,
+    categoria: { id: datosForm.categoria },
+    ciudad: { id: datosForm.ciudad },
+    politicas: [], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
+    caracteristicas: datosForm.caracteristicaState,
+  };
 
   /* -------------------------------------------------------------------------- */
   /*                            Lógica del formulario                           */
@@ -148,7 +175,9 @@ export default function ProductoForm() {
   const [modalCiudad, setModalCiudad] = useState(false);
   const [modalCaracteristica, setModalCaracteristica] = useState(false);
 
-  // Guardamos los datos que vienen del componente ProductoFormSelect
+  /* --------------- Renderizado del listado de características --------------- */
+
+  // Guardamos los datos que vienen del componente ProductoFormSelect para poder renderizar el listado de características
   const agregarCaracteristica = (caracteristicaRecibidaAgregar) => {
     setDatosForm((datos) => {
       return {
@@ -161,20 +190,38 @@ export default function ProductoForm() {
     });
   };
 
-  // Eliminar algunas de las opciones de características elegida
+  // Eliminar algunas de las opciones de características elegidas del listado características
   const eliminarCaracteristica = (caracteristica) => {
     setDatosForm((datos) => {
       return {
         ...datos,
         caracteristicaState: datos.caracteristicaState.filter(
-          (caract) =>
-            caracteristica.id !== caract.id
+          (caract) => caracteristica.id !== caract.id
         ),
       };
     });
   };
 
-  console.log(datosForm, datosCategoria);
+  /* ------------------- Renderizado del listado de imágenes ------------------ */
+  // Guardamos los datos que vienen del componente ProductoFormSelect para poder renderizar el listado de imágenes
+  const agregarImagen = (imagen) => {
+    setDatosForm((datos) => {
+      return {
+        ...datos,
+        imagenState: [...datos.imagenState, imagen],
+      };
+    });
+  };
+
+  // Eliminar algunas de las opciones de imagenes subidas del listado imagenes
+  const eliminarImagen = (imagen) => {
+    setDatosForm((datos) => {
+      return {
+        ...datos,
+        imagenState: datos.imagenState.filter((imag) => imagen.id !== imag.id),
+      };
+    });
+  };
 
   /* -------------------------------------------------------------------------- */
   /*                         Renderizado del formulario                         */
@@ -244,7 +291,7 @@ export default function ProductoForm() {
               >
                 {dataCategorias?.map((categoria, i) => {
                   return (
-                    <option value={categoria.titulo} key={i + "categoria"}>
+                    <option value={categoria.id} key={i + "categoria"}>
                       {categoria.titulo}
                     </option>
                   );
@@ -298,7 +345,7 @@ export default function ProductoForm() {
                 >
                   {dataCiudades?.map((ciudad, i) => {
                     return (
-                      <option value={ciudad.nombre} key={i + "ciudad"}>
+                      <option value={ciudad.id} key={i + "ciudad"}>
                         {ciudad.nombre}
                       </option>
                     );
@@ -356,124 +403,30 @@ export default function ProductoForm() {
                 />
               );
             })}
-            {/* --------------------------- Contenedor políticas -------------------------- */}
             <ProductoFormSelect agregarCaracteristica={agregarCaracteristica} />
           </fieldset>
-          <fieldset>
-            <legend className="mt-2 fieldsetProductoFormulario">
-              <h3 className="mt-3 mb-0">Políticas del producto</h3>
-            </legend>
-            <div
-              id="divContenedorPoliticas"
-              className="row justify-content-md-left"
-            >
-              {/* -------------------------------------------------------------------------- */}
-              <div className="col-md-4">
-                <h5 className="mb-0 mt-2">Normas de la casa</h5>
-                <label
-                  htmlFor="descripcionNormas"
-                  className="form-label mt-1 p-1 mb-0 mt-1"
-                >
-                  Descripción
-                </label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  id="descripcionNormas"
-                  placeholder="Escribir aquí"
-                  value={datosForm.descripcionNormas}
-                  onChange={(e) =>
-                    setDatosForm({
-                      ...datosForm,
-                      descripcionNormas: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
-              {/* -------------------------------------------------------------------------- */}
-              <div className="col-md-4">
-                <h5 className="mb-0 mt-2">Salud y seguridad</h5>
-                <label
-                  htmlFor="descripcionSalud"
-                  className="form-label mt-1 p-1 mb-0"
-                >
-                  Descripción
-                </label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  id="descripcionSalud"
-                  placeholder="Escribir aquí"
-                  value={datosForm.descripcionSalud}
-                  onChange={(e) =>
-                    setDatosForm({
-                      ...datosForm,
-                      descripcionSalud: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
-              {/* -------------------------------------------------------------------------- */}
-              <div className="col-md-4">
-                <h5 className="mb-0 mt-2">Política de cancelación</h5>
-                <label
-                  htmlFor="descripcionPolitica"
-                  className="form-label mt-1 p-1 mb-0"
-                >
-                  Descripción
-                </label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  id="descripcionPolitica"
-                  placeholder="Escribir aquí"
-                  value={datosForm.descripcionPolitica}
-                  onChange={(e) =>
-                    setDatosForm({
-                      ...datosForm,
-                      descripcionPolitica: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
-            </div>
-          </fieldset>
+          {/* --------------------------- Contenedor políticas -------------------------- */}
+          <ProductoFormPoliticas
+            datosForm={datosForm}
+            setDatosForm={setDatosForm}
+          />
           {/* --------------------------- Contenedor imagenes -------------------------- */}
           <fieldset>
             <legend className="mt-2 fieldsetProductoFormulario">
               <h3 className="mt-3 mb-0">Cargar imagen</h3>
             </legend>
-            <div className="grupoSelectPlus">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Insertar https://"
-                  id="cargarImagen"
-                  value={datosForm.cargarImagen}
-                  onChange={(e) =>
-                    setDatosForm({ ...datosForm, cargarImagen: e.target.value })
-                  }
-                  required
+            {datosForm.imagenState.map((imagen, i) => {
+              return (
+                <ProductoFormImagenes
+                  key={i + "componenteAgregar"}
+                  imagen={imagen}
+                  agregarImagen={agregarImagen}
+                  eliminarImagen={eliminarImagen}
                 />
-              </div>
-              <button
-                className="btn btn-primary ms-2 mark"
-                type="button"
-                id="button-addon2"
-              >
-                <FontAwesomeIcon icon={solid("plus")} />
-              </button>
-            </div>
+              );
+            })}
+            <ProductoFormImagenes agregarImagen={agregarImagen} />
           </fieldset>
-          <div className="d-grid gap-2 col-2 mx-auto">
-            <button type="submit" className="btn btn-primary m-3">
-              Crear
-            </button>
-          </div>
         </form>
       </div>
       {/* ----------------------------- Modal Categoría ---------------------------- */}
@@ -520,7 +473,7 @@ export default function ProductoForm() {
             <Form.Label> URL imagen</Form.Label>
             <Form.Control
               type="url"
-              placeholder= "Insertar https://"
+              placeholder="Insertar https://"
               autoFocus
               required
               autoCapitalize="words"
