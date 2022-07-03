@@ -1,0 +1,19 @@
+div#resexitosa-container{
+    height: 90vh;
+    background-color: var(--quaternary)
+
+}
+
+.templatereserva text-center{
+    width: 18rem;
+    
+}
+
+.templ-body{
+    position: absolute;
+    width: 638px;
+    height: 302px;
+    left: 364px;
+    top: 233px;
+    background-color: white;
+}
