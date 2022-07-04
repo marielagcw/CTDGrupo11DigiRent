@@ -12,11 +12,7 @@ import '../styles/Search.css'
 
 const Search = ({ busqueda }) => {
 
-<<<<<<< HEAD
-    const [today, setToday] = useState(new Date())
-=======
     const [today, setToday] = useState(new Date)
->>>>>>> formulario-creacion-de-producto
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
     const [datosFiltrados, setDatosFiltrados] = useState({})
@@ -33,10 +29,6 @@ const Search = ({ busqueda }) => {
                 return ciudad_id = i + 1
             }
         })
-<<<<<<< HEAD
-        
-=======
->>>>>>> formulario-creacion-de-producto
         let buscadorCiudadVacio = ciudad_id === null
         let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
         let datos = '';
@@ -44,13 +36,8 @@ const Search = ({ busqueda }) => {
         if(!buscadorFechaVacio){
             if(!buscadorCiudadVacio){
                 let fechaInicial= formatDataToSubmit(fecha)[0]
-<<<<<<< HEAD
-                let fechaFinal= formatDataToSubmit(fecha)[1]   
-                
-=======
                 let fechaFinal= formatDataToSubmit(fecha)[1]
 
->>>>>>> formulario-creacion-de-producto
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
 
                 datos = await axios.get(url)
@@ -58,78 +45,45 @@ const Search = ({ busqueda }) => {
                 busqueda(datos.data)
 
                 console.log(datos);
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> formulario-creacion-de-producto
 
             }else{
 
                 let fechaInicial= formatDataToSubmit(fecha)[0]
-<<<<<<< HEAD
-                let fechaFinal= formatDataToSubmit(fecha)[1]   
-                
-=======
                 let fechaFinal= formatDataToSubmit(fecha)[1]
 
->>>>>>> formulario-creacion-de-producto
                 let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
 
                 datos = await axios.get(url)
 
                 busqueda(datos.data)
-<<<<<<< HEAD
-    
-
-            }
-            
-=======
 
 
             }
 
->>>>>>> formulario-creacion-de-producto
         }
         if(buscadorFechaVacio){
             if(!buscadorCiudadVacio){
 
 
                 let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> formulario-creacion-de-producto
 
                 datos = await axios.get(url)
 
                 busqueda(datos.data)
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> formulario-creacion-de-producto
 
             }else{
 
                 let url = `http://localhost:8080/productos/listarTodos`
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> formulario-creacion-de-producto
 
                 datos = await axios.get(url)
 
                 busqueda(datos.data)
-<<<<<<< HEAD
-    
-                
-=======
 
 
->>>>>>> formulario-creacion-de-producto
 
             }
 
@@ -188,11 +142,7 @@ const Search = ({ busqueda }) => {
     const handleChange = (e) => {
         let cityFilter = e.target.value;
         let ciudadesFiltradas = ciudadesList.filter(ciudad => ciudad.includes(cityFilter))
-<<<<<<< HEAD
-        setCiudadesFiltradas(ciudadesFiltradas)     
-=======
         setCiudadesFiltradas(ciudadesFiltradas)
->>>>>>> formulario-creacion-de-producto
         console.log(ciudadesFiltradas);
         let displayOptions = document.querySelector('.displayOptions')
         displayOptions.hidden = false;
@@ -206,11 +156,7 @@ const Search = ({ busqueda }) => {
         let dataFormateadaInicio
         let fMount, iMount;
         let fDay, iDay;
-<<<<<<< HEAD
-        if(dataSinFormatear.toString() !== ['Invalid Date']){
-=======
         if(dataSinFormatear.toString() != ['Invalid Date']){
->>>>>>> formulario-creacion-de-producto
             [fInicio, fFin] = dataSinFormatear;
             if((fInicio.getMonth() + 1) < 10){
                 iMount = `0${(fInicio.getMonth() + 1)}`
@@ -252,17 +198,7 @@ const Search = ({ busqueda }) => {
         let displayOptions = document.querySelector('.displayOptions')
         inputCiudad.value = e.target.textContent
         displayOptions.hidden = true;
-<<<<<<< HEAD
-        
-    }
 
-
-    const onBlur = () => {
-        let displayOptions = document.querySelector('.displayOptions')
-        displayOptions.hidden = true;
-=======
-
->>>>>>> formulario-creacion-de-producto
     }
 
 
@@ -282,31 +218,6 @@ const Search = ({ busqueda }) => {
         <div className="searchContainer">
             <form onSubmit={HandleSubmit} className='d-flex align-items-center pt-3'>
                 <div className="iconInput">
-<<<<<<< HEAD
-                    
-                    <span className='icon iconLocation'>
-                        <FontAwesomeIcon icon={faLocationDot} />
-                    </span>
-                    <input onChange={handleChange} autoComplete='off' onBlur={onBlur} name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
-                        <div hidden={true} className='displayOptions'>
-                            {ciudadesFiltradas !== [''] ? 
-                                ciudadesFiltradas.map((e, i) =>
-                                    (
-                                        <>
-                                        <div className='cityContainer'>
-                                            <span className='cityIcon'>
-                                                <FontAwesomeIcon icon={faLocationDot} />
-                                            </span>
-                                            <div className="ciudad" fecha={e} onClick={displayNone} key={i} >
-                                                <p className='cityName' style={{margin:"0px"}}>{e}</p> <p className='countryName' style={{margin:'0px'}}>Argentina</p>
-                                            </div> 
-
-                                        </div>
-                                            
-                                        </>
-                                    )
-                                    
-=======
 
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot} />
@@ -321,33 +232,16 @@ const Search = ({ busqueda }) => {
                                         </>
                                     )
 
->>>>>>> formulario-creacion-de-producto
                                 ):
                                 (ciudadesList.map((e, i) =>
                                     (
                                         <>
-<<<<<<< HEAD
-                                        <div className='cityContainer'>
-                                            <span className='cityIcon'>
-                                                <FontAwesomeIcon icon={faLocationDot} />
-                                            </span>
-                                            <div className="ciudad" fecha={e} onClick={displayNone} key={i} >
-                                                <p className='cityName' style={{margin:"0px"}}>{e}</p> <p className='countryName' style={{margin:'0px'}}>Argentina</p>
-                                            </div> 
-                                        </div>
-                                        </>
-                                    )
-                                    
-                                ))}
-                            
-=======
                                             <div className="iconInput ciudad" fecha={e} onClick={displayNone} key={"ciudad_" + i} >{e}</div>
                                         </>
                                     )
 
                                 ))}
 
->>>>>>> formulario-creacion-de-producto
                         </div>
                 </div>
                 <div className="iconInput">

@@ -45,10 +45,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
                 .disable()
-<<<<<<< HEAD
-                // Para acceder a la documentación
-=======
->>>>>>> formulario-creacion-de-producto
                 .authorizeRequests()
                 .antMatchers("/v3/api-docs/**",
                         "/swagger-ui*", "/swagger-ui/**").permitAll()

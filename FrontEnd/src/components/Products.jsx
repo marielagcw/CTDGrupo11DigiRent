@@ -28,7 +28,6 @@ export default function Products() {
         console.log(error);
     }
     let {
-        nombreProducto,
         tituloDescripcion,
         descripcion,
         imagenes,
@@ -73,11 +72,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            {isPending ? <Spinner /> : <ProductMap />}
-=======
             {isPending ? <Spinner /> : <ProductMap lat = {9.423765} lng={-1.664428} />}
->>>>>>> formulario-creacion-de-producto
             {isPending ? <Spinner /> : <ProductPolitics politics={politicas} />}
             <Footer />
         </div>

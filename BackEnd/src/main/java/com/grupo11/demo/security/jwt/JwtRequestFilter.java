@@ -62,11 +62,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             logger.debug("Usuario no encontrado, request anonima", e);
         } catch (MalformedJwtException e){
             logger.debug("Jwt malformado, request anonima", e);
-<<<<<<< HEAD
-=======
         } catch (Exception e){
             logger.info("Exception en checkeo de token, set request anonimo", e);
->>>>>>> formulario-creacion-de-producto
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

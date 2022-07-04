@@ -21,13 +21,9 @@ export default function UserInfo({userInfo}) {
 {/*             {btn !== 'admin' && <Link to='/admin'>
                 <button className='btn btn-lg btn-border-primary' id='userAdmin'>Administración</button>
                 </Link>} */}
-<<<<<<< HEAD
-            <a id="btn-admin" className="text-link" href="/admin">Administración</a>
-=======
              <MostrarSegunRol rol="Administrador">
                 <a id="btn-admin" className="text-link" href="/admin">Administración</a>
             </MostrarSegunRol> 
->>>>>>> formulario-creacion-de-producto
             <div id="logo-span" className='user-logo'><span>{getLogo()}</span></div>
             <div className='d-flex flex-column'>
             <span id="info-us">Hola, </span>
