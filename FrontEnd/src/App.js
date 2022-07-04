@@ -3,12 +3,15 @@ import LogInForm from './components/LogInForm';
 import RegistreForm from './components/RegistreForm';
 import Products from './components/Products';
 import Reserva from './components/Reserva';
-import ProductoForm from './components/ProductoForm';
+import TemplateReservaExitosa from './components/TemplateReservaExitosa';
+import TempCreacionProductoExitosa from './components/TemplateProductoExitosa';
+
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+import ProductoForm from './components/ProductoForm';
 
 
 function App() {
@@ -22,7 +25,9 @@ function App() {
         {/* <Route path="/products" element={<Products />} />
         <Route path='/test' element={<Test />} /> */}
         <Route path="/reserva/:productId" element= {<Reserva />}/>
-        <Route path="/admin" element={<ProductoForm/>}/>
+        <Route path="/confirmacionReservaExitosa" element={<TemplateReservaExitosa />}/>
+        <Route path="/admin" element={<ProductoForm />}/>
+        <Route path="/creacionProductoExitosa" element={<TempCreacionProductoExitosa />}/>
       </Routes>
     </BrowserRouter>
 

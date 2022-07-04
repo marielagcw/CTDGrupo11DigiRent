@@ -46,28 +46,85 @@ export default function ProductoForm() {
   // POST Nueva categoría
   const urlPostCategoria = "http://localhost:8080/categorias/agregar";
   const postApiCategoria = () => {
-    axios.post(urlPostCategoria, bodyCategoria).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios
+      .post(urlPostCategoria, bodyCategoria)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          console.log(res.data);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          Swal.fire(
+            "Su categoría fue agregada con éxito",
+            "El formulario será reiniciado para que pueda ver su categoría entre las opciones",
+            "success"
+          );
+        }
+      })
+      .catch(
+        Swal.fire(
+          "Ups... algo no está bien",
+          "La categoría no pudo ser agregada, intenta nuevamente",
+          "error"
+        )
+      );
   };
 
   // POST Nueva Ciudad
   const urlPostCiudad = "http://localhost:8080/ciudades/agregar";
   const postApiCiudad = () => {
-    axios.post(urlPostCiudad, bodyCiudad).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios
+      .post(urlPostCiudad, bodyCiudad)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          console.log(res.data);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          Swal.fire(
+            "Su ciudad fue agregada con éxito",
+            "El formulario será reiniciado para que pueda ver su ciudad entre las opciones",
+            "success"
+          );
+        }
+      })
+      .catch(
+        Swal.fire(
+          "Ups... algo no está bien",
+          "La ciudad no pudo ser agregada, intenta nuevamente",
+          "error"
+        )
+      );
   };
 
   // POST Nueva característica
   const urlPostCaracteristica = "http://localhost:8080/caracteristicas/agregar";
   const postApiCaracteristica = () => {
-    axios.post(urlPostCaracteristica, bodyCaracteristica).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios
+      .post(urlPostCaracteristica, bodyCaracteristica)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          console.log(res.data);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          Swal.fire(
+            "Su característica fue agregada con éxito",
+            "El formulario será reiniciado para que pueda ver su característica entre las opciones",
+            "success"
+          );
+        }
+      })
+      .catch(
+        Swal.fire(
+          "Ups... algo no está bien",
+          "La caracteristica no pudo ser agregada, intenta nuevamente",
+          "error"
+        )
+      );
   };
 
   /* ------------------------------ POST Nuevo Producto ----------------------------- */
@@ -76,13 +133,26 @@ export default function ProductoForm() {
     axios
       .post(urlPostProducto, bodyProducto)
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        postApiImagenes(res.data.id);
+        if (res.status === 200) {
+          console.log(res);
+          console.log(res.data);
+          postApiImagenes();
+          navigate("/creacionProductoExitosa");
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          Swal.fire(
+            "Su Producto fue agregado con éxito",
+            "Gracias por confiar en nosotros!",
+            "success"
+          );
+        }
       })
       .catch(
         Swal.fire(
-          "El producto no pudo ser agregado, verifique los campos ingresados e intente nuevamente"
+          "Ups... algo no está bien",
+          "El producto no pudo ser agregado, intenta nuevamente",
+          "error"
         )
       );
   };
@@ -188,7 +258,7 @@ export default function ProductoForm() {
     categoria: { id: datosForm.categoria },
     ciudad: { id: datosForm.ciudad },
     politicas: [], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
-    //caracteristicas: datosForm.caracteristicaState
+    caracteristicas: datosForm.caracteristicaState,
   };
 
   /* -------------------------------------------------------------------------- */
@@ -482,9 +552,9 @@ export default function ProductoForm() {
           {/* -------------------------- Boton crear producto -------------------------- */}
           <div id="botonCrear" className="col-md-12 align-content-center">
             <button
+              type="submit"
               className="btn btn-primary btn-lg m-3"
               onClick={() => {
-                navigate("/")
                 console.log(datosForm);
               }}
             >
@@ -557,7 +627,9 @@ export default function ProductoForm() {
         titulo="Agregar Ciudad"
         mostrar={modalCiudad}
         setMostrar={setModalCiudad}
-        sendClick={() => postApiCiudad()}
+        sendClick={() => {
+          postApiCiudad();
+        }}
       >
         <Form>
           <Form.Group className="mb-3" controlId="Form.ControlInput1">
@@ -606,7 +678,9 @@ export default function ProductoForm() {
         titulo="Agregar Característica"
         mostrar={modalCaracteristica}
         setMostrar={setModalCaracteristica}
-        sendClick={() => postApiCaracteristica()}
+        sendClick={() => {
+          postApiCaracteristica();
+        }}
       >
         <Form>
           <Form.Group className="mb-3" controlId="Form.ControlInput1">

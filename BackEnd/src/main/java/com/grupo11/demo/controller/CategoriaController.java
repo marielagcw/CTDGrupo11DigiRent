@@ -24,6 +24,9 @@ public class CategoriaController {
 
     @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody CategoriaDTO categoria) {
+        if(categoria.getTitulo().equals("")){
+            return ResponseEntity.badRequest().body("Los datos están incompletos");
+        }
         categoriaService.agregar(categoria);
         return ResponseEntity.ok(categoria);
     }

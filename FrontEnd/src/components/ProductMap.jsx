@@ -11,8 +11,8 @@ export default function ProductMap () {
             <div className = "mapa-contenedor">
                 <MapContainer center={[-34.6037, -58.3816]} zoom={13}>
                 <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"   
-                    attribution='@ Openstreetmap contributors'  
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='@ Openstreetmap contributors'
                 />
                 <Marker
                     title= "Estadio Monumental"
@@ -21,7 +21,7 @@ export default function ProductMap () {
                         <div>
                             <p>Estadio Monumental</p>
                         </div>
-                    }   
+                    }
                 />
                 </MapContainer>
             </div>

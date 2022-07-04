@@ -37,6 +37,9 @@ public class CaracteristicaController {
 
     @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody CaracteristicaDTO caracteristica) {
+        if(caracteristica.getNombre().equals("")){
+            return ResponseEntity.badRequest().body("Los datos están incompletos");
+        }
         caracteristicaService.agregar(caracteristica);
         return ResponseEntity.ok(caracteristica);
     }

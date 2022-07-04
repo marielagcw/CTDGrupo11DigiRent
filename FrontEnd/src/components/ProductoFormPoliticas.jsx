@@ -111,23 +111,29 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
 
 // POST Nuevo elemento política: normas
 const urlElementosPolitica = "http://localhost:8080/elementospolitica/agregar";
+const jwt = JSON.parse(localStorage.getItem("jwt"))?.jwt;
+const config = { headers: { Authorization: `Bearer ${jwt}` } };
+console.log(jwt)
 const postApiNormas = (datosForm, setDatosForm) => {
-  axios.post(urlElementosPolitica, datosForm.politicasNormas).then((res) => {
-    // Obtener el id del objeto que viene en la respuesta
-    console.log(res);
-    console.log(res.data);
-    setDatosForm((old) => {
-      return {
-        ...old,
-        politicasNormas: res.data,
-      };
+  axios
+    .post(urlElementosPolitica, datosForm.politicasNormas, config)
+    .then((res) => {
+      // Obtener el id del objeto que viene en la respuesta
+      console.log(res);
+      console.log(res.data);
+      setDatosForm((old) => {
+        return {
+          ...old,
+          politicasNormas: res.data,
+        };
+      });
     });
-  });
 };
 
 // POST Nuevo elemento política: salud
+
 const postApiSalud = (datosForm, setDatosForm) => {
-  axios.post(urlElementosPolitica, datosForm.politicasSalud).then((res) => {
+  axios.post(urlElementosPolitica, datosForm.politicasSalud, config).then((res) => {
     // Obtener el id del objeto que viene en la respuesta
     console.log(res);
     console.log(res.data);
@@ -143,7 +149,7 @@ const postApiSalud = (datosForm, setDatosForm) => {
 // POST Nuevo elemento política: cancelación
 const postApiCancelacion = (datosForm, setDatosForm) => {
   axios
-    .post(urlElementosPolitica, datosForm.politicasCancelacion)
+    .post(urlElementosPolitica, datosForm.politicasCancelacion, config)
     .then((res) => {
       // Obtener el id del objeto que viene en la respuesta
       console.log(res);
