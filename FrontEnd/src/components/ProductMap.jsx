@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
+import React from 'react';
+import {MapContainer, Marker, TileLayer} from 'react-leaflet';
 import '../styles/ProductMap.css';
-
+import ElementsMap from './ElementsMap';
 
 export default function ProductMap () {
     return (
@@ -14,15 +14,7 @@ export default function ProductMap () {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"   
                     attribution='@ Openstreetmap contributors'  
                 />
-                <Marker
-                    title= "Estadio Monumental"
-                    position={[-34.54511176390258, -58.44975344474727]}
-                    Popup={
-                        <div>
-                            <p>Estadio Monumental</p>
-                        </div>
-                    }   
-                />
+                <ElementsMap/>
                 </MapContainer>
             </div>
         </div>
