@@ -12,7 +12,7 @@ import '../styles/Search.css'
 
 const Search = ({ busqueda }) => {
 
-    const [today, setToday] = useState(new Date)
+    const [today, setToday] = useState(new Date())
     const [widthWindow, setWidthWindow] = useState(0);
     const [formData, setFormData] = useState({})
     const [datosFiltrados, setDatosFiltrados] = useState({})
@@ -29,6 +29,7 @@ const Search = ({ busqueda }) => {
                 return ciudad_id = i + 1
             }
         })
+        
         let buscadorCiudadVacio = ciudad_id === null
         let buscadorFechaVacio = formatDataToSubmit(fecha)[0] === ''
         let datos = '';
@@ -156,7 +157,7 @@ const Search = ({ busqueda }) => {
         let dataFormateadaInicio
         let fMount, iMount;
         let fDay, iDay;
-        if(dataSinFormatear.toString() != ['Invalid Date']){
+        if(dataSinFormatear.toString() !== ['Invalid Date']){
             [fInicio, fFin] = dataSinFormatear;
             if((fInicio.getMonth() + 1) < 10){
                 iMount = `0${(fInicio.getMonth() + 1)}`

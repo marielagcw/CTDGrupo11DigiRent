@@ -2,7 +2,6 @@ import Home from './components/Home';
 import LogInForm from './components/LogInForm';
 import RegistreForm from './components/RegistreForm';
 import Products from './components/Products';
-import ProductDetails from './components/ProductDetails';
 import Reserva from './components/Reserva';
 import TemplateReservaExitosa from './components/TemplateReservaExitosa';
 

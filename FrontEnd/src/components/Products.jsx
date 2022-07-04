@@ -28,6 +28,7 @@ export default function Products() {
         console.log(error);
     }
     let {
+        nombreProducto,
         tituloDescripcion,
         descripcion,
         imagenes,
@@ -72,7 +73,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-            {isPending ? <Spinner /> : <ProductMap lat = {9.423765} lng={-1.664428} />}
+            {isPending ? <Spinner /> : <ProductMap />}
             {isPending ? <Spinner /> : <ProductPolitics politics={politicas} />}
             <Footer />
         </div>
