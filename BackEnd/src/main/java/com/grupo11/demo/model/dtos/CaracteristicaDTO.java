@@ -7,8 +7,8 @@ import java.util.Set;
 public class CaracteristicaDTO {
     private Integer id;
     private String nombre;
-    private Boolean estaDiponible;
     private Set<Producto> productos = new HashSet<>();
+    private String icono;
 
     public CaracteristicaDTO() {
     }
@@ -31,13 +31,6 @@ public class CaracteristicaDTO {
         this.nombre = nombre;
     }
 
-    public Boolean getEstaDiponible() {
-        return estaDiponible;
-    }
-
-    public void setEstaDiponible(Boolean estaDiponible) {
-        this.estaDiponible = estaDiponible;
-    }
 
     public Set<Producto> getProductos() {
         return productos;
@@ -45,5 +38,13 @@ public class CaracteristicaDTO {
 
     public void setProductos(Set<Producto> productos) {
         this.productos = productos;
+    }
+
+    public String getIcono() {
+        return icono;
+    }
+
+    public void setIcono(String icono) {
+        this.icono = icono;
     }
 }

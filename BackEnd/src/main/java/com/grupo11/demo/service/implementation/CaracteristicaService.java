@@ -6,6 +6,8 @@ import com.grupo11.demo.model.dtos.CaracteristicaDTO;
 import com.grupo11.demo.repository.ICaracteristicaRepository;
 import com.grupo11.demo.service.ICaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -29,9 +31,9 @@ public class CaracteristicaService implements ICaracteristicaService {
 
     // FIND ALL
     @Override
-    public Set<CaracteristicaDTO> listarTodo() {
-        List<Caracteristica> caracteristicas = repository.findAll();
-        Set<CaracteristicaDTO> CaracteristicaDTOList = new HashSet<>();
+    public List<CaracteristicaDTO> listarTodo(Pageable pageable) {
+        Page<Caracteristica> caracteristicas = repository.findAll(pageable);
+        List<CaracteristicaDTO> CaracteristicaDTOList = new ArrayList<>();
         for (Caracteristica caracteristica : caracteristicas) {
             CaracteristicaDTOList.add(mapper.convertValue(caracteristica, CaracteristicaDTO.class));
         }

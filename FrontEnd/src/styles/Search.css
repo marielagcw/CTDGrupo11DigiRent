@@ -52,6 +52,7 @@
     position: absolute;
     z-index: 1;
     color: black;
+<<<<<<< HEAD
     padding: 0px 15px;
 
 }
@@ -83,6 +84,12 @@
     margin-bottom: 0px !important;
 }
 
+=======
+    padding-left: 27px;
+
+}
+
+>>>>>>> formulario-creacion-de-producto
 
 @media (770px <= width <= 1200px ){
     .calandary-container{

@@ -42,8 +42,15 @@ const Header = ({ user, btn }) => {
             </div>
             <p className='frase ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
           </div>
-          {userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :  
-            <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
+          
+          {userSession /* El usuario inició sesión? */
+          ? widthWindow > 600 /* La ventana tiene un ancho mayor a 600? */
+          ? <UserInfo userInfo={JSON.parse(userSession)} />  /* Si las 2 anteriores son "si" entonces renderiza los datos del usuario */
+          : " " /* Si la ventana tiene un ancho menor o igual a 600 entonces no renderiza nada */
+          /* Si el usuario no inició sesión entonces...*/
+          : <div className={widthWindow > 600 /* La ventana es mayor a 600? */
+          ? 'session-manager' /* Si la respuesta es "si" aplica la clase session-manager en el css y renderiza botones, si la respuesta es "no" aplica la clase session-manager display-none */
+          : 'session-manager display-none'}> 
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
               </Link>}
@@ -51,10 +58,10 @@ const Header = ({ user, btn }) => {
                 <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' >Iniciar sesión</button>
               </Link>}
             </div>}
-          {widthWindow <= 600 && <Menu right width={'60%'} styles={{ height: '20%' }}>
-          
-          { userSession ? 
-                <>
+          {/* la ventana es menor o igual a 600 entonces cambia la lógica y aparece el Off canvas */ 
+          widthWindow <= 600 && <Menu right width={'60%'} styles={{ height: '20%' }}>
+          { userSession /* El usuario inició sesión?  */
+                ? <> {/* Sí inició sesión, entonces se renderiza nombre */}
                   <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
                     <UserInfoMobile userInfo={JSON.parse(userSession)} />
                   </div>
@@ -64,8 +71,9 @@ const Header = ({ user, btn }) => {
                   </div>
                   <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
                 </>
-              :
-              <>
+              
+              /* No inició sesión, entonces se renderizan botones */
+             :<>
               <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
                 <a id="home" className="menu-item" href="/">Menú</a> 
               </div>

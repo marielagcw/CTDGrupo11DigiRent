@@ -47,9 +47,11 @@ const LogInForm = () => {
   const navigate = useNavigate()
   const [passwordType, setPasswordType] = useState('password');
   const [logged, setLogged] = useState(window.localStorage.getItem('jwt'))
+console.log(window.history)
 
   useEffect(() => {
     if (logged) {
+      if(window.history)
       navigate('/');
     }
   }, [logged])
