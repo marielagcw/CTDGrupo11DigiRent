@@ -4,6 +4,7 @@ import RegistreForm from './components/RegistreForm';
 import Products from './components/Products';
 import Reserva from './components/Reserva';
 import TemplateReservaExitosa from './components/TemplateReservaExitosa';
+import TempCreacionProductoExitosa from './components/TemplateProductoExitosa';
 
 import {
   BrowserRouter,
@@ -24,6 +25,7 @@ function App() {
         <Route path='/test' element={<Test />} /> */}
         <Route path="/reserva/:productId" element= {<Reserva />}/>
         <Route path="/confirmacionReservaExitosa" element={<TemplateReservaExitosa />}/>
+        <Route path="/creacionProductoExitosa" element={<TempCreacionProductoExitosa />}/>
       </Routes>
     </BrowserRouter>
 
