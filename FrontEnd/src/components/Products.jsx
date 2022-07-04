@@ -28,6 +28,7 @@ export default function Products() {
         console.log(error);
     }
     let {
+        nombreProducto,
         tituloDescripcion,
         descripcion,
         imagenes,

@@ -1,13 +1,15 @@
-import I from 'leaflet';
+import L from 'leaflet';
 
-export const IconMapLocation = I.Icon({
+export const IconMapLocation = new L.Icon({
     iconUrl: require("../img/marker-icon-rojo.png"),
     iconRetinaUrl: require("../img/marker-icon-rojo.png"),
-    iconAnchor: null,
-    shadowUrl: null,
+    iconSize: [25, 35],
+    iconAnchor: [10, 35],
+    popupAnchor: [0, -35],
+    /*shadowUrl: null,
     shadowSize: null,
-    shadowAnchor: null,
-    iconSize: [35, 35],
-    className: 'leaflet-div-icon',
+    shadowAnchor: null,*/
+    className: 'leaflet-venue-icon',
 });
+
 

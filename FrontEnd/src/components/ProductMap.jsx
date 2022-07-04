@@ -1,25 +1,29 @@
 import React from 'react';
-import {MapContainer, Marker, TileLayer} from 'react-leaflet';
+import {MapContainer, TileLayer} from 'react-leaflet';
 import '../styles/ProductMap.css';
+import 'leaflet/dist/leaflet.css';
 import ElementsMap from './ElementsMap';
 
-export default function ProductMap () {
+const ProductMap = () => {
     return (
         <div id="map">
             <h2 className='map-title title'>¿Dónde vas a estar?</h2>
             <hr className='map-hr' />
             <div className = "mapa-contenedor">
-                <MapContainer center={[-34.6037, -58.3816]} zoom={13}>
+                <MapContainer center={[-34.54508863095704, -58.44979770434816]} zoom={16} scrollWheelZoom={false}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"   
                     attribution='@ Openstreetmap contributors'  
                 />
-                <ElementsMap/>
+                <ElementsMap />
                 </MapContainer>
             </div>
         </div>
     );
 }
+
+export default ProductMap;
+
 
 
 
