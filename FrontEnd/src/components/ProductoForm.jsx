@@ -12,6 +12,7 @@ import ProductoFormAgregar from "./ProductoFormAgregar";
 import axios from "axios";
 import { ProductoFormPoliticas } from "./ProductoFormPoliticas";
 import ProductoFormImagenes from "./ProductoFormImagenes";
+import Swal from "sweetalert2";
 
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -72,9 +73,33 @@ export default function ProductoForm() {
   /* ------------------------------ POST Nuevo Producto ----------------------------- */
   const urlPostProducto = "http://localhost:8080/productos/agregar";
   const postApiProducto = () => {
-    axios.post(urlPostProducto, bodyProducto).then((res) => {
-      console.log(res);
-      console.log(res.data);
+    axios
+      .post(urlPostProducto, bodyProducto)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        postApiImagenes(res.data.id);
+      })
+      .catch(
+        Swal.fire(
+          "El producto no pudo ser agregado, verifique los campos ingresados e intente nuevamente"
+        )
+      );
+  };
+  const urlPostImagen = "http://localhost:8080/imagenes/agregar";
+  const postApiImagenes = (id) => {
+    datosForm.imagenState.map((imagen) => {
+      axios
+        .post(urlPostImagen, {
+          url: imagen.url,
+          titulo: imagen.titulo,
+          producto: { id: id },
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+        })
+        .catch(Swal.fire("Error al cargar las imágenes"));
     });
   };
 
@@ -163,7 +188,7 @@ export default function ProductoForm() {
     categoria: { id: datosForm.categoria },
     ciudad: { id: datosForm.ciudad },
     politicas: [], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
-    caracteristicas: datosForm.caracteristicaState,
+    //caracteristicas: datosForm.caracteristicaState
   };
 
   /* -------------------------------------------------------------------------- */
@@ -192,35 +217,56 @@ export default function ProductoForm() {
 
   // Eliminar algunas de las opciones de características elegidas del listado características
   const eliminarCaracteristica = (caracteristica) => {
+    const posicionCaracteristica = datosForm.caracteristicaState
+      .map((caract) => {
+        return caract.nombreCaracteristica;
+      })
+      .indexOf(caracteristica.nombreCaracteristica);
+    const eliminarElemento = (array) => {
+      array.splice(posicionCaracteristica, 1);
+      console.log("array" + JSON.stringify(array));
+      return [...array];
+    };
     setDatosForm((datos) => {
       return {
         ...datos,
-        caracteristicaState: datos.caracteristicaState.filter(
-          (caract) => caracteristica.id !== caract.id
-        ),
+        caracteristicaState: eliminarElemento(datos.caracteristicaState),
       };
     });
+    console.log(JSON.stringify(datosForm.caracteristicaState));
   };
 
   /* ------------------- Renderizado del listado de imágenes ------------------ */
   // Guardamos los datos que vienen del componente ProductoFormSelect para poder renderizar el listado de imágenes
-  const agregarImagen = (imagen) => {
+  const agregarImagen = (imagenRecibidaAgregar) => {
     setDatosForm((datos) => {
       return {
         ...datos,
-        imagenState: [...datos.imagenState, imagen],
+        imagenState: [...datos.imagenState, { ...imagenRecibidaAgregar }],
       };
     });
+    console.log(JSON.stringify(imagenRecibidaAgregar));
   };
 
   // Eliminar algunas de las opciones de imagenes subidas del listado imagenes
   const eliminarImagen = (imagen) => {
+    const posicionImagen = datosForm.imagenState
+      .map((imagen) => {
+        return imagen.url;
+      })
+      .indexOf(imagen.url);
+    const eliminarElemento = (array) => {
+      array.splice(posicionImagen, 1);
+      console.log("array" + JSON.stringify(array));
+      return [...array];
+    };
     setDatosForm((datos) => {
       return {
         ...datos,
-        imagenState: datos.imagenState.filter((imag) => imagen.id !== imag.id),
+        imagenState: eliminarElemento(datos.imagenState),
       };
     });
+    console.log(JSON.stringify(datosForm.imagenState));
   };
 
   /* -------------------------------------------------------------------------- */
@@ -403,7 +449,10 @@ export default function ProductoForm() {
                 />
               );
             })}
-            <ProductoFormSelect agregarCaracteristica={agregarCaracteristica} />
+            <ProductoFormSelect
+              agregarCaracteristica={agregarCaracteristica}
+              eliminarCaracteristica={eliminarCaracteristica}
+            />
           </fieldset>
           {/* --------------------------- Contenedor políticas -------------------------- */}
           <ProductoFormPoliticas
@@ -413,7 +462,7 @@ export default function ProductoForm() {
           {/* --------------------------- Contenedor imagenes -------------------------- */}
           <fieldset>
             <legend className="mt-2 fieldsetProductoFormulario">
-              <h3 className="mt-3 mb-0">Cargar imagen</h3>
+              <h3 className="mt-3 mb-3">Cargar imagen</h3>
             </legend>
             {datosForm.imagenState.map((imagen, i) => {
               return (
@@ -425,8 +474,23 @@ export default function ProductoForm() {
                 />
               );
             })}
-            <ProductoFormImagenes agregarImagen={agregarImagen} />
+            <ProductoFormImagenes
+              agregarImagen={agregarImagen}
+              eliminarImagen={eliminarImagen}
+            />
           </fieldset>
+          {/* -------------------------- Boton crear producto -------------------------- */}
+          <div id="botonCrear" className="col-md-12 align-content-center">
+            <button
+              className="btn btn-primary btn-lg m-3"
+              onClick={() => {
+                navigate("/")
+                console.log(datosForm);
+              }}
+            >
+              Crear
+            </button>
+          </div>
         </form>
       </div>
       {/* ----------------------------- Modal Categoría ---------------------------- */}
@@ -478,7 +542,10 @@ export default function ProductoForm() {
               required
               autoCapitalize="words"
               onChange={(e) => {
-                setDatosCategoria({ ...datosCategoria, url: e.target.value });
+                setDatosCategoria({
+                  ...datosCategoria,
+                  url: e.target.value,
+                });
               }}
             />
           </Form.Group>

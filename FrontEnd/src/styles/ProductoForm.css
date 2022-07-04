@@ -48,3 +48,8 @@ div.contenedorAgregarNuevo{
 div.contenedorAgregarNuevo p{
     text-align: end;
 }
+div#botonCrear{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
