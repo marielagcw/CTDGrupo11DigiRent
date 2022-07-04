@@ -1,11 +1,10 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import { useNavigate } from 'react-router-dom';
 import "../styles/TemplateReservaExitosa.css"
-// import { Navigate } from 'react-router-dom';
 
 export default function Reserva() {
-    
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <>
@@ -19,7 +18,7 @@ export default function Reserva() {
               Su reserva se ha realizado con éxito.
             </p>
             
-            <a href="#" className="btn btn-primary btn-lg">
+            <a href="#" className="btn btn-primary btn-lg" onClick={()=>navigate('/')}>
               Ok
             </a>
 
