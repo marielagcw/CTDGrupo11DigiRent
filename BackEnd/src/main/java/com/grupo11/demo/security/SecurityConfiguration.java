@@ -74,8 +74,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/productos/listarTodos**", "/reservas**").hasAnyAuthority("ROLE_USUARIO_PRIVADO", "ROLE_ADMINISTRADOR")
                 // Los demás endpoints requieren siempre permisos
                 .anyRequest()
-                .permitAll()
-                //.authenticated()
+                //.permitAll()
+                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

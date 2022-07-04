@@ -22,7 +22,7 @@ function App() {
         {/* <Route path="/products" element={<Products />} />
         <Route path='/test' element={<Test />} /> */}
         <Route path="/reserva/:productId" element= {<Reserva />}/>
-        <Route path="/nuevoProducto" element={<ProductoForm/>}/>
+        <Route path="/admin" element={<ProductoForm/>}/>
       </Routes>
     </BrowserRouter>
 

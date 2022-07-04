@@ -94,9 +94,7 @@ const ProductoFormAgregar = ({
                 id="button-addon2"
                 disabled={caracteristica?.nombreCaracteristica === ""}
                 onClick={(e) => {
-                  setCaracteristica({
-                    insertado: e.target.value,
-                  });
+                  e.preventDefault();
                   agregarCaracteristica({
                     ...caracteristica,
                     insertado: true,
@@ -110,6 +108,7 @@ const ProductoFormAgregar = ({
               <button
                 className="btn btn-primary ms-2 mark"
                 onClick={(e) => {
+                  e.preventDefault();
                   eliminarCaracteristica(caracteristica);
                 }}
               >
