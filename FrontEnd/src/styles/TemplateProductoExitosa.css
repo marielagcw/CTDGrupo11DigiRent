@@ -11,9 +11,18 @@ div#prodexitosa-container{
 
 .templprod-body{
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 638px;
     height: 302px;
-    left: 364px;
-    top: 233px;
     background-color: white;
+}
+
+div#textoproducto{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }

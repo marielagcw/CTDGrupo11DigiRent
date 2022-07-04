@@ -1,30 +1,37 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import {useNavigate } from 'react-router-dom';
 import "../styles/TemplateProductoExitosa.css";
 
-export default function ProductoForm() {
-  return (
-    <>
-      <Header />
-      <div id="prodexitosa-container">
-        <div className="templateproducto text-center">
-          <div className="templprod-body">Confirmación alta producto</div>
-        </div>
-      </div>
 
-      {/* <div className="card text-center" style="width: 18rem;">
-            <div className="card-body">
-              <h5 className="card-title">Special title treatment</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
+export default function ProductoForm() {
+    const navigate = useNavigate();
+
+    return (
+        <>
+          <Header />
+          <div id="prodexitosa-container">
+          <div className="templateproducto text-center">
+          <div className="templprod-body">
+            <div id="textoproducto">
+            <p  className="templprod-text">
+              Tu propiedad se ha creado con éxito.
+            </p>
+            <a href="#" className="btn btn-primary btn-lg" onClick={()=>navigate('/')}
+>
+              volver
+            </a>
+
             </div>
-          </div> */}
-      <Footer />
-    </>
-  );
+            
+          </div>
+          </div>   
+          </div>
+          <Footer />
+        </>
+      );
+
+    
+
+
 }
