@@ -10,12 +10,16 @@ export default function ProductoForm() {
           <div id="prodexitosa-container">
           <div className="templateproducto text-center">
           <div className="templprod-body">
+            <div id="textoproducto">
             <p  className="templprod-text">
-              Tu propiedad se a creado con éxito.
+              Tu propiedad se ha creado con éxito.
             </p>
             <a href="#" className="btn btn-primary btn-lg">
               volver
             </a>
+
+            </div>
+            
           </div>
           </div>   
           </div>

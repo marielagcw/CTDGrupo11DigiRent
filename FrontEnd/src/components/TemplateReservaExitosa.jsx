@@ -13,6 +13,7 @@ export default function Reserva() {
           <div id="resexitosa-container">
           <div className="templatereserva text-center">
           <div className="templ-body">
+            <div id="textocentrado">
             <h5 className="templ-title">¡Muchas gracias!</h5>
             <p  className="templ-text">
               Su reserva se ha realizado con éxito.
@@ -21,6 +22,9 @@ export default function Reserva() {
             <a href="#" className="btn btn-primary btn-lg">
               Ok
             </a>
+
+            </div>
+            
           </div>
           </div> 
           </div>
