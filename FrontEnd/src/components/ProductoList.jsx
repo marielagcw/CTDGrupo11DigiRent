@@ -25,7 +25,7 @@ const ProductoList = ({ search, seleccion }) => {
         } else if (validesBusqueda && validesSeleccion) {
             // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
             //endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
-            
+
             setBusqueda(true);
         }
         setUrl(endpoint);
@@ -50,7 +50,7 @@ const ProductoList = ({ search, seleccion }) => {
                 <div className='d-flex justify-content-between align-item-center flex-wrap'>
                     {!data && !search ? <Spinner /> : //Si no hay datos, render spinner
                         !search ?
-                            data.map((prod, i) => { //Si hay busqueda, render filtro 
+                            data.map((prod, i) => { //Si hay busqueda, render filtro
                                 return (
                                     <ProductoCard info={prod} key={"prod" + i} />)
                             }) :

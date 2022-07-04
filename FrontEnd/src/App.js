@@ -11,6 +11,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import ProductoForm from './components/ProductoForm';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/test' element={<Test />} /> */}
         <Route path="/reserva/:productId" element= {<Reserva />}/>
         <Route path="/confirmacionReservaExitosa" element={<TemplateReservaExitosa />}/>
+        <Route path="/admin" element={<ProductoForm />}/>
         <Route path="/creacionProductoExitosa" element={<TempCreacionProductoExitosa />}/>
       </Routes>
     </BrowserRouter>

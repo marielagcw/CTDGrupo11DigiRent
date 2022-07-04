@@ -42,7 +42,7 @@ const Header = ({ user, btn }) => {
             </div>
             <p className='frase ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
           </div>
-          {userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :  
+          {userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
             <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
@@ -52,8 +52,8 @@ const Header = ({ user, btn }) => {
               </Link>}
             </div>}
           {widthWindow <= 600 && <Menu right width={'60%'} styles={{ height: '20%' }}>
-          
-          { userSession ? 
+
+          { userSession ?
                 <>
                   <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
                     <UserInfoMobile userInfo={JSON.parse(userSession)} />

@@ -35,6 +35,9 @@ public class CiudadController {
 
     @PostMapping("/agregar")
     public ResponseEntity<?> guardar(@RequestBody CiudadDTO ciudad) {
+        if(ciudad.getNombre().equals("") || ciudad.getProvincia().equals("") || ciudad.getPais().equals("")){
+            return ResponseEntity.badRequest().body("Los datos están incompletos");
+        }
         ciudadService.agregar(ciudad);
         return ResponseEntity.ok(ciudad);
     }

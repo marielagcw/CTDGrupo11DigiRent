@@ -62,6 +62,7 @@ public class JwtService implements IJwtService {
         claims.put("Apellido", usuario.getApellido());
         claims.put("Email", usuario.getEmail());
         claims.put("Id", usuario.getId());
+        claims.put("rol", usuario.getRol().getNombre());
         return createToken(claims, userDetails.getUsername());
     }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/UserInfo.css';
 import '../styles/Navbar.css';
+ import { MostrarSegunRol } from './MostrarSegunRol';
 
 export default function UserInfo({userInfo}) {
     const navigate = useNavigate();
@@ -20,7 +21,9 @@ export default function UserInfo({userInfo}) {
 {/*             {btn !== 'admin' && <Link to='/admin'>
                 <button className='btn btn-lg btn-border-primary' id='userAdmin'>Administración</button>
                 </Link>} */}
-            <a id="btn-admin" className="text-link" href="/admin">Administración</a>
+             <MostrarSegunRol rol="Administrador">
+                <a id="btn-admin" className="text-link" href="/admin">Administración</a>
+            </MostrarSegunRol> 
             <div id="logo-span" className='user-logo'><span>{getLogo()}</span></div>
             <div className='d-flex flex-column'>
             <span id="info-us">Hola, </span>
