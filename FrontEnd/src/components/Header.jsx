@@ -31,7 +31,7 @@ const Header = ({ user, btn }) => {
   
   return (
     <>
-      <nav className='navbar navbar-light'>
+      <nav id="header" className='navbar navbar-light'>
         <div className='container-fluid'>
           <div className='logo-frase d-flex align-items-center'>
             <div className='logo' onClick={() => navigate('/')}>
@@ -42,15 +42,8 @@ const Header = ({ user, btn }) => {
             </div>
             <p className='frase ps-2 fw-bold mb-0 mobile-style'>{frase}</p>
           </div>
-          
-          {userSession /* El usuario inició sesión? */
-          ? widthWindow > 600 /* La ventana tiene un ancho mayor a 600? */
-          ? <UserInfo userInfo={JSON.parse(userSession)} />  /* Si las 2 anteriores son "si" entonces renderiza los datos del usuario */
-          : " " /* Si la ventana tiene un ancho menor o igual a 600 entonces no renderiza nada */
-          /* Si el usuario no inició sesión entonces...*/
-          : <div className={widthWindow > 600 /* La ventana es mayor a 600? */
-          ? 'session-manager' /* Si la respuesta es "si" aplica la clase session-manager en el css y renderiza botones, si la respuesta es "no" aplica la clase session-manager display-none */
-          : 'session-manager display-none'}> 
+          {userSession ? widthWindow > 600 ? <UserInfo userInfo={JSON.parse(userSession)} /> : " " :
+            <div className={widthWindow > 600 ? 'session-manager' : 'session-manager display-none'}>
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
               </Link>}
@@ -58,29 +51,28 @@ const Header = ({ user, btn }) => {
                 <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' >Iniciar sesión</button>
               </Link>}
             </div>}
-          {/* la ventana es menor o igual a 600 entonces cambia la lógica y aparece el Off canvas */ 
-          widthWindow <= 600 && <Menu right width={'60%'} styles={{ height: '20%' }}>
-          { userSession /* El usuario inició sesión?  */
-                ? <> {/* Sí inició sesión, entonces se renderiza nombre */}
+          {widthWindow <= 600 && <Menu right width={'60%'} styles={{ height: '20%' }}>
+
+          { userSession ?
+                <>
                   <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
                     <UserInfoMobile userInfo={JSON.parse(userSession)} />
                   </div>
-                  <div style={{height:'67%', display:'flex', justifyContent:'end', alignItems:'end'}}>
+                  <div style={{height:'67%', display:'flex', flexDirection:'column',justifyContent:'end', alignItems:'end'}}>
+                    <a className="text-link" href="/admin">Administración</a>
                     <p className='text-link'>¿Desea <span className='link' onClick={() => { storage.clear(); navigate('/') }}>Cerrar Sesion</span>?</p>
                   </div>
                   <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
                 </>
-              
-              /* No inició sesión, entonces se renderizan botones */
-             :<>
+              :
+              <>
               <div className='menu-home-burguer' style={{height:'175px',display:'flex' , alignItems:'end' ,justifyContent:'end', padding:'0px 10px 3px 0px'}}>
                 <a id="home" className="menu-item" href="/">Menú</a> 
               </div>
               <div style={{height:'67%',idth:'100%', padding:'0px 15px'}}>
                 {location.pathname !== '/login' && <a id="about" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/login">Inciar sesión</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
-                {location.pathname !== '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>
-                }
+                {location.pathname !== '/register' && <a id="contact" className="menu-item a-iniciar-crear" style={{display:'block', textAlign:'end', padding:'17px 0px'}} href="/register">Crear cuenta</a>}
                 <hr style={{width: '100%',color: 'black', margin:'0px', border:'none'}}/>
               </div>
               </>
