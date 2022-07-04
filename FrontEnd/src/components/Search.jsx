@@ -224,7 +224,7 @@ const Search = ({ busqueda }) => {
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
-                    <input onChange={handleChange} onBlur={displayNone} autoComplete='off' name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
+                    <input onChange={handleChange} autoComplete='off' name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
                         <div hidden={true} className='displayOptions'>
                             {ciudadesFiltradas !== [''] ? 
                                 ciudadesFiltradas.map((e, i) =>
