@@ -52,8 +52,35 @@
     position: absolute;
     z-index: 1;
     color: black;
-    padding-left: 27px;
+    padding: 0px 15px;
 
+}
+
+.cityContainer{
+    display: flex;
+    margin-left: 0px;
+    border-bottom: 1px solid var(--primary);
+    padding: 10px 0px;
+}
+
+.cityIcon{
+    font-size: x-large;
+    color: var(--tertiary);
+    padding-right: 20px;
+}
+
+.cityName{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.countyName{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--tertiary);
+    margin-bottom: 0px !important;
 }
 
 
