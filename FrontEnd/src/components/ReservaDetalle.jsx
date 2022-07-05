@@ -1,13 +1,37 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 // import {Navigate, useNavigate} from 'react-router-dom';
 import '../styles/ReservaDetalle.css';
 // import detalle from '../productos.json';
 
 
-const ReservaDetalle = () =>{
+const ReservaDetalle = ({ fechas }) => {
     // let detalleReserva = detalle.detalle;
     // const navigate = useNavigate();
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+    }
 
+    function formatDate(date) {
+        return [
+            padTo2Digits(date.getDate()),
+            padTo2Digits(date.getMonth() + 1),
+            date.getFullYear(),
+        ].join('/');
+    }
+
+    const [render, setRender] = useState(false)
+
+    useEffect(() => {
+        
+        if (fechas!= null && fechas.length > 0) {
+            setRender(true);
+        }else{
+            setRender(false);
+        }
+
+    }, [fechas])
+    
+    
     return (
         <>
             <div className="category-container m-3">
@@ -18,23 +42,27 @@ const ReservaDetalle = () =>{
                 <div className="informacionReserva m-3">
                     <h6 className="categoriaReserva">Cabañas</h6>
                     <h3 className='titleReserva'>"Cabaña en montaña"</h3>
-                    
+
                     <h6 className='ubicacionReserva'>UBICACION</h6>
                     <hr></hr>
-                    <h5 className='entradaReserva'>Chek-in</h5>
+                    {!render  ?
+                    <h5 className='entradaReserva'>Chek-in: </h5>:
+                    <h5 className='entradaReserva'>Chek-in:  {formatDate(fechas[0])}</h5>}
                     <hr></hr>
-                    <h5 className='entradaReserva'>Chek-Out</h5>
+                    {!render ?
+                    <h5 className='entradaReserva'>Chek-Out: </h5>:
+                    <h5 className='entradaReserva'>Chek-Out:  {formatDate(fechas[1])}</h5>}
                     <hr></hr>
                     <div className="containerReservaConf">
                         <button className='btn btn-primary btn-lg btn-max-width'>Confirmar reserva</button>
                     </div>
-                    
+
                     {/* <button type="button" className="btn btn-primary" onClick={()=>navigate('/products')}>Confirmar Reserva</button> */}
 
-                    
+
 
                 </div>
-                
+
             </div>
         </>
     )

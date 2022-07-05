@@ -61,7 +61,7 @@ export default function Reserva() {
                     </div>
                     <div className='col-md-4'>
                         <div id='detalleReserva'>
-                            <ReservaDetalle />
+                            <ReservaDetalle fechas={fecha} />
                         </div>
                     </div>          
                 </div>
