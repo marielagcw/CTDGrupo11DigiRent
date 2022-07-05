@@ -1,0 +1,29 @@
+div#resexitosa-container{
+    height: 90vh;
+    background-color: var(--quaternary)
+
+}
+
+.templatereserva .text-center{
+    width: 18rem;
+    
+}
+
+.templ-body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 638px;
+    height: 302px;
+    background-color: white;
+    
+}
+
+div#textocentrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}

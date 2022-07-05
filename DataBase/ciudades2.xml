@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <LastAuthor>Microsoft Office User</LastAuthor>
+  <Created>2022-06-23T03:59:12Z</Created>
+  <LastSaved>2022-06-23T03:58:55Z</LastSaved>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>16940</WindowHeight>
+  <WindowWidth>27640</WindowWidth>
+  <WindowTopX>780</WindowTopX>
+  <WindowTopY>500</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Table1">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="11" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="110" ss:Span="2"/>
+   <Row>
+    <Cell><Data ss:Type="String">id_ciudad</Data></Cell>
+    <Cell><Data ss:Type="String">nombre</Data></Cell>
+    <Cell><Data ss:Type="String">pais</Data></Cell>
+    <Cell><Data ss:Type="String">provincia</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">San Cristobal</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Santa Fe</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Huerta Grande</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Córdoba</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">La Plata</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Buenos Aires</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">Campana</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Buenos Aires</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">Goya</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Corrientes</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="String">Wheelwright</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Santa Fe</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="String">Tigre</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Buenos Aires</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="String">Gral. Juan Madariaga</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Buenos Aires</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="String">Miramar</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Buenos Aires</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="String">Mar del Plata</Data></Cell>
+    <Cell><Data ss:Type="String">Argentina</Data></Cell>
+    <Cell><Data ss:Type="String">Buenos Aires</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

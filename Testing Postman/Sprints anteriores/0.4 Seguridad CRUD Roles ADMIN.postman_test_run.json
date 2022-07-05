@@ -1,0 +1,222 @@
+{
+	"id": "ebd0b73c-beed-4b4f-9a7a-d87681483da3",
+	"name": "0.4 Seguridad CRUD Roles ADMIN",
+	"timestamp": "2022-06-25T22:30:27.862Z",
+	"collection_id": "18027182-ee082092-ea15-40bf-958d-49264961fe5c",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 9,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "30920617-e38f-4cb5-b737-5166d0f093e5",
+			"name": "Post Rol (requiere body)",
+			"url": "http://localhost:8080/roles/agregar",
+			"time": 19,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Al crear el usuario se recibe respuesta cód. 201": true
+			},
+			"testPassFailCounts": {
+				"Al crear el usuario se recibe respuesta cód. 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Al crear el usuario se recibe respuesta cód. 201": true
+				}
+			]
+		},
+		{
+			"id": "803b5a20-ddcb-4138-b503-d6303a27a17b",
+			"name": "Post Rol (requiere body)",
+			"url": "http://localhost:8080/roles/agregar",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Al crear el usuario se recibe respuesta cód. 201": true
+			},
+			"testPassFailCounts": {
+				"Al crear el usuario se recibe respuesta cód. 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Al crear el usuario se recibe respuesta cód. 201": true
+				}
+			]
+		},
+		{
+			"id": "68e10de9-7f5a-4c24-99eb-ba1a3bd916a3",
+			"name": "Get All",
+			"url": "http://localhost:8080/roles/listarTodos",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "4a5f19f2-4748-47f7-aed3-78848e612ba7",
+			"name": "Get By Id (id en la url)",
+			"url": "http://localhost:8080/roles/2",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"El id encontrado es el que se buscaba": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id encontrado es el que se buscaba": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"El id encontrado es el que se buscaba": true
+				}
+			]
+		},
+		{
+			"id": "59635cc1-9790-4227-aca5-f6d26ed1dd45",
+			"name": "Put  (id en el body)",
+			"url": "http://localhost:8080/roles/actualizar",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Al crear el usuario se recibe respuesta cód. 201": true
+			},
+			"testPassFailCounts": {
+				"Al crear el usuario se recibe respuesta cód. 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Al crear el usuario se recibe respuesta cód. 201": true
+				}
+			]
+		},
+		{
+			"id": "f19bf1d8-0d79-406f-a2f4-2784dada08e4",
+			"name": "Put  (id en la url)",
+			"url": "http://localhost:8080/roles/eliminar/4",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 69,
+	"collection": {
+		"requests": [
+			{
+				"id": "30920617-e38f-4cb5-b737-5166d0f093e5",
+				"method": "POST"
+			},
+			{
+				"id": "803b5a20-ddcb-4138-b503-d6303a27a17b",
+				"method": "POST"
+			},
+			{
+				"id": "68e10de9-7f5a-4c24-99eb-ba1a3bd916a3",
+				"method": "GET"
+			},
+			{
+				"id": "4a5f19f2-4748-47f7-aed3-78848e612ba7",
+				"method": "GET"
+			},
+			{
+				"id": "59635cc1-9790-4227-aca5-f6d26ed1dd45",
+				"method": "PUT"
+			},
+			{
+				"id": "f19bf1d8-0d79-406f-a2f4-2784dada08e4",
+				"method": "DELETE"
+			}
+		]
+	}
+}
