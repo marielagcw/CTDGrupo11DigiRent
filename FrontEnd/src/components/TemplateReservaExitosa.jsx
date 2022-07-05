@@ -1,11 +1,10 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import { useNavigate } from 'react-router-dom';
 import "../styles/TemplateReservaExitosa.css"
-// import { Navigate } from 'react-router-dom';
 
 export default function Reserva() {
-    
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <>
@@ -13,28 +12,21 @@ export default function Reserva() {
           <div id="resexitosa-container">
           <div className="templatereserva text-center">
           <div className="templ-body">
-
-
-
-          </div>
-
-          </div>
+            <div id="textocentrado">
+            <h5 className="templ-title">¡Muchas gracias!</h5>
+            <p  className="templ-text">
+              Su reserva se ha realizado con éxito.
+            </p>
             
+            <a href="#" className="btn btn-primary btn-lg" onClick={()=>navigate('/')}>
+              Ok
+            </a>
 
-          </div>
-          
-          {/* <div className="card text-center" style="width: 18rem;">
-            <div className="card-body">
-              <h5 className="card-title">Special title treatment</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
             </div>
-          </div> */}
+            
+          </div>
+          </div> 
+          </div>
           <Footer />
         </>
       );

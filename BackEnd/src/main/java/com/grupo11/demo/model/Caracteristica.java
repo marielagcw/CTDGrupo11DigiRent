@@ -19,8 +19,8 @@ public class Caracteristica {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "esta_disponible")
-    private Boolean estaDisponible; // TODO → Hay un problema, sea true o false se guarda siempre como null en la base de datos =(
+    @Column(name = "icono")
+    private String icono;
 
     @ManyToMany(mappedBy = "caracteristicas")
     @JsonIgnore
@@ -30,13 +30,14 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
-    public Caracteristica(String nombre, Boolean estaDisponible, Set<Producto> productos) {
+    public Caracteristica(String nombre, String icono, Set<Producto> productos) {
         this.nombre = nombre;
-        this.estaDisponible = estaDisponible;
+        this.icono = icono;
         this.productos = productos;
     }
 
     // GETTERS Y SETTERS
+
 
     public Integer getId() {
         return id;
@@ -54,12 +55,12 @@ public class Caracteristica {
         this.nombre = nombre;
     }
 
-    public Boolean getEstaDisponible() {
-        return estaDisponible;
+    public String getIcono() {
+        return icono;
     }
 
-    public void setEstaDisponible(Boolean estaDisponible) {
-        this.estaDisponible = estaDisponible;
+    public void setIcono(String icono) {
+        this.icono = icono;
     }
 
     public Set<Producto> getProductos() {

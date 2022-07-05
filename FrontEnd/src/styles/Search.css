@@ -69,20 +69,6 @@
     padding-right: 20px;
 }
 
-.cityName{
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-}
-
-.countyName{
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: var(--tertiary);
-    margin-bottom: 0px !important;
-}
-
 
 @media (770px <= width <= 1200px ){
     .calandary-container{
