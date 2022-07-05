@@ -114,8 +114,8 @@ const urlElementosPolitica = "http://localhost:8080/elementospolitica/agregar";
 const jwt = JSON.parse(localStorage.getItem("jwt"))?.jwt;
 const config = { headers: { Authorization: `Bearer ${jwt}` } };
 console.log(jwt)
-const postApiNormas = (datosForm, setDatosForm) => {
-  axios
+const postApiNormas = async (datosForm, setDatosForm) => {
+  await axios
     .post(urlElementosPolitica, datosForm.politicasNormas, config)
     .then((res) => {
       // Obtener el id del objeto que viene en la respuesta
@@ -132,8 +132,8 @@ const postApiNormas = (datosForm, setDatosForm) => {
 
 // POST Nuevo elemento política: salud
 
-const postApiSalud = (datosForm, setDatosForm) => {
-  axios.post(urlElementosPolitica, datosForm.politicasSalud, config).then((res) => {
+const postApiSalud = async (datosForm, setDatosForm) => {
+ await axios.post(urlElementosPolitica, datosForm.politicasSalud, config).then((res) => {
     // Obtener el id del objeto que viene en la respuesta
     console.log(res);
     console.log(res.data);
@@ -147,8 +147,8 @@ const postApiSalud = (datosForm, setDatosForm) => {
 };
 
 // POST Nuevo elemento política: cancelación
-const postApiCancelacion = (datosForm, setDatosForm) => {
-  axios
+const postApiCancelacion = async (datosForm, setDatosForm) => {
+ await axios
     .post(urlElementosPolitica, datosForm.politicasCancelacion, config)
     .then((res) => {
       // Obtener el id del objeto que viene en la respuesta

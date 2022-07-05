@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ public class ReservaController {
 
     // FIND ALL
     @GetMapping("/listarTodos")
+    @RolesAllowed("USUARIO_PRIVADO")
     public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field) {
         Set<ReservaDTO> reservas;
 
@@ -39,6 +41,7 @@ public class ReservaController {
 
     // SAVE
     @PostMapping("/agregar")
+    @RolesAllowed("USUARIO_PRIVADO")
     public ResponseEntity<?> guardar(@RequestBody ReservaDTO reserva) {
         service.agregar(reserva);
         return ResponseEntity.ok(reserva);
@@ -46,6 +49,7 @@ public class ReservaController {
 
     // DELETE
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("USUARIO_PRIVADO")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         service.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -53,6 +57,7 @@ public class ReservaController {
 
     // UPDATE
     @PutMapping("/actualizar")
+    @RolesAllowed("USUARIO_PRIVADO")
     public ResponseEntity<?> editarProducto(@RequestBody ReservaDTO reservaDTO) {
         service.actualizar(reservaDTO);
         return ResponseEntity.ok(reservaDTO);
@@ -68,6 +73,7 @@ public class ReservaController {
 
     // FIND BY PRODUCTOS
     @GetMapping("/producto/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> listarReservasPorProducto(@PathVariable Integer id, Pageable pageable) {
         List<ReservaDTO> reservaDTOList= service.buscarReservasPorProducto(id, pageable);
         return ResponseEntity.ok().body(reservaDTOList);
@@ -75,6 +81,7 @@ public class ReservaController {
 
     // FIND BY USUARIOS
     @GetMapping("/usuario/{id}")
+    @RolesAllowed("USUARIO_PRIVADO")
 public ResponseEntity<?> listarReservasPorUsuario(@PathVariable Integer id, Pageable pageable){
         List<ReservaDTO> reservaDTOList = service.buscarReservasPorUsuario(id, pageable);
         return ResponseEntity.ok().body(reservaDTOList);

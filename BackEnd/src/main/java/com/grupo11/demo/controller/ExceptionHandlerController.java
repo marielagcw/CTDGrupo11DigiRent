@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -26,6 +27,12 @@ public class ExceptionHandlerController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ErrorMessageDTO> notFoundElement(NoSuchElementException e) {
         return ResponseEntity.status(404).body(new ErrorMessageDTO("Not Found", "El elemento no pudo ser encontrado, verifique el valor ingresado e intente nuevamente", 404));
+    }
+
+@ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<ErrorMessageDTO> forbiddenElement(NoSuchElementException e) {
+        return ResponseEntity.status(403).body(new ErrorMessageDTO("Not Allowed", "No tiene autorizacion", 403));
     }
 
 }

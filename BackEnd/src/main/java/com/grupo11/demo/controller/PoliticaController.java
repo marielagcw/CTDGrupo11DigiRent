@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Set;
 
 @RestController
@@ -23,18 +24,21 @@ public class PoliticaController {
     }
 
     @PostMapping("/agregar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody PoliticaDTO politica) {
         politicaService.agregar(politica);
         return ResponseEntity.ok(politica);
     }
 
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         politicaService.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> editarPolitica(@RequestBody PoliticaDTO politicaDTO) {
         politicaService.actualizar(politicaDTO);
         return ResponseEntity.ok(politicaDTO);

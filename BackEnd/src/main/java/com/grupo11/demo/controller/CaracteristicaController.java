@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -36,8 +37,9 @@ public class CaracteristicaController {
     }
 
     @PostMapping("/agregar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody CaracteristicaDTO caracteristica) {
-        if(caracteristica.getNombre().equals("")){
+        if (caracteristica.getNombre().equals("")) {
             return ResponseEntity.badRequest().body("Los datos están incompletos");
         }
         caracteristicaService.agregar(caracteristica);
@@ -45,12 +47,14 @@ public class CaracteristicaController {
     }
 
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         caracteristicaService.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> editarCaracteristica(@RequestBody CaracteristicaDTO caracteristicaDTO) {
         caracteristicaService.actualizar(caracteristicaDTO);
         return ResponseEntity.ok(caracteristicaDTO);

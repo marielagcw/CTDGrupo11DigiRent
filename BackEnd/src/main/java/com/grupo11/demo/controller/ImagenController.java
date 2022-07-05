@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Set;
 
 @RestController
@@ -23,18 +24,21 @@ public class ImagenController {
     }
 
     @PostMapping("/agregar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody ImagenDTO imagen) {
         imagenService.agregar(imagen);
         return ResponseEntity.ok(imagen);
     }
 
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         imagenService.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> editarImagen(@RequestBody ImagenDTO imagenDTO) {
         imagenService.actualizar(imagenDTO);
         return ResponseEntity.ok(imagenDTO);

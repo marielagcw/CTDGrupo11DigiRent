@@ -45,8 +45,8 @@ export default function ProductoForm() {
   /* ---------------------------------- Posts --------------------------------- */
   // POST Nueva categoría
   const urlPostCategoria = "http://localhost:8080/categorias/agregar";
-  const postApiCategoria = () => {
-    axios
+  const postApiCategoria = async () => {
+    await axios
       .post(urlPostCategoria, bodyCategoria)
       .then((res) => {
         if (res.status === 200) {
@@ -73,8 +73,8 @@ export default function ProductoForm() {
 
   // POST Nueva Ciudad
   const urlPostCiudad = "http://localhost:8080/ciudades/agregar";
-  const postApiCiudad = () => {
-    axios
+  const postApiCiudad = async () => {
+    await axios
       .post(urlPostCiudad, bodyCiudad)
       .then((res) => {
         if (res.status === 200) {
@@ -101,8 +101,8 @@ export default function ProductoForm() {
 
   // POST Nueva característica
   const urlPostCaracteristica = "http://localhost:8080/caracteristicas/agregar";
-  const postApiCaracteristica = () => {
-    axios
+  const postApiCaracteristica = async () => {
+    await axios
       .post(urlPostCaracteristica, bodyCaracteristica)
       .then((res) => {
         if (res.status === 200) {
@@ -129,8 +129,8 @@ export default function ProductoForm() {
 
   /* ------------------------------ POST Nuevo Producto ----------------------------- */
   const urlPostProducto = "http://localhost:8080/productos/agregar";
-  const postApiProducto = () => {
-    axios
+  const postApiProducto = async () => {
+    await axios
       .post(urlPostProducto, bodyProducto)
       .then((res) => {
         if (res.status === 200) {
@@ -158,8 +158,8 @@ export default function ProductoForm() {
   };
   const urlPostImagen = "http://localhost:8080/imagenes/agregar";
   const postApiImagenes = (id) => {
-    datosForm.imagenState.map((imagen) => {
-      axios
+    datosForm.imagenState.map(async (imagen) => {
+      await axios
         .post(urlPostImagen, {
           url: imagen.url,
           titulo: imagen.titulo,
