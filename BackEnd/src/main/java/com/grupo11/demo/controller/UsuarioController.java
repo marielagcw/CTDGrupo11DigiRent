@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Set;
 
 @RestController
@@ -32,6 +33,7 @@ public class UsuarioController {
 
     // FIND ALL
     @GetMapping("/listarTodos")
+    @RolesAllowed("SUPER")
     public Set<UsuarioDTO> listarTodos() {
         return service.listarTodo();
     }
@@ -51,6 +53,7 @@ public class UsuarioController {
 
     // DELETE
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed({"USUARIO_PRIVADO", "SUPER"})
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         service.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -58,6 +61,7 @@ public class UsuarioController {
 
     // UPDATE
     @PutMapping("/actualizar")
+    @RolesAllowed({"USUARIO_PRIVADO", "SUPER"})
     public ResponseEntity<?> editarProducto(@RequestBody UsuarioDTO usuarioDTO) {
         service.actualizar(usuarioDTO);
         return ResponseEntity.ok("El usuario fue modificado con éxito");
@@ -65,6 +69,7 @@ public class UsuarioController {
 
     // FIND BY ID
     @GetMapping("/{id}")
+    @RolesAllowed({"USUARIO_PRIVADO", "SUPER"})
     public ResponseEntity<UsuarioDTO> buscar(@PathVariable Integer id) {
         UsuarioDTO usuarioDTO = service.buscarPorId(id);
         return ResponseEntity.ok(usuarioDTO);

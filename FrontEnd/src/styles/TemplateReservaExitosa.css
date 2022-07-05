@@ -27,3 +27,8 @@ div#textocentrado{
     transform: translate(-50%, -50%);
 
 }
+
+.icono-estilo{
+    font-size: 1.5cm;
+    color: var(--primary);
+}

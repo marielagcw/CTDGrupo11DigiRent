@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Set;
 
 @RestController
@@ -19,12 +20,14 @@ public class RolController {
 
     // FIND ALL
     @GetMapping("/listarTodos")
+    @RolesAllowed("SUPER")
     public Set<RolDTO> listarTodos() {
         return service.listarTodas();
     }
 
     // SAVE
     @PostMapping("/agregar")
+    @RolesAllowed("SUPER")
     public ResponseEntity<?> guardar(@RequestBody RolDTO rolDTO) {
         service.agregar(rolDTO);
         return ResponseEntity.status(201).body(rolDTO);
@@ -32,6 +35,7 @@ public class RolController {
 
     // DELETE
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("SUPER")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         service.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -39,6 +43,7 @@ public class RolController {
 
     // UPDATE
     @PutMapping("/actualizar")
+    @RolesAllowed("SUPER")
     public ResponseEntity<?> editarProducto(@RequestBody RolDTO rolDTO) {
         service.actualizar(rolDTO);
         return ResponseEntity.ok(rolDTO);
@@ -46,6 +51,7 @@ public class RolController {
 
     // FIND BY ID
     @GetMapping("/{id}")
+    @RolesAllowed("SUPER")
     public ResponseEntity<RolDTO> buscar(@PathVariable Integer id) {
         RolDTO rolDTO = service.buscarPorId(id);
         return ResponseEntity.ok(rolDTO);
