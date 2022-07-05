@@ -1,0 +1,556 @@
+{
+	"info": {
+		"_postman_id": "24208a35-f964-4654-b07a-7fd134746b9f",
+		"name": "4 Imagenes (ADMINISTRADOR)",
+		"description": "API REST\n\n.../categorias:\n\nmethod's post, get and put",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18027182"
+	},
+	"item": [
+		{
+			"name": "Post (requiere body) 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar Imagen\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.titulo).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.url).to.be.a(\"string\");\r",
+							"\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Cabaña en montaña\",\r\n    \"url\": \"https://images.unsplash.com/photo-1634849430862-a5a3ba00a7f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80\",\r\n    \"producto\": {\r\n        \"id\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post (requiere body) 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar Imagen\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.titulo).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.url).to.be.a(\"string\");\r",
+							"\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"hostal\",\r\n    \"url\": \"https://images.unsplash.com/photo-1463620910506-d0458143143e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80\",\r\n    \"producto\": {\r\n        \"id\": 3\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post (requiere body) 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"Agregar Imagen\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.titulo).to.be.a(\"string\");\r",
+							"  pm.expect(responseJson.url).to.be.a(\"string\");\r",
+							"\r",
+							"});\r",
+							"pm.test(\"El id no puede ser null\", ()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"      pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"hostal2\",\r\n    \"url\": \"https://images.unsplash.com/photo-1596456139864-120856dd9f21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80\",\r\n     \"producto\": {\r\n        \"id\": 3\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlbase}}/agregar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (ACCESO PÚBLICO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by id (ACCESO PÚBLICO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de la respuesta recibida\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"El objeto corresponde al id consultado\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/3",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put actualizar (requiere  id en body)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Internal Server Error: no se puede modificar id inexistente\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":3,\r\n    \"titulo\": \"nuevo\",\r\n    \"url\": \"nuevo\",\r\n    \"producto\": {\r\n        \"id\": 1\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put actualizar (requiere id en body) id inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Internal Server Error: no se puede modificar id inexistente\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([404]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1000,\r\n    \"titulo\": \"nuevo\",\r\n    \"url\": \"nuevo\"\r\n}"
+				},
+				"url": {
+					"raw": "{{urlbase}}/actualizar",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get después del Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ( id en url)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Test para verificar que haya un encabezado de respuesta\r",
+							"pm.test(\"Content-Type está presente en el header\", () => {\r",
+							"  pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/62",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ( id en url) id inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests para verificar el estado de la respuesta\r",
+							"pm.test(\"Internal Server Error: no se puede eliminar id inexistente\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([404]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id_categorias\": 7,\r\n        \"titulo\": \"Hotel lujoso\",\r\n        \"descripcion\": \"edificio con habitaciones disponibles para más de 50 personas\",\r\n        \"url_imagen\": null\r\n    }"
+				},
+				"url": {
+					"raw": "{{urlbase}}/eliminar/200",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"eliminar",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All después del Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test para verificar el estado de las respuestas\r",
+							"pm.test(\"Respuesta exitosa\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"// Tests para verificar el body de la respuesta recibida\r",
+							"pm.test(\"La respuesta trae un array de objetos\", ()=>{\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"})\r",
+							"pm.test(\"El primer objeto del array está completo\",()=>{\r",
+							"      const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[0].id).to.be.a(\"number\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlbase}}/listarTodos",
+					"host": [
+						"{{urlbase}}"
+					],
+					"path": [
+						"listarTodos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "servidor",
+			"value": "localhost:8080/",
+			"type": "string"
+		},
+		{
+			"key": "urlbase",
+			"value": "localhost:8080/imagenes",
+			"type": "string"
+		},
+		{
+			"key": "jwt",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

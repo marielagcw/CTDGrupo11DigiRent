@@ -1,0 +1,314 @@
+{
+	"id": "1b8cb133-97e2-4804-a785-763f3f7c4b45",
+	"name": "8. Reservas",
+	"timestamp": "2022-06-22T00:56:44.727Z",
+	"collection_id": "18027182-9e9eebd3-bc4a-4e1d-8cae-e17d4fe7f3d1",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 16,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "ca764d59-491c-44f7-a40e-95c606805395",
+			"name": "Post (requiere body) 1",
+			"url": "http://localhost:8080/reservas/agregar",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Imagen": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Imagen": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Agregar Imagen": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "7cdeb2c7-8069-4344-adaa-6471e1474c11",
+			"name": "Post (requiere body) 2",
+			"url": "http://localhost:8080/reservas/agregar",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Imagen": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Imagen": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Agregar Imagen": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "8ec22c69-b0c6-4a0a-a103-3ea0217095cf",
+			"name": "Post (requiere body) 3",
+			"url": "http://localhost:8080/reservas/agregar",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Imagen": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Imagen": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Agregar Imagen": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "5394d255-53ee-4520-8681-5cb8fe103054",
+			"name": "Get All",
+			"url": "http://localhost:8080/reservas/listarTodos?size=10&page=0&ord=ASC&field=fechaInicial",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "6edff32f-4ef8-43bc-8f6e-87ef7a29c0f1",
+			"name": "Get by id",
+			"url": "http://localhost:8080/reservas/4",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"El objeto corresponde al id consultado": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El objeto corresponde al id consultado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"El objeto corresponde al id consultado": true
+				}
+			]
+		},
+		{
+			"id": "28823a07-ee1d-4672-b794-ea8d83c86968",
+			"name": "Put actualizar (requiere  id en body)",
+			"url": "http://localhost:8080/reservas/actualizar",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Imagen": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Imagen": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Agregar Imagen": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "9db4a436-6fa0-464a-a584-677609c6b2a8",
+			"name": "Delete ( id en url)",
+			"url": "http://localhost:8080/reservas/eliminar/1",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"Content-Type está presente en el header": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type está presente en el header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"Content-Type está presente en el header": true
+				}
+			]
+		},
+		{
+			"id": "df7e35eb-6c9f-427e-98c9-443229b82af6",
+			"name": "Delete ( id en url) id inexistente",
+			"url": "http://localhost:8080/reservas/eliminar/200",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Internal Server Error: no se puede eliminar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede eliminar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede eliminar id inexistente": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 123,
+	"collection": {
+		"requests": [
+			{
+				"id": "ca764d59-491c-44f7-a40e-95c606805395",
+				"method": "POST"
+			},
+			{
+				"id": "7cdeb2c7-8069-4344-adaa-6471e1474c11",
+				"method": "POST"
+			},
+			{
+				"id": "8ec22c69-b0c6-4a0a-a103-3ea0217095cf",
+				"method": "POST"
+			},
+			{
+				"id": "5394d255-53ee-4520-8681-5cb8fe103054",
+				"method": "GET"
+			},
+			{
+				"id": "6edff32f-4ef8-43bc-8f6e-87ef7a29c0f1",
+				"method": "GET"
+			},
+			{
+				"id": "28823a07-ee1d-4672-b794-ea8d83c86968",
+				"method": "PUT"
+			},
+			{
+				"id": "9db4a436-6fa0-464a-a584-677609c6b2a8",
+				"method": "DELETE"
+			},
+			{
+				"id": "df7e35eb-6c9f-427e-98c9-443229b82af6",
+				"method": "DELETE"
+			}
+		]
+	}
+}

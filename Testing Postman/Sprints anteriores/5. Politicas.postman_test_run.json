@@ -1,0 +1,419 @@
+{
+	"id": "ccc441f4-047c-4240-be4c-f8d541c45b19",
+	"name": "5. Politicas",
+	"timestamp": "2022-06-21T20:49:34.237Z",
+	"collection_id": "18027182-2793830f-e825-4694-b0ea-5711312c22d9",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 21,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "d94338f4-a943-4e04-9117-b94f467a9160",
+			"name": "Post (requiere body) Normas de la casa",
+			"url": "http://localhost:8080/politicas/agregar",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Politicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Politicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Agregar Politicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "eed1f677-652a-40c0-a83c-54663852962e",
+			"name": "Post (requiere body) Salud y seguridad",
+			"url": "http://localhost:8080/politicas/agregar",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Politicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Politicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Agregar Politicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "aabb2bad-6144-4d4f-b5d6-cbfdc93b1842",
+			"name": "Post (requiere body) Política de cancelación",
+			"url": "http://localhost:8080/politicas/agregar",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Agregar Politicas": true,
+				"El id no puede ser null": true
+			},
+			"testPassFailCounts": {
+				"Agregar Politicas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id no puede ser null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Agregar Politicas": true,
+					"El id no puede ser null": true
+				}
+			]
+		},
+		{
+			"id": "247c782a-4302-464e-a76c-185554334be5",
+			"name": "Get All",
+			"url": "http://localhost:8080/politicas/listarTodos",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "e23f4744-6fc2-4223-b26c-1a92c8e79b14",
+			"name": "Get by id",
+			"url": "http://localhost:8080/politicas/1",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"El objeto corresponde al id consultado": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El objeto corresponde al id consultado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"El objeto corresponde al id consultado": true
+				}
+			]
+		},
+		{
+			"id": "aacdf089-743d-4174-abe4-f3dc388c6739",
+			"name": "Put actualizar (requiere  id en body)",
+			"url": "http://localhost:8080/politicas/actualizar",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Internal Server Error: no se puede modificar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede modificar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede modificar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "98430c52-d305-4633-9fe6-b670209344ae",
+			"name": "Put actualizar (requiere id en body) id inexistente",
+			"url": "http://localhost:8080/politicas/actualizar",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Internal Server Error: no se puede modificar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede modificar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede modificar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "16da05b6-deaf-43c6-b268-97e50ffe029d",
+			"name": "Get después del Update",
+			"url": "http://localhost:8080/politicas/listarTodos",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		},
+		{
+			"id": "90466dc2-11cd-465c-988d-25b10280475b",
+			"name": "Delete ( id en url)",
+			"url": "http://localhost:8080/politicas/eliminar/4",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true
+				}
+			]
+		},
+		{
+			"id": "00c30661-3c87-432f-8f45-0052f4041f53",
+			"name": "Delete ( id en url) id inexistente",
+			"url": "http://localhost:8080/politicas/eliminar/200",
+			"time": 10,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Internal Server Error: no se puede eliminar id inexistente": true
+			},
+			"testPassFailCounts": {
+				"Internal Server Error: no se puede eliminar id inexistente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Internal Server Error: no se puede eliminar id inexistente": true
+				}
+			]
+		},
+		{
+			"id": "03fbf9bc-b596-43ce-a9c7-2d37d45ac731",
+			"name": "Get All después del Delete",
+			"url": "http://localhost:8080/politicas/listarTodos",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respuesta exitosa": true,
+				"La respuesta trae un array de objetos": true,
+				"El primer objeto del array está completo": true
+			},
+			"testPassFailCounts": {
+				"Respuesta exitosa": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta trae un array de objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El primer objeto del array está completo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Respuesta exitosa": true,
+					"La respuesta trae un array de objetos": true,
+					"El primer objeto del array está completo": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 105,
+	"collection": {
+		"requests": [
+			{
+				"id": "d94338f4-a943-4e04-9117-b94f467a9160",
+				"method": "POST"
+			},
+			{
+				"id": "eed1f677-652a-40c0-a83c-54663852962e",
+				"method": "POST"
+			},
+			{
+				"id": "aabb2bad-6144-4d4f-b5d6-cbfdc93b1842",
+				"method": "POST"
+			},
+			{
+				"id": "247c782a-4302-464e-a76c-185554334be5",
+				"method": "GET"
+			},
+			{
+				"id": "e23f4744-6fc2-4223-b26c-1a92c8e79b14",
+				"method": "GET"
+			},
+			{
+				"id": "aacdf089-743d-4174-abe4-f3dc388c6739",
+				"method": "PUT"
+			},
+			{
+				"id": "98430c52-d305-4633-9fe6-b670209344ae",
+				"method": "PUT"
+			},
+			{
+				"id": "16da05b6-deaf-43c6-b268-97e50ffe029d",
+				"method": "GET"
+			},
+			{
+				"id": "90466dc2-11cd-465c-988d-25b10280475b",
+				"method": "DELETE"
+			},
+			{
+				"id": "00c30661-3c87-432f-8f45-0052f4041f53",
+				"method": "DELETE"
+			},
+			{
+				"id": "03fbf9bc-b596-43ce-a9c7-2d37d45ac731",
+				"method": "GET"
+			}
+		]
+	}
+}
