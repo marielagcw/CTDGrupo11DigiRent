@@ -14,8 +14,7 @@ const Search = ({ busqueda }) => {
 
     const [today, setToday] = useState(new Date())
     const [widthWindow, setWidthWindow] = useState(0);
-    const [formData, setFormData] = useState({})
-    const [datosFiltrados, setDatosFiltrados] = useState({})
+
     const [ciudadesFiltradas, setCiudadesFiltradas] = useState([''])
 
     const HandleSubmit = async (e) => {
@@ -24,7 +23,6 @@ const Search = ({ busqueda }) => {
         let inputCiudad = document.querySelector('.input-search').value
         let ciudad_id = null;
         ciudadesList.map((ciudad,i) => {
-            console.log(ciudad);
             if(inputCiudad === ciudad){
                 return ciudad_id = i + 1
             }
@@ -136,15 +134,13 @@ const Search = ({ busqueda }) => {
         let dateFormateada = fInicio.getDate() + "/" + (fInicio.getMonth() + 1) +
             " - " + fFin.getDate() + "/" + (fFin.getMonth() + 1);
 
-
         return dateFormateada;
     }
 
     const handleChange = (e) => {
         let cityFilter = e.target.value;
         let ciudadesFiltradas = ciudadesList.filter(ciudad => ciudad.includes(cityFilter))
-        setCiudadesFiltradas(ciudadesFiltradas)     
-        console.log(ciudadesFiltradas);
+        setCiudadesFiltradas(ciudadesFiltradas)  
         let displayOptions = document.querySelector('.displayOptions')
         displayOptions.hidden = false;
 
@@ -157,7 +153,8 @@ const Search = ({ busqueda }) => {
         let dataFormateadaInicio
         let fMount, iMount;
         let fDay, iDay;
-        if(dataSinFormatear.toString() !== ['Invalid Date']){
+        console.log(dataSinFormatear);
+        if(dataSinFormatear.toString() !== 'Invalid Date'){
             [fInicio, fFin] = dataSinFormatear;
             if((fInicio.getMonth() + 1) < 10){
                 iMount = `0${(fInicio.getMonth() + 1)}`
@@ -196,17 +193,13 @@ const Search = ({ busqueda }) => {
 
     const displayNone = (e) => {
         let inputCiudad = document.querySelector('.input-search')
+        let ciudad = document.querySelector('.cityName').textContent
         let displayOptions = document.querySelector('.displayOptions')
-        inputCiudad.value = e.target.textContent
+        inputCiudad.value = ciudad
         displayOptions.hidden = true;
-        
     }
 
 
-    const onBlur = () => {
-        let displayOptions = document.querySelector('.displayOptions')
-        displayOptions.hidden = true;
-    }
 
 
     //Array ciudades
@@ -229,18 +222,19 @@ const Search = ({ busqueda }) => {
                     <span className='icon iconLocation'>
                         <FontAwesomeIcon icon={faLocationDot} />
                     </span>
-                    <input onChange={handleChange} autoComplete='off' onBlur={onBlur} name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
+                    <input onChange={handleChange} autoComplete='off' name="ciudad" className='input-search' placeholder='Ingrese una ciudad' id="ciudades" />
                         <div hidden={true} className='displayOptions'>
                             {ciudadesFiltradas !== [''] ? 
                                 ciudadesFiltradas.map((e, i) =>
                                     (
                                         <>
-                                        <div className='cityContainer'>
+                                        <div className='cityContainer' onClick={displayNone}>
                                             <span className='cityIcon'>
                                                 <FontAwesomeIcon icon={faLocationDot} />
                                             </span>
                                             <div className="ciudad" fecha={e} onClick={displayNone} key={i} >
-                                                <p className='cityName' style={{margin:"0px"}}>{e}</p> <p className='countryName' style={{margin:'0px'}}>Argentina</p>
+                                                <p className='cityName' style={{margin:"0px"}}>{e}</p> 
+                                                <p className='countryName' style={{margin:'0px'}}>Argentina</p>
                                             </div> 
 
                                         </div>
@@ -252,11 +246,11 @@ const Search = ({ busqueda }) => {
                                 (ciudadesList.map((e, i) =>
                                     (
                                         <>
-                                        <div className='cityContainer'>
+                                        <div className='cityContainer' onClick={displayNone}>
                                             <span className='cityIcon'>
                                                 <FontAwesomeIcon icon={faLocationDot} />
                                             </span>
-                                            <div className="ciudad" fecha={e} onClick={displayNone} key={i} >
+                                            <div className="ciudad" fecha={e}  key={i} >
                                                 <p className='cityName' style={{margin:"0px"}}>{e}</p> <p className='countryName' style={{margin:'0px'}}>Argentina</p>
                                             </div> 
                                         </div>
