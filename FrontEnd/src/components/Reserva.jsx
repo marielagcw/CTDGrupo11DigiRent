@@ -46,7 +46,7 @@ export default function Reserva() {
                     <h3>{categoria.titulo}</h3>
                     <h1>{tituloDescripcion}</h1>
                 </div>
-                <div className='back d-flex justify-content-center allign-items-center' onClick={()=>navigate('/')}>
+                <div className='back d-flex justify-content-center allign-items-center' onClick={()=>navigate(-1)}>
                     <BsChevronLeft />
                 </div>
             </div>
