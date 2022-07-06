@@ -1,12 +1,12 @@
 import React from "react";
-// import {Navigate, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import '../styles/ReservaDetalle.css';
 // import detalle from '../productos.json';
 
 
 const ReservaDetalle = () =>{
     // let detalleReserva = detalle.detalle;
-    // const navigate = useNavigate();
+     const navigate = useNavigate();
 
     return (
         <>
@@ -26,10 +26,10 @@ const ReservaDetalle = () =>{
                     <h5 className='entradaReserva'>Chek-Out</h5>
                     <hr></hr>
                     <div className="containerReservaConf">
-                        <button className='btn btn-primary btn-lg btn-max-width'>Confirmar reserva</button>
+                        <button className='btn btn-primary btn-lg btn-max-width' onClick={()=>navigate('/confirmacionReservaExitosa')}>Confirmar reserva</button>
                     </div>
                     
-                    {/* <button type="button" className="btn btn-primary" onClick={()=>navigate('/products')}>Confirmar Reserva</button> */}
+                    
 
                     
 
