@@ -260,20 +260,20 @@ export default function ProductoForm() {
     icono: datosCaracteristica.icono,
   };
 
-  // Body para nuevo elemento política: norma
-  const bodyNormas = {
-    titulo: "1" + datosForm.descripcionNormas,
-  };
+  // // Body para nuevo elemento política: norma
+  // const bodyNormas = {
+  //   titulo: "1" + datosForm.descripcionNormas,
+  // };
 
-  // Body para nuevo elemento política: salud
-  const bodySalud = {
-    titulo: "2" + datosForm.descripcionSalud,
-  };
+  // // Body para nuevo elemento política: salud
+  // const bodySalud = {
+  //   titulo: "2" + datosForm.descripcionSalud,
+  // };
 
-  // Body para nuevo elemento política: cancelación
-  const bodyCancelacion = {
-    titulo: "3" + datosForm.descripcionCancelacion,
-  };
+  // // Body para nuevo elemento política: cancelación
+  // const bodyCancelacion = {
+  //   titulo: "3" + datosForm.descripcionCancelacion,
+  // };
 
   /* --------------------------- Body para producto --------------------------- */
   const bodyProducto = {
@@ -281,7 +281,7 @@ export default function ProductoForm() {
     descripcion: datosForm.descripcionProducto,
     categoria: { id: datosForm.categoria },
     ciudad: { id: datosForm.ciudad },
-    politicas: [], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
+    politicas: [{id: datosForm.politicasNormas.id},{id: datosForm.politicasSalud.id}, {id: datosForm.politicasCancelacion.id}], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
     caracteristicas: datosForm.caracteristicaState,
     tituloDescripcion: datosForm.descripcionProducto
   };

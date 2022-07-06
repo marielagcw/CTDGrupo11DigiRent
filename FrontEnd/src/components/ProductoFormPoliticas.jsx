@@ -25,8 +25,8 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
             // Obtener el id del objeto que viene en la respuesta
             console.log(res);
             console.log(res.data);
+            postApiElementos(res.data.titulo, res.data.id);
             setDatosForm((old) => {
-              postApiElementos(res.data.titulo, res.data.id);
               return {
                 ...old,
                 politicasNormas: res.data,
@@ -57,6 +57,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
             // Obtener el id del objeto que viene en la respuesta
             console.log(res);
             console.log(res.data);
+            postApiElementos(res.data.titulo, res.data.id);
             setDatosForm((old) => {
               return {
                 ...old,
@@ -76,6 +77,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
             // Obtener el id del objeto que viene en la respuesta
             console.log(res);
             console.log(res.data);
+            postApiElementos(res.data.titulo, res.data.id);
             setDatosForm((old) => {
               return {
                 ...old,
@@ -112,7 +114,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasNormas: {
                   ...old.politicasNormas,
-                  titulo: e.target.value,
+                  titulo: "1" + e.target.value,
                 },
               }))
             }
@@ -140,7 +142,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasSalud: {
                   ...old.politicasSalud,
-                  titulo: e.target.value,
+                  titulo: "2" + e.target.value,
                 },
               }))
             }
@@ -168,7 +170,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasCancelacion: {
                   ...old.politicasCancelacion,
-                  titulo: e.target.value,
+                  titulo: "3" + e.target.value,
                 },
               }))
             }
@@ -185,6 +187,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
             postApiNormas(datosForm, setDatosForm);
             postApiSalud(datosForm, setDatosForm);
             postApiCancelacion(datosForm, setDatosForm);
+      
           }}
         >
           Confirmar políticas
