@@ -16,13 +16,15 @@ import Spinner from './Spinner';
 import ProductMap from './ProductMap';
 
 
+const urlBase = process.env.REACT_APP_URLBASE;
+
 export default function Products() {
 
     const { id } = useParams()
     const [fecha, setfecha] = useState(new Date([]));
     const navigate = useNavigate();
 
-    let url = "http://localhost:8080/productos/" + id;
+    let url = urlBase + "/productos/" + id;
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);

@@ -5,8 +5,10 @@ import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
 
 
+const urlBase = process.env.REACT_APP_URLBASE;
+
 const ProductoList = ({ search, seleccion }) => {
-    const [url, setUrl] = useState("http://localhost:8080/productos/listarTodosRandom?size=8&page=0")
+    const [url, setUrl] = useState(urlBase + "/productos/listarTodosRandom?size=8&page=0")
     const [busqueda, setBusqueda] = useState(true)
     const [datos, setDatos] = useState('')
 
@@ -14,17 +16,17 @@ const ProductoList = ({ search, seleccion }) => {
         let validesBusqueda = (search !== '' && search != null);
         let validesSeleccion = (seleccion !== '' && seleccion != null);
 
-        let endpoint = "http://localhost:8080/productos/listarTodosRandom?size=8&page=0";
+        let endpoint = urlBase + "/productos/listarTodosRandom?size=8&page=0";
         if (validesBusqueda && !seleccion) {
-            // endpoint = "http://localhost:8080/productos/productosCiudad/listarTodos";
-            endpoint = "http://localhost:8080/productos/ciudad/listarTodos";
+            // endpoint = urlBase + "/productos/productosCiudad/listarTodos";
+            endpoint = urlBase + "/productos/ciudad/listarTodos";
             setBusqueda(true);
         } else if (validesSeleccion && !search) {
-            // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
-            endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
+            // endpoint = urlBase + "/productos/productosCategoria/" + seleccion;
+            endpoint = urlBase + "/productos/categoria/" + seleccion;
         } else if (validesBusqueda && validesSeleccion) {
-            // endpoint = "http://localhost:8080/productos/productosCategoria/" + seleccion;
-            //endpoint = "http://localhost:8080/productos/categoria/" + seleccion;
+            // endpoint = urlBase + "/productos/productosCategoria/" + seleccion;
+            //endpoint = urlBase + "/productos/categoria/" + seleccion;
 
             setBusqueda(true);
         }

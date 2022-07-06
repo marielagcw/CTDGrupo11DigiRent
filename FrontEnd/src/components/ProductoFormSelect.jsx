@@ -4,6 +4,9 @@ import { useFetch } from "../hooks/useFetch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
+
+const urlBase = process.env.REACT_APP_URLBASE;
+
 const ProductoFormAgregar = ({
   // Props del componente padre
   agregarCaracteristica,
@@ -21,7 +24,7 @@ const ProductoFormAgregar = ({
   /* ---------------------------- Pedidos a la API ---------------------------- */
 
   const urlCaracteristicas =
-    "http://localhost:8080/caracteristicas/listarTodos?ord=ASC&field=nombre";
+    urlBase + "/caracteristicas/listarTodos?ord=ASC&field=nombre";
   const {
     data: dataCaracteristicas,
     ispending: isPendingCaracteristicas,

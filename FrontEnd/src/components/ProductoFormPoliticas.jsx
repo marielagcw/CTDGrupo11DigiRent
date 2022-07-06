@@ -1,5 +1,8 @@
 import axios from "axios";
 
+
+const urlBase = process.env.REACT_APP_URLBASE;
+
 export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
   return (
     <fieldset>
@@ -110,10 +113,9 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
 };
 
 // POST Nuevo elemento política: normas
-const urlElementosPolitica = "http://localhost:8080/elementospolitica/agregar";
-const jwt = JSON.parse(localStorage.getItem("jwt"))?.jwt;
+const urlElementosPolitica = urlBase + "elementospolitica/agregar";
+const jwt = localStorage.getItem("jwt");
 const config = { headers: { Authorization: `Bearer ${jwt}` } };
-console.log(jwt)
 const postApiNormas = async (datosForm, setDatosForm) => {
   await axios
     .post(urlElementosPolitica, datosForm.politicasNormas, config)

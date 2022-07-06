@@ -10,6 +10,8 @@ import Footer from './Footer';
 // import{chechPassword,chechSingleMail} from '../scripts/formValidation';
 import { useForm } from '../hooks/useForm';
 
+const urlBase = process.env.REACT_APP_URLBASE;
+
 const initialForm = {
     name: "",
     lastName: "",
@@ -97,7 +99,7 @@ const RegistreForm = (  ) => {
 
     
     /* const createNewUser = async form => {
-        let url = 'http://localhost:8080/usuarios/registro'
+        let url = urlBase + '/usuarios/registro'
         let newUser = {
             nombre: form.name,
             apellido: form.lastName,
@@ -135,7 +137,7 @@ const RegistreForm = (  ) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let url = 'http://localhost:8080/usuarios/registro'
+        let url = urlBase + '/usuarios/registro'
         let newUser = {
             nombre: form.name,
             apellido: form.lastName,

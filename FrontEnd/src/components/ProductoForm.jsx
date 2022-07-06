@@ -13,6 +13,9 @@ import axios from "axios";
 import { ProductoFormPoliticas } from "./ProductoFormPoliticas";
 import ProductoFormImagenes from "./ProductoFormImagenes";
 import Swal from "sweetalert2";
+import { tokenIsValid } from "../scripts/authService";
+
+const urlBase = process.env.REACT_APP_URLBASE;
 
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -26,8 +29,7 @@ export default function ProductoForm() {
   /* -------------------------------------------------------------------------- */
 
   /* ----------------------------- Select Ciudades ---------------------------- */
-  const urlCiudades =
-    "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=nombre";
+  const urlCiudades = urlBase + "/ciudades/listarTodos?ord=ASC&field=nombre";
   const {
     data: dataCiudades,
     ispending: isPendingCiudades,
@@ -35,7 +37,7 @@ export default function ProductoForm() {
   } = useFetch(urlCiudades);
 
   /* ---------------------------- Select Categorías --------------------------- */
-  const urlCategorias = "http://localhost:8080/categorias/listarTodos";
+  const urlCategorias = urlBase + "/categorias/listarTodos";
   const {
     data: dataCategorias,
     isPending: isPendingCategorias,
@@ -44,35 +46,37 @@ export default function ProductoForm() {
 
   /* ---------------------------------- Posts --------------------------------- */
   // POST Nueva categoría
-  const urlPostCategoria = "http://localhost:8080/categorias/agregar";
+  const urlPostCategoria = urlBase + "/categorias/agregar";
   const postApiCategoria = async () => {
-    await axios
-      .post(urlPostCategoria, bodyCategoria)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res);
-          console.log(res.data);
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
-          Swal.fire(
-            "Su categoría fue agregada con éxito",
-            "El formulario será reiniciado para que pueda ver su categoría entre las opciones",
-            "success"
-          );
-        }
-      })
-      .catch(
-        Swal.fire(
-          "Ups... algo no está bien",
-          "La categoría no pudo ser agregada, intenta nuevamente",
-          "error"
-        )
-      );
+    tokenIsValid()
+      ? await axios
+          .post(urlPostCategoria, bodyCategoria)
+          .then((res) => {
+            if (res.status === 200) {
+              console.log(res);
+              console.log(res.data);
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+              Swal.fire(
+                "Su categoría fue agregada con éxito",
+                "El formulario será reiniciado para que pueda ver su categoría entre las opciones",
+                "success"
+              );
+            }
+          })
+          .catch(
+            Swal.fire(
+              "Ups... algo no está bien",
+              "La categoría no pudo ser agregada, intenta nuevamente",
+              "error"
+            )
+          )
+      : navigate("/login");
   };
 
   // POST Nueva Ciudad
-  const urlPostCiudad = "http://localhost:8080/ciudades/agregar";
+  const urlPostCiudad = urlBase + "/ciudades/agregar";
   const postApiCiudad = async () => {
     await axios
       .post(urlPostCiudad, bodyCiudad)
@@ -100,7 +104,7 @@ export default function ProductoForm() {
   };
 
   // POST Nueva característica
-  const urlPostCaracteristica = "http://localhost:8080/caracteristicas/agregar";
+  const urlPostCaracteristica = urlBase + "/caracteristicas/agregar";
   const postApiCaracteristica = async () => {
     await axios
       .post(urlPostCaracteristica, bodyCaracteristica)
@@ -128,7 +132,7 @@ export default function ProductoForm() {
   };
 
   /* ------------------------------ POST Nuevo Producto ----------------------------- */
-  const urlPostProducto = "http://localhost:8080/productos/agregar";
+  const urlPostProducto = urlBase + "/productos/agregar";
   const postApiProducto = async () => {
     await axios
       .post(urlPostProducto, bodyProducto)
@@ -156,7 +160,7 @@ export default function ProductoForm() {
         )
       );
   };
-  const urlPostImagen = "http://localhost:8080/imagenes/agregar";
+  const urlPostImagen = urlBase + "/imagenes/agregar";
   const postApiImagenes = (id) => {
     datosForm.imagenState.map(async (imagen) => {
       await axios
@@ -294,7 +298,6 @@ export default function ProductoForm() {
       .indexOf(caracteristica.nombreCaracteristica);
     const eliminarElemento = (array) => {
       array.splice(posicionCaracteristica, 1);
-      console.log("array" + JSON.stringify(array));
       return [...array];
     };
     setDatosForm((datos) => {
@@ -315,7 +318,6 @@ export default function ProductoForm() {
         imagenState: [...datos.imagenState, { ...imagenRecibidaAgregar }],
       };
     });
-    console.log(JSON.stringify(imagenRecibidaAgregar));
   };
 
   // Eliminar algunas de las opciones de imagenes subidas del listado imagenes

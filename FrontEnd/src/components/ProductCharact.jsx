@@ -11,7 +11,6 @@ export default function ProductCharact({ caract }) {
       <hr className="char-hr" />
       <div className="char-grid">
         {caract.map((car, i) => {
-          console.log(car);
           return (
             <div key={"car" + i} className="grid-item">
               <FontAwesomeIcon icon={icons[`fa${car.icono}`]} />

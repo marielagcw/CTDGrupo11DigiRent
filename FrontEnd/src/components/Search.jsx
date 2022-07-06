@@ -6,9 +6,10 @@ import axios from "axios";
 import '../styles/Navbar.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import '../styles/Search.css'
+import '../styles/Search.css';
 
 
+const urlBase = process.env.REACT_APP_URLBASE;
 
 const Search = ({ busqueda }) => {
 
@@ -37,7 +38,7 @@ const Search = ({ busqueda }) => {
                 let fechaInicial= formatDataToSubmit(fecha)[0]
                 let fechaFinal= formatDataToSubmit(fecha)[1]   
                 
-                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+                let url = `${urlBase}/productos/ciudad/${ciudad_id}/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
 
                 datos = await axios.get(url)
 
@@ -51,7 +52,7 @@ const Search = ({ busqueda }) => {
                 let fechaInicial= formatDataToSubmit(fecha)[0]
                 let fechaFinal= formatDataToSubmit(fecha)[1]   
                 
-                let url = `http://localhost:8080/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
+                let url = `${urlBase}/productos/fechaDisponible?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`
 
                 datos = await axios.get(url)
 
@@ -65,7 +66,7 @@ const Search = ({ busqueda }) => {
             if(!buscadorCiudadVacio){
 
 
-                let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+                let url = `${urlBase}/productos/ciudad/${ciudad_id}?size=8&page=0`
     
 
                 datos = await axios.get(url)
@@ -75,7 +76,7 @@ const Search = ({ busqueda }) => {
 
             }else{
 
-                let url = `http://localhost:8080/productos/listarTodos`
+                let url = `${urlBase}/productos/listarTodos`
     
 
                 datos = await axios.get(url)
@@ -88,7 +89,7 @@ const Search = ({ busqueda }) => {
 
         }
         if(buscadorFechaVacio){
-            let url = `http://localhost:8080/productos/ciudad/${ciudad_id}?size=8&page=0`
+            let url = `${urlBase}/productos/ciudad/${ciudad_id}?size=8&page=0`
 
             datos = await axios.get(url)
 
@@ -204,7 +205,7 @@ const Search = ({ busqueda }) => {
 
     //Array ciudades
     let ciudadesList = [];
-    let url = "http://localhost:8080/ciudades/listarTodos?ord=ASC&field=id";
+    let url = urlBase + "/ciudades/listarTodos?ord=ASC&field=id";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);
