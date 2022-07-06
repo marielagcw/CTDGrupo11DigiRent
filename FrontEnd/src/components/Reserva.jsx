@@ -11,7 +11,7 @@ import "../styles/Reserva.css";
 import ReservaHoraLlegada from "./ReservaHoraLlegada";
 import ProductPolitics from "./ProductPolitics";
 import { useFetch } from "../hooks/useFetch";
-import Spinner from './Spinner';
+import Spinner from "./Spinner";
 
 const urlBase = process.env.REACT_APP_URLBASE;
 
@@ -19,7 +19,7 @@ export default function Reserva() {
   let ciudades = productosEstaticos.ciudades;
   let productos = productosEstaticos.productos;
   const [fecha, setfecha] = useState(new Date([]));
-  const [hora, setHora] = useState('')
+  const [hora, setHora] = useState("");
   const navigate = useNavigate();
   const { productId } = useParams();
 
@@ -48,11 +48,14 @@ export default function Reserva() {
 
         <div className="my-navbar myNavbar d-flex flex-row align-items-center justify-content-between pt-3 pb-3 one">
           <div className="title-product">
-           {isPending ? <Spinner /> :
-                        <>
-                            <h3 className='tituloFondoVerde'>{categoria.titulo}</h3>
-                            <h1 className='tituloFondoVerde'>{tituloDescripcion}</h1>
-                        </>}
+            {isPending ? (
+              <Spinner />
+            ) : (
+              <>
+                <h3 className="tituloFondoVerde">{categoria.titulo}</h3>
+                <h1 className="tituloFondoVerde">{tituloDescripcion}</h1>
+              </>
+            )}
           </div>
           <div
             className="back d-flex justify-content-center allign-items-center"
@@ -73,7 +76,23 @@ export default function Reserva() {
                 <h2>Seleccioná tu fecha de reserva</h2>
                 <div className="d-flex flex-row justify-content-around align-items-center">
                   <div className="calendar-container">
-                  {window.innerWidth >= 359 && window.innerWidth <= 736 ? <Calendar minDate={new Date(Date.now())} showDoubleView={false} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />:<Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />}
+                    {window.innerWidth >= 359 && window.innerWidth <= 736 ? (
+                      <Calendar
+                        minDate={new Date(Date.now())}
+                        showDoubleView={false}
+                        selectRange={true}
+                        onChange={setfecha}
+                        showFixedNumberOfWeeks={false}
+                      />
+                    ) : (
+                      <Calendar
+                        minDate={new Date(Date.now())}
+                        showDoubleView={true}
+                        selectRange={true}
+                        onChange={setfecha}
+                        showFixedNumberOfWeeks={false}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -81,7 +100,11 @@ export default function Reserva() {
 
             <div className="col-4 three">
               <div id="detalleReserva">
-                <ReservaDetalle productId={productId} fechas={fecha} hora={hora}/>
+                <ReservaDetalle
+                  productId={productId}
+                  fechas={fecha}
+                  hora={hora}
+                />
               </div>
             </div>
           </div>
@@ -103,7 +126,7 @@ export default function Reserva() {
             <div className="col-6 five">
               <div id="horaLlegada">
                 <h2>Tu horario de llegada</h2>
-                <ReservaHoraLlegada setHora={setHora}/>
+                <ReservaHoraLlegada setHora={setHora} />
               </div>
             </div>
           </div>

@@ -367,6 +367,7 @@ export default function ProductoForm() {
   /* -------------------------------------------------------------------------- */
   return (
     <>
+    
       <Header />
       <div className="g-col-6 g-col-md-4">
         <div id="navbarNuevoProducto">

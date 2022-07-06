@@ -45,6 +45,7 @@ const LogInForm = () => {
   } = useForm(initialForm, validationForm);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [passwordType, setPasswordType] = useState("password");
   const [logged, setLogged] = useState(window.localStorage.getItem("jwt"));
 
@@ -136,7 +137,9 @@ const LogInForm = () => {
               <button
                 className="btn btn-primary btn-lg"
                 disabled={Object.entries(errors).length > 0}
-                onClick={()=>navigate(-1)}
+                onClick={()=>{
+                navigate("/")
+                }}
               >
                 Ingresar
               </button>

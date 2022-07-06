@@ -5,6 +5,7 @@ import Products from './components/Products';
 import Reserva from './components/Reserva';
 import TemplateReservaExitosa from './components/TemplateReservaExitosa';
 import TempCreacionProductoExitosa from './components/TemplateProductoExitosa';
+import TemplateNotFound from "./components/TemplateNotFound"
 
 import {
   BrowserRouter,
@@ -28,6 +29,7 @@ function App() {
         <Route path="/confirmacionReservaExitosa" element={<TemplateReservaExitosa />}/>
         <Route path="/admin" element={<ProductoForm />}/>
         <Route path="/creacionProductoExitosa" element={<TempCreacionProductoExitosa />}/>
+        <Route path="/notfound" element={<TemplateNotFound />} />
       </Routes>
     </BrowserRouter>
 
