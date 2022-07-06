@@ -19,6 +19,7 @@ export default function Reserva() {
   let ciudades = productosEstaticos.ciudades;
   let productos = productosEstaticos.productos;
   const [fecha, setfecha] = useState(new Date([]));
+  const [hora, setHora] = useState('')
   const navigate = useNavigate();
   const { productId } = useParams();
 
@@ -63,19 +64,29 @@ export default function Reserva() {
 
         <div id="form" className="reserva-container two">
           <div className="row">
-            <div className="col-sm-7">
-              <h2 className="create-acount">Completá tus datos </h2>
-              <ReservaForm />
+            <div className="col-7">
+              <div>
+                <h2 className="create-acount">Completá tus datos </h2>
+                <ReservaForm />
+              </div>
+              <div id="calendar">
+                <h2>Seleccioná tu fecha de reserva</h2>
+                <div className="d-flex flex-row justify-content-around align-items-center">
+                  <div className="calendar-container">
+                  {window.innerWidth >= 359 && window.innerWidth <= 736 ? <Calendar minDate={new Date(Date.now())} showDoubleView={false} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />:<Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="col-sm-4 three">
+            <div className="col-4 three">
               <div id="detalleReserva">
-                <ReservaDetalle fechas={fecha} />
+                <ReservaDetalle productId={productId} fechas={fecha} hora={hora}/>
               </div>
             </div>
           </div>
 
-          <div className="row">
+          {/*<div className="row">
             <div className="col-sm-7 four">
               <div id="calendar">
                 <h2>Seleccioná tu fecha de reserva</h2>
@@ -86,13 +97,13 @@ export default function Reserva() {
                 </div>
               </div>
             </div>
-          </div>
+    </div>*/}
 
           <div className="row">
-            <div className="col-sm-2 five">
+            <div className="col-6 five">
               <div id="horaLlegada">
                 <h2>Tu horario de llegada</h2>
-                <ReservaHoraLlegada />
+                <ReservaHoraLlegada setHora={setHora}/>
               </div>
             </div>
           </div>
