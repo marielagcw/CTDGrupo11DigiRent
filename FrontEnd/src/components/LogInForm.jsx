@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 // import{chechPassword,chechSingleMail} from '../scripts/formValidation';
 import { useForm } from '../hooks/useForm';
 
@@ -48,9 +48,10 @@ const LogInForm = () => {
   const [passwordType, setPasswordType] = useState('password');
   const [logged, setLogged] = useState(window.localStorage.getItem('jwt'))
 
+
   useEffect(() => {
     if (logged) {
-      navigate('/');
+      navigate(from.from);
     }
   }, [logged])
 
@@ -71,16 +72,23 @@ const LogInForm = () => {
 
 
   // }, [post])
-
+  const location = useLocation();
+  let from = location.state;
+  useEffect(() => {
+    if (from.from == '/register') {
+      from.from = '/';
+    }
+  }, [])
+  
 
   return (
     <>
       <Header btn="register" />
-      <button type="button" className="btn-close btn-close-black " aria-label="Close" onClick={() => navigate('/')}></button>
+      <button type="button" className="btn-close btn-close-black " aria-label="Close" onClick={() => navigate(from.from)}></button>
       <div className="flex" id='logInForm'>
         <div className='form-container'>
           <h1 className='create-acount'>Iniciar Sesión</h1>
-          <form onSubmit={(e) => setLogged({ logged: handleSubmit(e) })} className='d-flex flex-column login'>
+          <form onSubmit={(e) =>setTimeout(setLogged,500,{ logged: handleSubmit(e) })} className='d-flex flex-column login'>
             {errors.badCredentials && <p className='error'>{errors.badCredentials}</p>}
             <div className="d-flex flex-column">
               <label htmlFor="email">Correo electrónico</label>

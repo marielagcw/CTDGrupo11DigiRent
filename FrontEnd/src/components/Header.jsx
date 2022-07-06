@@ -11,7 +11,7 @@ import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/fre
 
 const frase = "Elegí donde querés vivir";
 
-const Header = ({ user, btn }) => {
+const Header = ({ path, btn }) => {
   const navigate = useNavigate();
   const storage = window.localStorage;
   const userSession = storage.getItem('user');
@@ -28,6 +28,7 @@ const Header = ({ user, btn }) => {
       window.removeEventListener('resize', detectarWidth())
     }
   }, [widthWindow])
+
   
   return (
     <>
@@ -47,7 +48,7 @@ const Header = ({ user, btn }) => {
               {btn !== "login" && <Link to='/register'>
                 <button className='btn btn-lg btn-border-primary' id='createAcount' >Crear cuenta</button>
               </Link>}
-              {btn !== "register" && <Link to='/login'>
+              {btn !== "register" && <Link to='/login' state={{ from: location.pathname}}>
                 <button className='btn btn-lg btn-border-primary ms-2 me-2' id='logIn' >Iniciar sesión</button>
               </Link>}
             </div>}

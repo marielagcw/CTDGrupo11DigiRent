@@ -52,7 +52,7 @@ export const useForm = (initialForm, validateForm) => {
                         }
                     }
                     let token = await data.json();
-                    storage.setItem('jwt', JSON.stringify(token));
+                    await storage.setItem('jwt', JSON.stringify(token));
                     userInfo();
 
                 } catch (err) {

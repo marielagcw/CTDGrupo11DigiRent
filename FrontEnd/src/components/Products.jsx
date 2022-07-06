@@ -38,10 +38,16 @@ export default function Products() {
         politicas, 
         reservas} = { ...data };
 
+    const [path, setPath] = useState({path:''})
 
+    useEffect(() => {
+        // eslint-disable-next-line no-restricted-globals
+        setPath(location.pathname);
+    }, [])
+    
     return (
         <div id='product'>
-            <Header />
+            <Header path={path} />
             <div className='my-navbar myNavbar d-flex flex-row align-items-center justify-content-between pt-3 pb-3'>
                 <div className="title-product">
                     {isPending ? <Spinner /> :
