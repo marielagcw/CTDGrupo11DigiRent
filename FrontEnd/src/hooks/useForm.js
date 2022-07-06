@@ -65,6 +65,7 @@ export const useForm = (initialForm, validateForm) => {
           name: token.Nombre,
           lastName: token.Apellido,
           id: token.Id,
+          email: token.Email
         };
         storage.setItem("user", JSON.stringify(userFromBack));
       };

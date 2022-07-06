@@ -10,6 +10,8 @@ const initialForm = {
   ciudad: "",
 };
 
+const userStorage =JSON.parse(window.localStorage.getItem("user"));
+
 const ReservaForm = () => {
   const navigate = useNavigate();
   const [logged, setLogged] = useState({ logged: false, info: {} });
@@ -46,7 +48,7 @@ const ReservaForm = () => {
                       type="text"
                       className="input"
                       name="name"
-                      placeholder="Bruno"
+                      placeholder={userStorage.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={form.name}
@@ -61,7 +63,7 @@ const ReservaForm = () => {
                       type="text"
                       className="input"
                       name="lastName"
-                      placeholder="Rodriguez"
+                      placeholder={userStorage.lastName}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={form.lastName}
@@ -78,7 +80,7 @@ const ReservaForm = () => {
                       type="email"
                       className="input"
                       name="email"
-                      placeholder="dbrodriguez@gmail.com"
+                      placeholder={userStorage.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={form.email}

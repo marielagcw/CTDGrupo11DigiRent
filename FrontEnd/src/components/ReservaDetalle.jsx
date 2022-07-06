@@ -15,6 +15,7 @@ const ReservaDetalle = ({ fechas, hora, productId}) => {
     // const navigate = useNavigate();
 
     const realizarReserva = async () => {
+        console.log("jwt reserva " + jwt)
         if(render === true){
 
             let fechaInicialFormateada = `${formatDate(fechas[0]).slice(6)}-${formatDate(fechas[0]).slice(3,5)}-${formatDate(fechas[0]).slice(0,2)}`
