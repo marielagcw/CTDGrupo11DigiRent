@@ -3,17 +3,29 @@ import "../styles/ProductPolitics.css";
 
 export default function ProductPolitics({ politics }) {
   const clasificacionTitulo = (pol) => {
-    switch (pol) {
+  const tipoPolitica = pol.titulo.split(".");
+    
+    switch (tipoPolitica[0]) {
       case "1":
-        return "Normas de la casa";
+        return {
+          titulo: "Normas de la casa",
+          elemento: tipoPolitica[1]
+        };
       case "2":
-        return "Salud y seguridad";
+        return {
+          titulo: "Salud y seguridad",
+          elemento: tipoPolitica[1]
+        };
       case "3":
-        return "Política de cancelación";
+        return {
+          titulo: "Política de cancelación",
+          elemento: tipoPolitica[1]
+        };
       default:
-        return "Políticas"
+        break;
     }
   };
+
   return (
     <div id="politics">
       <h2 className="politics-title title">¿Que tenes que saber?</h2>
@@ -22,15 +34,11 @@ export default function ProductPolitics({ politics }) {
         {politics.map((pol, i) => {
           return (
             <div key={"pol_title_" + i}>
-              <h4 id="titulo-politicas">{clasificacionTitulo(pol.titulo[0])}</h4>
+              <h4 id="titulo-politicas">{clasificacionTitulo(pol).titulo}</h4>
               <ul className="pol-ul d-flex flex-column justify-content-around allign-items-ceter">
-                {politics.map((pol, i) => {
-                  return (
-                    <li id="elem-politicas" key={"pol_" + i}>
-                      {pol.titulo.slice(1, pol.length)}
-                    </li>
-                  );
-                })}
+                <li id="elem-politicas" key={"pol_" + i}>
+                  {clasificacionTitulo(pol).elemento}
+                </li>
               </ul>
             </div>
           );

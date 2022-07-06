@@ -114,7 +114,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasNormas: {
                   ...old.politicasNormas,
-                  titulo: "1" + e.target.value,
+                  titulo: "1." + e.target.value,
                 },
               }))
             }
@@ -142,7 +142,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasSalud: {
                   ...old.politicasSalud,
-                  titulo: "2" + e.target.value,
+                  titulo: "2." + e.target.value,
                 },
               }))
             }
@@ -170,7 +170,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasCancelacion: {
                   ...old.politicasCancelacion,
-                  titulo: "3" + e.target.value,
+                  titulo: "3." + e.target.value,
                 },
               }))
             }
