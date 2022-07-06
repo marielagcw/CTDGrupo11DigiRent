@@ -59,7 +59,7 @@ public class ProductoController {
     @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody ProductoDTO producto) {
         service.agregar(producto);
-        return ResponseEntity.ok(producto);
+        return ResponseEntity.status(201).body(producto);
     }
 
     // DELETE

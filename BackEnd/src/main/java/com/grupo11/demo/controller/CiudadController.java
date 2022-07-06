@@ -41,7 +41,7 @@ public class CiudadController {
             return ResponseEntity.badRequest().body("Los datos están incompletos");
         }
         ciudadService.agregar(ciudad);
-        return ResponseEntity.ok(ciudad);
+        return ResponseEntity.status(201).body(ciudad);
     }
 
     @DeleteMapping("/eliminar/{id}")

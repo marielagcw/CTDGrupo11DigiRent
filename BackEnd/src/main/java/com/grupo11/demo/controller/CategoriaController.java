@@ -37,7 +37,7 @@ public class CategoriaController {
     @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         categoriaService.eliminar(id);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.status(201).body(HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")

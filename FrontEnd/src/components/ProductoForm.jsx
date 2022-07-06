@@ -59,7 +59,7 @@ export default function ProductoForm() {
       ? await axios
           .post(urlPostCategoria, bodyCategoria, config)
           .then((res) => {
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
               console.log(res);
               console.log(res.data);
               setTimeout(() => {
@@ -99,7 +99,7 @@ export default function ProductoForm() {
       ? await axios
           .post(urlPostCiudad, bodyCiudad, config)
           .then((res) => {
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
               console.log(res);
               console.log(res.data);
               setTimeout(() => {
@@ -139,7 +139,7 @@ export default function ProductoForm() {
       ? await axios
           .post(urlPostCaracteristica, bodyCaracteristica, config)
           .then((res) => {
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
               console.log(res);
               console.log(res.data);
               setTimeout(() => {
@@ -180,7 +180,7 @@ export default function ProductoForm() {
       ? await axios
           .post(urlPostProducto, bodyProducto, config)
           .then((res) => {
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
               console.log(res);
               console.log(res.data);
               postApiImagenes(res.data.id);

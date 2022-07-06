@@ -27,7 +27,7 @@ public class PoliticaController {
     @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody PoliticaDTO politica) {
         politicaService.agregar(politica);
-        return ResponseEntity.ok(politica);
+        return ResponseEntity.status(201).body(politica);
     }
 
     @DeleteMapping("/eliminar/{id}")

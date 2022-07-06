@@ -44,7 +44,7 @@ public class ReservaController {
     @RolesAllowed({"USUARIO_PRIVADO", "ADMINISTRADOR"})
     public ResponseEntity<?> guardar(@RequestBody ReservaDTO reserva) {
         service.agregar(reserva);
-        return ResponseEntity.ok(reserva);
+        return ResponseEntity.status(201).body(reserva);
     }
 
     // DELETE

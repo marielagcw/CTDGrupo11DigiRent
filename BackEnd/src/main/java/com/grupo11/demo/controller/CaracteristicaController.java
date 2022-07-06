@@ -43,7 +43,7 @@ public class CaracteristicaController {
             return ResponseEntity.badRequest().body("Los datos están incompletos");
         }
         caracteristicaService.agregar(caracteristica);
-        return ResponseEntity.ok(caracteristica);
+        return ResponseEntity.status(201).body(caracteristica);
     }
 
     @DeleteMapping("/eliminar/{id}")
