@@ -45,12 +45,19 @@ export default function ProductoForm() {
   } = useFetch(urlCategorias);
 
   /* ---------------------------------- Posts --------------------------------- */
+  const config = {
+    headers: {
+      Authorization:
+        "Bearer " + JSON.parse(window.localStorage.getItem("jwt")).jwt,
+    },
+  };
+
   // POST Nueva categoría
   const urlPostCategoria = urlBase + "/categorias/agregar";
   const postApiCategoria = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCategoria, bodyCategoria)
+          .post(urlPostCategoria, bodyCategoria, config)
           .then((res) => {
             if (res.status === 200) {
               console.log(res);
@@ -78,102 +85,118 @@ export default function ProductoForm() {
   // POST Nueva Ciudad
   const urlPostCiudad = urlBase + "/ciudades/agregar";
   const postApiCiudad = async () => {
-    await axios
-      .post(urlPostCiudad, bodyCiudad)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res);
-          console.log(res.data);
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
-          Swal.fire(
-            "Su ciudad fue agregada con éxito",
-            "El formulario será reiniciado para que pueda ver su ciudad entre las opciones",
-            "success"
-          );
-        }
-      })
-      .catch(
-        Swal.fire(
-          "Ups... algo no está bien",
-          "La ciudad no pudo ser agregada, intenta nuevamente",
-          "error"
-        )
-      );
+    tokenIsValid()
+      ? await axios
+          .post(urlPostCiudad, bodyCiudad, config)
+          .then((res) => {
+            if (res.status === 200) {
+              console.log(res);
+              console.log(res.data);
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+              Swal.fire(
+                "Su ciudad fue agregada con éxito",
+                "El formulario será reiniciado para que pueda ver su ciudad entre las opciones",
+                "success"
+              );
+            }
+          })
+          .catch(
+            Swal.fire(
+              "Ups... algo no está bien",
+              "La ciudad no pudo ser agregada, intenta nuevamente",
+              "error"
+            )
+          )
+      : navigate("/login");
   };
 
   // POST Nueva característica
   const urlPostCaracteristica = urlBase + "/caracteristicas/agregar";
   const postApiCaracteristica = async () => {
-    await axios
-      .post(urlPostCaracteristica, bodyCaracteristica)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res);
-          console.log(res.data);
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
-          Swal.fire(
-            "Su característica fue agregada con éxito",
-            "El formulario será reiniciado para que pueda ver su característica entre las opciones",
-            "success"
-          );
-        }
-      })
-      .catch(
-        Swal.fire(
-          "Ups... algo no está bien",
-          "La caracteristica no pudo ser agregada, intenta nuevamente",
-          "error"
-        )
-      );
+    tokenIsValid()
+      ? await axios
+          .post(urlPostCaracteristica, bodyCaracteristica, config)
+          .then((res) => {
+            if (res.status === 200) {
+              console.log(res);
+              console.log(res.data);
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+              Swal.fire(
+                "Su característica fue agregada con éxito",
+                "El formulario será reiniciado para que pueda ver su característica entre las opciones",
+                "success"
+              );
+            }
+          })
+          .catch(
+            Swal.fire(
+              "Ups... algo no está bien",
+              "La caracteristica no pudo ser agregada, intenta nuevamente",
+              "error"
+            )
+          )
+      : navigate("/login");
   };
 
   /* ------------------------------ POST Nuevo Producto ----------------------------- */
   const urlPostProducto = urlBase + "/productos/agregar";
   const postApiProducto = async () => {
-    await axios
-      .post(urlPostProducto, bodyProducto)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res);
-          console.log(res.data);
-          postApiImagenes();
-          navigate("/creacionProductoExitosa");
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
-          Swal.fire(
-            "Su Producto fue agregado con éxito",
-            "Gracias por confiar en nosotros!",
-            "success"
-          );
-        }
-      })
-      .catch(
-        Swal.fire(
-          "Ups... algo no está bien",
-          "El producto no pudo ser agregado, intenta nuevamente",
-          "error"
-        )
-      );
+    let idProducto= "";
+    tokenIsValid()
+      ? await axios
+          .post(urlPostProducto, bodyProducto, config)
+          .then((res) => {
+            if (res.status === 200) {
+              console.log(res);
+              console.log(res.data);
+              postApiImagenes();
+              idProducto = res.data.id;
+              // navigate("/creacionProductoExitosa");
+              navigate(`/products/${idProducto}`)
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+              Swal.fire(
+                "Su Producto fue agregado con éxito",
+                "Gracias por confiar en nosotros!",
+                "success"
+              );
+            }
+          })
+          .catch(
+            Swal.fire(
+              "Ups... algo no está bien",
+              "El producto no pudo ser agregado, intenta nuevamente",
+              "error"
+            )
+          )
+      : navigate("/login");
+      console.log(tokenIsValid())
   };
   const urlPostImagen = urlBase + "/imagenes/agregar";
   const postApiImagenes = (id) => {
     datosForm.imagenState.map(async (imagen) => {
-      await axios
-        .post(urlPostImagen, {
-          url: imagen.url,
-          titulo: imagen.titulo,
-          producto: { id: id },
-        })
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-        })
-        .catch(Swal.fire("Error al cargar las imágenes"));
+      tokenIsValid()
+        ? await axios
+            .post(
+              urlPostImagen,
+              {
+                url: imagen.url,
+                titulo: imagen.titulo,
+                producto: { id: id },
+              },
+              config
+            )
+            .then((res) => {
+              console.log(res);
+              console.log(res.data);
+            })
+            .catch(Swal.fire("Error al cargar las imágenes"))
+        : navigate("/login");
     });
   };
 

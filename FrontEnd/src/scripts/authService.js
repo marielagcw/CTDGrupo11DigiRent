@@ -12,7 +12,7 @@ const getRol = () => {
 
 const tokenIsValid = () => {
   const storage = window.localStorage;
-  let token = storage.getItem("jwt");
+  let token = JSON.parse(storage.getItem("jwt")).jwt;
   if (token === null){
   return false
   }

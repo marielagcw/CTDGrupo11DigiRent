@@ -1,9 +1,78 @@
 import axios from "axios";
-
+import { tokenIsValid } from "../scripts/authService";
+import { useNavigate } from "react-router-dom";
 
 const urlBase = process.env.REACT_APP_URLBASE;
 
 export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
+  const navigate = useNavigate();
+
+  // POST Nuevo elemento política: normas
+  const urlElementosPolitica = urlBase + "/elementospolitica/agregar";
+  const config = {
+    headers: {
+      Authorization:
+        "Bearer " + JSON.parse(window.localStorage.getItem("jwt")).jwt,
+    },
+  };
+  const postApiNormas = async (datosForm, setDatosForm) => {
+    tokenIsValid()
+      ? await axios
+          .post(urlElementosPolitica, datosForm.politicasNormas, config)
+          .then((res) => {
+            // Obtener el id del objeto que viene en la respuesta
+            console.log(res);
+            console.log(res.data);
+            setDatosForm((old) => {
+              return {
+                ...old,
+                politicasNormas: res.data,
+              };
+            });
+          })
+      : navigate("/login");
+      console.log(tokenIsValid())
+  };
+
+  // POST Nuevo elemento política: salud
+
+  const postApiSalud = async (datosForm, setDatosForm) => {
+    tokenIsValid()
+      ? await axios
+          .post(urlElementosPolitica, datosForm.politicasSalud, config)
+          .then((res) => {
+            // Obtener el id del objeto que viene en la respuesta
+            console.log(res);
+            console.log(res.data);
+            setDatosForm((old) => {
+              return {
+                ...old,
+                politicasSalud: res.data,
+              };
+            });
+          })
+      : navigate("/login");
+  };
+
+  // POST Nuevo elemento política: cancelación
+  const postApiCancelacion = async (datosForm, setDatosForm) => {
+    tokenIsValid()
+      ? await axios
+          .post(urlElementosPolitica, datosForm.politicasCancelacion, config)
+          .then((res) => {
+            // Obtener el id del objeto que viene en la respuesta
+            console.log(res);
+            console.log(res.data);
+            setDatosForm((old) => {
+              return {
+                ...old,
+                politicasCancelacion: res.data,
+              };
+            });
+          })
+      : navigate("/login");
+  };
+
   return (
     <fieldset>
       <legend className="mt-2 fieldsetProductoFormulario">
@@ -110,57 +179,4 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
       </div>
     </fieldset>
   );
-};
-
-// POST Nuevo elemento política: normas
-const urlElementosPolitica = urlBase + "elementospolitica/agregar";
-const jwt = localStorage.getItem("jwt");
-const config = { headers: { Authorization: `Bearer ${jwt}` } };
-const postApiNormas = async (datosForm, setDatosForm) => {
-  await axios
-    .post(urlElementosPolitica, datosForm.politicasNormas, config)
-    .then((res) => {
-      // Obtener el id del objeto que viene en la respuesta
-      console.log(res);
-      console.log(res.data);
-      setDatosForm((old) => {
-        return {
-          ...old,
-          politicasNormas: res.data,
-        };
-      });
-    });
-};
-
-// POST Nuevo elemento política: salud
-
-const postApiSalud = async (datosForm, setDatosForm) => {
- await axios.post(urlElementosPolitica, datosForm.politicasSalud, config).then((res) => {
-    // Obtener el id del objeto que viene en la respuesta
-    console.log(res);
-    console.log(res.data);
-    setDatosForm((old) => {
-      return {
-        ...old,
-        politicasSalud: res.data,
-      };
-    });
-  });
-};
-
-// POST Nuevo elemento política: cancelación
-const postApiCancelacion = async (datosForm, setDatosForm) => {
- await axios
-    .post(urlElementosPolitica, datosForm.politicasCancelacion, config)
-    .then((res) => {
-      // Obtener el id del objeto que viene en la respuesta
-      console.log(res);
-      console.log(res.data);
-      setDatosForm((old) => {
-        return {
-          ...old,
-          politicasCancelacion: res.data,
-        };
-      });
-    });
 };
