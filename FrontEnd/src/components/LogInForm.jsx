@@ -8,6 +8,7 @@ import "../styles/Form.css";
 import "../styles/iconForms.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import { tokenIsValid } from '../scripts/authService';
 
 
 const initialForm = {
@@ -49,6 +50,11 @@ const LogInForm = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [logged, setLogged] = useState(window.localStorage.getItem("jwt"));
 
+ useEffect(() => {
+    if (logged && (tokenIsValid())) {
+      navigate(-1);
+    }
+ }, [logged]);
 
   // useEffect(() => {
   //   if (logged) {
@@ -135,11 +141,9 @@ const LogInForm = () => {
             {response && <p className="error">{response}</p>}
             <div className="mt-5 row justify-content-center">
               <button
+                type="submit"
                 className="btn btn-primary btn-lg"
                 disabled={Object.entries(errors).length > 0}
-                onClick={()=>{
-                navigate("/")
-                }}
               >
                 Ingresar
               </button>

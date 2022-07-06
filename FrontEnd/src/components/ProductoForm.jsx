@@ -79,7 +79,17 @@ export default function ProductoForm() {
               "error"
             )
           )
-      : navigate("/login");
+      : Swal.fire({
+        title: 'Ups... parece que tu sesión se venció',
+        text: "Por favor ingresa nuevamente",
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Ingresar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      })
   };
 
   // POST Nueva Ciudad
@@ -109,7 +119,17 @@ export default function ProductoForm() {
               "error"
             )
           )
-      : navigate("/login");
+      : Swal.fire({
+        title: 'Ups... parece que tu sesión se venció',
+        text: "Por favor ingresa nuevamente",
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Ingresar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      })
   };
 
   // POST Nueva característica
@@ -139,7 +159,17 @@ export default function ProductoForm() {
               "error"
             )
           )
-      : navigate("/login");
+      : Swal.fire({
+        title: 'Ups... parece que tu sesión se venció',
+        text: "Por favor ingresa nuevamente",
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Ingresar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      })
   };
 
   /* ------------------------------ POST Nuevo Producto ----------------------------- */

@@ -10,7 +10,9 @@ import com.grupo11.demo.service.IReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -28,6 +30,12 @@ public class ReservaService implements IReservaService {
     // SAVE
     @Override
     public ReservaDTO agregar(ReservaDTO reservaDTO) {
+        /* Para evitar que se guarden dos reservas con la misma fecha */
+//       List<Reserva> reservaList = repository.findAllByProducto(reservaDTO.getProducto().getId(), Pageable.unpaged());
+//       reservaList.forEach(reserva -> {
+//           if(reservaDTO.getFechaInicial().isAfter(reserva.getFechaInicial()) && reservaDTO.getFechaFinal().isBefore(reserva.getFechaFinal()) || reservaDTO.getFechaInicial().isEqual(reserva.getFechaInicial()) && reservaDTO.getFechaFinal().isBefore(reserva.getFechaFinal()) || reservaDTO.getFechaInicial().isAfter(reserva.getFechaInicial()) && reservaDTO.getFechaFinal().isEqual(reserva.getFechaFinal()) || reservaDTO.getFechaInicial().isEqual(reserva.getFechaInicial()) && reservaDTO.getFechaFinal().isEqual(reserva.getFechaFinal()) )
+//           throw new HttpServerErrorException(HttpStatus.CONFLICT);
+//       });
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
         repository.save(reserva);
         reservaDTO.setId(reserva.getId());
