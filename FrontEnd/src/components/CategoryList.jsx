@@ -4,9 +4,11 @@ import '../styles/CategoryList.css';
 import { useFetch } from "../hooks/useFetch";
 import Spinner from './Spinner';
 
+const urlBase = process.env.REACT_APP_URLBASE;
+
 const CategoryList = ({seleccion,setSeleccion}) => {
 
-    let url = "http://localhost:8080/categorias/listarTodos";
+    let url = urlBase + "/categorias/listarTodos";
     let { data, isPending, error } = useFetch(url);
     if (isPending) {
         console.log(error);

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class ProductoController {
 
     // FIND ALL / GET ALL
     @GetMapping("/listarTodos")
+    @RolesAllowed({"USUARIO_PRIVADO", "ADMINISTRADOR", "SUPER"})
     public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field, @RequestParam(required = false) String atributoOrden, @RequestParam(required = false) String atributo) {
 
         // Lista que se retorna
@@ -54,6 +56,7 @@ public class ProductoController {
 
     // SAVE / POST
     @PostMapping("/agregar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody ProductoDTO producto) {
         service.agregar(producto);
         return ResponseEntity.ok(producto);
@@ -61,6 +64,7 @@ public class ProductoController {
 
     // DELETE
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         service.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -68,6 +72,7 @@ public class ProductoController {
 
     // UPDATE / PUT
     @PutMapping("/actualizar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> editarProducto(@RequestBody ProductoDTO productoDTO) {
         service.actualizar(productoDTO);
         return ResponseEntity.ok(productoDTO);

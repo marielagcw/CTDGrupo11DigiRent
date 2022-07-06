@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import '../styles/Form.css'
@@ -9,6 +9,8 @@ import Header from './Header';
 import Footer from './Footer';
 // import{chechPassword,chechSingleMail} from '../scripts/formValidation';
 import { useForm } from '../hooks/useForm';
+
+const urlBase = process.env.REACT_APP_URLBASE;
 
 const initialForm = {
     name: "",
@@ -92,12 +94,13 @@ const validationForm = form => {
 
 const RegistreForm = (  ) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [data, setData] = useState()
     const [logged, setLogged] = useState({ logged: false, info: {} })
-
+    const from = location.state;
     
     /* const createNewUser = async form => {
-        let url = 'http://localhost:8080/usuarios/registro'
+        let url = urlBase + '/usuarios/registro'
         let newUser = {
             nombre: form.name,
             apellido: form.lastName,
@@ -135,7 +138,7 @@ const RegistreForm = (  ) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let url = 'http://localhost:8080/usuarios/registro'
+        let url = urlBase + '/usuarios/registro'
         let newUser = {
             nombre: form.name,
             apellido: form.lastName,
@@ -163,8 +166,10 @@ const RegistreForm = (  ) => {
     }
     useEffect(() => {
         if (logged.logged) {
-            
-            navigate('/');
+            if (from.from == '/login') {
+                navigate('/');
+            }
+            navigate(from.from);
         }
     }, [logged, data])
 

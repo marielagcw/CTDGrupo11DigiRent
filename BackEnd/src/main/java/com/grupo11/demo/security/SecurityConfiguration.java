@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,6 +18,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(
+        prePostEnabled = true,
+        securedEnabled = true,
+        jsr250Enabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     // Para poder trabajar con UserDetailsService de Spring
@@ -49,34 +54,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v3/api-docs/**",
                         "/swagger-ui*", "/swagger-ui/**").permitAll()
                 .antMatchers("/usuarios/authenticate", "/usuarios/registro").permitAll()
-                .antMatchers("/admin").hasRole("ADMINISTRADOR")
-                .antMatchers("/categorias/agregar").hasRole("ADMINISTRADOR")
-                .antMatchers("/categorias/listarTodos**", "/categorias/{id}").permitAll()
-                .antMatchers("/ciudades/agregar").hasRole("ADMINISTRADOR")
-                .antMatchers("/ciudades/listarTodos", "/ciudades/{id}").permitAll()
-                .antMatchers("/elementospoliticas/agregar**").hasRole("ADMINISTRADOR")
-                .antMatchers("/elementospoliticas/listarTodos", "/elementospoliticas/{id}").permitAll()
-                .antMatchers("/productos/listarTodosRandom**").permitAll()
-                .antMatchers("/caracteristicas/agregar").hasRole("ADMINISTRADOR")
-                .antMatchers("/caracteristicas/listarTodos**", "/caracteristicas/{id}").permitAll()
-                .antMatchers("/imagenes/listarTodos", "/imagenes/{id}").permitAll()
-                .antMatchers("/imagenes/agregar").hasRole("ADMINISTRADOR")
-                .antMatchers("/politicas/agregar").hasRole("ADMINISTRADOR")
-                .antMatchers("/politicas/listarTodos", "/politicas/{id}").permitAll()
-
-                .antMatchers(
-                        "/productos/listarTodos**",
-                        "/reservas**").hasAnyRole("USUARIO_PRIVADO", "ADMINISTRADOR")
-                .antMatchers("/productos/ciudad/{id}/fechaDisponible").permitAll()
-                .antMatchers("/productos/fechaDisponible").permitAll()
-                .antMatchers("/productos/ciudad/{id}").permitAll()
-                .antMatchers("/productos/categoria/{id}").permitAll()
-                .antMatchers("/productos/{id}").permitAll()
-                //.antMatchers("/**").hasRole("SUPER")
-
                 // Los demás endpoints requieren siempre permisos
                 .anyRequest()
-                .authenticated()
+                .permitAll()
+                //.authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

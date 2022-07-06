@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,7 @@ public class CiudadController {
     }
 
     @PostMapping("/agregar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody CiudadDTO ciudad) {
         if(ciudad.getNombre().equals("") || ciudad.getProvincia().equals("") || ciudad.getPais().equals("")){
             return ResponseEntity.badRequest().body("Los datos están incompletos");
@@ -43,12 +45,14 @@ public class CiudadController {
     }
 
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         ciudadService.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> editarCiudad(@RequestBody CiudadDTO ciudadDTO) {
         ciudadService.actualizar(ciudadDTO);
         return ResponseEntity.ok(HttpStatus.OK);

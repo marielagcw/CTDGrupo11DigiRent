@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Set;
 
 @RestController
@@ -23,6 +24,7 @@ public class CategoriaController {
     }
 
     @PostMapping("/agregar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> guardar(@RequestBody CategoriaDTO categoria) {
         if(categoria.getTitulo().equals("")){
             return ResponseEntity.badRequest().body("Los datos están incompletos");
@@ -32,12 +34,14 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/eliminar/{id}")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         categoriaService.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")
+    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> editarCategoria(@RequestBody CategoriaDTO categoriaDTO) {
         categoriaService.actualizar(categoriaDTO);
         return ResponseEntity.ok(categoriaDTO);

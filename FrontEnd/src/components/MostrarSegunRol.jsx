@@ -1,4 +1,4 @@
-import { getRol } from "../hooks/authService"
+import { getRol } from "../scripts/authService"
 
 export const MostrarSegunRol = ({rol, children})=>{
     const autenticado = getRol() === rol
