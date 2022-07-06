@@ -24,7 +24,7 @@ public class ReservaController {
 
     // FIND ALL
     @GetMapping("/listarTodos")
-    @RolesAllowed("USUARIO_PRIVADO")
+    @RolesAllowed({"USUARIO_PRIVADO", "ADMINISTRADOR"})
     public ResponseEntity<?> listarTodos(Pageable pageable, @RequestParam(required = false) String ord, @RequestParam(required = false) String field) {
         Set<ReservaDTO> reservas;
 
@@ -41,7 +41,7 @@ public class ReservaController {
 
     // SAVE
     @PostMapping("/agregar")
-    @RolesAllowed("USUARIO_PRIVADO")
+    @RolesAllowed({"USUARIO_PRIVADO", "ADMINISTRADOR"})
     public ResponseEntity<?> guardar(@RequestBody ReservaDTO reserva) {
         service.agregar(reserva);
         return ResponseEntity.ok(reserva);
@@ -49,7 +49,7 @@ public class ReservaController {
 
     // DELETE
     @DeleteMapping("/eliminar/{id}")
-    @RolesAllowed("USUARIO_PRIVADO")
+    @RolesAllowed({"USUARIO_PRIVADO", "ADMINISTRADOR"})
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         service.eliminar(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -57,7 +57,7 @@ public class ReservaController {
 
     // UPDATE
     @PutMapping("/actualizar")
-    @RolesAllowed("USUARIO_PRIVADO")
+    @RolesAllowed({"USUARIO_PRIVADO", "ADMINISTRADOR"})
     public ResponseEntity<?> editarProducto(@RequestBody ReservaDTO reservaDTO) {
         service.actualizar(reservaDTO);
         return ResponseEntity.ok(reservaDTO);

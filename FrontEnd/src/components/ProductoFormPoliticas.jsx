@@ -8,6 +8,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
   const navigate = useNavigate();
 
   // POST Nuevo elemento política: normas
+  const urlPolitica = urlBase + "/politicas/agregar";
   const urlElementosPolitica = urlBase + "/elementospolitica/agregar";
   const config = {
     headers: {
@@ -16,14 +17,16 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
     },
   };
   const postApiNormas = async (datosForm, setDatosForm) => {
+    console.log(datosForm.politicasNormas)
     tokenIsValid()
       ? await axios
-          .post(urlElementosPolitica, datosForm.politicasNormas, config)
+          .post(urlPolitica, datosForm.politicasNormas, config)
           .then((res) => {
             // Obtener el id del objeto que viene en la respuesta
             console.log(res);
             console.log(res.data);
             setDatosForm((old) => {
+              postApiElementos(res.data.titulo, res.data.id);
               return {
                 ...old,
                 politicasNormas: res.data,
@@ -31,7 +34,17 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
             });
           })
       : navigate("/login");
-      console.log(tokenIsValid())
+    console.log(tokenIsValid());
+  };
+
+  const postApiElementos = async (titulo, id) => {
+    
+    await axios
+      .post(urlElementosPolitica, { nombre: titulo, politica: { id: id } }, config)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   // POST Nuevo elemento política: salud
@@ -39,7 +52,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
   const postApiSalud = async (datosForm, setDatosForm) => {
     tokenIsValid()
       ? await axios
-          .post(urlElementosPolitica, datosForm.politicasSalud, config)
+          .post(urlPolitica, datosForm.politicasSalud, config)
           .then((res) => {
             // Obtener el id del objeto que viene en la respuesta
             console.log(res);
@@ -58,7 +71,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
   const postApiCancelacion = async (datosForm, setDatosForm) => {
     tokenIsValid()
       ? await axios
-          .post(urlElementosPolitica, datosForm.politicasCancelacion, config)
+          .post(urlPolitica, datosForm.politicasCancelacion, config)
           .then((res) => {
             // Obtener el id del objeto que viene en la respuesta
             console.log(res);
@@ -99,7 +112,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasNormas: {
                   ...old.politicasNormas,
-                  nombre: e.target.value,
+                  titulo: e.target.value,
                 },
               }))
             }
@@ -127,7 +140,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasSalud: {
                   ...old.politicasSalud,
-                  nombre: e.target.value,
+                  titulo: e.target.value,
                 },
               }))
             }
@@ -155,7 +168,7 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
                 ...old,
                 politicasCancelacion: {
                   ...old.politicasCancelacion,
-                  nombre: e.target.value,
+                  titulo: e.target.value,
                 },
               }))
             }

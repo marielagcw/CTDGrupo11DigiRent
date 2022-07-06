@@ -23,15 +23,15 @@ export default function ProductGalery({ galery }) {
                 <div className='container'>
                     <div className="row gx-1">
                         <div className='left-side col-md-6'>
-                            <img src={PHOTOS[0]} alt={galery[0].title} />
+                            <img src={PHOTOS[0]} alt={galery[0]?.title} />
                         </div>
                         <div className='rigth-side col-md-6 '>
 
-                            <img src={PHOTOS[2]} alt={galery[2].title} />
-                            <img src={PHOTOS[4]} alt={galery[2].title} />
+                            <img src={PHOTOS[2]} alt={galery[2]?.title} />
+                            <img src={PHOTOS[4]} alt={galery[2]?.title} />
 
-                            <img src={PHOTOS[3]} alt={galery[2].title} />
-                            <img src={PHOTOS[1]} alt={galery[2].title} />
+                            <img src={PHOTOS[3]} alt={galery[2]?.title} />
+                            <img src={PHOTOS[1]} alt={galery[2]?.title} />
                             <div id='open-galery' onClick={() => setIsOpen(true)}>
                                 <span >Ver Más</span>
                             </div>

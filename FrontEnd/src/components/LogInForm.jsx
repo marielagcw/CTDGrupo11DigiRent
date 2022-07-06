@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 // import{chechPassword,chechSingleMail} from '../scripts/formValidation';
 import { useForm } from "../hooks/useForm";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
 import "../styles/Form.css";
 import "../styles/iconForms.css";
 import Header from "./Header";
@@ -51,11 +49,11 @@ const LogInForm = () => {
   const [logged, setLogged] = useState(window.localStorage.getItem("jwt"));
 
 
-  useEffect(() => {
-    if (logged) {
-      navigate(from.from);
-    }
-  }, [logged]);
+  // useEffect(() => {
+  //   if (logged) {
+  //     navigate(from.from);
+  //   }
+  // }, [logged]);
 
   const handleDisplayPassword = (e) => {
     if (passwordType === "text") {
@@ -71,13 +69,13 @@ const LogInForm = () => {
   // useEffect(() => {
 
   // }, [post])
-  const location = useLocation();
-  let from = location.state;
-  useEffect(() => {
-    if (from.from == '/register') {
-      from.from = '/';
-    }
-  }, [])
+  // const location = useLocation();
+  // let from = location.state;
+  // useEffect(() => {
+  //   if (from.from == '/register') {
+  //     from.from = '/';
+  //   }
+  // }, [])
   
 
   return (
@@ -138,6 +136,7 @@ const LogInForm = () => {
               <button
                 className="btn btn-primary btn-lg"
                 disabled={Object.entries(errors).length > 0}
+                onClick={()=>navigate(-1)}
               >
                 Ingresar
               </button>

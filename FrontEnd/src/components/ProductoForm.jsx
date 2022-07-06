@@ -153,7 +153,7 @@ export default function ProductoForm() {
             if (res.status === 200) {
               console.log(res);
               console.log(res.data);
-              postApiImagenes();
+              postApiImagenes(res.data.id);
               idProducto = res.data.id;
               // navigate("/creacionProductoExitosa");
               navigate(`/products/${idProducto}`)
@@ -212,9 +212,9 @@ export default function ProductoForm() {
     ciudad: "",
     descripcionProducto: "",
     caracteristicaState: [],
-    politicasNormas: { nombre: "", politica: { id: 1 } },
-    politicasSalud: { nombre: "", politica: { id: 2 } },
-    politicasCancelacion: { nombre: "", politica: { id: 3 } },
+    politicasNormas: {titulo: ""},
+    politicasSalud: {titulo: ""},
+    politicasCancelacion: {titulo: ""},
     imagenState: [],
   });
 
@@ -262,20 +262,17 @@ export default function ProductoForm() {
 
   // Body para nuevo elemento política: norma
   const bodyNormas = {
-    nombre: datosForm.descripcionNormas,
-    politica: { id: 1 },
+    titulo: "1" + datosForm.descripcionNormas,
   };
 
   // Body para nuevo elemento política: salud
   const bodySalud = {
-    nombre: datosForm.descripcionSalud,
-    politica: { id: 2 },
+    titulo: "2" + datosForm.descripcionSalud,
   };
 
   // Body para nuevo elemento política: cancelación
   const bodyCancelacion = {
-    nombre: datosForm.descripcionCancelacion,
-    politica: { id: 3 },
+    titulo: "3" + datosForm.descripcionCancelacion,
   };
 
   /* --------------------------- Body para producto --------------------------- */
@@ -286,6 +283,7 @@ export default function ProductoForm() {
     ciudad: { id: datosForm.ciudad },
     politicas: [], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
     caracteristicas: datosForm.caracteristicaState,
+    tituloDescripcion: datosForm.descripcionProducto
   };
 
   /* -------------------------------------------------------------------------- */
