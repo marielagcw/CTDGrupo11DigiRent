@@ -47,34 +47,50 @@ div.cat-seleccionada{
 }
 
 /*Desktop*/
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1400px) {
     div.categoria {
         height: 300px;
     }
 
 }
 
+@media screen and (max-width: 1331px){
+
+}
+
 /*Tablet*/
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (max-width: 1060px) {
     .d-flex {
         flex-wrap: wrap;
     }
 
     div.categoria {
-        height: 32vh;
-        width: 45%;
+        height: auto;
+        width: 41vh;
+    }
+
+    .d-flex.justify-content-between.align-item-center {
+        flex-direction: row;
+    }
+    div.card-body h2 {
+        margin-bottom: 3%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .overflow-ellipsis {
+        text-overflow: ellipsis;
     }
 }
 
 /*Tablet personalizada*/
-@media screen and (min-width: 539px) and (max-width: 721px) {
+/* @media screen and (min-width: 539px) and (max-width: 721px) {
     div.card.categoria {
         height: 34vh;
     }
-}
+} */
 
 /*Mobile*/
-@media screen and (min-width: 414px) and (max-width: 767px) {
+@media screen and (max-width: 584px) {
     div.category-container h2 {
         text-align: center;
     }

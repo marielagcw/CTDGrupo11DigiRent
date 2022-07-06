@@ -78,10 +78,26 @@ div.producto div.card-body .btn-primary {
 
 @media screen and (max-width: 1060px) {
     div.producto {
-        margin: 3vh auto ;
         height: auto;
-        width: 90%;
+        width: 93vh;
+        display: flex;
+        flex-direction: row;
     }
+    div.producto .card-text {
+        height: 25%;
+    }
+    div.card-body h4.category, div.card-body h3.title, div.card-body h5.location {
+        margin-bottom: 3%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .overflow-ellipsis {
+        text-overflow: ellipsis;
+    }
+    h3.title:hover {
+        white-space: pre;
+    }
+
 }
 @media screen and (max-width: 584px) {
     div.producto {
@@ -108,24 +124,25 @@ div.producto div.card-body .btn-primary {
         align-items: center;
         height: fit-content;
     }
+    
 }
 
 /*Desktop*/
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
     div.producto .card-text {
         height: 30%;
     }
-}
+} */
 
 /*Tablet*/
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
     div.producto .card-text {
         height: 30%;
     }
-}
+} */
 
 /*Mobile*/
-@media screen and (min-width: 414px) and (max-width: 767px) {
+/* @media screen and (min-width: 414px) and (max-width: 767px) {
     div.producto .category,div.producto .location{
         text-align: center;
     }
@@ -134,7 +151,7 @@ div.producto div.card-body .btn-primary {
         border-radius: 15px 15px 0 0;
     }
 
-}
+} */
 /*Mobile más pequeño*/
 @media screen and (min-width: 359px) and (max-width: 767px) {
     div.producto img.card-img-top{

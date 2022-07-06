@@ -17,7 +17,7 @@ const CategoryCard = ({datos,seleccion,setSeleccion}) => {
         <div className={seleccion === id?"cat-seleccionada card categoria ":"card categoria"} onClick={handleClick} >
             <img src={url} className="card-img-top" alt={descripcion} />
             <div className="card-body">
-                <h2>{titulo}</h2>
+                <h2  className='overflow-ellipsis'>{titulo}</h2>
                 <p className="card-text">{descripcion}</p>
             </div>
         </div>
