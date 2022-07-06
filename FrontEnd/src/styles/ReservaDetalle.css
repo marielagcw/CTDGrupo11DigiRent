@@ -37,7 +37,12 @@ div#imgdetalle{
     bottom: 10%;
 }`*/
 
-.category-container{
+#detalleReserva {
     display: flex;
     flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 19%;
+    padding: 3% 0;
 }

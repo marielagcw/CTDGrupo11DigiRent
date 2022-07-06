@@ -1,4 +1,4 @@
-.reserva-container {
+/* .reserva-container {
     background-color: var(--quaternary);
     height: 140vh;
 }
@@ -22,7 +22,7 @@ div#horaLlegada{
 div#resPolitica{
     height: 60vh;
 
-}
+} */
 
 /* div#formReserva{
     position: absolute;
@@ -31,3 +31,50 @@ div#resPolitica{
     top: 21.11%;
 
 } */
+
+/*Vic*/
+* {
+    box-sizing: border-box;
+}
+#form {
+    background-color: var(--quaternary);
+}
+
+h2.create-acount {
+    color: var(--secondary);
+    margin: 3vh 0 0 9.5vh;
+}
+
+div#reservaForm.flex div.producto {
+    padding: 3vh;
+}
+
+div#reservaForm{
+    padding: 3vh;
+    margin: 0 6vh;
+    width: 100vh;
+}
+
+div#detalleReserva{
+    padding: 3%;
+}
+
+
+.wrapper {
+    display: grid;
+}
+.one {
+
+}
+.two {
+
+}
+.three {
+
+}
+.four {
+
+}
+.five {
+
+}

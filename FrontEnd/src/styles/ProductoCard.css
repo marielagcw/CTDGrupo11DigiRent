@@ -86,16 +86,11 @@ div.producto div.card-body .btn-primary {
     div.producto .card-text {
         height: 25%;
     }
-    div.card-body h4.category, div.card-body h3.title, div.card-body h5.location {
-        margin-bottom: 3%;
+    div.card-body h4.category.overflow-ellipsis, div.card-body h3.title.overflow-ellipsis, div.card-body h5.location.overflow-ellipsis {
         overflow: hidden;
         white-space: nowrap;
-    }
-    .overflow-ellipsis {
         text-overflow: ellipsis;
-    }
-    h3.title:hover {
-        white-space: pre;
+        width: 100%;
     }
 
 }

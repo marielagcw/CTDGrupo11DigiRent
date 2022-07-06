@@ -11,6 +11,7 @@ import "../styles/Reserva.css";
 import ReservaHoraLlegada from "./ReservaHoraLlegada";
 import ProductPolitics from "./ProductPolitics";
 import { useFetch } from "../hooks/useFetch";
+import Spinner from './Spinner';
 
 const urlBase = process.env.REACT_APP_URLBASE;
 
@@ -41,13 +42,16 @@ export default function Reserva() {
     isPending ? (
       <div></div>
     ) : (
-      <div id="reserva">
+      <div id="reserva" className="wrapper">
         <Header />
 
-        <div className="my-navbar myNavbar d-flex flex-row align-items-center justify-content-between pt-3 pb-3">
+        <div className="my-navbar myNavbar d-flex flex-row align-items-center justify-content-between pt-3 pb-3 one">
           <div className="title-product">
-            <h3>{categoria.titulo}</h3>
-            <h1>{tituloDescripcion}</h1>
+           {isPending ? <Spinner /> :
+                        <>
+                            <h3 className='tituloFondoVerde'>{categoria.titulo}</h3>
+                            <h1 className='tituloFondoVerde'>{tituloDescripcion}</h1>
+                        </>}
           </div>
           <div
             className="back d-flex justify-content-center allign-items-center"
@@ -57,13 +61,14 @@ export default function Reserva() {
           </div>
         </div>
 
-        <div className="reserva-container">
+        <div id="form" className="reserva-container two">
           <div className="row">
-            <div className="col-sm-12 col-md-8 col-md-8">
+            <div className="col-sm-7">
               <h2 className="create-acount">Completá tus datos </h2>
               <ReservaForm />
             </div>
-            <div className="col-md-4">
+
+            <div className="col-sm-4 three">
               <div id="detalleReserva">
                 <ReservaDetalle fechas={fecha} />
               </div>
@@ -71,17 +76,12 @@ export default function Reserva() {
           </div>
 
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-sm-7 four">
               <div id="calendar">
                 <h2>Seleccioná tu fecha de reserva</h2>
                 <div className="d-flex flex-row justify-content-around align-items-center">
                   <div className="calendar-container">
-                    <Calendar
-                      minDate={new Date(Date.now())}
-                      showDoubleView={true}
-                      selectRange={true}
-                      onChange={setfecha}
-                    />
+                  {window.innerWidth >= 359 && window.innerWidth <= 736 ? <Calendar minDate={new Date(Date.now())} showDoubleView={false} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />:<Calendar minDate={new Date(Date.now())} showDoubleView={true} selectRange={true} onChange={setfecha} showFixedNumberOfWeeks={false} />}
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function Reserva() {
           </div>
 
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-sm-2 five">
               <div id="horaLlegada">
                 <h2>Tu horario de llegada</h2>
                 <ReservaHoraLlegada />
@@ -97,12 +97,7 @@ export default function Reserva() {
             </div>
           </div>
         </div>
-
-        <div className="row">
-          <div id="resPolitica">
-            <ProductPolitics politics={politicas} />
-          </div>
-        </div>
+        {isPending ? <Spinner /> : <ProductPolitics politics={politicas} />}
 
         <Footer />
       </div>
