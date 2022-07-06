@@ -24,7 +24,6 @@ const ReservaDetalle = ({ fechas }) => {
     const [render, setRender] = useState(false)
 
     useEffect(() => {
-        
         if (fechas!= null && fechas.length > 0) {
             setRender(true);
         }else{
@@ -33,7 +32,7 @@ const ReservaDetalle = ({ fechas }) => {
 
     }, [fechas])
     
-    
+
     return (
         <>
             <div className="category-container m-3">
@@ -46,15 +45,15 @@ const ReservaDetalle = ({ fechas }) => {
                     <h3 className='titleReserva'>"Cabaña en montaña"</h3>
 
                     <h6 className='ubicacionReserva'>UBICACION</h6>
-                    <hr></hr>
+                    <hr/>
                     {!render  ?
                     <h5 className='entradaReserva'>Chek-in: </h5>:
                     <h5 className='entradaReserva'>Chek-in:  {formatDate(fechas[0])}</h5>}
-                    <hr></hr>
+                    <hr/>
                     {!render ?
                     <h5 className='entradaReserva'>Chek-Out: </h5>:
                     <h5 className='entradaReserva'>Chek-Out:  {formatDate(fechas[1])}</h5>}
-                    <hr></hr>
+                    <hr/>
                     <div className="containerReservaConf">
                         <button className='btn btn-primary btn-lg btn-max-width' onClick={()=>navigate('/confirmacionReservaExitosa')}>Confirmar reserva</button>
                     </div>
