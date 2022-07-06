@@ -4,9 +4,19 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import "../styles/ReservaHoraLlegada.css";
 
-const ReservaHoraLlegada = () => {
+const ReservaHoraLlegada = ({setHora}) => {
   //Array horas
   let horasList = horas.horas;
+
+  const elegirHora = (e) => {
+    //setHora(e.value)
+    let horaSeleccionada = e.target.value
+    let horaFormateada = ''
+    if(horaSeleccionada.length === 8){
+        horaFormateada = `${horaSeleccionada.slice(0,5)}:00`
+        setHora(horaFormateada)
+    }
+  }
 
   return (
     <>
@@ -22,7 +32,7 @@ const ReservaHoraLlegada = () => {
           Indica tu horario estimado de llegada
         </label>
         <div className="horaInput">
-          <input
+          <input onChange={elegirHora}
             className="input-search"
             type="text"
             list="horas"
@@ -30,9 +40,9 @@ const ReservaHoraLlegada = () => {
             name="horaImput"
           />
         </div>
-        <datalist id="horas">
+        <datalist id="horas"  >
           {horasList.map((e, i) => (
-            <option fecha={e} key={"horaImput_" + i}>
+            <option fecha={e}  key={"horaImput_" + i}>
               {e}
             </option>
           ))}

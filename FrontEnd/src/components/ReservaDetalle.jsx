@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {useEffect,useState} from "react";
 // import {Navigate, useNavigate} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
@@ -5,9 +6,51 @@ import '../styles/ReservaDetalle.css';
 // import detalle from '../productos.json';
 
 
-const ReservaDetalle = ({ fechas }) => {
+const ReservaDetalle = ({ fechas, hora, productId}) => {
+    const urlBase = process.env.REACT_APP_URLBASE
+    const user = JSON.parse(window.localStorage.getItem('user'))
+    const jwt = JSON.parse(window.localStorage.getItem('jwt')).jwt
+
     // let detalleReserva = detalle.detalle;
     // const navigate = useNavigate();
+
+    const realizarReserva = async () => {
+        if(render === true){
+
+            let fechaInicialFormateada = `${formatDate(fechas[0]).slice(6)}-${formatDate(fechas[0]).slice(3,5)}-${formatDate(fechas[0]).slice(0,2)}`
+            let fechaFinalFormateada = `${formatDate(fechas[1]).slice(6)}-${formatDate(fechas[1]).slice(3,5)}-${formatDate(fechas[1]).slice(0,2)}`
+
+
+            
+
+
+
+            const url = `${urlBase}/reservas/agregar`
+            const config = {
+                headers: {
+                  Authorization:
+                    "Bearer " + jwt,
+                },
+              };
+            const body = {
+                horaInicio: hora,
+                fechaInicial: fechaInicialFormateada,
+                fechaFinal: fechaFinalFormateada,
+                producto:{
+                    id:parseInt(productId)
+                },
+                usuario:{
+                    id:user.id
+                }
+            }
+            console.log(body);
+            await axios.post(url, body,config)
+
+            navigate('/confirmacionReservaExitosa')
+        }
+    }
+
+
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
     }
@@ -55,7 +98,7 @@ const ReservaDetalle = ({ fechas }) => {
                     <h5 className='entradaReserva'>Chek-Out:  {formatDate(fechas[1])}</h5>}
                     <hr/>
                     <div className="containerReservaConf">
-                        <button className='btn btn-primary btn-lg btn-max-width' onClick={()=>navigate('/confirmacionReservaExitosa')}>Confirmar reserva</button>
+                        <button className='btn btn-primary btn-lg btn-max-width' onClick={realizarReserva}>Confirmar reserva</button>
                     </div>
                     
                     
