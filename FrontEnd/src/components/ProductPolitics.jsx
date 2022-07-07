@@ -4,7 +4,7 @@ import "../styles/ProductPolitics.css";
 export default function ProductPolitics({ politics }) {
   const clasificacionTitulo = (pol) => {
   const tipoPolitica = pol.titulo.split(".");
-    
+    console.log(pol)
     switch (tipoPolitica[0]) {
       case "1":
         return {

@@ -64,32 +64,9 @@ const validationForm = form => {
     if(errors.length === 0){
         badUser = false;
     }
-    /*if(!badUser){
-        
-    }*/
-    
+      
     return (errors);
 };
-
-/*const createNewUser = async (newUser) => {
-    let url = 'https://localhost:8080/usuarios/registro'
-
-    let fetchInfo = {
-        mode:'no-cors',
-        method:'POST',
-        headers: new Headers({
-            "Content-Type": "application/json",
-            'Access-Control-Allow-Origin': '*',
-        }),
-        body: JSON.stringify(newUser)
-    }
-
-    fetch(url, fetchInfo).then(dateJson => dateJson.json()).then(data => {
-        console.log(data)
-    })
-
-
-}*/
 
 
 const RegistreForm = (  ) => {
@@ -99,33 +76,7 @@ const RegistreForm = (  ) => {
     const [logged, setLogged] = useState({ logged: false, info: {} })
     const from = location.state;
     
-    /* const createNewUser = async form => {
-        let url = urlBase + '/usuarios/registro'
-        let newUser = {
-            nombre: form.name,
-            apellido: form.lastName,
-            email: form.email,
-            password: form.password,
-            ciudad: "La plata",
-            rol:{
-                id: 1
-            }
-        }
-
-        /*let fetchInfo = {
-            mode:'no-cors',
-            method:'POST',
-            headers: new Headers({
-                "Content-Type": "application/json",
-                'Access-Control-Allow-Origin': '*',
-            }),
-            body: JSON.stringify(newUser)
-        }
-        
-        await axios.post(url,newUser).then(datos => console.log(datos)).catch(err => console.log(err));
-    }*/
     
-
     const {
         form,
         errors,
@@ -146,11 +97,14 @@ const RegistreForm = (  ) => {
             password: form.password,
             ciudad: "La plata",
             rol:{
-                id: 1
+                id: 3
             }
         }
 
-        await axios.post(url,newUser).then(datos => console.log(datos)).catch(err => console.log(err));
+        await axios.post(url,newUser).then(datos => {
+            console.log(datos)
+            //inicioSesion(newUser);
+            }).catch(err => console.log(err));
         setLogged({logged:true})
     } 
 
@@ -172,6 +126,7 @@ const RegistreForm = (  ) => {
             navigate(from.from);
         }
     }, [logged, data])
+
 
     return (
         <>
