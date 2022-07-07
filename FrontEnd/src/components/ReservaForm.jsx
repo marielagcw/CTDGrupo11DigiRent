@@ -31,7 +31,92 @@ const ReservaForm = () => {
   }, [logged]);
 
   return (
-    <>
+    window.innerWidth <= 1023 ? (<>
+      <div className="flex" id="reservaForm-mob">
+        <div className="card producto">
+          <div id="campos-form-reservas">
+            <div></div>
+            <form
+              onSubmit={(e) => setLogged(handleSubmit(e))}
+              
+            >
+
+                <div className="campo-form">
+                  <div>
+                    <div>
+                    <label htmlFor="name">Nombre</label>
+                    </div>
+                    <input
+                      type="text"
+                      className="input"
+                      name="name"
+                      placeholder={userStorage.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={form.name}
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div className="campo-form">
+                  <div>
+                    <div>
+                    <label htmlFor="lastName">Apellido</label>
+                    </div>
+                    <input
+                      type="text"
+                      className="input"
+                      name="lastName"
+                      placeholder={userStorage.lastName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={form.lastName}
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div className="campo-form">
+                  <div>
+                    <div>
+                    <label htmlFor="email">Correo electrónico</label>
+                    </div>
+                    <input
+                      type="email"
+                      className="input"
+                      name="email"
+                      placeholder={userStorage.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={form.email}
+                      disabled
+                    />
+                  </div>
+                </div>
+
+                <div className="campo-form">
+                  <div>
+                    <div>
+                    <label htmlFor="name">Ciudad</label>
+                    </div>
+                    <input
+                      type="text"
+                      className="input"
+                      name="ciudad"
+                      placeholder="Ciudad"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={form.name}
+                      required
+                    />
+                  </div>
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </>) :
+    (<>
       <div className="flex" id="reservaForm">
         <div className="card producto mb-3">
           <div className="col-md-12">
@@ -109,7 +194,7 @@ const ReservaForm = () => {
           </div>
         </div>
       </div>
-    </>
+    </>)
   );
 };
 

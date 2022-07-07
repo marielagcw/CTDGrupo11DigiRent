@@ -33,6 +33,7 @@ div#resPolitica{
 } */
 
 /*Vic*/
+
 body {
     box-sizing: border-box;
     margin: 0;
@@ -99,6 +100,60 @@ div#calendario-reservas{
 @media screen and (max-width: 1060px) {
 
 }
-@media screen and (max-width: 584px){
+@media screen and (max-width: 736px){
+    h2.create-acount.mob, div#calendar-mob h2, div#horaLlegada-mob h2{
+        color: var(--secondary);
+    }
+    h2.create-acount.mob{
+        margin: 0;
+        padding: 2vw 0 0 2vw;
+    }
+    div#campos-form-reservas {
+        padding: 5vw;
+        display: flex;
+        flex-direction: column;
+    }
+    div input {
+        width: 45vh;
+    }
+    div#reserva-mob {
 
+    }
+    div.title-product.mob {
+    }
+    div#reservaForm-mob {
+        margin: 0;
+        padding: 0;
+    }
+    #form-mob {
+        background-color: var(--quaternary);
+    }
+    div.create-acount.mob{
+
+    }
+    div#calendar-mob {
+        margin: 10vw;
+    }
+    div#calendario-reservas-mob {
+
+    }
+    div#detalleReserva-mob{
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 2px;
+        margin: 2vw;
+        padding: 1vw 0 1vw 0;
+    }
+    div#horario-llegada-mob {
+        padding: 6vw;
+        margin: 0 5vw;
+        height: auto;
+    }
+    div.iconoTexto-mob {
+        display: flex;
+        flex-direction: row;
+    }
+    div#texto-check-mob{
+        margin: 0 0 0 1%;
+    }
 }
