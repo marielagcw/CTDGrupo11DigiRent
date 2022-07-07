@@ -13,6 +13,7 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { MostrarSegunRol } from "./MostrarSegunRol";
 
 const frase = "Elegí donde querés vivir";
 
@@ -119,9 +120,12 @@ const Header = ({ path, btn }) => {
                       alignItems: "end",
                     }}
                   >
-                    <a className="text-link" href="/admin">
+                    <MostrarSegunRol rol="Administrador">
+                      <a className="text-link" href="/admin">
                       Administración
                     </a>
+                    </MostrarSegunRol>
+          
                     <p className="text-link">
                       ¿Desea{" "}
                       <span
