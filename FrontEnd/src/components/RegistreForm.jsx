@@ -29,7 +29,7 @@ const validationForm = form => {
     if (!form.name.trim()) {
         errors.name = "El campo 'Nombre' es requerido"
         badUser = true;
-} else if (!regrexName.test(form.name.trim())) {
+    } else if (!regrexName.test(form.name.trim())) {
         errors.name = "El campo solo permite letras"
         badUser = true;
     }
@@ -61,7 +61,7 @@ const validationForm = form => {
         errors.confirmPassword = "Las contraseñas no coinciden"
         badUser = true;
     }
-    if(errors.length === 0){
+    if (errors.length === 0) {
         badUser = false;
     }
       
@@ -69,7 +69,7 @@ const validationForm = form => {
 };
 
 
-const RegistreForm = (  ) => {
+const RegistreForm = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [data, setData] = useState()
@@ -100,13 +100,21 @@ const RegistreForm = (  ) => {
                 id: 3
             }
         }
-
-        await axios.post(url,newUser).then(datos => {
+        let band = false;
+        await axios.post(url, newUser).then(datos => {
             console.log(datos)
-            //inicioSesion(newUser);
-            }).catch(err => console.log(err));
-        setLogged({logged:true})
-    } 
+            band = datos.status == 201;
+        }).catch(err => console.log(err));
+        if (band) {
+            await window.localStorage.setItem('loadUser', JSON.stringify(
+                {
+                    mail: newUser.email,
+                    pw: newUser.password
+                }))
+
+                setLogged({ logged: true })
+        }
+    }
 
 
     const handleDisplayPassword = (e) => {
@@ -119,11 +127,9 @@ const RegistreForm = (  ) => {
         }
     }
     useEffect(() => {
+        console.log(window.localStorage.getItem('loadUser'));
         if (logged.logged) {
-            if (from.from == '/login') {
-                navigate('/');
-            }
-            navigate(from.from);
+            setTimeout(navigate,1500,'/login');
         }
     }, [logged, data])
 
@@ -136,8 +142,8 @@ const RegistreForm = (  ) => {
                 <div className='form-container'>
                     <h1 className='create-acount'>Crear cuenta</h1>
                     <form onSubmit={(e) => {
-                            setLogged(handleSubmit(e))
-                        }}
+                        setLogged(handleSubmit(e))
+                    }}
                         className='d-flex flex-column register'>
                         <div className="d-flex">
                             <div className="d-flex flex-column">
