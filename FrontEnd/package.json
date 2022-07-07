@@ -32,10 +32,34 @@
     "sweetalert2": "^11.4.19",
     "web-vitals": "^2.1.4"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!./src/App.js",
+      "!./src/index.js",
+      "!./scr/components/ProductDetails.jsx",
+      "!./src/components/CategoryCard.jsx",
+      "!./src/components/ProductCharact.jsx",
+      "!./src/components/ProductGalery.jsx",
+      "!./src/components/ProductLocation.jsx",
+      "!./src/components/ProductPolitics.jsx",
+      "!./src/components/ProductDetails.jsx",
+      "!./src/components/ UserInfo.jsx",
+      "!./src/components/Test.js",
+      "!./src/components/UserInfo.jsx",
+      "!./src/components/RegistreForm.jsx",
+      "!./src/components/UserInfoMobile.jsx",
+      "!./src/components/Products.jsx",
+      "!./src/hooks/useForm.js",
+      "!./src/scripts/displayForm.js",
+      "!./src/scripts/formValidation.js"
+
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
