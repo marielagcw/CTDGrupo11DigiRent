@@ -97,6 +97,7 @@ const LogInForm = () => {
     return (() => {
       form.email = '';
       form.password = ''
+      window.localStorage.removeItem("loadUser");
     })
   }, [])
 
