@@ -76,7 +76,7 @@ div#detalleReserva{
 }
 
 div#calendar {
-    margin: 0 0 0 4vh;
+    margin: 0 0 0 0;
 }
 
 div#calendario-reservas{
@@ -104,9 +104,9 @@ div#calendario-reservas{
     h2.create-acount.mob, div#calendar-mob h2, div#horaLlegada-mob h2{
         color: var(--secondary);
     }
-    h2.create-acount.mob{
+    h2.create-acount.mob, div#horaLlegada-mob h2{
         margin: 0;
-        padding: 2vw 0 0 2vw;
+        padding: 6vw 0 0 6vw;
     }
     div#campos-form-reservas {
         padding: 5vw;
