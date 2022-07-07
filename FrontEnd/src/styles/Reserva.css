@@ -33,16 +33,31 @@ div#resPolitica{
 } */
 
 /*Vic*/
-* {
+body {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div#form div.row {
+    margin: 0;
+    padding: 0;
 }
 #form {
     background-color: var(--quaternary);
 }
 
-h2.create-acount {
+h2.create-acount, div#horaLlegada h2{
     color: var(--secondary);
     margin: 3vh 0 0 9.5vh;
+}
+
+div#calendar h2 {
+    margin: 0 0 0 0;
+}
+
+
+h2.create-acount, div#calendar h2, div#horaLlegada h2{
+    color: var(--secondary);
 }
 
 div#reservaForm.flex div.producto {
@@ -59,22 +74,31 @@ div#detalleReserva{
     padding: 3%;
 }
 
-
-.wrapper {
-    display: grid;
+div#calendar {
+    margin: 0 0 0 4vh;
 }
-.one {
+
+div#calendario-reservas{
+    width: 102vh !important; 
+    height: vh !important;
+    margin: 1%;
+}
+
+@media screen and (min-width: 1200px) {
+    div#reservaForm {
+        margin: 0;
+        border-color: rebeccapurple;
+        padding: 2vh;
+        height: auto ;
+    }
+    div#calendario-reservas{
+        width: 80vh !important; 
+        height: 35vh !important;
+    }
+}
+@media screen and (max-width: 1060px) {
 
 }
-.two {
-
-}
-.three {
-
-}
-.four {
-
-}
-.five {
+@media screen and (max-width: 584px){
 
 }

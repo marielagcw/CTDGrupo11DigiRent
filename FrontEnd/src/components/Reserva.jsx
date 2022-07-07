@@ -75,7 +75,7 @@ export default function Reserva() {
               <div id="calendar">
                 <h2>Seleccioná tu fecha de reserva</h2>
                 <div className="d-flex flex-row justify-content-around align-items-center">
-                  <div className="calendar-container">
+                  <div id="calendario-reservas" className="calendar-container">
                     {window.innerWidth >= 359 && window.innerWidth <= 736 ? (
                       <Calendar
                         minDate={new Date(Date.now())}

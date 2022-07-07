@@ -1,7 +1,7 @@
 import React from "react";
 import horas from "../productos.json";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
+import {faCheckCircle} from '@fortawesome/free-regular-svg-icons';
 import "../styles/ReservaHoraLlegada.css";
 
 const ReservaHoraLlegada = ({setHora}) => {
@@ -20,13 +20,13 @@ const ReservaHoraLlegada = ({setHora}) => {
 
   return (
     <>
-      <div className="card producto mb-3">
+      <div id="horario-llegada" className="card producto mb-3">
         <div className="iconoTexto">
           
-          <span className="estilo-ckeck">
+          <div className="estilo-ckeck">
           <FontAwesomeIcon icon={faCheckCircle} />
-          </span>
-          <span>Tu habitacion va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</span>
+          </div>
+          <div id="texto-check">Tu habitacion va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</div>
         </div>
         <label className="horario" htmlFor="horario llegada">
           Indica tu horario estimado de llegada
