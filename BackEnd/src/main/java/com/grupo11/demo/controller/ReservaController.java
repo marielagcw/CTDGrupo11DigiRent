@@ -73,7 +73,6 @@ public class ReservaController {
 
     // FIND BY PRODUCTOS
     @GetMapping("/producto/{id}")
-    @RolesAllowed("ADMINISTRADOR")
     public ResponseEntity<?> listarReservasPorProducto(@PathVariable Integer id, Pageable pageable) {
         List<ReservaDTO> reservaDTOList= service.buscarReservasPorProducto(id, pageable);
         return ResponseEntity.ok().body(reservaDTOList);
