@@ -1,7 +1,7 @@
 import React from "react";
 import horas from "../productos.json";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
+import {faCheckCircle} from '@fortawesome/free-regular-svg-icons';
 import "../styles/ReservaHoraLlegada.css";
 
 const ReservaHoraLlegada = ({setHora}) => {
@@ -19,14 +19,14 @@ const ReservaHoraLlegada = ({setHora}) => {
   }
 
   return (
-    <>
-      <div className="card producto mb-3">
-        <div className="iconoTexto">
+    window.innerWidth <= 1023 ? (<>
+      <div id="horario-llegada-mob" className="card producto mb-3">
+        <div className="iconoTexto-mob">
           
-          <span className="estilo-ckeck">
+          <div className="estilo-ckeck-mob">
           <FontAwesomeIcon icon={faCheckCircle} />
-          </span>
-          <span>Tu habitacion va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</span>
+          </div>
+          <div id="texto-check-mob">Tu habitacion va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</div>
         </div>
         <label className="horario" htmlFor="horario llegada">
           Indica tu horario estimado de llegada
@@ -48,7 +48,37 @@ const ReservaHoraLlegada = ({setHora}) => {
           ))}
         </datalist>
       </div>
-    </>
+    </>) :
+    (<>
+      <div id="horario-llegada" className="card producto mb-3">
+        <div className="iconoTexto">
+          
+          <div className="estilo-ckeck">
+          <FontAwesomeIcon icon={faCheckCircle} />
+          </div>
+          <div id="texto-check">Tu habitacion va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</div>
+        </div>
+        <label className="horario" htmlFor="horario llegada">
+          Indica tu horario estimado de llegada
+        </label>
+        <div className="horaInput">
+          <input onChange={elegirHora}
+            className="input-search"
+            type="text"
+            list="horas"
+            placeholder="Seleccionar hora de llegada"
+            name="horaImput"
+          />
+        </div>
+        <datalist id="horas"  >
+          {horasList.map((e, i) => (
+            <option fecha={e}  key={"horaImput_" + i}>
+              {e}
+            </option>
+          ))}
+        </datalist>
+      </div>
+    </>)
   );
 };
 
