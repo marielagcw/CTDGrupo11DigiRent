@@ -30,11 +30,17 @@ export default function ProductoForm() {
 
   /* ----------------------------- Select Ciudades ---------------------------- */
   const urlCiudades = urlBase + "/ciudades/listarTodos?ord=ASC&field=nombre";
+  let config = {
+    headers: {
+      "Content-Type": "application/json",
+      mode: "no-cors",
+    },
+  };
   const {
     data: dataCiudades,
     ispending: isPendingCiudades,
     error: errorCiudades,
-  } = useFetch(urlCiudades);
+  } = useFetch(urlCiudades, config);
 
   /* ---------------------------- Select Categorías --------------------------- */
   const urlCategorias = urlBase + "/categorias/listarTodos";
@@ -42,13 +48,15 @@ export default function ProductoForm() {
     data: dataCategorias,
     isPending: isPendingCategorias,
     error: errorCategorias,
-  } = useFetch(urlCategorias);
+  } = useFetch(urlCategorias, config);
 
   /* ---------------------------------- Posts --------------------------------- */
-  const config = {
+  const configToken = {
     headers: {
       Authorization:
         "Bearer " + JSON.parse(window.localStorage.getItem("jwt")).jwt,
+        "Content-Type": "application/json",
+        mode: "no-cors",
     },
   };
 
@@ -57,7 +65,7 @@ export default function ProductoForm() {
   const postApiCategoria = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCategoria, bodyCategoria, config)
+          .post(urlPostCategoria, bodyCategoria, configToken)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -97,7 +105,7 @@ export default function ProductoForm() {
   const postApiCiudad = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCiudad, bodyCiudad, config)
+          .post(urlPostCiudad, bodyCiudad, configToken)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -137,7 +145,7 @@ export default function ProductoForm() {
   const postApiCaracteristica = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCaracteristica, bodyCaracteristica, config)
+          .post(urlPostCaracteristica, bodyCaracteristica, configToken)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -178,7 +186,7 @@ export default function ProductoForm() {
     let idProducto= "";
     tokenIsValid()
       ? await axios
-          .post(urlPostProducto, bodyProducto, config)
+          .post(urlPostProducto, bodyProducto, configToken)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -219,7 +227,7 @@ export default function ProductoForm() {
                 titulo: imagen.titulo,
                 producto: { id: id },
               },
-              config
+              configToken
             )
             .then((res) => {
               console.log(res);

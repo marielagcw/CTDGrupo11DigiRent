@@ -14,6 +14,8 @@ export const ProductoFormPoliticas = ({ datosForm, setDatosForm }) => {
     headers: {
       Authorization:
         "Bearer " + JSON.parse(window.localStorage.getItem("jwt")).jwt,
+        "Content-Type": "application/json",
+        mode: "no-cors",
     },
   };
   const postApiNormas = async (datosForm, setDatosForm) => {

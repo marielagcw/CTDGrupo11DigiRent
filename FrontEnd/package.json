@@ -53,8 +53,16 @@
       "!./src/components/Products.jsx",
       "!./src/hooks/useForm.js",
       "!./src/scripts/displayForm.js",
-      "!./src/scripts/formValidation.js"
-
+      "!./scr/components/ProductoForm.js",
+      "!./scr/components/ProductoFormAgregar.js",
+      "!./scr/components/ProductoFormImagenes.js",
+      "!./scr/components/ProductoFormPoliticas.js",
+      "!./scr/components/ProductoFormSelect.js",
+      "!./scr/babel-plugin-macros.config.js",
+      "!./scr/babel.config.js ",
+      "!./scr/components/ElementsMap.jsx",
+      "!./scr/components/IconMapLocation.jsx",
+      "!./scr/components/MostrarSegunRol.jsx"
     ]
   },
   "scripts": {
