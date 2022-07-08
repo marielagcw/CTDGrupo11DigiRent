@@ -12,7 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/roles")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class RolController {
 
     @Autowired

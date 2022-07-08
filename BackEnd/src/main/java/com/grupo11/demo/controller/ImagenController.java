@@ -12,7 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/imagenes")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class ImagenController {
 
     @Autowired
