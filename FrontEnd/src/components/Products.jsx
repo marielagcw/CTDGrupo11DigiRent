@@ -25,7 +25,13 @@ export default function Products() {
     const navigate = useNavigate();
 
     let url = urlBase + "/productos/" + id;
-    let { data, isPending, error } = useFetch(url);
+    let config = {
+        headers: {
+          "Content-Type": "application/json",
+          mode: "no-cors",
+        },
+      };
+    let { data, isPending, error } = useFetch(url, config);
     if (isPending) {
         console.log(error);
     }

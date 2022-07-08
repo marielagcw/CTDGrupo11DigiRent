@@ -23,14 +23,15 @@ const ReservaDetalle = ({ fechas, hora, productId}) => {
 
 
             
-
-
-
+                       
+            
             const url = `${urlBase}/reservas/agregar`
             const config = {
                 headers: {
-                  Authorization:
+                    Authorization:
                     "Bearer " + jwt,
+                    "Content-Type": "application/json",
+                    mode: "no-cors",
                 },
               };
             const body = {

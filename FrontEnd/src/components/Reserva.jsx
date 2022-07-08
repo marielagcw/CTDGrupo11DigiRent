@@ -24,7 +24,13 @@ export default function Reserva() {
   const { productId } = useParams();
 
   let url = urlBase + "/productos/" + productId;
-  let { data, isPending, error } = useFetch(url);
+  let config = {
+    headers: {
+      "Content-Type": "application/json",
+      mode: "no-cors",
+    },
+  };
+  let { data, isPending, error } = useFetch(url, config);
   if (isPending) {
     console.log(error);
   }

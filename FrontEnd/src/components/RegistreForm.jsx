@@ -100,8 +100,14 @@ const RegistreForm = () => {
                 id: 3
             }
         }
+        let config = {
+            headers: {
+              "Content-Type": "application/json",
+              mode: "no-cors",
+            },
+          };
         let band = false;
-        await axios.post(url, newUser).then(datos => {
+        await axios.post(url, newUser, config).then(datos => {
             console.log(datos)
             band = datos.status == 201;
         }).catch(err => console.log(err));
