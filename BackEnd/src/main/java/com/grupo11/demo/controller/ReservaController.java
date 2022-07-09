@@ -17,7 +17,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/reservas")
-@CrossOrigin
 public class ReservaController {
     @Autowired
     private ReservaService service;

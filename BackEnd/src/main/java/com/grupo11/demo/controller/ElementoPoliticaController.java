@@ -12,7 +12,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/elementospolitica")
-@CrossOrigin
 public class ElementoPoliticaController {
 
     @Autowired
