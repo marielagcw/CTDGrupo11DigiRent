@@ -25,18 +25,11 @@ const ProductoFormAgregar = ({
 
   const urlCaracteristicas =
     urlBase + "/caracteristicas/listarTodos?ord=ASC&field=nombre";
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        mode: "no-cors",
-      },
-    };
-    
   const {
     data: dataCaracteristicas,
     ispending: isPendingCaracteristicas,
     error: errorCaracteristicas,
-  } = useFetch(urlCaracteristicas, config);
+  } = useFetch(urlCaracteristicas);
 
   /* ----------------------- Renderizado del componente ----------------------- */
   return (

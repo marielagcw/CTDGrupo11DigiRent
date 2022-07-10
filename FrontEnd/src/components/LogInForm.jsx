@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 // import{chechPassword,chechSingleMail} from '../scripts/formValidation';
 import { useForm } from "../hooks/useForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,8 +8,8 @@ import "../styles/Form.css";
 import "../styles/iconForms.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import { tokenIsValid } from '../scripts/authService';
-
+import { tokenIsValid } from "../scripts/authService";
+import Swal from "sweetalert2";
 
 const initialForm = {
   email: "",
@@ -49,16 +49,12 @@ const LogInForm = () => {
   const location = useLocation();
   const [passwordType, setPasswordType] = useState("password");
   const [logged, setLogged] = useState(window.localStorage.getItem("jwt"));
-  const [userRegistre, setUserRegistre] = useState(window.localStorage.getItem("loadUser"))
-  useEffect(() => {
-    if (logged && userRegistre) {
-      window.localStorage.removeItem("loadUser");
-      navigate(-2)
-    }
-    if (logged && (tokenIsValid())) {
-      navigate(-1);
-    }
-  }, [logged]);
+
+  // useEffect(() => {
+  //   if (logged && tokenIsValid()) {
+  //     navigate("-1");
+  //   }
+  // }, [logged]);
 
   // useEffect(() => {
   //   if (logged) {
@@ -87,19 +83,6 @@ const LogInForm = () => {
   //     from.from = '/';
   //   }
   // }, [])
-  useEffect(() => {
-    if (userRegistre != null && userRegistre.length > 0) {
-      form.email = JSON.parse(userRegistre).mail;
-      form.password = JSON.parse(userRegistre).pw;
-    }
-  }, [])
-  useEffect(() => {
-    return (() => {
-      form.email = '';
-      form.password = ''
-      window.localStorage.removeItem("loadUser");
-    })
-  }, [])
 
   return (
     <>
@@ -114,7 +97,12 @@ const LogInForm = () => {
         <div className="form-container">
           <h1 className="create-acount">Iniciar Sesión</h1>
           <form
-            onSubmit={(e) => setTimeout(setLogged, 500, { logged: handleSubmit(e) })}
+            onSubmit={(e) => {
+              setTimeout(setLogged, 500, { logged: handleSubmit(e) });
+              Swal.fire("Gracias por regresar!", "", "sucess", {
+                confirmButtonText: "Save",
+              }).then((result) => navigate(-1));
+            }}
             className="d-flex flex-column login"
           >
             {errors.badCredentials && (
@@ -122,34 +110,30 @@ const LogInForm = () => {
             )}
             <div className="d-flex flex-column">
               <label htmlFor="email">Correo electrónico</label>
-              {!logged && userRegistre != null ?
-                <input className="input input-login" value={form.email} />
-                : <input
-                  className="input input-login"
-                  type="text"
-                  name="email"
-                  placeholder="Escribe tu email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.email}
-                  required
-                />}
+              <input
+                className="input input-login"
+                type="text"
+                name="email"
+                placeholder="Escribe tu email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={form.email}
+                required
+              />
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
             <div className="d-flex flex-column iconInput">
               <label htmlFor="password">Contraseña</label>
-              {!logged && userRegistre != null ?
-                <input className="input input-login" type={passwordType} value={form.password} />
-                : <input
-                  className="input input-login input-login-password"
-                  type={passwordType}
-                  name="password"
-                  placeholder="Escribe tu contraseña"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.password}
-                  required
-                />}
+              <input
+                className="input input-login input-login-password"
+                type={passwordType}
+                name="password"
+                placeholder="Escribe tu contraseña"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={form.password}
+                required
+              />
               <span
                 className="icon icon-display-password"
                 onClick={handleDisplayPassword}
@@ -160,7 +144,6 @@ const LogInForm = () => {
             {errors.password && <p className="error">{errors.password}</p>}
             {response && <p className="error">{response}</p>}
             <div className="mt-5 row justify-content-center">
-              {userRegistre != null && <span>Registrado, solo queda logearte!</span>}
               <button
                 type="submit"
                 className="btn btn-primary btn-lg"

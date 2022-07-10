@@ -42,31 +42,3 @@
     top: 59.03%;
     bottom: 13.19%;
 } */
-/*Vic*/
-div#horario-llegada {
-    display: flex;
-    flex-direction: column;
-    margin: 1vh 11vh;
-    padding: 3vh;
-    justify-content: space-around;
-    height: auto;
-}
-
-div#texto-check {
-    margin: 0 0 0 1%;
-}
-
-div.iconoTexto {
-    display: flex;
-    flex-direction: row;
-}
-
-@media screen and (min-width: 1400px) {
-
-}
-@media screen and (max-width: 1060px) {
-
-}
-@media screen and (max-width: 584px){
-
-}

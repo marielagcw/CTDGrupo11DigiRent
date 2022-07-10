@@ -1,10 +1,10 @@
 package com.grupo11.demo.controller;
 
-import com.grupo11.demo.service.implementation.UsuarioService;
+import com.grupo11.demo.model.dtos.UsuarioDTO;
 import com.grupo11.demo.security.jwt.IJwtService;
 import com.grupo11.demo.security.model.AuthenticationRequest;
 import com.grupo11.demo.security.model.AuthenticationResponse;
-import com.grupo11.demo.model.dtos.UsuarioDTO;
+import com.grupo11.demo.service.implementation.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

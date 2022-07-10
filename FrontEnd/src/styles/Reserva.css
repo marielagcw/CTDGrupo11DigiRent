@@ -33,32 +33,16 @@ div#resPolitica{
 } */
 
 /*Vic*/
-
-body {
+* {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-div#form div.row {
-    margin: 0;
-    padding: 0;
 }
 #form {
     background-color: var(--quaternary);
 }
 
-h2.create-acount, div#horaLlegada h2{
+h2.create-acount {
     color: var(--secondary);
     margin: 3vh 0 0 9.5vh;
-}
-
-div#calendar h2 {
-    margin: 0 0 0 0;
-}
-
-
-h2.create-acount, div#calendar h2, div#horaLlegada h2{
-    color: var(--secondary);
 }
 
 div#reservaForm.flex div.producto {
@@ -75,85 +59,22 @@ div#detalleReserva{
     padding: 3%;
 }
 
-div#calendar {
-    margin: 0 0 0 0;
-}
 
-div#calendario-reservas{
-    width: 102vh !important; 
-    height: vh !important;
-    margin: 1%;
+.wrapper {
+    display: grid;
 }
-
-@media screen and (min-width: 1200px) {
-    div#reservaForm {
-        margin: 0;
-        border-color: rebeccapurple;
-        padding: 2vh;
-        height: auto ;
-    }
-    div#calendario-reservas{
-        width: 80vh !important; 
-        height: 35vh !important;
-    }
-}
-@media screen and (max-width: 1060px) {
+.one {
 
 }
-@media screen and (max-width: 736px){
-    h2.create-acount.mob, div#calendar-mob h2, div#horaLlegada-mob h2{
-        color: var(--secondary);
-    }
-    h2.create-acount.mob, div#horaLlegada-mob h2{
-        margin: 0;
-        padding: 6vw 0 0 6vw;
-    }
-    div#campos-form-reservas {
-        padding: 5vw;
-        display: flex;
-        flex-direction: column;
-    }
-    div input {
-        width: 45vh;
-    }
-    div#reserva-mob {
+.two {
 
-    }
-    div.title-product.mob {
-    }
-    div#reservaForm-mob {
-        margin: 0;
-        padding: 0;
-    }
-    #form-mob {
-        background-color: var(--quaternary);
-    }
-    div.create-acount.mob{
+}
+.three {
 
-    }
-    div#calendar-mob {
-        margin: 10vw;
-    }
-    div#calendario-reservas-mob {
+}
+.four {
 
-    }
-    div#detalleReserva-mob{
-        background-color: white;
-        border-radius: 15px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 2px;
-        margin: 2vw;
-        padding: 1vw 0 1vw 0;
-    }
-    div#horario-llegada-mob {
-        padding: 6vw;
-        margin: 0 5vw;
-        height: auto;
-    }
-    div.iconoTexto-mob {
-        display: flex;
-        flex-direction: row;
-    }
-    div#texto-check-mob{
-        margin: 0 0 0 1%;
-    }
+}
+.five {
+
 }

@@ -30,17 +30,11 @@ export default function ProductoForm() {
 
   /* ----------------------------- Select Ciudades ---------------------------- */
   const urlCiudades = urlBase + "/ciudades/listarTodos?ord=ASC&field=nombre";
-  let config = {
-    headers: {
-      "Content-Type": "application/json",
-      mode: "no-cors",
-    },
-  };
   const {
     data: dataCiudades,
     ispending: isPendingCiudades,
     error: errorCiudades,
-  } = useFetch(urlCiudades, config);
+  } = useFetch(urlCiudades);
 
   /* ---------------------------- Select Categorías --------------------------- */
   const urlCategorias = urlBase + "/categorias/listarTodos";
@@ -48,15 +42,13 @@ export default function ProductoForm() {
     data: dataCategorias,
     isPending: isPendingCategorias,
     error: errorCategorias,
-  } = useFetch(urlCategorias, config);
+  } = useFetch(urlCategorias);
 
   /* ---------------------------------- Posts --------------------------------- */
-  const configToken = {
+  const config = {
     headers: {
       Authorization:
         "Bearer " + JSON.parse(window.localStorage.getItem("jwt")).jwt,
-        "Content-Type": "application/json",
-        mode: "no-cors",
     },
   };
 
@@ -65,7 +57,7 @@ export default function ProductoForm() {
   const postApiCategoria = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCategoria, bodyCategoria, configToken)
+          .post(urlPostCategoria, bodyCategoria, config)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -78,26 +70,26 @@ export default function ProductoForm() {
                 "El formulario será reiniciado para que pueda ver su categoría entre las opciones",
                 "success"
               );
+            } else {
+              Swal.fire(
+                "Ups... algo no está bien",
+                "La categoría no pudo ser agregada, intenta nuevamente",
+                "error"
+              );
             }
           })
-          .catch(
-            Swal.fire(
-              "Ups... algo no está bien",
-              "La categoría no pudo ser agregada, intenta nuevamente",
-              "error"
-            )
-          )
+          .catch(console.log("Hubo un error"))
       : Swal.fire({
-        title: 'Ups... parece que tu sesión se venció',
-        text: "Por favor ingresa nuevamente",
-        icon: 'warning',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Ingresar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/login");
-        }
-      })
+          title: "Ups... parece que tu sesión se venció",
+          text: "Por favor ingresa nuevamente",
+          icon: "warning",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Ingresar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/login");
+          }
+        });
   };
 
   // POST Nueva Ciudad
@@ -105,7 +97,7 @@ export default function ProductoForm() {
   const postApiCiudad = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCiudad, bodyCiudad, configToken)
+          .post(urlPostCiudad, bodyCiudad, config)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -118,26 +110,26 @@ export default function ProductoForm() {
                 "El formulario será reiniciado para que pueda ver su ciudad entre las opciones",
                 "success"
               );
+            } else {
+              Swal.fire(
+                "Ups... algo no está bien",
+                "La ciudad no pudo ser agregada, intenta nuevamente",
+                "error"
+              );
             }
           })
-          .catch(
-            Swal.fire(
-              "Ups... algo no está bien",
-              "La ciudad no pudo ser agregada, intenta nuevamente",
-              "error"
-            )
-          )
+          .catch(console.log("Ups...hubo un error"))
       : Swal.fire({
-        title: 'Ups... parece que tu sesión se venció',
-        text: "Por favor ingresa nuevamente",
-        icon: 'warning',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Ingresar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/login");
-        }
-      })
+          title: "Ups... parece que tu sesión se venció",
+          text: "Por favor ingresa nuevamente",
+          icon: "warning",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Ingresar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/login");
+          }
+        });
   };
 
   // POST Nueva característica
@@ -145,7 +137,7 @@ export default function ProductoForm() {
   const postApiCaracteristica = async () => {
     tokenIsValid()
       ? await axios
-          .post(urlPostCaracteristica, bodyCaracteristica, configToken)
+          .post(urlPostCaracteristica, bodyCaracteristica, config)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -158,35 +150,35 @@ export default function ProductoForm() {
                 "El formulario será reiniciado para que pueda ver su característica entre las opciones",
                 "success"
               );
+            } else {
+              Swal.fire(
+                "Ups... algo no está bien",
+                "La caracteristica no pudo ser agregada, intenta nuevamente",
+                "error"
+              );
             }
           })
-          .catch(
-            Swal.fire(
-              "Ups... algo no está bien",
-              "La caracteristica no pudo ser agregada, intenta nuevamente",
-              "error"
-            )
-          )
+          .catch(console.log("Ups... hubo un error"))
       : Swal.fire({
-        title: 'Ups... parece que tu sesión se venció',
-        text: "Por favor ingresa nuevamente",
-        icon: 'warning',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Ingresar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/login");
-        }
-      })
+          title: "Ups... parece que tu sesión se venció",
+          text: "Por favor ingresa nuevamente",
+          icon: "warning",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Ingresar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/login");
+          }
+        });
   };
 
   /* ------------------------------ POST Nuevo Producto ----------------------------- */
   const urlPostProducto = urlBase + "/productos/agregar";
   const postApiProducto = async () => {
-    let idProducto= "";
+    let idProducto = "";
     tokenIsValid()
       ? await axios
-          .post(urlPostProducto, bodyProducto, configToken)
+          .post(urlPostProducto, bodyProducto, config)
           .then((res) => {
             if (res.status === 200 || res.status === 201) {
               console.log(res);
@@ -194,7 +186,7 @@ export default function ProductoForm() {
               postApiImagenes(res.data.id);
               idProducto = res.data.id;
               // navigate("/creacionProductoExitosa");
-              navigate(`/products/${idProducto}`)
+              navigate(`/products/${idProducto}`);
               setTimeout(() => {
                 window.location.reload();
               }, 3000);
@@ -203,17 +195,17 @@ export default function ProductoForm() {
                 "Gracias por confiar en nosotros!",
                 "success"
               );
+            } else {
+              Swal.fire(
+                "Ups... algo no está bien",
+                "El producto no pudo ser agregado, intenta nuevamente",
+                "error"
+              );
             }
           })
-          .catch(
-            Swal.fire(
-              "Ups... algo no está bien",
-              "El producto no pudo ser agregado, intenta nuevamente",
-              "error"
-            )
-          )
+          .catch(console.log("Hubo un error"))
       : navigate("/login");
-      console.log(tokenIsValid())
+    console.log(tokenIsValid());
   };
   const urlPostImagen = urlBase + "/imagenes/agregar";
   const postApiImagenes = (id) => {
@@ -227,13 +219,17 @@ export default function ProductoForm() {
                 titulo: imagen.titulo,
                 producto: { id: id },
               },
-              configToken
+              config
             )
             .then((res) => {
-              console.log(res);
-              console.log(res.data);
+              if (res.status === 200) {
+                console.log(res);
+                console.log(res.data);
+              } else {
+                Swal.fire("Error al cargar las imágenes");
+              }
             })
-            .catch(Swal.fire("Error al cargar las imágenes"))
+            .catch()
         : navigate("/login");
     });
   };
@@ -250,9 +246,9 @@ export default function ProductoForm() {
     ciudad: "",
     descripcionProducto: "",
     caracteristicaState: [],
-    politicasNormas: {titulo: ""},
-    politicasSalud: {titulo: ""},
-    politicasCancelacion: {titulo: ""},
+    politicasNormas: { titulo: "" },
+    politicasSalud: { titulo: "" },
+    politicasCancelacion: { titulo: "" },
     imagenState: [],
   });
 
@@ -319,9 +315,13 @@ export default function ProductoForm() {
     descripcion: datosForm.descripcionProducto,
     categoria: { id: datosForm.categoria },
     ciudad: { id: datosForm.ciudad },
-    politicas: [{id: datosForm.politicasNormas.id},{id: datosForm.politicasSalud.id}, {id: datosForm.politicasCancelacion.id}], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
+    politicas: [
+      { id: datosForm.politicasNormas.id },
+      { id: datosForm.politicasSalud.id },
+      { id: datosForm.politicasCancelacion.id },
+    ], // son las políticas que vienen en los pedidos de API que se hacen con el confirmar políticas
     caracteristicas: datosForm.caracteristicaState,
-    tituloDescripcion: datosForm.descripcionProducto
+    tituloDescripcion: datosForm.descripcionProducto,
   };
 
   /* -------------------------------------------------------------------------- */
@@ -405,7 +405,6 @@ export default function ProductoForm() {
   /* -------------------------------------------------------------------------- */
   return (
     <>
-    
       <Header />
       <div className="g-col-6 g-col-md-4">
         <div id="navbarNuevoProducto">

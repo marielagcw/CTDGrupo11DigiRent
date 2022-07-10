@@ -12,19 +12,14 @@ const getRol = () => {
 
 const tokenIsValid = () => {
   const storage = window.localStorage;
-  let token;
-  try {
-    token = JSON.parse(storage.getItem("jwt")).jwt;
-  } catch {
-    token = null
-  }
-  if (token === null) {
-    return false
+  let token = JSON.parse(storage.getItem("jwt")).jwt;
+  if (token === null){
+  return false
   }
   token = jwt_decode(token);
-  let exp = new Date(token.exp * 1000);
+  let exp =  new Date(token.exp * 1000);
   // True si el token es válido, false si no es válido
-  return (new Date() - 60000) < (exp);
+  return (new Date()-60000 )< (exp);
 };
-
-export { getRol, tokenIsValid };
+ 
+export { getRol, tokenIsValid};
