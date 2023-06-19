@@ -12,8 +12,5 @@ Te invitamos a conocer más de todo nuestro trabajo en los siguientes links:
 - [Deploy Frontend en AWS](http://front-digirentg11.s3-website-us-west-2.amazonaws.com/)
 (Requiere que la API esté activa)
 
-- [Deploy Backend en Heroku](https://digirentback.herokuapp.com/swagger-ui/index.html)
-
-- [Deploy Frontend en Heroku](https://digirentfront.herokuapp.com/)
-
+- [Live Demo](http://waru.itav.com.ar/digirent_back/swagger-ui/index.html)
 
